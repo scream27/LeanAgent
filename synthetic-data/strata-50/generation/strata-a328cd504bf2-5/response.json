@@ -1,0 +1,6 @@
+{
+  "response_sha256": "1e78c249d248f128a30d29d07c0014882c71f5cece6fc964fcbfd00584376324",
+  "raw_response": "by\n  by_cases he : S.hasEmptyScopes\n  · simp_all [Subst.isEmpty_implies_keys_empty S he]\n  · induction ty\n    case ftvar i =>\n      simp_all [LMonoTy.subst]\n      intro id hid\n      split\n      · rename_i _ sty hs\n        simp_all [SubstWF, Subst.freeVars]\n        have hm := @Maps.find?_mem_values _ _ i sty _ S hs\n        exact h id hid sty hm\n      · simp_all [freeVars]\n        have := @Maps.find?_of_not_mem_values _ _ i _ S\n        simp_all\n        exact ne_of_mem_of_not_mem hid this\n    case bitvec n => simp_all [LMonoTy.subst, LMonoTy.freeVars]\n    case tcons name args ih =>\n      simp_all\n      simp [subst]\n      induction args <;> simp_all [LMonoTys.subst_eq_substLogic, LMonoTys.substLogic, LMonoTys.freeVars, LMonoTy.freeVars]\n      grind",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

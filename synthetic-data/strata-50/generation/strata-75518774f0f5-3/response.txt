@@ -1,0 +1,26 @@
+by
+  intros α h t l l' inst inst2 hn hn' H
+  induction t generalizing l l' h <;> simp [List.eraseDupsBy.loop] at *
+  case nil =>
+    apply nodup_insert
+    · exact not_in_reverse.mp hn'
+    · exact not_in_reverse.mp hn
+    · assumption
+  case cons a t ih =>
+    split at H
+    · split <;> simp_all
+      next x he =>
+      grind
+    · split
+      · simp_all
+        apply ih <;> try assumption
+        have he : l ++ l' = [] ++ (l ++ l') := rfl
+        rw [he]
+        apply loop_shrink_nodup <;> assumption
+      · next x he =>
+        simp_all
+        have heq : a :: (l ++ h :: l') = (a :: l) ++ h :: l' := rfl
+        rw [heq]
+        apply ih <;> try assumption
+        simp_all
+        exact fun e => he (Eq.symm e)

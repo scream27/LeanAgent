@@ -1,0 +1,6 @@
+# Preserve source offsets, hashes, prompts and raw compiler streams across platforms.
+* -text
+# Exact source/prompt snapshots intentionally retain original whitespace.
+strata-50/generation/**/prompt.txt whitespace=-blank-at-eol,-blank-at-eof
+strata-50/licenses/* whitespace=cr-at-eol
+*.png binary

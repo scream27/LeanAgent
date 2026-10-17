@@ -1,0 +1,17 @@
+{
+  "compile_success": false,
+  "safety_passed": true,
+  "safety_reasons": [],
+  "axioms": null,
+  "axiom_check": null,
+  "safety_scope": "lexical preflight plus transitive axioms when compiled",
+  "compiler_errors": "Strata/DL/Util/StringGen.lean:251:5: error: unknown tactic\nStrata/DL/Util/StringGen.lean:250:57: error: unsolved goals\ns : String\nx y : Nat\nhs : \"_\" ++ toString x <:+ s ++ \"_\" ++ toString y\nhx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\n⊢ (toString x).length = (toString y).length\nStrata/DL/Util/StringGen.lean:237:112: error: unsolved goals\ncase a\ns : String\nx y : Nat\nhs : \"_\" ++ toString x <:+ s ++ \"_\" ++ toString y\nhx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhe : (toString x).length = (toString y).length\n⊢ toString x = toString y\n",
+  "verification_time": 2.720098700000108,
+  "error_category": "unknown_identifiers",
+  "infrastructure_failure": false,
+  "heartbeats": null,
+  "heartbeat_status": "not measured: instrumentation changes the original environment",
+  "source_sha256": "4ae98e861fe14ef4572510e92c7ec8bcab2c24326ddd4e7239d9bec853fe2888",
+  "exit_code": 1,
+  "verification_timed_out": false
+}

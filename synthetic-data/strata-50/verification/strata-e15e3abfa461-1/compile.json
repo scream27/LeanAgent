@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Lambda/LTyUnify.lean"
+  ],
+  "exit_code": 1,
+  "stdout": "Strata/DL/Lambda/LTyUnify.lean:286:4: error: Case tag `ftvar` not found.\n\nHint: Available tags:\n  • `neg.ftvar._@.Strata.DL.Lambda.LTyUnify.2275427368._hygCtx._hyg.23`: f̵t̵v̵a̵r̵n̲e̲g̲.̲f̲t̲v̲a̲r̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲2̲7̲5̲4̲2̲7̲3̲6̲8̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲2̲3̲\n  • `neg.bitvec._@.Strata.DL.Lambda.LTyUnify.2275427368._hygCtx._hyg.23`: f̵t̵v̵a̵r̵n̲e̲g̲.̲b̲i̲t̲v̲e̲c̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲2̲7̲5̲4̲2̲7̲3̲6̲8̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲2̲3̲\n  • `neg.tcons._@.Strata.DL.Lambda.LTyUnify.2275427368._hygCtx._hyg.23`: f̵t̵v̵a̵r̵n̲e̲g̲.̲t̲c̲o̲n̲s̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲2̲7̲5̲4̲2̲7̲3̲6̲8̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲2̲3̲\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 3.0826216000000386
+}

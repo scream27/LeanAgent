@@ -1,0 +1,6 @@
+{
+  "response_sha256": "ba298b29c6bfefe5347f3a4948587305c811440989df4d0a2da831320c11f1be",
+  "raw_response": "by\n  have bound : ∀ {s t : List α}, s.Nodup → s ⊆ t → s.length ≤ t.length := by\n    intro s\n    induction s with\n    | nil => simp\n    | cons x xs ih =>\n      intro t hn hs\n      have hx : x ∈ t := hs (by simp)\n      obtain ⟨u, v, rfl⟩ := List.mem_iff_append.mp hx\n      have hsub : xs ⊆ u ++ v := by grind\n      have hlen := ih (List.nodup_cons.mp hn).2 hsub\n      simp only [List.length_cons, List.length_append] at *\n      omega\n  exact bound (nodup_dedup l₁) (fun x hx => mem_of_mem_dedup _ _ (List.mem_append_left _ (mem_dedup_of_mem _ _ hx)))",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

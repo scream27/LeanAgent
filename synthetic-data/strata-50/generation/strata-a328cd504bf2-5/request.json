@@ -1,0 +1,19 @@
+{
+  "problem_id": "strata-a328cd504bf2",
+  "candidate_id": "strata-a328cd504bf2-5",
+  "phase": "remaining",
+  "attempt": 5,
+  "generation_model": "Codex session (exact model identifier unavailable)",
+  "generation_parameters": {
+    "transport": "codex-session-file",
+    "strategy": "Seek a compact proof using the reference invariants and available automation.",
+    "seed": null,
+    "temperature": null,
+    "top_p": null,
+    "independent_api_calls": false,
+    "sampling_note": "User selected shared Codex session. Diversity is prompt-controlled; statistical independence is not guaranteed."
+  },
+  "prompt_sha256": "1c4e7ecb1b546f3f21bf725769cbec2165db3fb0745feea625393ee310348b78",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

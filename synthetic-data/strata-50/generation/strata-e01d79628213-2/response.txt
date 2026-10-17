@@ -1,0 +1,26 @@
+by
+  induction l₁ generalizing l₂
+  case nil => simp [dedup]
+  case cons a as ih =>
+    simp [dedup]
+    split
+    · rename_i h
+      have ha := (mem_of_dedup as a).mpr h
+      have hb : a ∈ (as ++ l₂).dedup := mem_of_mem_dedup _ _ (by simp_all)
+      simp_all
+    · rename_i h
+      by_cases ha : a ∈ (as ++ l₂).dedup
+      · simp_all
+        have hn : a ∉ as := by simpa [← mem_of_dedup] using h
+        have hm := (mem_of_dedup (as ++ l₂) a).mpr ha
+        rw [length_dedup_of_removeAll a (as ++ l₂) hm]
+        have he : (as ++ l₂).removeAll [a] = as ++ l₂.removeAll [a] := by
+          simp [removeAll]
+          have hf : filter (fun x => !decide (x = a)) as = as := by
+            simp_all
+            intro x hx
+            exact ne_of_mem_of_not_mem hx hn
+          simp_all
+        rw [he]
+        exact Nat.sub_le_iff_le_add'.mp (ih (l₂.removeAll [a]))
+      · simp_all

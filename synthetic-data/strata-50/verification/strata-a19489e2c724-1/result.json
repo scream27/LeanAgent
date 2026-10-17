@@ -1,0 +1,20 @@
+{
+  "compile_success": true,
+  "safety_passed": true,
+  "safety_reasons": [],
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "axiom_check": true,
+  "safety_scope": "lexical preflight plus transitive axioms when compiled",
+  "compiler_errors": "",
+  "verification_time": 1.0340704000000187,
+  "error_category": null,
+  "infrastructure_failure": false,
+  "heartbeats": null,
+  "heartbeat_status": "not measured: instrumentation changes the original environment",
+  "source_sha256": "3d0b68baae679834f9e59d4aa4c9eceef97dd7a34a6fc9076b890858dc8e134e",
+  "exit_code": 0
+}

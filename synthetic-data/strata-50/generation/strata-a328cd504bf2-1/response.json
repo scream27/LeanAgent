@@ -1,0 +1,6 @@
+{
+  "response_sha256": "39e08bca0c531b7da6f239e16128d8107a5817aa61f2808907d68901b616d566",
+  "raw_response": "by\n  by_cases he : S.hasEmptyScopes\n  · simp_all [Subst.isEmpty_implies_keys_empty S he]\n  · induction ty\n    case ftvar i =>\n      simp_all [LMonoTy.subst]\n      intro id hid\n      split\n      · rename_i sty hs\n        simp_all [SubstWF, Subst.freeVars]\n        exact h id hid sty (Maps.find?_mem_values hs)\n      · simp_all [freeVars]\n        have := @Maps.find?_of_not_mem_values _ _ i _ S\n        simp_all\n        exact ne_of_mem_of_not_mem hid this\n    case bitvec n => simp_all [LMonoTy.subst, LMonoTy.freeVars]\n    case tcons name args ih =>\n      simp_all\n      simp [subst]\n      induction args\n      · simp_all [LMonoTys.subst_eq_substLogic, LMonoTys.substLogic, LMonoTys.freeVars, LMonoTy.freeVars]\n      · rename_i head tail iht\n        simp_all\n        obtain ⟨ih1, ih2⟩ := ih\n        intro x hx\n        have hh := ih1 x hx\n        simp [LMonoTy.freeVars, LMonoTys.subst_eq_substLogic, LMonoTys.substLogic] at iht ⊢\n        simp [he, hh]\n        exact iht x hx",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

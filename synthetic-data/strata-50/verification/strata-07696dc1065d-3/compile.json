@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Util/StringGen.lean"
+  ],
+  "exit_code": 1,
+  "stdout": "Strata/DL/Util/StringGen.lean:178:2: error: Tactic `simp` failed with a nested error:\nmaximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 2.700107499999831
+}

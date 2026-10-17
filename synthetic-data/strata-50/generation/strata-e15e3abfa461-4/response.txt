@@ -1,0 +1,37 @@
+by
+  by_cases he : S.hasEmptyScopes
+  · unfold subst; simp_all [Subst.hasEmptyScopes]
+  · simp [Subst.freeVars]
+    induction mty
+    case ftvar x =>
+      simp_all [subst]
+      split
+      · rename_i sty hs
+        intro v hv; simp_all; right
+        apply Exists.intro sty
+        simp [hv]
+        exact @Maps.find?_mem_values _ _ x sty _ S hs
+      · simp [freeVars]
+    case bitvec n => simp [subst]
+    case tcons name args ih =>
+      simp [LMonoTy.subst, LMonoTy.freeVars]
+      induction args
+      case nil => simp_all [LMonoTys.freeVars, LMonoTy.freeVars, LMonoTys.subst_eq_substLogic, LMonoTys.substLogic]
+      case cons mty mtys iht =>
+        simp at he
+        simp_all [LMonoTys.subst_eq_substLogic, LMonoTys.substLogic]
+        simp [freeVars] at *
+        generalize (subst S mty).freeVars = x at iht ih
+        generalize mty.freeVars = a at iht ih
+        generalize LMonoTys.freeVars mtys = b at iht ih
+        generalize List.flatMap freeVars (Maps.values S) = c at iht ih
+        generalize (LMonoTys.substLogic S mtys).freeVars = d at iht ih
+        obtain ⟨ih1, ih2⟩ := ih
+        constructor
+        · intro v hv
+          have hm := ih1 hv
+          simp only [List.mem_append] at hm ⊢
+          rcases hm with hm | hm
+          · exact Or.inl hm
+          · exact Or.inr (Or.inr hm)
+        · exact List.subset_append_of_subset_right a iht

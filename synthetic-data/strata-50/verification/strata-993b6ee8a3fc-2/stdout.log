@@ -1,0 +1,10 @@
+Strata/DL/Util/StringGen.lean:260:64: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ 0
+  b - c ≥ 1
+  a ≥ 0
+where
+ a := ↑(toString y).length
+ b := ↑(toString y).toList.length
+ c := ↑(toString x).toList.length

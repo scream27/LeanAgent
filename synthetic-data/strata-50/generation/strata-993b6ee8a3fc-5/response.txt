@@ -1,0 +1,23 @@
+by
+  intro hs
+  apply Nat_eq_of_toString_eq
+  by_cases hlt : (toString x).length < (toString y).length
+  · simp only [String.IsSuffix, String.toList_append, under_toList] at hs
+    have hy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := List.suffix_append_of_suffix (List.suffix_refl _)
+    obtain ⟨t, ht⟩ := List.suffix_of_suffix_length_le hs hy (by simp; omega)
+    have := @Nat_toString_not_contain_underscore y
+    simp [← ht] at this
+  · by_cases hgt : (toString x).length > (toString y).length
+    · have hx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := by
+        obtain ⟨t, ht⟩ := hs
+        exists t ++ ['_']
+        simpa only [String.toList_append, under_toList, List.append_assoc] using ht
+      have hy : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := by
+        simp only [List.append_assoc]
+        exact List.suffix_append_of_suffix (List.suffix_refl _)
+      obtain ⟨t, ht⟩ := List.suffix_of_suffix_length_le hy hx (by simp; omega)
+      have := @Nat_toString_not_contain_underscore x
+      simp [← ht] at this
+    · obtain ⟨cs, ht⟩ := hs
+      simp only [String.toList_append, ← List.append_assoc] at ht
+      exact String.toList_inj.mp (List.append_inj_right' ht (by omega))

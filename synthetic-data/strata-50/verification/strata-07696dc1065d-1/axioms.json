@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Util/StringGen.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "'Nat_toDigitsCore_list_head_eq' depends on axioms: [propext]\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 3.767605800000183
+}

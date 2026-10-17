@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Util/StringGen.lean"
+  ],
+  "exit_code": 1,
+  "stdout": "Strata/DL/Util/StringGen.lean:251:5: error: unknown tactic\nStrata/DL/Util/StringGen.lean:250:57: error: unsolved goals\ns : String\nx y : Nat\nhs : \"_\" ++ toString x <:+ s ++ \"_\" ++ toString y\nhx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\n⊢ (toString x).length = (toString y).length\nStrata/DL/Util/StringGen.lean:237:112: error: unsolved goals\ncase a\ns : String\nx y : Nat\nhs : \"_\" ++ toString x <:+ s ++ \"_\" ++ toString y\nhx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList\nhe : (toString x).length = (toString y).length\n⊢ toString x = toString y\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 2.720098700000108
+}

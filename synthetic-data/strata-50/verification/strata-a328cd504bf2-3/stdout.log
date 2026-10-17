@@ -1,0 +1,21 @@
+Strata/DL/Lambda/LTyUnify.lean:239:47: error: Application type mismatch: The argument
+  S
+has type
+  Subst
+of sort `Type` but is expected to have type
+  Subst.hasEmptyScopes ?m.22 = true
+of sort `Prop` in the application
+  Subst.isEmpty_implies_keys_empty S
+Strata/DL/Lambda/LTyUnify.lean:239:2: error: unsolved goals
+case pos
+S : Subst
+ty : LMonoTy
+h : SubstWF S = true
+he : S.hasEmptyScopes = true
+⊢ ∀ (x : TyIdentifier), x ∈ Maps.keys S → ¬x ∈ (subst S ty).freeVars
+Strata/DL/Lambda/LTyUnify.lean:241:4: error: Case tag `ftvar` not found.
+
+Hint: Available tags:
+  • `neg.ftvar._@.Strata.DL.Lambda.LTyUnify.2632007079._hygCtx._hyg.56`: f̵t̵v̵a̵r̵n̲e̲g̲.̲f̲t̲v̲a̲r̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲6̲3̲2̲0̲0̲7̲0̲7̲9̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲5̲6̲
+  • `neg.bitvec._@.Strata.DL.Lambda.LTyUnify.2632007079._hygCtx._hyg.56`: f̵t̵v̵a̵r̵n̲e̲g̲.̲b̲i̲t̲v̲e̲c̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲6̲3̲2̲0̲0̲7̲0̲7̲9̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲5̲6̲
+  • `neg.tcons._@.Strata.DL.Lambda.LTyUnify.2632007079._hygCtx._hyg.56`: f̵t̵v̵a̵r̵n̲e̲g̲.̲t̲c̲o̲n̲s̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲6̲3̲2̲0̲0̲7̲0̲7̲9̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲5̲6̲

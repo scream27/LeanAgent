@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/Languages/Core/FactoryWF.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "'Core.Factory_wf' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 58.9765924000003
+}

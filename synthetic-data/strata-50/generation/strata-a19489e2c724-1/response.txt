@@ -1,0 +1,31 @@
+by
+  intros α h t l l' inst inst2 H
+  induction t generalizing l l' h <;> simp [List.eraseDupsBy.loop] at *
+  case nil =>
+    apply nodup_swap
+    simp
+    apply nodup_middle'
+    rw [← List.cons_append]
+    exact nodup_swap H
+  case cons h' t ih =>
+    by_cases Heq : h' == h
+    · rw [eq_of_beq Heq] at H ⊢
+      simp at H
+      by_cases hh : h ∈ l
+      · simp; exact ih H
+      · split
+        · exact ih H
+        · simp_all
+    · split
+      · simp_all
+        apply ih
+        split at H <;> simp_all
+        grind
+      · simp_all
+        change (List.eraseDupsBy.loop (· == ·) t ((h' :: [h]) ++ (l' ++ l))).Nodup
+        apply ih
+        simp
+        change (List.eraseDupsBy.loop (· == ·) t (h :: ((h' :: l') ++ l))).Nodup
+        apply ih
+        simp
+        grind

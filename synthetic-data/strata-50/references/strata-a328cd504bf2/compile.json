@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Lambda/LTyUnify.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 3.092582599999787
+}

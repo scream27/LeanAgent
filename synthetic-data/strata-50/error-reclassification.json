@@ -1,0 +1,45 @@
+{
+  "reason": "Expand classification from observed compiler diagnostics; raw logs unchanged",
+  "changes": [
+    {
+      "candidate_id": "strata-a19489e2c724-5",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-993b6ee8a3fc-2",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-993b6ee8a3fc-3",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-993b6ee8a3fc-5",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-e15e3abfa461-1",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-e15e3abfa461-2",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-e15e3abfa461-4",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    },
+    {
+      "candidate_id": "strata-e15e3abfa461-5",
+      "old": "other_errors",
+      "new": "tactic_failures"
+    }
+  ]
+}

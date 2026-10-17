@@ -1,0 +1,21 @@
+by
+  intro hs
+  apply Nat_eq_of_toString_eq
+  have hx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := by
+    obtain ⟨t, ht⟩ := hs
+    refine ⟨t ++ ['_'], ?_⟩
+    simpa only [String.toList_append, under_toList, List.append_assoc] using ht
+  have hy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := List.suffix_append_of_suffix (List.suffix_refl _)
+  have hyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := by
+    simp only [List.append_assoc]
+    exact List.suffix_append_of_suffix (List.suffix_refl _)
+  have hxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList := by
+    simpa only [String.IsSuffix, String.toList_append, under_toList] using hs
+  have he : (toString x).length = (toString y).length := by
+    by_contra hn
+    rcases Nat.lt_or_gt_of_ne hn with hl | hl
+    · obtain ⟨t, ht⟩ := List.suffix_of_suffix_length_le hxu hy (by simp; omega)
+      exact Nat_toString_not_contain_underscore (by simp [← ht])
+    · obtain ⟨t, ht⟩ := List.suffix_of_suffix_length_le hyu hx (by simp; omega)
+      exact Nat_toString_not_contain_underscore (by simp [← ht])
+  exact String.toList_inj.mp ((List.suffix_of_suffix_length_le hx hy (by simpa using Nat.le_of_eq he)).eq_of_length_le (by simpa using Nat.le_of_eq he.symm))

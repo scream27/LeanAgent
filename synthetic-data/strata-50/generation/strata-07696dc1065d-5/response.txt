@@ -1,0 +1,7 @@
+by
+  intro H
+  have a := Nat_toDigitsCore_list_suffix (x := x) (n := n) (l := h1 :: t)
+  have b := Nat_toDigitsCore_list_suffix (x := y) (n := m) (l := h2 :: t)
+  rw [H] at a
+  have c := List.suffix_of_suffix_length_le a b (by simp)
+  simpa [List.suffix_iff_eq_drop] using c

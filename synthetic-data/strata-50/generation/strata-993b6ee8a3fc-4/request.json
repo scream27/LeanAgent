@@ -1,0 +1,19 @@
+{
+  "problem_id": "strata-993b6ee8a3fc",
+  "candidate_id": "strata-993b6ee8a3fc-4",
+  "phase": "remaining",
+  "attempt": 4,
+  "generation_model": "Codex session (exact model identifier unavailable)",
+  "generation_parameters": {
+    "transport": "codex-session-file",
+    "strategy": "Prefer explicit terms and smaller reasoning steps where they simplify the reference.",
+    "seed": null,
+    "temperature": null,
+    "top_p": null,
+    "independent_api_calls": false,
+    "sampling_note": "User selected shared Codex session. Diversity is prompt-controlled; statistical independence is not guaranteed."
+  },
+  "prompt_sha256": "119f96ba2978491e44b2608a4ccb73106bd075462a227e4df9fdbeecf818de62",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

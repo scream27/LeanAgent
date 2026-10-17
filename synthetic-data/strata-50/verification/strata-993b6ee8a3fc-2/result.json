@@ -1,0 +1,17 @@
+{
+  "compile_success": false,
+  "safety_passed": true,
+  "safety_reasons": [],
+  "axioms": null,
+  "axiom_check": null,
+  "safety_scope": "lexical preflight plus transitive axioms when compiled",
+  "compiler_errors": "Strata/DL/Util/StringGen.lean:260:64: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c ≥ 0\n  b ≥ 0\n  b - c ≥ 1\n  a ≥ 0\nwhere\n a := ↑(toString y).length\n b := ↑(toString y).toList.length\n c := ↑(toString x).toList.length\n",
+  "verification_time": 2.7055100999996284,
+  "error_category": "other_errors",
+  "infrastructure_failure": false,
+  "heartbeats": null,
+  "heartbeat_status": "not measured: instrumentation changes the original environment",
+  "source_sha256": "77689b043a54ba1d33484858dc5981f0fcc67701ffd1b48307878aa0b5be8931",
+  "exit_code": 1,
+  "verification_timed_out": false
+}

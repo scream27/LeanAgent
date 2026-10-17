@@ -1,0 +1,6 @@
+by
+  have hmem : (a :: l₁).all (fun e => e ∈ l₂) := by simp_all
+  have hle : 1 + l₁.dedup.length ≤ l₂.dedup.length := by
+    rw [← length_dedup_cons_of_not_mem a l₁ h2, ← length_dedup_append_all_in_right (a :: l₁) l₂ hmem]
+    exact length_dedup_append_le_left (a :: l₁) l₂
+  omega

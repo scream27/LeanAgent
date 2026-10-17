@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/Languages/Core/FactoryWF.lean"
+  ],
+  "exit_code": 1,
+  "stdout": "Strata/Languages/Core/FactoryWF.lean:45:4: error: Tactic `contradiction` failed\n\ncase lfuncs_wf\nlf : LFunc CoreLParams\nHmem :\n  lf ∈\n    {\n        toList :=\n          [intAddFunc, intSubFunc, intMulFunc, intDivFunc, intModFunc, intNegFunc, intLtFunc, intLeFunc, intGtFunc,\n            intGeFunc, realAddFunc, realSubFunc, realMulFunc, realDivFunc, realNegFunc, realLtFunc, realLeFunc,\n            realGtFunc, realGeFunc, boolAndFunc, boolOrFunc, boolImpliesFunc, boolEquivFunc, boolNotFunc, strLengthFunc,\n            strConcatFunc, strSubstrFunc, strToRegexFunc, strInRegexFunc, reAllFunc, reAllCharFunc, reRangeFunc,\n            reConcatFunc, reStarFunc, rePlusFunc, reLoopFunc, reUnionFunc, reInterFunc, reCompFunc, reNoneFunc,\n            polyOldFunc, mapSelectFunc, mapUpdateFunc, emptyTriggersFunc, addTriggerGroupFunc, emptyTriggerGroupFunc,\n            addTriggerFunc, bv8ConcatFunc, ⋯] }.toList\n⊢ LFuncWF lf\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 16.956798700000036
+}

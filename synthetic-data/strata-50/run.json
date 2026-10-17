@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Seoul",
+  "python": "3.12.14",
+  "matplotlib": "3.10.8",
+  "source_commit": "451e5f047bafa010d178856db76c00029bfa4d7f",
+  "toolchain": "leanprover/lean4:v4.26.0",
+  "upstream_aurasoph": "7f3a401470d04f70013d293db4253b088ec8a0ae",
+  "upstream_delta": "a2372caad69ab61a42a0e997106b87e00d9d7d65",
+  "transport": "user-authorized shared Codex session",
+  "generation_batches": [
+    15,
+    35
+  ],
+  "candidates_per_theorem": 5,
+  "independent_api_samples": false,
+  "repairs": 0,
+  "resampling": 0,
+  "reference_selection": "shortest eligible proofs first, minimum 31 nonempty noncomment lines",
+  "verification": "whole-file proof-only replacement in disposable copies; separate axiom audit",
+  "scope_limit": "sampling controls and statistical independence unavailable with selected shared-session transport"
+}

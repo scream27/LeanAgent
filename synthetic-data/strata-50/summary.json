@@ -1,0 +1,176 @@
+{
+  "total_candidates": 50,
+  "compiling": 25,
+  "failing": 25,
+  "unverified": 0,
+  "compile_percentage": 50.0,
+  "failure_percentage": 50.0,
+  "safety_violations": 0,
+  "duplicates": 0,
+  "errors": {
+    "syntax_errors": 1,
+    "unknown_identifiers": 2,
+    "type_mismatches": 6,
+    "unsolved_goals": 0,
+    "tactic_failures": 15,
+    "resource_exhaustion": 1,
+    "other_errors": 0
+  },
+  "proof_lengths": {
+    "all": {
+      "reference_token_count": {
+        "n": 50,
+        "mean": 229.6,
+        "median": 197.5,
+        "standard_deviation": 79.644459945435,
+        "min": 119,
+        "max": 392
+      },
+      "candidate_token_count": {
+        "n": 50,
+        "mean": 135.44,
+        "median": 119.0,
+        "standard_deviation": 63.31892608059616,
+        "min": 33,
+        "max": 299
+      },
+      "length_reduction_ratio": {
+        "n": 50,
+        "mean": 0.3633281717551744,
+        "median": 0.25357690742306127,
+        "standard_deviation": 0.27104872366368365,
+        "min": 0.054545454545454564,
+        "max": 0.8341836734693877
+      }
+    },
+    "compiling": {
+      "reference_token_count": {
+        "n": 25,
+        "mean": 235.72,
+        "median": 199,
+        "standard_deviation": 80.60249127663486,
+        "min": 119,
+        "max": 392
+      },
+      "candidate_token_count": {
+        "n": 25,
+        "mean": 115,
+        "median": 121,
+        "standard_deviation": 47.13554921712486,
+        "min": 33,
+        "max": 190
+      },
+      "length_reduction_ratio": {
+        "n": 25,
+        "mean": 0.4431830067693616,
+        "median": 0.5607142857142857,
+        "standard_deviation": 0.29922472010144935,
+        "min": 0.06145251396648044,
+        "max": 0.8341836734693877
+      }
+    },
+    "failing": {
+      "reference_token_count": {
+        "n": 25,
+        "mean": 223.48,
+        "median": 196,
+        "standard_deviation": 78.19724803341867,
+        "min": 119,
+        "max": 392
+      },
+      "candidate_token_count": {
+        "n": 25,
+        "mean": 155.88,
+        "median": 117,
+        "standard_deviation": 70.43596808449502,
+        "min": 75,
+        "max": 299
+      },
+      "length_reduction_ratio": {
+        "n": 25,
+        "mean": 0.2834733367409871,
+        "median": 0.1775147928994083,
+        "standard_deviation": 0.21129552463160933,
+        "min": 0.054545454545454564,
+        "max": 0.8086734693877551
+      }
+    }
+  },
+  "theorems": [
+    {
+      "theorem_name": "Core.Factory_wf",
+      "candidates": 5,
+      "compile_success_rate": 0.4,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.09075630252100837
+    },
+    {
+      "theorem_name": "Lambda.Factory.addFactory_wf",
+      "candidates": 5,
+      "compile_success_rate": 0.6,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.10502793296089385
+    },
+    {
+      "theorem_name": "Lambda.LMonoTy.freeVars_of_subst_subset",
+      "candidates": 5,
+      "compile_success_rate": 0.0,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.3799163179916318
+    },
+    {
+      "theorem_name": "Lambda.LMonoTy.subst_keys_not_in_substituted_type",
+      "candidates": 5,
+      "compile_success_rate": 0.0,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.18181818181818182
+    },
+    {
+      "theorem_name": "List.length_dedup_append_le_left",
+      "candidates": 5,
+      "compile_success_rate": 1.0,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.5264285714285715
+    },
+    {
+      "theorem_name": "List.length_dedup_of_all_in_not_mem_lt",
+      "candidates": 5,
+      "compile_success_rate": 1.0,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.7507537688442211
+    },
+    {
+      "theorem_name": "Nat_eq_of_StringGen_suffix",
+      "candidates": 5,
+      "compile_success_rate": 0.0,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.17337278106508877
+    },
+    {
+      "theorem_name": "Nat_toDigitsCore_list_head_eq",
+      "candidates": 5,
+      "compile_success_rate": 0.8,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.810204081632653
+    },
+    {
+      "theorem_name": "loop_insert_nodup",
+      "candidates": 5,
+      "compile_success_rate": 0.6,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.3343915343915344
+    },
+    {
+      "theorem_name": "loop_middle_nodup",
+      "candidates": 5,
+      "compile_success_rate": 0.6,
+      "unique_candidates": 5,
+      "mean_length_reduction": 0.28061224489795916
+    }
+  ],
+  "heartbeat_usage": null,
+  "api_token_usage": null,
+  "length_reduction_definition": "1 - candidate_token_count / reference_token_count; negative means longer",
+  "standard_deviation_definition": "population",
+  "error_classification": "First matching category by documented precedence; complete raw diagnostics retained"
+}

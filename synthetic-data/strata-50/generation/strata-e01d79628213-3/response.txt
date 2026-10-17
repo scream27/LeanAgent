@@ -1,0 +1,17 @@
+by
+  have bound : ∀ (s t : List α), s.Nodup → s ⊆ t → s.length ≤ t.length := by
+    intro s
+    induction s with
+    | nil => simp
+    | cons x xs ih =>
+      intro t hn hs
+      have hx : x ∈ t := by apply hs; simp
+      obtain ⟨u, v, rfl⟩ := List.mem_iff_append.mp hx
+      have hsub : xs ⊆ u ++ v := by grind
+      have hlen := ih (u ++ v) (List.nodup_cons.mp hn).2 hsub
+      simp at hlen ⊢
+      omega
+  apply bound _ _ (nodup_dedup l₁)
+  intro x hx
+  apply mem_of_mem_dedup
+  exact List.mem_append_left _ (mem_dedup_of_mem _ _ hx)

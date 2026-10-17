@@ -1,0 +1,6 @@
+{
+  "response_sha256": "f260c787153f6bd514b3280308f4211390133c97f7f64812aff3fa4dae6836c1",
+  "raw_response": "by\n  intros α h t l l' inst inst2 hn hn' H\n  induction t generalizing l l' h <;> simp [List.eraseDupsBy.loop] at *\n  case nil => exact nodup_insert α (not_in_reverse.mp hn') (not_in_reverse.mp hn) H\n  case cons a t ih =>\n    split at H\n    next x he =>\n      split <;> simp_all\n      next x' he' =>\n      cases he with\n      | inl hin => have hc := he'.1 a hin; simp_all\n      | inr hin => have hc := he'.2.2 a hin; simp_all\n    next x he =>\n      split\n      · simp_all\n        apply ih <;> try assumption\n        change (List.eraseDupsBy.loop (· == ·) t ([] ++ (l ++ l'))).Nodup\n        apply loop_shrink_nodup <;> assumption\n      · next x' he' =>\n        simp_all\n        change (List.eraseDupsBy.loop (· == ·) t ((a :: l) ++ h :: l')).Nodup\n        apply ih <;> try assumption\n        simp_all\n        exact fun e => he' (Eq.symm e)",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

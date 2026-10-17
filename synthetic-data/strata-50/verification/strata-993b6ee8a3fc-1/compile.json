@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Util/StringGen.lean"
+  ],
+  "exit_code": 1,
+  "stdout": "Strata/DL/Util/StringGen.lean:252:91: error: Application type mismatch: The argument\n  List.suffix_refl (['_'] ++ (toString y).toList)\nhas type\n  ['_'] ++ (toString y).toList <:+ ['_'] ++ (toString y).toList\nbut is expected to have type\n  s.toList <:+ ?m.179\nin the application\n  List.suffix_append_of_suffix (List.suffix_refl (['_'] ++ (toString y).toList))\nStrata/DL/Util/StringGen.lean:258:64: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c ≥ 0\n  b ≥ 0\n  b - c ≥ 1\n  a ≥ 0\nwhere\n a := ↑(toString y).length\n b := ↑(toString y).toList.length\n c := ↑(toString x).toList.length\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 2.6910298000002513
+}

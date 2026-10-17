@@ -1,0 +1,19 @@
+{
+  "problem_id": "strata-07696dc1065d",
+  "candidate_id": "strata-07696dc1065d-1",
+  "phase": "pilot",
+  "attempt": 1,
+  "generation_model": "Codex session (exact model identifier unavailable)",
+  "generation_parameters": {
+    "transport": "codex-session-file",
+    "strategy": "Conservatively compress repeated tactic steps, retaining the reference argument.",
+    "seed": null,
+    "temperature": null,
+    "top_p": null,
+    "independent_api_calls": false,
+    "sampling_note": "User selected shared Codex session. Diversity is prompt-controlled; statistical independence is not guaranteed."
+  },
+  "prompt_sha256": "ccca7d01a6a0d500e18ed4f3f4aadba1014e8d056e984e8e057cd9e18e1bb81b",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

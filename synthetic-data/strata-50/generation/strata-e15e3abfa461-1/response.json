@@ -1,0 +1,6 @@
+{
+  "response_sha256": "03f290b099bea129719785e6cfaeac0ff2f9d9da6ea64c8b5c8cc5ea71726f45",
+  "raw_response": "by\n  by_cases he : S.hasEmptyScopes\n  · unfold subst; simp_all [Subst.hasEmptyScopes]\n  · simp [Subst.freeVars]\n    induction mty\n    case ftvar x =>\n      simp_all [subst]\n      split\n      · rename_i sty hs\n        intro v hv\n        simp_all\n        right\n        exact ⟨sty, Maps.find?_mem_values hs, hv⟩\n      · simp [freeVars]\n    case bitvec n => simp [subst]\n    case tcons name args ih =>\n      simp [LMonoTy.subst, LMonoTy.freeVars]\n      induction args\n      · simp_all [LMonoTys.freeVars, LMonoTy.freeVars, LMonoTys.subst_eq_substLogic, LMonoTys.substLogic]\n      · rename_i head tail iht\n        simp at he\n        simp_all [LMonoTys.subst_eq_substLogic, LMonoTys.substLogic]\n        simp [freeVars] at *\n        grind",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

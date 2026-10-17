@@ -1,0 +1,18 @@
+by
+  unfold Factory
+  refine ⟨by decide, ?_⟩
+  unfold HAppend.hAppend Array.instHAppendList Array.appendList
+  simp only [List.foldl, Array.push, List.concat]
+  intro lf
+  rw [← Array.mem_toList_iff]
+  intro Hmem
+  repeat (
+    rcases Hmem with _ | ⟨a', Hmem⟩
+    · refine ⟨by decide, by decide, ?_⟩
+      simp (config := { ground := true })
+      try (
+        simp only [unOpCeval, binOpCeval, cevalIntDiv, cevalIntMod,
+          bvUnaryOp, bvBinaryOp, bvShiftOp, bvBinaryPred]
+        intros lf md args res
+        repeat (rcases args with _ | ⟨args0, args⟩ <;> try grind)))
+  contradiction

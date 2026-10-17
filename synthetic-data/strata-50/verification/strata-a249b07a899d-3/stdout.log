@@ -1,0 +1,16 @@
+Strata/Languages/Core/FactoryWF.lean:41:63: error: unexpected token '|'; expected ')'
+Strata/Languages/Core/FactoryWF.lean:29:2: error: unsolved goals
+case lfuncs_wf
+lf : LFunc CoreLParams
+Hmem :
+  lf ∈
+    {
+        toList :=
+          [intAddFunc, intSubFunc, intMulFunc, intDivFunc, intModFunc, intNegFunc, intLtFunc, intLeFunc, intGtFunc,
+            intGeFunc, realAddFunc, realSubFunc, realMulFunc, realDivFunc, realNegFunc, realLtFunc, realLeFunc,
+            realGtFunc, realGeFunc, boolAndFunc, boolOrFunc, boolImpliesFunc, boolEquivFunc, boolNotFunc, strLengthFunc,
+            strConcatFunc, strSubstrFunc, strToRegexFunc, strInRegexFunc, reAllFunc, reAllCharFunc, reRangeFunc,
+            reConcatFunc, reStarFunc, rePlusFunc, reLoopFunc, reUnionFunc, reInterFunc, reCompFunc, reNoneFunc,
+            polyOldFunc, mapSelectFunc, mapUpdateFunc, emptyTriggersFunc, addTriggerGroupFunc, emptyTriggerGroupFunc,
+            addTriggerFunc, bv8ConcatFunc, ⋯] }.toList
+⊢ LFuncWF lf

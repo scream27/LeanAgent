@@ -1,0 +1,10 @@
+{
+  "files": [
+    "Strata/Languages/Core/StatementSemanticsProps.lean",
+    "Strata/Transform/CallElimCorrect.lean"
+  ],
+  "warmup_sha256": {
+    ".harness-cache/warmup.jsonl": "6209680cf00cde0765b77b24834cd72c64dd585b2f7e3f2a58209980ab59a804",
+    ".synthetic-cache/aurasoph/competition/benchmark_data_warmup.jsonl": "d8f860a392028ea8e0429fd7b8de7f919973d9389e9a588be884c899944576bd"
+  }
+}

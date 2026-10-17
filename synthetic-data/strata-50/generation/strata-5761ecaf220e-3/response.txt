@@ -1,0 +1,5 @@
+by
+  have hc := length_dedup_cons_of_not_mem a l₁ h2
+  have hb := length_dedup_append_le_left (a :: l₁) l₂
+  have he := length_dedup_append_all_in_right (a :: l₁) l₂ (by simp_all)
+  omega

@@ -1,0 +1,17 @@
+{
+  "compile_success": false,
+  "safety_passed": true,
+  "safety_reasons": [],
+  "axioms": null,
+  "axiom_check": null,
+  "safety_scope": "lexical preflight plus transitive axioms when compiled",
+  "compiler_errors": "Strata/DL/Lambda/LTyUnify.lean:239:47: error: Application type mismatch: The argument\n  S\nhas type\n  Subst\nof sort `Type` but is expected to have type\n  Subst.hasEmptyScopes ?m.22 = true\nof sort `Prop` in the application\n  Subst.isEmpty_implies_keys_empty S\nStrata/DL/Lambda/LTyUnify.lean:239:2: error: unsolved goals\ncase pos\nS : Subst\nty : LMonoTy\nh : SubstWF S = true\nhe : S.hasEmptyScopes = true\n⊢ ∀ (x : TyIdentifier), x ∈ Maps.keys S → ¬x ∈ (subst S ty).freeVars\nStrata/DL/Lambda/LTyUnify.lean:241:4: error: Case tag `ftvar` not found.\n\nHint: Available tags:\n  • `neg.ftvar._@.Strata.DL.Lambda.LTyUnify.2632007079._hygCtx._hyg.56`: f̵t̵v̵a̵r̵n̲e̲g̲.̲f̲t̲v̲a̲r̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲6̲3̲2̲0̲0̲7̲0̲7̲9̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲5̲6̲\n  • `neg.bitvec._@.Strata.DL.Lambda.LTyUnify.2632007079._hygCtx._hyg.56`: f̵t̵v̵a̵r̵n̲e̲g̲.̲b̲i̲t̲v̲e̲c̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲6̲3̲2̲0̲0̲7̲0̲7̲9̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲5̲6̲\n  • `neg.tcons._@.Strata.DL.Lambda.LTyUnify.2632007079._hygCtx._hyg.56`: f̵t̵v̵a̵r̵n̲e̲g̲.̲t̲c̲o̲n̲s̲.̲_̲@̲.̲S̲t̲r̲a̲t̲a̲.̲D̲L̲.̲L̲a̲m̲b̲d̲a̲.̲L̲T̲y̲U̲n̲i̲f̲y̲.̲2̲6̲3̲2̲0̲0̲7̲0̲7̲9̲.̲_̲h̲y̲g̲C̲t̲x̲.̲_̲h̲y̲g̲.̲5̲6̲\n",
+  "verification_time": 3.0211202000000412,
+  "error_category": "type_mismatches",
+  "infrastructure_failure": false,
+  "heartbeats": null,
+  "heartbeat_status": "not measured: instrumentation changes the original environment",
+  "source_sha256": "2c8aa457a5a6404ab93e6d8f48143914e7871533a03927ab116902793b4471fe",
+  "exit_code": 1,
+  "verification_timed_out": false
+}

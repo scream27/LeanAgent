@@ -1,0 +1,7 @@
+{
+  "approved": true,
+  "candidates": 15,
+  "compiling": 9,
+  "evidence": "All references compiled; exact source/proof spans checked; complete files compiled; no missing modules/toolchain errors.",
+  "note": "Candidate failures retained without repair. All pilot responses frozen before verification."
+}

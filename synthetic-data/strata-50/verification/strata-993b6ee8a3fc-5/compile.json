@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Util/StringGen.lean"
+  ],
+  "exit_code": 1,
+  "stdout": "Strata/DL/Util/StringGen.lean:259:64: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c ≥ 0\n  b ≥ 0\n  b - c ≥ 1\n  a ≥ 0\nwhere\n a := ↑(toString y).length\n b := ↑(toString y).toList.length\n c := ↑(toString x).toList.length\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 2.6767307000000073
+}

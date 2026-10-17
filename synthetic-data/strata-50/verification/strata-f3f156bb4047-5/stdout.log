@@ -1,0 +1,35 @@
+Strata/DL/Lambda/Factory.lean:289:4: error: `grind` failed
+case grind
+T : LExprParams
+inst : Inhabited T.Metadata
+inst_1 : ToFormat T.IDMeta
+F : Factory T
+F_wf : FactoryWF F
+newF : Factory T
+newF_wf : FactoryWF newF
+Hl : newF = { toList := [] }
+F' : Factory T
+h : pure F = Except.ok F'
+h_1 : ¬FactoryWF F'
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] FactoryWF F
+    [prop] FactoryWF newF
+    [prop] newF = { toList := [] }
+    [prop] pure F = Except.ok F'
+    [prop] ¬FactoryWF F'
+  [eqc] True propositions
+    [prop] FactoryWF F
+    [prop] FactoryWF newF
+  [eqc] False propositions
+    [prop] FactoryWF F'
+  [eqc] Equivalence classes
+    [eqc] {newF, { toList := [] }}
+    [eqc] {Except.ok F', pure F}
+  [ematch] E-matching patterns
+    [thm] Vector.toArray_empty: [@Array.mk #0 (@List.nil _)]
+    [thm] Option.pure_apply: [@pure `[Option] `[instAlternativeOption.toPure] #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] Vector.toArray_empty ↦ 1

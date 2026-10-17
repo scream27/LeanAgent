@@ -1,0 +1,7 @@
+by
+  intro H
+  have hleft : h1 :: t <:+ Nat.toDigitsCore 10 x n (h1 :: t) := Nat_toDigitsCore_list_suffix
+  have hright : h2 :: t <:+ Nat.toDigitsCore 10 y m (h2 :: t) := Nat_toDigitsCore_list_suffix
+  rw [H] at hleft
+  have hs := List.suffix_of_suffix_length_le hleft hright (by simp)
+  simpa [List.suffix_iff_eq_drop] using hs

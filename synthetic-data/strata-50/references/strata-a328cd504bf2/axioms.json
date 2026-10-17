@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Lambda/LTyUnify.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "'Lambda.LMonoTy.subst_keys_not_in_substituted_type' depends on axioms: [propext, Quot.sound]\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 3.2194148000003224
+}

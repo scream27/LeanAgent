@@ -1,0 +1,30 @@
+Strata/DL/Util/Nodup.lean:131:6: error: No goals to be solved
+Strata/DL/Util/Nodup.lean:137:8: error: Tactic `apply` failed: could not unify the conclusion of `ih`
+  (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (?m.215 :: (a :: l' ++ ?m.216))).Nodup
+with the goal
+  (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (a :: h :: (l' ++ l))).Nodup
+
+Note: The full type of `ih` is
+  (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (a :: l' ++ ?m.215 :: ?m.216)).Nodup →
+    (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (?m.215 :: (a :: l' ++ ?m.216))).Nodup
+
+case h_2
+α : Type u_1
+inst : BEq α
+inst2 : LawfulBEq α
+a : α
+t : List α
+ih :
+  ∀ {h : α} {l l' : List α},
+    (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (l' ++ h :: l)).Nodup →
+      (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (h :: (l' ++ l))).Nodup
+h : α
+l l' : List α
+x✝ : Bool
+H :
+  (match (l'.any fun x2 => a == x2) || l.any fun x2 => a == x2 with
+    | true => List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (l' ++ h :: l)
+    | false => List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (a :: (l' ++ h :: l))).Nodup
+he : ¬a = h
+heq✝ : (∀ (x : α), x ∈ l' → ¬a = x) ∧ ∀ (x : α), x ∈ l → ¬a = x
+⊢ (List.eraseDupsBy.loop (fun x1 x2 => x1 == x2) t (a :: h :: (l' ++ l))).Nodup

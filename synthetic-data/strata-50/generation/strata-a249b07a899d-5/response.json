@@ -1,0 +1,6 @@
+{
+  "response_sha256": "f29a6a0da9487970e24c1d3067ef8182adced6789115ca7bdaa15ed266e2d527",
+  "raw_response": "by\n  unfold Factory\n  constructor\n  · decide\n  · unfold HAppend.hAppend Array.instHAppendList Array.appendList\n    simp only [List.foldl, Array.push, List.concat]\n    intro lf\n    rw [← Array.mem_toList_iff]\n    intro Hmem\n    repeat (\n      rcases Hmem with _ | ⟨a', Hmem⟩\n      · constructor\n        · decide\n        · decide\n        · simp (config := { ground := true })\n          try (\n            simp only [unOpCeval, binOpCeval, cevalIntDiv, cevalIntMod,\n              bvUnaryOp, bvBinaryOp, bvShiftOp, bvBinaryPred]\n            intros lf md args res\n            repeat (rcases args with _ | ⟨args0, args⟩ <;> try grind)))\n    contradiction",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

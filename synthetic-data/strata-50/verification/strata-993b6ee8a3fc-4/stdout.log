@@ -1,0 +1,21 @@
+Strata/DL/Util/StringGen.lean:251:5: error: unknown tactic
+Strata/DL/Util/StringGen.lean:250:57: error: unsolved goals
+s : String
+x y : Nat
+hs : "_" ++ toString x <:+ s ++ "_" ++ toString y
+hx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+hy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+hyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+hxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+⊢ (toString x).length = (toString y).length
+Strata/DL/Util/StringGen.lean:237:112: error: unsolved goals
+case a
+s : String
+x y : Nat
+hs : "_" ++ toString x <:+ s ++ "_" ++ toString y
+hx : (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+hy : (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+hyu : ['_'] ++ (toString y).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+hxu : ['_'] ++ (toString x).toList <:+ s.toList ++ ['_'] ++ (toString y).toList
+he : (toString x).length = (toString y).length
+⊢ toString x = toString y

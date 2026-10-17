@@ -1,0 +1,6 @@
+{
+  "response_sha256": "1d57d5a8f288b71702496140647f898f62442303a1b04d45bf9b14c5cc30c717",
+  "raw_response": "by\n  have hmem : (a :: l₁).all (fun e => e ∈ l₂) := by simp_all\n  have hle : 1 + l₁.dedup.length ≤ l₂.dedup.length := by\n    rw [← length_dedup_cons_of_not_mem a l₁ h2, ← length_dedup_append_all_in_right (a :: l₁) l₂ hmem]\n    exact length_dedup_append_le_left (a :: l₁) l₂\n  omega",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

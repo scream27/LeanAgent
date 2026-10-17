@@ -1,0 +1,19 @@
+{
+  "problem_id": "strata-a249b07a899d",
+  "candidate_id": "strata-a249b07a899d-3",
+  "phase": "pilot",
+  "attempt": 3,
+  "generation_model": "Codex session (exact model identifier unavailable)",
+  "generation_parameters": {
+    "transport": "codex-session-file",
+    "strategy": "Consolidate case analysis and simplification in the reference proof.",
+    "seed": null,
+    "temperature": null,
+    "top_p": null,
+    "independent_api_calls": false,
+    "sampling_note": "User selected shared Codex session. Diversity is prompt-controlled; statistical independence is not guaranteed."
+  },
+  "prompt_sha256": "bdb8634cf22108b63a08a58b1ab8854930811d76ea24ffef504b22b6bd457046",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

@@ -1,0 +1,6 @@
+{
+  "response_sha256": "ccbc490574533b8a2e29238fca184b18d7177e1bc55743f515fc44e02885520f",
+  "raw_response": "by\n  intros α h t l l' inst inst2 H\n  induction t generalizing l l' h <;> simp [List.eraseDupsBy.loop] at *\n  case nil =>\n    apply nodup_swap\n    simp\n    apply nodup_middle'\n    rw [← List.cons_append]\n    exact nodup_swap H\n  case cons a t ih =>\n    by_cases he : a == h\n    · rw [eq_of_beq he] at H ⊢\n      simp at H\n      by_cases hh : h ∈ l <;> simp_all\n      split <;> simp_all\n      exact ih H\n    · split <;> simp_all\n      · apply ih\n        split at H <;> simp_all\n        grind\n      · apply ih (l' := a :: l')\n        simp_all\n        grind",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

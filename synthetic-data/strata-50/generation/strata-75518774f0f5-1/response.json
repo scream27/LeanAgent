@@ -1,0 +1,6 @@
+{
+  "response_sha256": "bea10c51d089e75a01356891e4591d11325c8af3fad6876651a8831ac4222bdb",
+  "raw_response": "by\n  intros α h t l l' inst inst2 Hnotin1 Hnotin2 Hnodup\n  induction t generalizing l l' h <;> simp [List.eraseDupsBy.loop] at *\n  case nil => exact nodup_insert α (not_in_reverse.mp Hnotin2) (not_in_reverse.mp Hnotin1) Hnodup\n  case cons h' t ih =>\n    split at Hnodup\n    · split <;> simp_all\n      next x heq =>\n      grind\n    · split\n      · simp_all\n        apply ih <;> try assumption\n        change (List.eraseDupsBy.loop (· == ·) t ([] ++ (l ++ l'))).Nodup\n        apply loop_shrink_nodup <;> assumption\n      · simp_all\n        change (List.eraseDupsBy.loop (· == ·) t ((h' :: l) ++ h :: l')).Nodup\n        apply ih <;> try assumption\n        simp_all\n        exact fun a => ‹¬ h' = h› (Eq.symm a)",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

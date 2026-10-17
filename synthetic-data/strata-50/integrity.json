@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "references": 10,
+  "candidates": 50,
+  "checks": "counts, exclusions, reference verification, source spans, immutable responses, prompts, compiler exits, axiom audits, tokens, ratios, duplicates"
+}

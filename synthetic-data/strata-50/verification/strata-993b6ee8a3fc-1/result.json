@@ -1,0 +1,17 @@
+{
+  "compile_success": false,
+  "safety_passed": true,
+  "safety_reasons": [],
+  "axioms": null,
+  "axiom_check": null,
+  "safety_scope": "lexical preflight plus transitive axioms when compiled",
+  "compiler_errors": "Strata/DL/Util/StringGen.lean:252:91: error: Application type mismatch: The argument\n  List.suffix_refl (['_'] ++ (toString y).toList)\nhas type\n  ['_'] ++ (toString y).toList <:+ ['_'] ++ (toString y).toList\nbut is expected to have type\n  s.toList <:+ ?m.179\nin the application\n  List.suffix_append_of_suffix (List.suffix_refl (['_'] ++ (toString y).toList))\nStrata/DL/Util/StringGen.lean:258:64: error: omega could not prove the goal:\na possible counterexample may satisfy the constraints\n  c ≥ 0\n  b ≥ 0\n  b - c ≥ 1\n  a ≥ 0\nwhere\n a := ↑(toString y).length\n b := ↑(toString y).toList.length\n c := ↑(toString x).toList.length\n",
+  "verification_time": 2.6910298000002513,
+  "error_category": "type_mismatches",
+  "infrastructure_failure": false,
+  "heartbeats": null,
+  "heartbeat_status": "not measured: instrumentation changes the original environment",
+  "source_sha256": "ae994157c76e36362d8c395f475d0291e743d02f1917d163e1b89c2caebdc839",
+  "exit_code": 1,
+  "verification_timed_out": false
+}

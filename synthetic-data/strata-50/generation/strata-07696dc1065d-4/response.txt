@@ -1,0 +1,9 @@
+by
+  intro H
+  have a : h1 :: t <:+ Nat.toDigitsCore 10 y m (h2 :: t) := by
+    rw [← H]
+    exact Nat_toDigitsCore_list_suffix
+  have b : h2 :: t <:+ Nat.toDigitsCore 10 y m (h2 :: t) := Nat_toDigitsCore_list_suffix
+  have c : h1 :: t <:+ h2 :: t := List.suffix_of_suffix_length_le a b (by simp)
+  have e : h1 :: t = h2 :: t := by simpa [List.suffix_iff_eq_drop] using c
+  exact (List.cons.inj e).1

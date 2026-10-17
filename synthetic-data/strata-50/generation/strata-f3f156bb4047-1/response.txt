@@ -1,0 +1,32 @@
+by
+  unfold Factory.addFactory
+  rw [← Array.foldlM_toList]
+  generalize Hl : newF.toList = l
+  induction l generalizing newF F
+  · rw [Array.toList_eq_nil_iff] at Hl
+    rw [List.foldlM_nil]
+    unfold Pure.pure Except.instMonad Except.pure
+    grind
+  · rename_i lf tail ih
+    have he : newF = [lf].toArray ++ tail.toArray := by grind
+    have ht : FactoryWF tail.toArray := by
+      rw [he] at newF_wf
+      constructor
+      · have hn := newF_wf.name_nodup; grind
+      · intro f hf
+        exact newF_wf.lfuncs_wf f (Array.mem_append_right _ hf)
+    have hh : LFuncWF lf := by
+      rw [he] at newF_wf
+      apply newF_wf.lfuncs_wf
+      apply Array.mem_append_left
+      grind
+    intro F'
+    simp only [List.foldlM]
+    unfold bind Except.instMonad Except.bind
+    intro h
+    split at h
+    · contradiction
+    · rename_i mid hm
+      have hw : FactoryWF mid := by apply Factory.addFactoryFunc_wf F F_wf lf <;> assumption
+      simp only [] at h
+      apply ih mid hw tail.toArray <;> grind

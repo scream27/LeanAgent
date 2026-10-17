@@ -1,0 +1,18 @@
+Strata/DL/Util/StringGen.lean:252:91: error: Application type mismatch: The argument
+  List.suffix_refl (['_'] ++ (toString y).toList)
+has type
+  ['_'] ++ (toString y).toList <:+ ['_'] ++ (toString y).toList
+but is expected to have type
+  s.toList <:+ ?m.179
+in the application
+  List.suffix_append_of_suffix (List.suffix_refl (['_'] ++ (toString y).toList))
+Strata/DL/Util/StringGen.lean:258:64: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  c ≥ 0
+  b ≥ 0
+  b - c ≥ 1
+  a ≥ 0
+where
+ a := ↑(toString y).length
+ b := ↑(toString y).toList.length
+ c := ↑(toString x).toList.length

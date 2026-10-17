@@ -1,0 +1,6 @@
+{
+  "response_sha256": "e41243216f5ed6a8c42049790b748f4764fc1ea15e7604943b478cf03920367b",
+  "raw_response": "by\n  intros α h t l l' inst inst2 hn hn' H\n  induction t generalizing l l' h <;> simp [List.eraseDupsBy.loop] at *\n  case nil => exact nodup_insert α (not_in_reverse.mp hn') (not_in_reverse.mp hn) H\n  case cons a t ih =>\n    split at H <;> split <;> simp_all\n    · grind\n    · apply ih <;> try assumption\n      change (List.eraseDupsBy.loop (· == ·) t ([] ++ (l ++ l'))).Nodup\n      apply loop_shrink_nodup <;> assumption\n    · apply ih <;> simp_all\n      grind",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

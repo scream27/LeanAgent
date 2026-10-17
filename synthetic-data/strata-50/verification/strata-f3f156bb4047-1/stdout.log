@@ -1,0 +1,90 @@
+Strata/DL/Lambda/Factory.lean:308:4: error: Tactic `split` failed: Could not split an `if` or `match` expression in the type
+  ({ map := fun {α β} => Except.map, pure := fun {α} => Except.pure,
+            seq := fun {α β} f x =>
+              (fun {α β} ma f =>
+                  match ma with
+                  | Except.error err => Except.error err
+                  | Except.ok v => f v)
+                f fun y => (fun {α β} => Except.map) y (x ()),
+            seqLeft := fun {α β} x y =>
+              (fun {α β} ma f =>
+                  match ma with
+                  | Except.error err => Except.error err
+                  | Except.ok v => f v)
+                x fun a =>
+                (fun {α β} ma f =>
+                    match ma with
+                    | Except.error err => Except.error err
+                    | Except.ok v => f v)
+                  (y ()) fun x => (fun {α} => Except.pure) a,
+            seqRight := fun {α β} x y =>
+              (fun {α β} ma f =>
+                  match ma with
+                  | Except.error err => Except.error err
+                  | Except.ok v => f v)
+                x fun x => y (),
+            bind := fun {α β} ma f =>
+              match ma with
+              | Except.error err => Except.error err
+              | Except.ok v => f v }.toBind.1
+      (F.addFactoryFunc lf) fun s' => List.foldlM (fun factory func => factory.addFactoryFunc func) s' tail) =
+    Except.ok F'
+of `h`
+
+Hint: Use `set_option trace.split.failure true` to display additional diagnostic information
+
+case cons
+T : LExprParams
+inst✝¹ : Inhabited T.Metadata
+inst✝ : ToFormat T.IDMeta
+lf : LFunc T
+tail : List (LFunc T)
+ih :
+  ∀ (F : Factory T),
+    FactoryWF F →
+      ∀ (newF : Factory T),
+        FactoryWF newF →
+          newF.toList = tail →
+            ∀ (F' : Factory T),
+              List.foldlM (fun factory func => factory.addFactoryFunc func) F tail = Except.ok F' → FactoryWF F'
+F : Factory T
+F_wf : FactoryWF F
+newF : Factory T
+newF_wf : FactoryWF newF
+Hl : newF.toList = lf :: tail
+he : newF = #[lf] ++ tail.toArray
+ht : FactoryWF tail.toArray
+hh : LFuncWF lf
+F' : Factory T
+h :
+  ({ map := fun {α β} => Except.map, pure := fun {α} => Except.pure,
+            seq := fun {α β} f x =>
+              (fun {α β} ma f =>
+                  match ma with
+                  | Except.error err => Except.error err
+                  | Except.ok v => f v)
+                f fun y => (fun {α β} => Except.map) y (x ()),
+            seqLeft := fun {α β} x y =>
+              (fun {α β} ma f =>
+                  match ma with
+                  | Except.error err => Except.error err
+                  | Except.ok v => f v)
+                x fun a =>
+                (fun {α β} ma f =>
+                    match ma with
+                    | Except.error err => Except.error err
+                    | Except.ok v => f v)
+                  (y ()) fun x => (fun {α} => Except.pure) a,
+            seqRight := fun {α β} x y =>
+              (fun {α β} ma f =>
+                  match ma with
+                  | Except.error err => Except.error err
+                  | Except.ok v => f v)
+                x fun x => y (),
+            bind := fun {α β} ma f =>
+              match ma with
+              | Except.error err => Except.error err
+              | Except.ok v => f v }.toBind.1
+      (F.addFactoryFunc lf) fun s' => List.foldlM (fun factory func => factory.addFactoryFunc func) s' tail) =
+    Except.ok F'
+⊢ FactoryWF F'

@@ -1,0 +1,6 @@
+{
+  "response_sha256": "17000e7d530be2ddc2486c0880c3a8f21da3ac3a71b82fe5f2a7a91487c362ec",
+  "raw_response": "by\n  induction l₁ generalizing l₂\n  case nil => simp [dedup]\n  case cons a as ih =>\n    simp [dedup]\n    split\n    · rename_i h\n      have ha := (mem_of_dedup as a).mpr h\n      have hb : a ∈ (as ++ l₂).dedup := mem_of_mem_dedup _ _ (by simp_all)\n      simp_all\n    · rename_i h\n      by_cases ha : a ∈ (as ++ l₂).dedup\n      · simp_all\n        have hn : a ∉ as := by simpa [← mem_of_dedup] using h\n        have hm := (mem_of_dedup (as ++ l₂) a).mpr ha\n        rw [length_dedup_of_removeAll a (as ++ l₂) hm]\n        have he : (as ++ l₂).removeAll [a] = as ++ l₂.removeAll [a] := by\n          simp [removeAll]\n          have hf : filter (fun x => !decide (x = a)) as = as := by\n            simp_all\n            intro x hx\n            exact ne_of_mem_of_not_mem hx hn\n          simp_all\n        rw [he]\n        exact Nat.sub_le_iff_le_add'.mp (ih (l₂.removeAll [a]))\n      · simp_all",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

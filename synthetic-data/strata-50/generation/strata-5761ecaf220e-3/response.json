@@ -1,0 +1,6 @@
+{
+  "response_sha256": "0bad3cb4c64eaf4bb67955c5eaf9e1f59e27cb1c69d26efb90c08871edb7ef3b",
+  "raw_response": "by\n  have hc := length_dedup_cons_of_not_mem a l₁ h2\n  have hb := length_dedup_append_le_left (a :: l₁) l₂\n  have he := length_dedup_append_all_in_right (a :: l₁) l₂ (by simp_all)\n  omega",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

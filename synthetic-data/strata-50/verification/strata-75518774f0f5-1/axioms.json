@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Util/Nodup.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "'loop_insert_nodup' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 1.406937800000378
+}

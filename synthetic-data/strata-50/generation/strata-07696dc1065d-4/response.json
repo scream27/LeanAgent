@@ -1,0 +1,6 @@
+{
+  "response_sha256": "be62f6b98de02b61fb1e223ed237d42ca40d0051a958ba4deba35bb4a278f1f1",
+  "raw_response": "by\n  intro H\n  have a : h1 :: t <:+ Nat.toDigitsCore 10 y m (h2 :: t) := by\n    rw [← H]\n    exact Nat_toDigitsCore_list_suffix\n  have b : h2 :: t <:+ Nat.toDigitsCore 10 y m (h2 :: t) := Nat_toDigitsCore_list_suffix\n  have c : h1 :: t <:+ h2 :: t := List.suffix_of_suffix_length_le a b (by simp)\n  have e : h1 :: t = h2 :: t := by simpa [List.suffix_iff_eq_drop] using c\n  exact (List.cons.inj e).1",
+  "prompt_tokens": null,
+  "completion_tokens": null
+}

@@ -1,0 +1,19 @@
+by
+  by_cases he : S.hasEmptyScopes
+  · unfold subst; simp_all [Subst.hasEmptyScopes]
+  · simp [Subst.freeVars]
+    induction mty
+    case ftvar x =>
+      simp_all [subst]
+      split
+      · rename_i sty hs
+        intro v hv; simp_all; right
+        apply Exists.intro sty
+        simp [hv]
+        exact @Maps.find?_mem_values _ _ x sty _ S hs
+      · simp [freeVars]
+    case bitvec n => simp [subst]
+    case tcons name args ih =>
+      simp [LMonoTy.subst, LMonoTy.freeVars]
+      induction args <;> simp_all [LMonoTys.freeVars, LMonoTy.freeVars, LMonoTys.subst_eq_substLogic, LMonoTys.substLogic]
+      grind

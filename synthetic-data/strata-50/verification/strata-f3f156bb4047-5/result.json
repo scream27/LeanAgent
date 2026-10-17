@@ -1,0 +1,17 @@
+{
+  "compile_success": false,
+  "safety_passed": true,
+  "safety_reasons": [],
+  "axioms": null,
+  "axiom_check": null,
+  "safety_scope": "lexical preflight plus transitive axioms when compiled",
+  "compiler_errors": "Strata/DL/Lambda/Factory.lean:289:4: error: `grind` failed\ncase grind\nT : LExprParams\ninst : Inhabited T.Metadata\ninst_1 : ToFormat T.IDMeta\nF : Factory T\nF_wf : FactoryWF F\nnewF : Factory T\nnewF_wf : FactoryWF newF\nHl : newF = { toList := [] }\nF' : Factory T\nh : pure F = Except.ok F'\nh_1 : ¬FactoryWF F'\n⊢ False\n[grind] Goal diagnostics\n  [facts] Asserted facts\n    [prop] FactoryWF F\n    [prop] FactoryWF newF\n    [prop] newF = { toList := [] }\n    [prop] pure F = Except.ok F'\n    [prop] ¬FactoryWF F'\n  [eqc] True propositions\n    [prop] FactoryWF F\n    [prop] FactoryWF newF\n  [eqc] False propositions\n    [prop] FactoryWF F'\n  [eqc] Equivalence classes\n    [eqc] {newF, { toList := [] }}\n    [eqc] {Except.ok F', pure F}\n  [ematch] E-matching patterns\n    [thm] Vector.toArray_empty: [@Array.mk #0 (@List.nil _)]\n    [thm] Option.pure_apply: [@pure `[Option] `[instAlternativeOption.toPure] #1 #0]\n[grind] Diagnostics\n  [thm] E-Matching instances\n    [thm] Vector.toArray_empty ↦ 1\n",
+  "verification_time": 2.0381842000001598,
+  "error_category": "tactic_failures",
+  "infrastructure_failure": false,
+  "heartbeats": null,
+  "heartbeat_status": "not measured: instrumentation changes the original environment",
+  "source_sha256": "276b72f40c63cce1f3f7b316f50730cafc9a1f11e4ceb2e5a3aa9b9edc20b3c2",
+  "exit_code": 1,
+  "verification_timed_out": false
+}

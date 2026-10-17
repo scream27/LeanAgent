@@ -1,0 +1,13 @@
+{
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "Strata/DL/Lambda/LTyUnify.lean"
+  ],
+  "exit_code": 0,
+  "stdout": "'Lambda.LMonoTy.freeVars_of_subst_subset' depends on axioms: [propext, Quot.sound]\n",
+  "stderr": "",
+  "timed_out": false,
+  "elapsed_seconds": 3.0465699000001223
+}
