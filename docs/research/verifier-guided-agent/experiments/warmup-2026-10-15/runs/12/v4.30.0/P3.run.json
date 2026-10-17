@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/sungwoo/.elan/bin/lake",
+    "env",
+    "lean",
+    "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.30.0/P3.lean"
+  ],
+  "cwd": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/arklib",
+  "returncode": 0,
+  "wall_seconds": 15.892908791895024,
+  "stdout_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.30.0/P3.stdout.txt",
+  "stderr_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.30.0/P3.stderr.txt"
+}

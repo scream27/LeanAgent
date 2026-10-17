@@ -1,0 +1,38 @@
+[
+  {
+    "proof_body": "by\n  intro h\n  exists @ChoiceBisim _ _ defs\n  constructor\n  · exact?\n  intro s1 s2 r μ\n  constructor\n  case left =>\n    intro s1' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n        exists s2'\n        constructor\n        · apply Tr.choiceL htr2\n        · constructor\n          apply hb.le_bisimilarity _ _ hr2\n      case choiceR a b c htr =>\n        exists s1'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n      exists s2'\n      constructor\n      · assumption\n      constructor\n      apply hb.le_bisimilarity _ _ hr2\n  case right =>\n    intro s2' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n        exists s1'\n        constructor\n        · apply Tr.choiceL htr1\n        · constructor\n          apply hb.le_bisimilarity _ _ hr1\n      case choiceR a b c htr =>\n        exists s2'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n      exists s1'\n      constructor\n      · assumption\n      · constructor\n        apply hb.le_bisimilarity _ _ hr1\n",
+    "observation": {
+      "kind": "valid",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "body_hash": "08ad3d02dfa8c7d86eafb1128ccbaed69d13936640b49c5869fcd6b6ebd706b1",
+      "tokens": 504,
+      "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_measure_replay.combined.txt",
+      "heartbeats_raw": null,
+      "heartbeats": null,
+      "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+    },
+    "origin": "local_repair"
+  },
+  {
+    "proof_body": "by\n  intro h\n  exists @ChoiceBisim _ _ defs\n  constructor\n  · exact ChoiceBisim.choice h\n  intro s1 s2 r μ\n  constructor\n  case left =>\n    intro s1' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n        exists s2'\n        constructor\n        · apply Tr.choiceL htr2\n        · constructor\n          apply hb.le_bisimilarity _ _ hr2\n      case choiceR a b c htr =>\n        exists s1'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n      exists s2'\n      constructor\n      · assumption\n      constructor\n      apply hb.le_bisimilarity _ _ hr2\n  case right =>\n    intro s2' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n        exists s1'\n        constructor\n        · apply Tr.choiceL htr1\n        · constructor\n          apply hb.le_bisimilarity _ _ hr1\n      case choiceR a b c htr =>\n        exists s2'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n      exists s1'\n      constructor\n      · assumption\n      · constructor\n        apply hb.le_bisimilarity _ _ hr1\n",
+    "observation": {
+      "kind": "valid",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "body_hash": "111f0e856cce7b04ac95a3b695347e3cde8c03a3ec84b0008460e98d67b2c674",
+      "tokens": 509,
+      "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_explicit.combined.txt",
+      "heartbeats_raw": 3858846,
+      "heartbeats": 3858.846,
+      "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+    },
+    "origin": "repair_extraction"
+  }
+]

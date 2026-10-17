@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/sungwoo/.elan/bin/lake",
+    "env",
+    "lean",
+    "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P2_derived0_measure.lean"
+  ],
+  "cwd": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/strata",
+  "returncode": 0,
+  "wall_seconds": 1.491778582916595,
+  "stdout_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P2_derived0_measure.stdout.txt",
+  "stderr_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P2_derived0_measure.stderr.txt"
+}

@@ -1,0 +1,7 @@
+{
+  "action": "SELECT_BEST",
+  "reason": "No configured numerical optimization trigger",
+  "scope": null,
+  "prompt": null,
+  "api_called": false
+}

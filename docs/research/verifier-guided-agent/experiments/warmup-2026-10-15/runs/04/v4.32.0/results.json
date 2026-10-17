@@ -1,0 +1,99 @@
+{
+  "problem_id": 4,
+  "name": "fundamental_theorem_of_variational_calculus'",
+  "version": "v4.32.0",
+  "source_hash": "ac7683ecbd03b7749d929b13eeb09b8021cef7b5b2125dc20d74007edb677a65",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/physlib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "7a14919e1f4aea4f1e6dc987cb15d20d0f1afe3967b26fff807834ae9f8eb97f",
+    "tokens": 2427,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/04/v4.32.0/baseline.combined.txt",
+    "heartbeats_raw": 11946200,
+    "heartbeats": 11946.2,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "a36d8342865a9f2feb9912e937d32ae334375941689d1d2fd93bac74eb0be9b3",
+        "tokens": 2427,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/04/v4.32.0/P1.combined.txt",
+        "heartbeats_raw": 11947133,
+        "heartbeats": 11947.133,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "0f32d382e60e3b3897e5d28caf5a251c789436cdc14ee6bdc6837fea606d0d74",
+        "tokens": 2421,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/04/v4.32.0/P2.combined.txt",
+        "heartbeats_raw": 11923003,
+        "heartbeats": 11923.003,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "b14648b1e24efaad87f360c0c9329513b4cad22c2f99c1811b7199574e243e90",
+        "tokens": 2436,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/04/v4.32.0/P3.combined.txt",
+        "heartbeats_raw": 11764219,
+        "heartbeats": 11764.219,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    }
+  ],
+  "environment_record": {
+    "commit": "c48433678e8fb6306ebcd48453300c8e16058a62",
+    "lean_toolchain": "leanprover/lean4:v4.32.0",
+    "lake_manifest_sha256": "a9531c3978f21e50cb72cc89c2a7644b296bee59a7f2ff92ca2408aac4a67311",
+    "git_status": ""
+  },
+  "status": "observed"
+}

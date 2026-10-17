@@ -1,0 +1,188 @@
+{
+  "problem_id": 12,
+  "name": "interleaved_affine_gaps_imply_tensor_gaps",
+  "version": "v4.31.0",
+  "source_hash": "5ed5afbd2f8a11f27701c8135eebac4db9dd9f30184ec759d78f6e43a5702531",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/arklib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "27c6418822a74b5c82cfbb8bf9651f1ebe12e03beb5c8bc8c9e1d2be77befad5",
+    "tokens": 3466,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/baseline.stdout.txt",
+    "heartbeats_raw": 9282254,
+    "heartbeats": 9282.254,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "8d8983f4469150115fad4e4b61570049f1bfff098eb612d0fbd79a81aaac884e",
+        "tokens": 3462,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P1.stdout.txt",
+        "heartbeats_raw": 9260129,
+        "heartbeats": 9260.129,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "invalid",
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "352a37c5fe731c9909f7ef5d6451a30dde5cf8c7904cd4f5c0724da9f792e280",
+        "tokens": 3464,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2.stdout.txt"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "single_line_solver",
+            "tactic": "assumption",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "c48e402d3e864eaddcc56ea434cfcecea796930d053d521865ff68058aef9092",
+              "tokens": 3445,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2_local/repair0.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "rfl",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "2e9f4fdc6d3d23e6a7fd3dc9214564d7753c2f230c6fda9f29e2c669586f7623",
+              "tokens": 3446,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2_local/repair1.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "omega",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "091a59535bbaa10fc99f913719d709cc9a6f4beeec3b03bf5cedf8e4aafbe8db",
+              "tokens": 3445,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2_local/repair2.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "simp?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "6312a498f56c58cf45b9e8b811d105a91dbd552d77a09de4a822e15c3aa8bd02",
+              "tokens": 3445,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2_local/repair3.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "exact?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "0541025ba691292082cebdba194caa135a87c2f3bdf9aa83b47f0830eeb2d2eb",
+              "tokens": 3445,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2_local/repair4.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "aesop?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "01a8a163fd31652ce8ba0f261bb5669a7d90103c5e9f0616a5542e7caad72626",
+              "tokens": 3446,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2_local/repair5.stdout.txt"
+            }
+          }
+        ],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "4808a94edf04da9562413f08d2f7a0532795e9d41234f45b18f042e257943ffe",
+        "tokens": 3460,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P3.stdout.txt",
+        "heartbeats_raw": 9285353,
+        "heartbeats": 9285.353,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    }
+  ],
+  "status": "observed"
+}

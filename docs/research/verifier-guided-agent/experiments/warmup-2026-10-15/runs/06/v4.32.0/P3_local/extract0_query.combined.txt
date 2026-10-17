@@ -1,0 +1,7 @@
+Try this:
+  [apply] simp only [List.append_assoc, List.cons_append, List.nil_append, decide_not, Bool.decide_and, map_mul,
+    Algebra.smul_mul_assoc]
+
+'FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

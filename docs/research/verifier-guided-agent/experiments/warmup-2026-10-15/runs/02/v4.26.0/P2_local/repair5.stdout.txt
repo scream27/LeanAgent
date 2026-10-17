@@ -1,0 +1,49 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/02/v4.26.0/P2_local/repair5.lean:171:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/02/v4.26.0/P2_local/repair5.lean:2865:3: error: unknown tactic
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/02/v4.26.0/P2_local/repair5.lean:2862:43: error: unsolved goals
+case quant
+post tr✝ e✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+k✝ : Lambda.QuantifierKind
+ty✝ : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+a✝¹ : NormalizedOldExpr tr✝
+a✝ : NormalizedOldExpr e✝
+a_ih✝¹ : (extractOldExprVars tr✝).Subset (Lambda.LExpr.LExpr.getVars tr✝)
+a_ih✝ : (extractOldExprVars e✝).Subset (Lambda.LExpr.LExpr.getVars e✝)
+⊢ (extractOldExprVars tr✝ ++ extractOldExprVars e✝).Subset
+    (Lambda.LExpr.LExpr.getVars tr✝ ++ Lambda.LExpr.LExpr.getVars e✝)
+
+case app
+post fn✝ e✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+a✝² : NormalizedOldExpr fn✝
+a✝¹ : NormalizedOldExpr e✝
+a✝ : IsOldPred fn✝ → IsFvar e✝
+a_ih✝¹ : (extractOldExprVars fn✝).Subset (Lambda.LExpr.LExpr.getVars fn✝)
+a_ih✝ : (extractOldExprVars e✝).Subset (Lambda.LExpr.LExpr.getVars e✝)
+⊢ (extractOldExprVars (Lambda.LExpr.app m✝ fn✝ e✝)).Subset
+    (Lambda.LExpr.LExpr.getVars fn✝ ++ Lambda.LExpr.LExpr.getVars e✝)
+
+case ite
+post c✝ t✝ e✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+a✝² : NormalizedOldExpr c✝
+a✝¹ : NormalizedOldExpr t✝
+a✝ : NormalizedOldExpr e✝
+a_ih✝² : (extractOldExprVars c✝).Subset (Lambda.LExpr.LExpr.getVars c✝)
+a_ih✝¹ : (extractOldExprVars t✝).Subset (Lambda.LExpr.LExpr.getVars t✝)
+a_ih✝ : (extractOldExprVars e✝).Subset (Lambda.LExpr.LExpr.getVars e✝)
+⊢ (extractOldExprVars c✝ ++ (extractOldExprVars t✝ ++ extractOldExprVars e✝)).Subset
+    (Lambda.LExpr.LExpr.getVars c✝ ++ (Lambda.LExpr.LExpr.getVars t✝ ++ Lambda.LExpr.LExpr.getVars e✝))
+
+case eq
+post e1✝ e2✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+a✝¹ : NormalizedOldExpr e1✝
+a✝ : NormalizedOldExpr e2✝
+a_ih✝¹ : (extractOldExprVars e1✝).Subset (Lambda.LExpr.LExpr.getVars e1✝)
+a_ih✝ : (extractOldExprVars e2✝).Subset (Lambda.LExpr.LExpr.getVars e2✝)
+⊢ (extractOldExprVars e1✝ ++ extractOldExprVars e2✝).Subset
+    (Lambda.LExpr.LExpr.getVars e1✝ ++ Lambda.LExpr.LExpr.getVars e2✝)
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/02/v4.26.0/P2_local/repair5.lean:3210:8: warning: declaration uses 'sorry'
+'CallElimCorrect.extractedOldExprInVars' depends on axioms: [propext, sorryAx, Quot.sound]

@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/Users/sungwoo/.elan/bin/lake",
+    "env",
+    "lean",
+    "-R",
+    "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local",
+    "-o",
+    "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_measure_replay.olean",
+    "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_measure_replay.lean"
+  ],
+  "cwd": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/cslib",
+  "returncode": 0,
+  "wall_seconds": 4.388200916000642,
+  "stdout_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_measure_replay.stdout.txt",
+  "stderr_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_measure_replay.stderr.txt"
+}

@@ -1,0 +1,16 @@
+{
+  "problem_id": 3,
+  "name": "Core.InitsUpdatesComm",
+  "version": "v4.29.1",
+  "source_hash": "9442c6376cbcbeac7826054ed64de09fc85984d15424ad73faa45415d1c58ada",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/strata",
+  "baseline": {
+    "kind": "invalid",
+    "axioms": null,
+    "body_hash": "31d6fc114c9a8fba93a46868067c9d92e424180303d2b97ce9bba76c8110cda5",
+    "tokens": 488,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.29.1/baseline.stdout.txt"
+  },
+  "candidates": [],
+  "status": "baseline_blocked"
+}

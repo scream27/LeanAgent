@@ -1,0 +1,210 @@
+{
+  "problem_id": 3,
+  "name": "Core.InitsUpdatesComm",
+  "version": "v4.27.0",
+  "source_hash": "6a8c0061e0bd2b4268b867fd183ee28db57ef8637fb3510171d031acb097eaa1",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/strata",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "31d6fc114c9a8fba93a46868067c9d92e424180303d2b97ce9bba76c8110cda5",
+    "tokens": 488,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/baseline.combined.txt",
+    "heartbeats_raw": 4653085,
+    "heartbeats": 4653.085,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "6502d411a3f6c26b21995a05c98bf441196b7dfafb49446ba89543ef5d295589",
+        "tokens": 496,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P1.combined.txt",
+        "heartbeats_raw": 4254543,
+        "heartbeats": 4254.543,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [
+          {
+            "proof_body": "by\n  intros Hup Hinit\n  refine ⟨updatedStates σ ks' vs', ?_⟩\n  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n  have Hlen2 := UpdateStatesLength Hup\n  induction Hup generalizing σ''\n  case update_none =>\n    simp_all only [List.length_nil, true_and]\n    apply And.intro\n    refine updatedStatesInit Hlen1 ?_ ?_\n    exact InitStatesNotDefined Hinit\n    exact InitStatesNodup Hinit\n    simp [InitStatesUpdated Hinit]\n    constructor\n  case update_some σ x v σ₀ xs vs σ₁ Hup Hups ih =>\n    refine ⟨rfl, ?_, ?_⟩\n    . apply updatedStatesInit Hlen1\n      apply UpdateStateNotDefMonotone' ?_ Hup\n      apply UpdateStatesNotDefMonotone' ?_ Hups\n      exact InitStatesNotDefined Hinit\n      exact InitStatesNodup Hinit\n    . apply UpdateStates.update_some (σ':=updatedStates σ₀ ks' vs')\n      . simp [UpdateStateUpdated Hup, updatedStates]\n        rw [← updatedStateComm']\n        . have Hdef := UpdateStateDefined' Hup\n          simp [isDefined, Option.isSome] at Hdef\n          split at Hdef <;> simp_all\n          next val heq =>\n          apply updatedStateUpdate (v':=val)\n          apply InitStatesSomeMonotone heq\n          apply updatedStatesInit\n          . simp_all\n          . apply UpdateStateNotDefMonotone' ?_ Hup\n            apply UpdateStatesNotDefMonotone' ?_ Hups\n            apply InitStatesNotDefined Hinit\n          . exact InitStatesNodup Hinit\n        . rw [List.unzip_zip] <;> simp_all\n          have Hnd := InitStatesNotDefined Hinit\n          simp [isNotDefined, isDefined] at *\n          apply Not.intro\n          intros Hin\n          specialize Hnd _ Hin\n          simp_all\n      . apply (ih Hinit ?_ ?_).2.2\n        . simp [isDefined] at * <;> simp_all\n        . simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "7fb876cf9717ed85988e081414dd87cff1e69edd48e53c17b69f75e2d56bdd41",
+              "tokens": 505,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P1_derived0.combined.txt",
+              "heartbeats_raw": 4249499,
+              "heartbeats": 4249.499,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          },
+          {
+            "proof_body": "by\n  intros Hup Hinit\n  refine ⟨updatedStates σ ks' vs', ?_⟩\n  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n  have Hlen2 := UpdateStatesLength Hup\n  induction Hup generalizing σ''\n  case update_none =>\n    simp_all\n    apply And.intro\n    refine updatedStatesInit Hlen1 ?_ ?_\n    exact InitStatesNotDefined Hinit\n    exact InitStatesNodup Hinit\n    simp [InitStatesUpdated Hinit]\n    constructor\n  case update_some σ x v σ₀ xs vs σ₁ Hup Hups ih =>\n    refine ⟨rfl, ?_, ?_⟩\n    . apply updatedStatesInit Hlen1\n      apply UpdateStateNotDefMonotone' ?_ Hup\n      apply UpdateStatesNotDefMonotone' ?_ Hups\n      exact InitStatesNotDefined Hinit\n      exact InitStatesNodup Hinit\n    . apply UpdateStates.update_some (σ':=updatedStates σ₀ ks' vs')\n      . simp [UpdateStateUpdated Hup, updatedStates]\n        rw [← updatedStateComm']\n        . have Hdef := UpdateStateDefined' Hup\n          simp [isDefined, Option.isSome] at Hdef\n          split at Hdef <;> simp_all\n          next val heq =>\n          apply updatedStateUpdate (v':=val)\n          apply InitStatesSomeMonotone heq\n          apply updatedStatesInit\n          . simp_all\n          . apply UpdateStateNotDefMonotone' ?_ Hup\n            apply UpdateStatesNotDefMonotone' ?_ Hups\n            apply InitStatesNotDefined Hinit\n          . exact InitStatesNodup Hinit\n        . rw [List.unzip_zip] <;> simp_all\n          have Hnd := InitStatesNotDefined Hinit\n          simp [isNotDefined, isDefined] at *\n          apply Not.intro\n          intros Hin\n          specialize Hnd _ Hin\n          simp_all only [implies_true, forall_const, Option.isSome_none, Bool.false_eq_true, false_and]\n      . apply (ih Hinit ?_ ?_).2.2\n        . simp [isDefined] at * <;> simp_all\n        . simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "7bb633dc615b7c143436809a6a80e96790581c8273b92802189c5bfe1b015b03",
+              "tokens": 518,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P1_derived1.combined.txt",
+              "heartbeats_raw": 4203579,
+              "heartbeats": 4203.579,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          }
+        ],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "705b63586bee801a91c2b631b9f917beac5c5a88c9b8d2fb7bcf5d4a3c8e4e9f",
+        "tokens": 483,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P2.combined.txt",
+        "heartbeats_raw": 4652133,
+        "heartbeats": 4652.133,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [
+          {
+            "proof_body": "by\n  intros Hup Hinit\n  exists (updatedStates σ ks' vs')\n  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n  have Hlen2 := UpdateStatesLength Hup\n  induction Hup generalizing σ''\n  case update_none =>\n    simp_all only [List.length_nil, true_and]\n    apply And.intro\n    refine updatedStatesInit Hlen1 ?_ ?_\n    exact InitStatesNotDefined Hinit\n    exact InitStatesNodup Hinit\n    simp [InitStatesUpdated Hinit]\n    constructor\n  case update_some σ x v σ₀ xs vs σ₁ Hup Hups ih =>\n    refine ⟨rfl, ?_, ?_⟩\n    . apply updatedStatesInit Hlen1\n      apply UpdateStateNotDefMonotone' ?_ Hup\n      apply UpdateStatesNotDefMonotone' ?_ Hups\n      exact InitStatesNotDefined Hinit\n      exact InitStatesNodup Hinit\n    . apply UpdateStates.update_some (σ':=updatedStates σ₀ ks' vs')\n      . simp [UpdateStateUpdated Hup, updatedStates]\n        rw [← updatedStateComm']\n        . have Hdef := UpdateStateDefined' Hup\n          simp [isDefined, Option.isSome] at Hdef\n          split at Hdef <;> simp_all\n          next val heq =>\n          apply updatedStateUpdate (v':=val)\n          apply InitStatesSomeMonotone heq\n          apply updatedStatesInit\n          . simp_all\n          . apply UpdateStateNotDefMonotone' ?_ Hup\n            apply UpdateStatesNotDefMonotone' ?_ Hups\n            apply InitStatesNotDefined Hinit\n          . exact InitStatesNodup Hinit\n        . rw [List.unzip_zip] <;> simp_all\n          have Hnd := InitStatesNotDefined Hinit\n          simp [isNotDefined, isDefined] at *\n          apply Not.intro\n          intros Hin\n          specialize Hnd _ Hin\n          simp_all\n      . exact (ih Hinit (by simp [isDefined] at * <;> simp_all) (by simp_all)).2.2\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "af60031aa374fd947645d6951723c529994dd12cb8330e5cfeb9ac963050a89f",
+              "tokens": 492,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P2_derived0.combined.txt",
+              "heartbeats_raw": 4644708,
+              "heartbeats": 4644.708,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          },
+          {
+            "proof_body": "by\n  intros Hup Hinit\n  exists (updatedStates σ ks' vs')\n  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n  have Hlen2 := UpdateStatesLength Hup\n  induction Hup generalizing σ''\n  case update_none =>\n    simp_all\n    apply And.intro\n    refine updatedStatesInit Hlen1 ?_ ?_\n    exact InitStatesNotDefined Hinit\n    exact InitStatesNodup Hinit\n    simp [InitStatesUpdated Hinit]\n    constructor\n  case update_some σ x v σ₀ xs vs σ₁ Hup Hups ih =>\n    refine ⟨rfl, ?_, ?_⟩\n    . apply updatedStatesInit Hlen1\n      apply UpdateStateNotDefMonotone' ?_ Hup\n      apply UpdateStatesNotDefMonotone' ?_ Hups\n      exact InitStatesNotDefined Hinit\n      exact InitStatesNodup Hinit\n    . apply UpdateStates.update_some (σ':=updatedStates σ₀ ks' vs')\n      . simp [UpdateStateUpdated Hup, updatedStates]\n        rw [← updatedStateComm']\n        . have Hdef := UpdateStateDefined' Hup\n          simp [isDefined, Option.isSome] at Hdef\n          split at Hdef <;> simp_all\n          next val heq =>\n          apply updatedStateUpdate (v':=val)\n          apply InitStatesSomeMonotone heq\n          apply updatedStatesInit\n          . simp_all\n          . apply UpdateStateNotDefMonotone' ?_ Hup\n            apply UpdateStatesNotDefMonotone' ?_ Hups\n            apply InitStatesNotDefined Hinit\n          . exact InitStatesNodup Hinit\n        . rw [List.unzip_zip] <;> simp_all\n          have Hnd := InitStatesNotDefined Hinit\n          simp [isNotDefined, isDefined] at *\n          apply Not.intro\n          intros Hin\n          specialize Hnd _ Hin\n          simp_all only [implies_true, forall_const, Option.isSome_none, Bool.false_eq_true, false_and]\n      . exact (ih Hinit (by simp [isDefined] at * <;> simp_all) (by simp_all)).2.2\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "9e14cd18c7cbccb5efbc7213624d05a7dc45fc247b48ca53691b8bbb0189a8c2",
+              "tokens": 505,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P2_derived1.combined.txt",
+              "heartbeats_raw": 4601390,
+              "heartbeats": 4601.39,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          }
+        ],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "0b523c32b40b1069161db4fc8f393ac25d7b3d9f87801a54373ac114bc84d0f0",
+        "tokens": 482,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P3.combined.txt",
+        "heartbeats_raw": 4652355,
+        "heartbeats": 4652.355,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [
+          {
+            "proof_body": "by\n  intros Hup Hinit\n  exists (updatedStates σ ks' vs')\n  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n  have Hlen2 := UpdateStatesLength Hup\n  induction Hup generalizing σ''\n  case update_none =>\n    simp_all only [List.length_nil, true_and]\n    apply And.intro\n    exact updatedStatesInit Hlen1 (InitStatesNotDefined Hinit) (InitStatesNodup Hinit)\n    simp [InitStatesUpdated Hinit]\n    constructor\n  case update_some σ x v σ₀ xs vs σ₁ Hup Hups ih =>\n    refine ⟨rfl, ?_, ?_⟩\n    . apply updatedStatesInit Hlen1\n      apply UpdateStateNotDefMonotone' ?_ Hup\n      apply UpdateStatesNotDefMonotone' ?_ Hups\n      exact InitStatesNotDefined Hinit\n      exact InitStatesNodup Hinit\n    . apply UpdateStates.update_some (σ':=updatedStates σ₀ ks' vs')\n      . simp [UpdateStateUpdated Hup, updatedStates]\n        rw [← updatedStateComm']\n        . have Hdef := UpdateStateDefined' Hup\n          simp [isDefined, Option.isSome] at Hdef\n          split at Hdef <;> simp_all\n          next val heq =>\n          apply updatedStateUpdate (v':=val)\n          apply InitStatesSomeMonotone heq\n          apply updatedStatesInit\n          . simp_all\n          . apply UpdateStateNotDefMonotone' ?_ Hup\n            apply UpdateStatesNotDefMonotone' ?_ Hups\n            apply InitStatesNotDefined Hinit\n          . exact InitStatesNodup Hinit\n        . rw [List.unzip_zip] <;> simp_all\n          have Hnd := InitStatesNotDefined Hinit\n          simp [isNotDefined, isDefined] at *\n          apply Not.intro\n          intros Hin\n          specialize Hnd _ Hin\n          simp_all\n      . apply (ih Hinit ?_ ?_).2.2\n        . simp [isDefined] at * <;> simp_all\n        . simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "766bc3730cb592f5d95bbf795b14bfe8314b2f118cda521da83036143c88cc78",
+              "tokens": 491,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P3_derived0.combined.txt",
+              "heartbeats_raw": 4646985,
+              "heartbeats": 4646.985,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          },
+          {
+            "proof_body": "by\n  intros Hup Hinit\n  exists (updatedStates σ ks' vs')\n  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n  have Hlen2 := UpdateStatesLength Hup\n  induction Hup generalizing σ''\n  case update_none =>\n    simp_all\n    apply And.intro\n    exact updatedStatesInit Hlen1 (InitStatesNotDefined Hinit) (InitStatesNodup Hinit)\n    simp [InitStatesUpdated Hinit]\n    constructor\n  case update_some σ x v σ₀ xs vs σ₁ Hup Hups ih =>\n    refine ⟨rfl, ?_, ?_⟩\n    . apply updatedStatesInit Hlen1\n      apply UpdateStateNotDefMonotone' ?_ Hup\n      apply UpdateStatesNotDefMonotone' ?_ Hups\n      exact InitStatesNotDefined Hinit\n      exact InitStatesNodup Hinit\n    . apply UpdateStates.update_some (σ':=updatedStates σ₀ ks' vs')\n      . simp [UpdateStateUpdated Hup, updatedStates]\n        rw [← updatedStateComm']\n        . have Hdef := UpdateStateDefined' Hup\n          simp [isDefined, Option.isSome] at Hdef\n          split at Hdef <;> simp_all\n          next val heq =>\n          apply updatedStateUpdate (v':=val)\n          apply InitStatesSomeMonotone heq\n          apply updatedStatesInit\n          . simp_all\n          . apply UpdateStateNotDefMonotone' ?_ Hup\n            apply UpdateStatesNotDefMonotone' ?_ Hups\n            apply InitStatesNotDefined Hinit\n          . exact InitStatesNodup Hinit\n        . rw [List.unzip_zip] <;> simp_all\n          have Hnd := InitStatesNotDefined Hinit\n          simp [isNotDefined, isDefined] at *\n          apply Not.intro\n          intros Hin\n          specialize Hnd _ Hin\n          simp_all only [implies_true, forall_const, Option.isSome_none, Bool.false_eq_true, false_and]\n      . apply (ih Hinit ?_ ?_).2.2\n        . simp [isDefined] at * <;> simp_all\n        . simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "d7ae49a0c5ac577f5092683a886f94169e6c2810f2ef2a54e374da36e82b4d3f",
+              "tokens": 504,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.27.0/P3_derived1.combined.txt",
+              "heartbeats_raw": 4601565,
+              "heartbeats": 4601.565,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          }
+        ],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    }
+  ],
+  "environment_record": {
+    "commit": "4348c65a93a3b57b1a4541991ed2d2fcdd9fa35d",
+    "lean_toolchain": "leanprover/lean4:v4.27.0",
+    "lake_manifest_sha256": "4e046692bc9ffb00a1a64fe7c8d57d820cf08d04fe919c55268ce748b64ea687",
+    "git_status": ""
+  },
+  "status": "observed"
+}

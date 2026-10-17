@@ -1,0 +1,4 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2.lean:171:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2.lean:3095:36: error: unknown tactic
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2.lean:3194:8: warning: declaration uses 'sorry'
+'CallElimCorrect.substOldPostSubset' depends on axioms: [propext, sorryAx, Quot.sound]

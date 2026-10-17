@@ -1,0 +1,31 @@
+{
+  "prompt": "Refactor the supplied Lean proof. Keep the exact theorem statement, assumptions, answer, imports, options and surrounding declarations unchanged. Return only JSON with fields proof_body and rationale. proof_body must be a complete replacement body, including by if applicable. Use only declarations available in the supplied context. Do not reference the target theorem itself, introduce new declarations or axioms, use sorry/admit, or alter the environment. If you cannot identify a useful change, return the original body exactly. Do not deliberately introduce failures. You receive no verification feedback; propose one candidate only.\n\nLook for repeated reasoning across branches, a more suitable induction argument, or an existing lemma that replaces a long derivation. Produce a shorter structural proof while preserving the theorem. Avoid inventing lemma names.",
+  "problem": {
+    "name": "Cslib.SKI.parallelReduction_diamond",
+    "source": "cslib",
+    "statement": "theorem parallelReduction_diamond : Diamond ParallelReduction",
+    "src": "theorem parallelReduction_diamond : Diamond ParallelReduction := by\n  intro a a₁ a₂ h₁ h₂\n  cases h₁\n  case refl => exact ⟨a₂, h₂, .refl a₂⟩\n  case par a a' b b' ha' hb' =>\n    cases h₂\n    case refl =>\n      use a' ⬝ b'\n      exact ⟨.refl (a' ⬝ b'), .par ha' hb'⟩\n    case par a'' b'' ha'' hb'' =>\n      let ⟨a₃, ha⟩ := parallelReduction_diamond ha' ha''\n      let ⟨b₃, hb⟩ := parallelReduction_diamond hb' hb''\n      use a₃ ⬝ b₃\n      constructor\n      · exact .par ha.1 hb.1\n      · exact .par ha.2 hb.2\n    case red_I =>\n      rw [I_irreducible a' ha']\n      use b', .red_I b'\n    case red_K =>\n      let ⟨a₂', ha₂'⟩ := Ka_irreducible a₂ a' ha'\n      rw [ha₂'.2]\n      use a₂'\n      exact ⟨.red_K a₂' b', ha₂'.1⟩\n    case red_S a c =>\n      let ⟨a'', c', h⟩ := Sab_irreducible a c a' ha'\n      rw [h.2.2]\n      use a'' ⬝ b' ⬝ (c' ⬝ b'), .red_S a'' c' b'\n      apply ParallelReduction.par <;>\n        apply ParallelReduction.par <;>\n        grind\n  case red_I =>\n    cases h₂\n    case refl => use a₁; exact ⟨.refl a₁, .red_I a₁⟩\n    case par c a₁' hc ha =>\n      rw [I_irreducible c hc]\n      use a₁'\n      exact ⟨ha, .red_I a₁'⟩\n    case red_I => use a₁; exact ⟨.refl a₁, .refl a₁⟩\n  case red_K c =>\n    cases h₂\n    case refl => use a₁; exact ⟨.refl a₁, .red_K a₁ c⟩\n    case par a' c' ha hc =>\n      let ⟨a₁', h'⟩ := Ka_irreducible a₁ a' ha\n      rw [h'.2]\n      use a₁'\n      exact ⟨h'.1, .red_K a₁' c'⟩\n    case red_K =>\n      use a₁; exact ⟨.refl a₁, .refl a₁⟩\n  case red_S a b c =>\n    cases h₂\n    case refl =>\n      use a ⬝ c ⬝ (b ⬝ c)\n      exact ⟨.refl _, .red_S ..⟩\n    case par d c' hd hc =>\n      let ⟨a', b', h⟩ := Sab_irreducible a b d hd\n      rw [h.2.2]\n      use a' ⬝ c' ⬝ (b' ⬝ c')\n      constructor\n      · apply ParallelReduction.par\n        · exact .par h.left hc\n        · exact .par h.2.1 hc\n      · exact .red_S ..\n    case red_S => exact ⟨a ⬝ c ⬝ (b ⬝ c), .refl _, .refl _,⟩",
+    "proof_length": 407,
+    "num_lines": 64,
+    "header": "",
+    "file_path": "Cslib/Languages/CombinatoryLogic/Confluence.lean",
+    "url": "https://github.com/leanprover/cslib",
+    "start_line": 142,
+    "end_line": 205,
+    "version_info": [
+      {
+        "v4.33.0-rc2": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+      },
+      {
+        "v4.32.0": "197a7be621263b84c67ca4f803f69205b36d06df"
+      },
+      {
+        "v4.31.0": "8ea71c8df91acd63285515a04da952b23b78d266"
+      },
+      {
+        "v4.30.0": "c7944a9fb44c3298f1a960a5e574ab23a6ab8ed5"
+      }
+    ]
+  },
+  "note": "Project context must be supplied consistently before generation; this packet has benchmark-provided context only."
+}

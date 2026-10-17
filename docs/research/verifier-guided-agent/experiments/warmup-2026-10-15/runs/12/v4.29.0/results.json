@@ -1,0 +1,91 @@
+{
+  "problem_id": 12,
+  "name": "interleaved_affine_gaps_imply_tensor_gaps",
+  "version": "v4.29.0",
+  "source_hash": "93e568c1148ebdef2bcc7ce4db8edfa28af2d36938170729ee5d6a8866bddccf",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/arklib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "27c6418822a74b5c82cfbb8bf9651f1ebe12e03beb5c8bc8c9e1d2be77befad5",
+    "tokens": 3466,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.29.0/baseline.stdout.txt",
+    "heartbeats_raw": 10380999,
+    "heartbeats": 10380.999,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "8d8983f4469150115fad4e4b61570049f1bfff098eb612d0fbd79a81aaac884e",
+        "tokens": 3462,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.29.0/P1.stdout.txt",
+        "heartbeats_raw": 10358826,
+        "heartbeats": 10358.826,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "invalid",
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "352a37c5fe731c9909f7ef5d6451a30dde5cf8c7904cd4f5c0724da9f792e280",
+        "tokens": 3464,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.29.0/P2.stdout.txt"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "4808a94edf04da9562413f08d2f7a0532795e9d41234f45b18f042e257943ffe",
+        "tokens": 3460,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.29.0/P3.stdout.txt",
+        "heartbeats_raw": 10384249,
+        "heartbeats": 10384.249,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    }
+  ],
+  "status": "observed"
+}

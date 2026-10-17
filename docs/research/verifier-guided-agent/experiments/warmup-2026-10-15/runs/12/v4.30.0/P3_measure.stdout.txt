@@ -1,0 +1,10 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.30.0/P3_measure.lean:1222:0: warning: automatically included section variable(s) unused in theorem `interleaved_affine_gaps_imply_tensor_gaps`:
+  [NoZeroDivisors F]
+  [Fintype A]
+  [Module.Free F A]
+  [Nontrivial ↥MC]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NoZeroDivisors F] [Fintype A] [Module.Free F A] [Nontrivial ↥MC] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+ARENA_HEARTBEATS_RAW=9293183

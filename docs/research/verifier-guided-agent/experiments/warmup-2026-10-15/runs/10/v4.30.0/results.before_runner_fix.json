@@ -1,0 +1,6 @@
+{
+  "problem_id": 10,
+  "version": "v4.30.0",
+  "status": "context_mapping_blocked",
+  "reason": "Exact benchmark declaration not uniquely present in pinned source"
+}

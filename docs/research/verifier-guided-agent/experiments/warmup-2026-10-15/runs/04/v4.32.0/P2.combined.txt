@@ -1,0 +1,2 @@
+
+'fundamental_theorem_of_variational_calculus'' depends on axioms: [propext, Classical.choice, Quot.sound]

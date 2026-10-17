@@ -1,0 +1,286 @@
+{
+  "dataset_sha256": "6209680cf00cde0765b77b24834cd72c64dd585b2f7e3f2a58209980ab59a804",
+  "problem_count": 15,
+  "candidate_count_planned": 45,
+  "problems": [
+    {
+      "id": 1,
+      "name": "CallElimCorrect.substOldPostSubset",
+      "source": "strata",
+      "provided_proof_length": 313,
+      "versions": [
+        {
+          "lean": "v4.26.0",
+          "commit": "451e5f047bafa010d178856db76c00029bfa4d7f"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 2,
+      "name": "CallElimCorrect.extractedOldExprInVars",
+      "source": "strata",
+      "provided_proof_length": 222,
+      "versions": [
+        {
+          "lean": "v4.26.0",
+          "commit": "451e5f047bafa010d178856db76c00029bfa4d7f"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 3,
+      "name": "Core.InitsUpdatesComm",
+      "source": "strata",
+      "provided_proof_length": 224,
+      "versions": [
+        {
+          "lean": "v4.29.1",
+          "commit": "384e22374e0872095ad9c6f74c5998c09cfd93a9"
+        },
+        {
+          "lean": "v4.27.0",
+          "commit": "4348c65a93a3b57b1a4541991ed2d2fcdd9fa35d"
+        },
+        {
+          "lean": "v4.26.0",
+          "commit": "451e5f047bafa010d178856db76c00029bfa4d7f"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 4,
+      "name": "fundamental_theorem_of_variational_calculus'",
+      "source": "physlib",
+      "provided_proof_length": 851,
+      "versions": [
+        {
+          "lean": "v4.32.0",
+          "commit": "c48433678e8fb6306ebcd48453300c8e16058a62"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 5,
+      "name": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema",
+      "source": "physlib",
+      "provided_proof_length": 1372,
+      "versions": [
+        {
+          "lean": "v4.32.0",
+          "commit": "c48433678e8fb6306ebcd48453300c8e16058a62"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 6,
+      "name": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time",
+      "source": "physlib",
+      "provided_proof_length": 1217,
+      "versions": [
+        {
+          "lean": "v4.32.0",
+          "commit": "c48433678e8fb6306ebcd48453300c8e16058a62"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 7,
+      "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress",
+      "source": "cslib",
+      "provided_proof_length": 408,
+      "versions": [
+        {
+          "lean": "v4.33.0-rc2",
+          "commit": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+        },
+        {
+          "lean": "v4.32.0",
+          "commit": "197a7be621263b84c67ca4f803f69205b36d06df"
+        },
+        {
+          "lean": "v4.31.0",
+          "commit": "8ea71c8df91acd63285515a04da952b23b78d266"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 8,
+      "name": "Cslib.SKI.parallelReduction_diamond",
+      "source": "cslib",
+      "provided_proof_length": 407,
+      "versions": [
+        {
+          "lean": "v4.33.0-rc2",
+          "commit": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+        },
+        {
+          "lean": "v4.32.0",
+          "commit": "197a7be621263b84c67ca4f803f69205b36d06df"
+        },
+        {
+          "lean": "v4.31.0",
+          "commit": "8ea71c8df91acd63285515a04da952b23b78d266"
+        },
+        {
+          "lean": "v4.30.0",
+          "commit": "c7944a9fb44c3298f1a960a5e574ab23a6ab8ed5"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 9,
+      "name": "Cslib.CCS.bisimilarity_congr_choice",
+      "source": "cslib",
+      "provided_proof_length": 251,
+      "versions": [
+        {
+          "lean": "v4.33.0-rc2",
+          "commit": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+        },
+        {
+          "lean": "v4.32.0",
+          "commit": "197a7be621263b84c67ca4f803f69205b36d06df"
+        },
+        {
+          "lean": "v4.31.0",
+          "commit": "8ea71c8df91acd63285515a04da952b23b78d266"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 10,
+      "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
+      "source": "arklib",
+      "provided_proof_length": 1463,
+      "versions": [
+        {
+          "lean": "v4.31.0",
+          "commit": "c1712f6c496d0aef04f09bae42aec13811b3273f"
+        },
+        {
+          "lean": "v4.30.0",
+          "commit": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4"
+        },
+        {
+          "lean": "v4.29.0",
+          "commit": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c"
+        },
+        {
+          "lean": "v4.28.0",
+          "commit": "673fa440714eb1949b8b50a28f2a4f52b1837e9b"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 11,
+      "name": "Binius.BinaryBasefold.fold_advances_evaluation_poly",
+      "source": "arklib",
+      "provided_proof_length": 1906,
+      "versions": [
+        {
+          "lean": "v4.31.0",
+          "commit": "c1712f6c496d0aef04f09bae42aec13811b3273f"
+        },
+        {
+          "lean": "v4.30.0",
+          "commit": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4"
+        },
+        {
+          "lean": "v4.29.0",
+          "commit": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 12,
+      "name": "interleaved_affine_gaps_imply_tensor_gaps",
+      "source": "arklib",
+      "provided_proof_length": 1353,
+      "versions": [
+        {
+          "lean": "v4.31.0",
+          "commit": "c1712f6c496d0aef04f09bae42aec13811b3273f"
+        },
+        {
+          "lean": "v4.30.0",
+          "commit": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4"
+        },
+        {
+          "lean": "v4.29.0",
+          "commit": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 13,
+      "name": "putnam_1964_a4",
+      "source": "putnambench",
+      "provided_proof_length": 1769,
+      "versions": [
+        {
+          "lean": "v4.25.0",
+          "commit": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33"
+        },
+        {
+          "lean": "v4.26.0",
+          "commit": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67"
+        },
+        {
+          "lean": "v4.27.0",
+          "commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 14,
+      "name": "putnam_1964_b2",
+      "source": "putnambench",
+      "provided_proof_length": 1754,
+      "versions": [
+        {
+          "lean": "v4.25.0",
+          "commit": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33"
+        },
+        {
+          "lean": "v4.26.0",
+          "commit": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    },
+    {
+      "id": 15,
+      "name": "putnam_1995_a3",
+      "source": "putnambench",
+      "provided_proof_length": 4085,
+      "versions": [
+        {
+          "lean": "v4.25.0",
+          "commit": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33"
+        },
+        {
+          "lean": "v4.26.0",
+          "commit": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67"
+        },
+        {
+          "lean": "v4.27.0",
+          "commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+        }
+      ],
+      "status": "awaiting_generation_configuration"
+    }
+  ]
+}

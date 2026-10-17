@@ -1,0 +1,5 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/02/v4.26.0/P3_local/extract0_query.lean:171:8: warning: declaration uses 'sorry'
+Try this:
+  [apply] simp_all only [forall_const, imp_false, implies_true, List.mem_append, true_or]
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/02/v4.26.0/P3_local/extract0_query.lean:3282:8: warning: declaration uses 'sorry'
+'CallElimCorrect.extractedOldExprInVars' depends on axioms: [propext, Quot.sound]

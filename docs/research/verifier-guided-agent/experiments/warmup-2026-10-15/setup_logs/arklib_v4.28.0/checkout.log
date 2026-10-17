@@ -1,0 +1,11 @@
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  de71a9d feat(Sumcheck/Simple): recover perfect completeness proofs for v4.29.0 (#468)
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> de71a9d
+
+HEAD is now at 673fa44 chore: update to 4.28.0

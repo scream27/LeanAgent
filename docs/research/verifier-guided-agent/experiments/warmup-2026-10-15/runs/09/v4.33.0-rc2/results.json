@@ -1,0 +1,249 @@
+{
+  "problem_id": 9,
+  "name": "Cslib.CCS.bisimilarity_congr_choice",
+  "version": "v4.33.0-rc2",
+  "source_hash": "ab051b1bb5547a874efe3491ed0c9acc785de2234344046c0d95d4dee178f73e",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/cslib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "e0e5357ba18cf440a8d13ce7a92d2e527b58088d170d6f66f9991e6ed9c18464",
+    "tokens": 505,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/baseline.combined.txt",
+    "heartbeats_raw": 3856574,
+    "heartbeats": 3856.574,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "invalid",
+        "axioms": null,
+        "body_hash": "1af29676ef70983b81c0a43d85ea0c32d03874fda456a45c223d448cc4403939",
+        "tokens": 509,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1.combined.txt"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "single_line_solver",
+            "tactic": "assumption",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "74a265a0b81899a915a8005bc9c0bb7aa9efcbc415347f7ee90106d00abadeb8",
+              "tokens": 504,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair0.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "rfl",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "3a201061a7359586f48bbc68f6d3891ed597e349983fa0c91912d6bc548f2bac",
+              "tokens": 505,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair1.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "omega",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "f4e58149e012d107539b7db808e4afbb18aaee517386ce274a82a67d820639c7",
+              "tokens": 504,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair2.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "simp?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "215fb4a23006144064f64775d6e20b8538f39d9ff7edd1c281fce056810ae7d8",
+              "tokens": 504,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair3.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "exact?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "08ad3d02dfa8c7d86eafb1128ccbaed69d13936640b49c5869fcd6b6ebd706b1",
+              "tokens": 504,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4.combined.txt"
+            }
+          }
+        ],
+        "derived": [
+          {
+            "proof_body": "by\n  intro h\n  exists @ChoiceBisim _ _ defs\n  constructor\n  · exact?\n  intro s1 s2 r μ\n  constructor\n  case left =>\n    intro s1' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n        exists s2'\n        constructor\n        · apply Tr.choiceL htr2\n        · constructor\n          apply hb.le_bisimilarity _ _ hr2\n      case choiceR a b c htr =>\n        exists s1'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n      exists s2'\n      constructor\n      · assumption\n      constructor\n      apply hb.le_bisimilarity _ _ hr2\n  case right =>\n    intro s2' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n        exists s1'\n        constructor\n        · apply Tr.choiceL htr1\n        · constructor\n          apply hb.le_bisimilarity _ _ hr1\n      case choiceR a b c htr =>\n        exists s2'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n      exists s1'\n      constructor\n      · assumption\n      · constructor\n        apply hb.le_bisimilarity _ _ hr1\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "08ad3d02dfa8c7d86eafb1128ccbaed69d13936640b49c5869fcd6b6ebd706b1",
+              "tokens": 504,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_measure_replay.combined.txt",
+              "heartbeats_raw": null,
+              "heartbeats": null,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "local_repair"
+          },
+          {
+            "proof_body": "by\n  intro h\n  exists @ChoiceBisim _ _ defs\n  constructor\n  · exact ChoiceBisim.choice h\n  intro s1 s2 r μ\n  constructor\n  case left =>\n    intro s1' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n        exists s2'\n        constructor\n        · apply Tr.choiceL htr2\n        · constructor\n          apply hb.le_bisimilarity _ _ hr2\n      case choiceR a b c htr =>\n        exists s1'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n      exists s2'\n      constructor\n      · assumption\n      constructor\n      apply hb.le_bisimilarity _ _ hr2\n  case right =>\n    intro s2' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n        exists s1'\n        constructor\n        · apply Tr.choiceL htr1\n        · constructor\n          apply hb.le_bisimilarity _ _ hr1\n      case choiceR a b c htr =>\n        exists s2'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n      exists s1'\n      constructor\n      · assumption\n      · constructor\n        apply hb.le_bisimilarity _ _ hr1\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "111f0e856cce7b04ac95a3b695347e3cde8c03a3ec84b0008460e98d67b2c674",
+              "tokens": 509,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair4_explicit.combined.txt",
+              "heartbeats_raw": 3858846,
+              "heartbeats": 3858.846,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "repair_extraction"
+          }
+        ],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "d3d15bcdeae7327b50e983480869255c9a74af5b1369879519b5625abedc1f4f",
+        "tokens": 503,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P2.combined.txt",
+        "heartbeats_raw": 2689966,
+        "heartbeats": 2689.966,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "invalid",
+        "axioms": null,
+        "body_hash": "7390a325d7783af7910462a6652d77aeb59f7373846e91b8303dd7760de693da",
+        "tokens": 505,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3.combined.txt"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "single_line_solver",
+            "tactic": "assumption",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "0b2e4affd337f75c801d0d7822d6b60df91326a3e8bf29df41e9918d1bd0584f",
+              "tokens": 500,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3_local/repair0.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "rfl",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "692d93d293e8c38f32f5f0b787ce271dc33d5df4d28030d551b028510cf87774",
+              "tokens": 501,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3_local/repair1.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "omega",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "a4b8c5901196d0281fe6f496a0c00c7dd81e588f89c8a6553713560c381d9b50",
+              "tokens": 500,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3_local/repair2.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "simp?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "1165bcbe932072d0766d195bf1685709fb81311141087a289cc62cc588f4645e",
+              "tokens": 500,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3_local/repair3.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "exact?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "9fe8f01a461b370316063235032b8fb6cd1b4715911eb70e6983d59e570ee477",
+              "tokens": 500,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3_local/repair4.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "aesop?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "51a153ea8bc7a1799906f2bb55c5f69a68ebf6222c5e0228b724632f8909ad7a",
+              "tokens": 501,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P3_local/repair5.combined.txt"
+            }
+          }
+        ],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    }
+  ],
+  "environment_record": {
+    "commit": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+    "lean_toolchain": "leanprover/lean4:v4.33.0-rc2",
+    "lake_manifest_sha256": "c5acf9a59cf6956eb89589ff09b6a35adbc79fb220886f61442fe02d8b21aae0",
+    "git_status": ""
+  },
+  "status": "observed"
+}

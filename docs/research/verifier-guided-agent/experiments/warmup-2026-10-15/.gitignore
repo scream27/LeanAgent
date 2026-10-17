@@ -1,0 +1,9 @@
+.venv/
+environments/
+tokenizer_cache/
+__pycache__/
+*.olean*
+*.ir
+*.ilean
+*.sig
+.DS_Store

@@ -1,0 +1,5 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P1.lean:2020:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P1.lean:2031:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P1.lean:2045:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P1.lean:2090:8: warning: declaration uses 'sorry'
+'Core.InitsUpdatesComm' depends on axioms: [propext, Classical.choice, Quot.sound]

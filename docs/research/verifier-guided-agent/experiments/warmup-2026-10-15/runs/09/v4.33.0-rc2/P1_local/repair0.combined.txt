@@ -1,0 +1,9 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.33.0-rc2/P1_local/repair0.lean:316:4: error: Tactic `assumption` failed
+
+case left
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p q r : Process Name Constant
+h : p ~[lts] q
+⊢ ChoiceBisim (p.choice r) (q.choice r)

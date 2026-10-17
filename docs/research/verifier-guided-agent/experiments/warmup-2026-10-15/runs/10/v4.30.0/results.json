@@ -1,0 +1,99 @@
+{
+  "problem_id": 10,
+  "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
+  "version": "v4.30.0",
+  "source_hash": "6cee7d969b3b201308d7d24a87aefeb81eb24b89b722d773d6ace8c21beb7c0d",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/arklib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "485e7c2f4c93b035bbdd1149467407c84b31476158857bd45399bca16b6dbff7",
+    "tokens": 4015,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/10/v4.30.0/baseline.stdout.txt",
+    "heartbeats_raw": 17178681,
+    "heartbeats": 17178.681,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "1b9bf290b0226e16de3d3192676e0b1f5f4f043f73ccd0a00bd0c1abe7680434",
+        "tokens": 4009,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/10/v4.30.0/P1.stdout.txt",
+        "heartbeats_raw": 17168327,
+        "heartbeats": 17168.327,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "9453de255f526cc07a926097fc1f0730ba0a55fcea30f8b0c00412da886e018a",
+        "tokens": 4007,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/10/v4.30.0/P2.stdout.txt",
+        "heartbeats_raw": 17175610,
+        "heartbeats": 17175.61,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "3042a2d07315dc727aaee8c473f7aef71a5001c15c993ca8b3c15727d3b2910a",
+        "tokens": 4014,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/10/v4.30.0/P3.stdout.txt",
+        "heartbeats_raw": 17179490,
+        "heartbeats": 17179.49,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    }
+  ],
+  "environment_record": {
+    "commit": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
+    "lean_toolchain": "leanprover/lean4:v4.30.0",
+    "lake_manifest_sha256": "18f8c52f293d2bf7128b773902431f39c12e09a5af3955087250285491c6b26a",
+    "git_status": ""
+  },
+  "status": "observed"
+}

@@ -1,0 +1,14 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/12/v4.31.0/P2.lean:1382:60: error: Application type mismatch: The argument
+  h_final_gap
+has type
+  jointProximityNat₂ (↑(CodeInterleavable.interleaveCode MC (Fin (2 ^ (ϑ_sub_2 + 1)))))
+    (⋈|have this := U₀;
+      this)
+    (⋈|have this := U₁;
+      this)
+    e
+of sort `Prop` but is expected to have type
+  Set (Word ?m.1189 ?m.1187)
+of sort `Type (max ?u.729 ?u.730)` in the application
+  @CA_split_rowwise_implies_CA ?m.1187 ?m.1188 ?m.1189 ?m.1190 h_final_gap
+'interleaved_affine_gaps_imply_tensor_gaps' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

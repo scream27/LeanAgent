@@ -1,0 +1,3 @@
+'Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

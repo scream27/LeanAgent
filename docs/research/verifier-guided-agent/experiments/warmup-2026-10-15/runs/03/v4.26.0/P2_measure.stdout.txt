@@ -1,0 +1,5 @@
+ARENA_HEARTBEATS_RAW=4674640
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P2_measure.lean:2027:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P2_measure.lean:2038:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P2_measure.lean:2052:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/03/v4.26.0/P2_measure.lean:2097:8: warning: declaration uses 'sorry'

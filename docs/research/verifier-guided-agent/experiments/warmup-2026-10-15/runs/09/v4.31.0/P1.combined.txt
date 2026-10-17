@@ -1,0 +1,7 @@
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/09/v4.31.0/P1.lean:316:10: error: Function expected at
+  ChoiceBisim.choice ?m.34
+but this term has type
+  ChoiceBisim (choice ?m.31 ?m.33) (choice ?m.32 ?m.33)
+
+Note: Expected a function because this term is being applied to the argument
+  _

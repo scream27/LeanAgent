@@ -1,0 +1,2 @@
+ARENA_HEARTBEATS_RAW=1382181
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/08/v4.33.0-rc2/baseline_measure.lean:215:0: warning: using 'exit' to interrupt Lean

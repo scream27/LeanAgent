@@ -1,0 +1,28 @@
+{
+  "prompt": "Refactor the supplied Lean proof. Keep the exact theorem statement, assumptions, answer, imports, options and surrounding declarations unchanged. Return only JSON with fields proof_body and rationale. proof_body must be a complete replacement body, including by if applicable. Use only declarations available in the supplied context. Do not reference the target theorem itself, introduce new declarations or axioms, use sorry/admit, or alter the environment. If you cannot identify a useful change, return the original body exactly. Do not deliberately introduce failures. You receive no verification feedback; propose one candidate only.\n\nLook for repeated reasoning across branches, a more suitable induction argument, or an existing lemma that replaces a long derivation. Produce a shorter structural proof while preserving the theorem. Avoid inventing lemma names.",
+  "problem": {
+    "name": "Cslib.CCS.bisimilarity_congr_choice",
+    "source": "cslib",
+    "statement": "theorem bisimilarity_congr_choice :\n    (p ~[lts (defs := defs)] q) → (choice p r) ~[lts (defs := defs)] (choice q r)",
+    "src": "theorem bisimilarity_congr_choice :\n    (p ~[lts (defs := defs)] q) → (choice p r) ~[lts (defs := defs)] (choice q r) := by\n  intro h\n  exists @ChoiceBisim _ _ defs\n  constructor\n  · constructor; assumption\n  intro s1 s2 r μ\n  constructor\n  case left =>\n    intro s1' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n        exists s2'\n        constructor\n        · apply Tr.choiceL htr2\n        · constructor\n          apply hb.le_bisimilarity _ _ hr2\n      case choiceR a b c htr =>\n        exists s1'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n      exists s2'\n      constructor\n      · assumption\n      constructor\n      apply hb.le_bisimilarity _ _ hr2\n  case right =>\n    intro s2' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n        exists s1'\n        constructor\n        · apply Tr.choiceL htr1\n        · constructor\n          apply hb.le_bisimilarity _ _ hr1\n      case choiceR a b c htr =>\n        exists s2'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n      exists s1'\n      constructor\n      · assumption\n      · constructor\n        apply hb.le_bisimilarity _ _ hr1",
+    "proof_length": 251,
+    "num_lines": 62,
+    "header": "",
+    "file_path": "Cslib/Languages/CCS/BehaviouralTheory.lean",
+    "url": "https://github.com/leanprover/cslib",
+    "start_line": 311,
+    "end_line": 372,
+    "version_info": [
+      {
+        "v4.33.0-rc2": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+      },
+      {
+        "v4.32.0": "197a7be621263b84c67ca4f803f69205b36d06df"
+      },
+      {
+        "v4.31.0": "8ea71c8df91acd63285515a04da952b23b78d266"
+      }
+    ]
+  },
+  "note": "Project context must be supplied consistently before generation; this packet has benchmark-provided context only."
+}

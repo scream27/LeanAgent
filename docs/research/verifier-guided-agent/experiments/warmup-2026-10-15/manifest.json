@@ -1,0 +1,22 @@
+{
+  "generation_mode": "current_chat_model_no_external_API",
+  "generation_model_id": "not_exported_by_session",
+  "separate_model_api_calls": 0,
+  "escalation_mode": "prompt_preview_only",
+  "tokenizer": "tiktoken 0.14.0 / o200k_base",
+  "primary_version": "first_listed",
+  "user_excluded_problem_ids": [
+    8
+  ],
+  "prior_exposure_problem_ids": [
+    1,
+    2
+  ],
+  "hashes": {
+    "prompts.json": "5afc9659e100d6fa6674c525cbb1b5537591c7829353786ebf7133e31869d589",
+    "candidates.jsonl": "496f673618aebd451531cfe4b62f838bda48ec301f4e4a898d114823b62a717e",
+    "reference/benchmark_data_warmup.jsonl": "6209680cf00cde0765b77b24834cd72c64dd585b2f7e3f2a58209980ab59a804",
+    "reference/benchmark_heartbeats.jsonl": "f342873a128281f858b9514ca4f3079dac8703515ff8a5510d5edffeecc0b6cb"
+  },
+  "policy_snapshot_sha256": "8f0a2a47f3c696db70c62dba583f4cc0b09fcbc3c2da1140ebefebaff1bc58e3"
+}

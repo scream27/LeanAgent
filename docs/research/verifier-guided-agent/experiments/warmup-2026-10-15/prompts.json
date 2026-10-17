@@ -1,0 +1,17 @@
+{
+  "contract": "Refactor the supplied Lean proof. Keep the exact theorem statement, assumptions, answer, imports, options and surrounding declarations unchanged. Return only JSON with fields proof_body and rationale. proof_body must be a complete replacement body, including by if applicable. Use only declarations available in the supplied context. Do not reference the target theorem itself, introduce new declarations or axioms, use sorry/admit, or alter the environment. If you cannot identify a useful change, return the original body exactly. Do not deliberately introduce failures. You receive no verification feedback; propose one candidate only.",
+  "strategies": [
+    {
+      "id": "P1_conservative",
+      "instruction": "Preserve the existing mathematical argument and case structure. Remove redundant intermediate steps and unnecessary have statements, combine direct lemma applications, and simplify tactic plumbing. Prefer small changes whose correctness follows from the supplied proof."
+    },
+    {
+      "id": "P2_structure",
+      "instruction": "Look for repeated reasoning across branches, a more suitable induction argument, or an existing lemma that replaces a long derivation. Produce a shorter structural proof while preserving the theorem. Avoid inventing lemma names."
+    },
+    {
+      "id": "P3_explicit_cost",
+      "instruction": "Reduce repeated search and elaboration work. Prefer direct exact/refine applications, narrowly scoped simp only rules justified by the existing proof, and fewer repeated normalizations. Balance proof length with execution cost; do not assume the shortest text has the best heartbeat cost."
+    }
+  ]
+}

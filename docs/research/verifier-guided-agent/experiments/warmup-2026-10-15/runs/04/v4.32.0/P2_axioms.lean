@@ -1,0 +1,2 @@
+import P2
+#print axioms fundamental_theorem_of_variational_calculus'

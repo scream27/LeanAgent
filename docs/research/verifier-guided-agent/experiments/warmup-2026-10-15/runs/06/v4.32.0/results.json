@@ -1,0 +1,150 @@
+{
+  "problem_id": 6,
+  "name": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time",
+  "version": "v4.32.0",
+  "source_hash": "c04b61295b56d5a152dc60da9ae87b8c5dbd49d059126097e8c495fe5b5aa40e",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/physlib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "942469f343dadbee3cf1ac2ef6ff545cf7f1ec55ca35320fbce5cef16212715c",
+    "tokens": 2253,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/baseline.combined.txt",
+    "heartbeats_raw": 42182991,
+    "heartbeats": 42182.991,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "b1a24844df115d9bf007c57b730174f29f3147988a9b0e8e609cbb359bee810d",
+        "tokens": 2253,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/P1.combined.txt",
+        "heartbeats_raw": 41932261,
+        "heartbeats": 41932.261,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "extract_automation",
+            "body_line": 65,
+            "query": "          simp?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "223fe7bc2ee8538d5db127871cba1a55b26e6deee639892b298763894e9c84f6",
+              "tokens": 2253,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/P1_local/extract0_query.combined.txt"
+            },
+            "suggestion": "simp only [List.append_assoc, List.cons_append, List.nil_append, decide_not, Bool.decide_and, map_mul,",
+            "replay": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "4b35fec32b9ff9ebda8e89a933f99ba9feb616af753ee9ed990ddb2857002ccd",
+              "tokens": 2277,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/P1_local/extract0_replay.combined.txt"
+            }
+          }
+        ],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "942469f343dadbee3cf1ac2ef6ff545cf7f1ec55ca35320fbce5cef16212715c",
+        "tokens": 2253,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/baseline.combined.txt",
+        "heartbeats_raw": 42182991,
+        "heartbeats": 42182.991,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats",
+        "reused_identical_baseline": true
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Original body retained; no modification requested for this candidate"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "312a9df1407a7e830f21667bf8e747519e7c6e150dcbfa83ec7333c8187a0c50",
+        "tokens": 2253,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/P3.combined.txt",
+        "heartbeats_raw": 41746852,
+        "heartbeats": 41746.852,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "extract_automation",
+            "body_line": 65,
+            "query": "          simp?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ],
+              "body_hash": "f3e7151fa84a8f08412931b9c0baa8197f09b38dbe44dc546c1d7bfcb09f4918",
+              "tokens": 2253,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/P3_local/extract0_query.combined.txt"
+            },
+            "suggestion": "simp only [List.append_assoc, List.cons_append, List.nil_append, decide_not, Bool.decide_and, map_mul,",
+            "replay": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "9aed5bcf493ca044a7a08498558a30a6ef6ee8dda518edfb2187ffbf76c31775",
+              "tokens": 2277,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/06/v4.32.0/P3_local/extract0_replay.combined.txt"
+            }
+          }
+        ],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    }
+  ],
+  "environment_record": {
+    "commit": "c48433678e8fb6306ebcd48453300c8e16058a62",
+    "lean_toolchain": "leanprover/lean4:v4.32.0",
+    "lake_manifest_sha256": "a9531c3978f21e50cb72cc89c2a7644b296bee59a7f2ff92ca2408aac4a67311",
+    "git_status": ""
+  },
+  "status": "observed"
+}

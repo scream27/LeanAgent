@@ -1,0 +1,2 @@
+Try this:
+  [apply] simp_all only [implies_true, forall_const, Option.isSome_none, Bool.false_eq_true, false_and]

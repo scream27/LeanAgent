@@ -1,0 +1,366 @@
+{
+  "problem_id": 1,
+  "name": "CallElimCorrect.substOldPostSubset",
+  "version": "v4.26.0",
+  "source_hash": "1c5e76014548db4a380b5c225f561c726a0db1184dcddfefb7191052e67dd79a",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/strata",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Quot.sound"
+    ],
+    "body_hash": "c8dbfad735c0468c45f289befb9a73f4ef784fb1ac6fb9c8cd549b8e6309838b",
+    "tokens": 692,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/baseline.stdout.txt",
+    "heartbeats_raw": 5174358,
+    "heartbeats": 5174.358,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "body_hash": "97e99733927319b98e163404050697e99c7cb81c4d1c87d15c6a15e3d0e0307c",
+        "tokens": 650,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1.stdout.txt",
+        "heartbeats_raw": 5165792,
+        "heartbeats": 5165.792,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "extract_automation",
+            "body_line": 6,
+            "query": "    simp_all?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "943be0b32f68fe3891cc4ad0e87c325628b3d5bf6c1575e904ccf8dfa9ea94d7",
+              "tokens": 651,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1_local/extract0_query.stdout.txt"
+            },
+            "suggestion": "simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]",
+            "replay": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "bea19e0f78cfaae7cebbdbcc0861bc402cbd7f690d7d14e40bbf19652232f879",
+              "tokens": 671,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1_local/extract0_replay.stdout.txt",
+              "heartbeats_raw": 5174794,
+              "heartbeats": 5174.794,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            }
+          },
+          {
+            "operator": "extract_automation",
+            "body_line": 10,
+            "query": "    simp_all?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "8249612d9b66928d9fd8728fa3555efbe6c75b1eb9c059aa43bf15f8a25bcb7f",
+              "tokens": 651,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1_local/extract1_query.stdout.txt"
+            },
+            "suggestion": "simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]",
+            "replay": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "f35b345c17a97ebddac44024446945fb6ca66907209a1d04f38b92e796b72191",
+              "tokens": 671,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1_local/extract1_replay.stdout.txt",
+              "heartbeats_raw": 5174898,
+              "heartbeats": 5174.898,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            }
+          }
+        ],
+        "derived": [
+          {
+            "proof_body": "by\n  induction post <;> simp [substOld]\n  case fvar =>\n    intros x Hin\n    rename_i m name ty2\n\n    simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]\n  case op =>\n    intros x Hin\n    rename_i m name ty2\n    simp_all\n  case const =>\n    intros x Hin\n    rename_i m name\n    simp_all\n  case bvar =>\n    intros x Hin\n    rename_i m d\n    simp_all\n  case abs ih =>\n    exact ih\n  case ite cih tih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply cih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply tih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case app ih1 ih2 =>\n    split\n    . split\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n    . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n      apply List.Subset.app\n      . apply List.Subset.trans\n        apply ih1 <;> assumption\n        intros x Hin\n        simp_all\n        cases Hin <;> simp_all\n      . apply List.Subset.trans\n        apply ih2 <;> assumption\n        intros x Hin\n        simp_all\n  case quant trih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply trih <;> assumption\n      intros x Hin\n      rename_i m1 k1 ty1 trigger1 e1\n      have assoc := List.append_assoc (Lambda.LExpr.LExpr.getVars trigger1) (Lambda.LExpr.LExpr.getVars e1) [h1]\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case eq ih1 ih2 =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply ih1 <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply ih2 <;> assumption\n      intros x Hin\n      simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "bea19e0f78cfaae7cebbdbcc0861bc402cbd7f690d7d14e40bbf19652232f879",
+              "tokens": 671,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1_local/extract0_replay.stdout.txt",
+              "heartbeats_raw": 5174794,
+              "heartbeats": 5174.794,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          },
+          {
+            "proof_body": "by\n  induction post <;> simp [substOld]\n  case fvar =>\n    intros x Hin\n    rename_i m name ty2\n\n    simp_all\n  case op =>\n    intros x Hin\n    rename_i m name ty2\n    simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]\n  case const =>\n    intros x Hin\n    rename_i m name\n    simp_all\n  case bvar =>\n    intros x Hin\n    rename_i m d\n    simp_all\n  case abs ih =>\n    exact ih\n  case ite cih tih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply cih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply tih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case app ih1 ih2 =>\n    split\n    . split\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n    . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n      apply List.Subset.app\n      . apply List.Subset.trans\n        apply ih1 <;> assumption\n        intros x Hin\n        simp_all\n        cases Hin <;> simp_all\n      . apply List.Subset.trans\n        apply ih2 <;> assumption\n        intros x Hin\n        simp_all\n  case quant trih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply trih <;> assumption\n      intros x Hin\n      rename_i m1 k1 ty1 trigger1 e1\n      have assoc := List.append_assoc (Lambda.LExpr.LExpr.getVars trigger1) (Lambda.LExpr.LExpr.getVars e1) [h1]\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case eq ih1 ih2 =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply ih1 <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply ih2 <;> assumption\n      intros x Hin\n      simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "f35b345c17a97ebddac44024446945fb6ca66907209a1d04f38b92e796b72191",
+              "tokens": 671,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P1_local/extract1_replay.stdout.txt",
+              "heartbeats_raw": 5174898,
+              "heartbeats": 5174.898,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          }
+        ],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "invalid",
+        "axioms": [
+          "propext",
+          "sorryAx",
+          "Quot.sound"
+        ],
+        "body_hash": "2cebc7b8a4757fcbec1e00ddc7859e1e3297ee0ff74c1b7069d166f434f77e63",
+        "tokens": 48,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2.stdout.txt"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "single_line_solver",
+            "tactic": "assumption",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Quot.sound"
+              ],
+              "body_hash": "805be1f05a1cfbf6173877cf211b4e2d6078c4c7d1682ead330f7808b988248c",
+              "tokens": 38,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2_local/repair0.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "rfl",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Quot.sound"
+              ],
+              "body_hash": "541bbab796b926d55cacc42f417316dde820ee376d166ce303943e54703dbc44",
+              "tokens": 39,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2_local/repair1.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "omega",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Quot.sound"
+              ],
+              "body_hash": "a199cd8f2a983f7db18f87c57fb0e3ad8c6a8c570337d16d17d693d38cfd7153",
+              "tokens": 38,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2_local/repair2.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "simp?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Quot.sound"
+              ],
+              "body_hash": "b5552b5c96e145183e08757257cca913bc00070567aee31c7686fcfbb12cc685",
+              "tokens": 38,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2_local/repair3.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "exact?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Quot.sound"
+              ],
+              "body_hash": "e946c6e39a67e8b52bb0651f73ef8c0f96d6e229e16ef8e9fae664e861b2cfd7",
+              "tokens": 38,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2_local/repair4.stdout.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "aesop?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": [
+                "propext",
+                "sorryAx",
+                "Quot.sound"
+              ],
+              "body_hash": "77975cd0717c26616cdbd57797ec4ec6aa9903bf963060a7d2d73a598b6189b6",
+              "tokens": 39,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P2_local/repair5.stdout.txt"
+            }
+          }
+        ],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Quot.sound"
+        ],
+        "body_hash": "bc8e03d194874ad0a6633b4e223267ec59170738be239a216d337ee7cc487603",
+        "tokens": 676,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3.stdout.txt",
+        "heartbeats_raw": 5171368,
+        "heartbeats": 5171.368,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "extract_automation",
+            "body_line": 9,
+            "query": "    simp_all?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "f18749ec91030d5e7637c2c134941fa34b60a6068d3ce1ef2ab98830211cb26c",
+              "tokens": 677,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3_local/extract0_query.stdout.txt"
+            },
+            "suggestion": "simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]",
+            "replay": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "ccef2956c8fbc61c3f7adedcf173abe0190c3ddc9f45fd16188e2a727ab68be3",
+              "tokens": 697,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3_local/extract0_replay.stdout.txt",
+              "heartbeats_raw": 5179778,
+              "heartbeats": 5179.778,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            }
+          },
+          {
+            "operator": "extract_automation",
+            "body_line": 16,
+            "query": "    simp_all?",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "245d75ecbfc37eed5a2eb7cb6fb773041a49abe34edfa3699f4fdcafdec3f3e7",
+              "tokens": 677,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3_local/extract1_query.stdout.txt"
+            },
+            "suggestion": "simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]",
+            "replay": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "67c928286726a842ef5f45bb78812bf87428503f6438de1d9490bbea48a8fd02",
+              "tokens": 697,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3_local/extract1_replay.stdout.txt",
+              "heartbeats_raw": 5179911,
+              "heartbeats": 5179.911,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            }
+          }
+        ],
+        "derived": [
+          {
+            "proof_body": "by\n  induction post <;> simp [substOld]\n  case fvar =>\n    intros x Hin\n    rename_i m name ty2\n    simp at m\n    simp at name\n    simp at ty2\n\n    simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]\n  case op =>\n    intros x Hin\n    rename_i m name ty2\n    simp at m\n    simp at name\n    simp at ty2\n    simp_all\n  case const =>\n    intros x Hin\n    rename_i m name\n    simp at m\n    simp_all\n  case bvar =>\n    intros x Hin\n    rename_i m d\n    simp at m\n    simp_all\n  case abs ih =>\n    exact ih\n  case ite cih tih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply cih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply tih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case app ih1 ih2 =>\n    split\n    . split\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n    . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n      apply List.Subset.app\n      . apply List.Subset.trans\n        exact ih1\n        intros x Hin\n        simp_all\n        cases Hin <;> simp_all\n      . apply List.Subset.trans\n        exact ih2\n        intros x Hin\n        simp_all\n  case quant trih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply trih <;> assumption\n      intros x Hin\n      rename_i m1 k1 ty1 trigger1 e1\n      have assoc := List.append_assoc (Lambda.LExpr.LExpr.getVars trigger1) (Lambda.LExpr.LExpr.getVars e1) [h1]\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case eq ih1 ih2 =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      exact ih1\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      exact ih2\n      intros x Hin\n      simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "ccef2956c8fbc61c3f7adedcf173abe0190c3ddc9f45fd16188e2a727ab68be3",
+              "tokens": 697,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3_local/extract0_replay.stdout.txt",
+              "heartbeats_raw": 5179778,
+              "heartbeats": 5179.778,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          },
+          {
+            "proof_body": "by\n  induction post <;> simp [substOld]\n  case fvar =>\n    intros x Hin\n    rename_i m name ty2\n    simp at m\n    simp at name\n    simp at ty2\n\n    simp_all\n  case op =>\n    intros x Hin\n    rename_i m name ty2\n    simp at m\n    simp at name\n    simp at ty2\n    simp_all only [List.mem_append, List.mem_cons, List.not_mem_nil, or_false, true_or]\n  case const =>\n    intros x Hin\n    rename_i m name\n    simp at m\n    simp_all\n  case bvar =>\n    intros x Hin\n    rename_i m d\n    simp at m\n    simp_all\n  case abs ih =>\n    exact ih\n  case ite cih tih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply cih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply tih <;> assumption\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case app ih1 ih2 =>\n    split\n    . split\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n        intros x Hin\n        simp_all\n    . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n      apply List.Subset.app\n      . apply List.Subset.trans\n        exact ih1\n        intros x Hin\n        simp_all\n        cases Hin <;> simp_all\n      . apply List.Subset.trans\n        exact ih2\n        intros x Hin\n        simp_all\n  case quant trih eih =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      apply trih <;> assumption\n      intros x Hin\n      rename_i m1 k1 ty1 trigger1 e1\n      have assoc := List.append_assoc (Lambda.LExpr.LExpr.getVars trigger1) (Lambda.LExpr.LExpr.getVars e1) [h1]\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      apply eih <;> assumption\n      intros x Hin\n      simp_all\n  case eq ih1 ih2 =>\n    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *\n    apply List.Subset.app\n    . apply List.Subset.trans\n      exact ih1\n      intros x Hin\n      simp_all\n      cases Hin <;> simp_all\n    . apply List.Subset.trans\n      exact ih2\n      intros x Hin\n      simp_all\n",
+            "observation": {
+              "kind": "valid",
+              "axioms": [
+                "propext",
+                "Quot.sound"
+              ],
+              "body_hash": "67c928286726a842ef5f45bb78812bf87428503f6438de1d9490bbea48a8fd02",
+              "tokens": 697,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/01/v4.26.0/P3_local/extract1_replay.stdout.txt",
+              "heartbeats_raw": 5179911,
+              "heartbeats": 5179.911,
+              "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+            },
+            "origin": "extraction"
+          }
+        ],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    }
+  ],
+  "status": "observed"
+}

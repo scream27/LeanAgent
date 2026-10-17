@@ -1,0 +1,159 @@
+{
+  "problem_id": 5,
+  "name": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema",
+  "version": "v4.32.0",
+  "source_hash": "2ff8a0f8cb3586b411660c3f1dd8c405a43dc23259a92cbc123da19326b1da74",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/physlib",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "4f24ccfdbc3204f0913dfb2900ebcf2107def6d7782c140d8373127e9bf2e412",
+    "tokens": 2588,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/baseline.combined.txt",
+    "heartbeats_raw": 26974573,
+    "heartbeats": 26974.573,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "0163d1d589b53739efad4cf29e92330667703e26e6e34f4f0e1ae6a054299b68",
+        "tokens": 2585,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P1.combined.txt",
+        "heartbeats_raw": 26953430,
+        "heartbeats": 26953.43,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "5176d9292a29c661b03c20be6ada5721dacf6cb57f12770278c505b9a9f2ca47",
+        "tokens": 2588,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P2.combined.txt",
+        "heartbeats_raw": 27004085,
+        "heartbeats": 27004.085,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "invalid",
+        "axioms": null,
+        "body_hash": "f473b3adf47b04dea06cdab20f4dff21780b26cbefa005fa26a562befc158816",
+        "tokens": 2587,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3.combined.txt"
+      },
+      "local": {
+        "state": "exhausted",
+        "attempts": [
+          {
+            "operator": "single_line_solver",
+            "tactic": "assumption",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "edb007ffa4c8d2548d3d973852e142bc9743a60225f40b2be2b0b56053b42f54",
+              "tokens": 2570,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3_local/repair0.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "rfl",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "1c2fee2d39cb34d9e7588a58b24f17856e7602e336ca1aa333a79efeef3c7519",
+              "tokens": 2571,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3_local/repair1.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "omega",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "5d4a4b83abd46988f76d842e0a60efc5b5f9e0e6db68bf73967c2579b9f1d9a9",
+              "tokens": 2570,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3_local/repair2.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "simp?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "910074537ae8c00950abdb939557e22bc331aff63042b302b0cccd7228e05442",
+              "tokens": 2570,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3_local/repair3.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "exact?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "1c9c8ef6c6a51f7812cb7060e0f9055fd677e012eec300ac834484d464bb6259",
+              "tokens": 2570,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3_local/repair4.combined.txt"
+            }
+          },
+          {
+            "operator": "single_line_solver",
+            "tactic": "aesop?",
+            "observation": {
+              "kind": "invalid",
+              "axioms": null,
+              "body_hash": "4aea8bc366cbc7abb7970e2af478006ef3576ca76bfdb9fc14f1ec21712d6705",
+              "tokens": 2571,
+              "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/05/v4.32.0/P3_local/repair5.combined.txt"
+            }
+          }
+        ],
+        "derived": [],
+        "reason": "Fixed v1 operators; no model repair calls"
+      }
+    }
+  ],
+  "environment_record": {
+    "commit": "c48433678e8fb6306ebcd48453300c8e16058a62",
+    "lean_toolchain": "leanprover/lean4:v4.32.0",
+    "lake_manifest_sha256": "a9531c3978f21e50cb72cc89c2a7644b296bee59a7f2ff92ca2408aac4a67311",
+    "git_status": ""
+  },
+  "status": "observed"
+}

@@ -1,0 +1,10 @@
+{
+  "source": "strata",
+  "version": "v4.27.0",
+  "commit": "4348c65a93a3b57b1a4541991ed2d2fcdd9fa35d",
+  "ids": [
+    3
+  ],
+  "stage": "finished",
+  "run_rc": 0
+}

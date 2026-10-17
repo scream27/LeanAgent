@@ -1,0 +1,4 @@
+Try this:
+  [apply] simp_all only [List.length_nil, true_and]
+
+'Core.InitsUpdatesComm' depends on axioms: [propext, Classical.choice, Quot.sound]

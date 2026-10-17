@@ -1,0 +1,2 @@
+ARENA_HEARTBEATS_RAW=59809161
+/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/07/v4.33.0-rc2/P3_measure.lean:166:0: warning: using 'exit' to interrupt Lean

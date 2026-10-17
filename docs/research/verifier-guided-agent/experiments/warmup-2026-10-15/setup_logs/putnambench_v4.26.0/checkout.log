@@ -1,0 +1,11 @@
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  1ccd71f8 chore: move ProofWidgets to v0.0.79 (#31720)
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> 1ccd71f8
+
+HEAD is now at 2df2f015 chore: bump toolchain to v4.26.0 (#32833)

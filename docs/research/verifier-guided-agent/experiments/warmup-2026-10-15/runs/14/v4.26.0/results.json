@@ -1,0 +1,93 @@
+{
+  "problem_id": 14,
+  "name": "putnam_1964_b2",
+  "version": "v4.26.0",
+  "source_hash": "078c3c1ed164683b957baff3602e50769e59a67dfa687dcacd675ef446151184",
+  "project": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/environments/putnambench",
+  "baseline": {
+    "kind": "valid",
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "body_hash": "1f32381314e7dfbd88c5356e1630f3ad69477427b7da91bd212dd9f8781a9b45",
+    "tokens": 3422,
+    "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/14/v4.26.0/baseline.stdout.txt",
+    "heartbeats_raw": 134497606,
+    "heartbeats": 134497.606,
+    "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+  },
+  "candidates": [
+    {
+      "prompt_id": "P1",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "1a008765a64ad7723deaeafa690ba27b34407a01dd870acec65ee74abe159a9e",
+        "tokens": 3378,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/14/v4.26.0/P1.stdout.txt",
+        "heartbeats_raw": 134468257,
+        "heartbeats": 134468.257,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P2",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "b14dff72d8a2be68b024ec2e34e3f5f8a29b6a0e0616a61d50c37e9de8674690",
+        "tokens": 3366,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/14/v4.26.0/P2.stdout.txt",
+        "heartbeats_raw": 134387863,
+        "heartbeats": 134387.863,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    },
+    {
+      "prompt_id": "P3",
+      "observation": {
+        "kind": "valid",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "body_hash": "3a0c18e71704cdb1872f683dc47f86241c109aa16c4379259f7156b3155065bc",
+        "tokens": 3335,
+        "output_path": "/Users/sungwoo/lean_project/refactor_arena/prompt_sweep_2026_10_15/runs/14/v4.26.0/P3.stdout.txt",
+        "heartbeats_raw": 134386491,
+        "heartbeats": 134386.491,
+        "measurement_kind": "local_o200k_base_and_synchronous_declaration_heartbeats"
+      },
+      "local": {
+        "state": "not_applicable",
+        "attempts": [],
+        "derived": [],
+        "reason": "Replay the identical primary-version derived bodies; no per-version repairs"
+      }
+    }
+  ],
+  "status": "observed"
+}
