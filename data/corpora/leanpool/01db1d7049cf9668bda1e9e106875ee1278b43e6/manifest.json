@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "source": "leanpool",
+  "revision": "01db1d7049cf9668bda1e9e106875ee1278b43e6",
+  "toolchain": "leanprover/lean4:v4.35.0-rc3",
+  "url": "https://github.com/Vilin97/lean-pool",
+  "records": 367448,
+  "inventory": {
+    "path": "inventory.jsonl.gz",
+    "sha256": "3795ab616e11ab454822e89ae8c180476264edee6ba573bbe5ce1f033d11dcac",
+    "uncompressed_sha256": "760a39b12591d90688dbd3af3acab08dbf3820b9777f894d6f0dff51741df620"
+  },
+  "subsets": {
+    "benchmark": {
+      "path": "subsets/benchmark.jsonl.gz",
+      "count": 366072,
+      "sha256": "b9ae793b06084a32676583a849c9b6170bced2a58f39f5668dd11d72ae11015c",
+      "original_sha256": "04f1ce64d92f80717018ae8252890a71f760cb3741aef90541819380bdcf0c6c",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "equations": {
+      "path": "subsets/equations.jsonl.gz",
+      "count": 749,
+      "sha256": "da511b55f18d26076defdd79b89e3c5d68ed0dc9d278696465b699f50f95664b",
+      "original_sha256": "f940a7d9e5c1c76e2b1f13aff184884fa9ca97ca96552cf277299b84bdec5780",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "structures": {
+      "path": "subsets/structures.jsonl.gz",
+      "count": 627,
+      "sha256": "c56a545565d314cc97d169dba74c5c0976b2bd8d71b4aabfa12c411cfd6a99b5",
+      "original_sha256": "8858408f1aacbb38ef296703dea2d8a0ee5fd4c2e39ec6b0e1f8b387c2576b7d",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "excluded": {
+      "path": "subsets/excluded.jsonl.gz",
+      "count": 0,
+      "sha256": "2aafcdff9a44b6408d687db5204140059a8b8bd39d78ab472e50df6481801de1",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    }
+  },
+  "context": {
+    "path": "data/corpora/leanpool/01db1d7049cf9668bda1e9e106875ee1278b43e6/context.tar.gz",
+    "sha256": "1e8b55f7de1420f934bd4a2e36e17d4b1e3051fe131140a55fdc764163a8bc09",
+    "files": 19393,
+    "original_bytes": 389503689,
+    "file_ledger": "data/corpora/leanpool/01db1d7049cf9668bda1e9e106875ee1278b43e6/context.tar.gz.files.json.gz",
+    "file_ledger_sha256": "67c1711d794b25ed612726066a824b50a438980e12052fedaae3dfb85d992c22"
+  },
+  "evidence": {
+    "path": "data/corpora/leanpool/01db1d7049cf9668bda1e9e106875ee1278b43e6/evidence.tar.gz",
+    "sha256": "98867b076bac87ab3e882540eca72027cece3f0c1a770f255b9e248adf627d44",
+    "files": 12,
+    "original_bytes": 89682377,
+    "file_ledger": "data/corpora/leanpool/01db1d7049cf9668bda1e9e106875ee1278b43e6/evidence.tar.gz.files.json.gz",
+    "file_ledger_sha256": "5631d951e87c9bd7b61058ced85c326c492a397b02a61e9a25cfd44c3a86384f"
+  },
+  "legacy": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/leanpool.tar.gz",
+    "sha256": "22c74261599cd7fe241f441a63918c2d4bb2fbe32519c9e63ee14e085ef5195a",
+    "files": 19419,
+    "original_bytes": 681463078,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/leanpool.tar.gz.files.json.gz",
+    "file_ledger_sha256": "fc937debc899568bf0e8e77e37ea44650d0bad933f76a2fb249bb541e2244e3b"
+  },
+  "original_manifest": {
+    "source": "leanpool",
+    "url": "https://github.com/Vilin97/lean-pool",
+    "revision": "01db1d7049cf9668bda1e9e106875ee1278b43e6",
+    "toolchain": "leanprover/lean4:v4.35.0-rc3",
+    "revision_basis": "repository_HEAD_at_collection_not_warmup_source_commit",
+    "files_scanned": 22324,
+    "files_with_declarations": 19393,
+    "total_declarations": 367448,
+    "lexical_declarations": 367448,
+    "unresolved_declarations": 0,
+    "source_bytes": 468613970,
+    "benchmark": 366072,
+    "structures": 627,
+    "equations": 749,
+    "declaration_kinds": {
+      "lemma": 55364,
+      "theorem": 312084
+    },
+    "proof_styles": {
+      "by": 312108,
+      "term": 53964,
+      "structure": 627,
+      "equations": 749
+    },
+    "extraction_methods": {
+      "lexical_layout": 367429,
+      "reviewed_source_span_override": 19
+    },
+    "native_parser_complete": false,
+    "source_scope": "all tracked .lean files in pinned Git tree, including tests/examples/problems/solutions; no fetched dependencies",
+    "compact": true,
+    "inventory_file": "inventory.jsonl.gz",
+    "subset_format": "inventory_line_references",
+    "max_file_bytes": 2000000,
+    "validation_scope": "Full-file exact original-proof reinsertion; lexical token partition. No Lean AST, elaboration, kernel, axioms or heartbeat validation.",
+    "extractor_sha256": "19cd67c5e6f5afab5af61818b6c26f0cf36a6fe738767b7e5c5e56eba3821659",
+    "layout_parser_sha256": "2829f733ca2d6625969ef8e9d1a66b7d61026edb85d78a51ff2fde913abd938f",
+    "lexical_parser_sha256": "13b9622ff1541a95949327143e73f032617b03257fc580694d7f93c440e1f544",
+    "excluded": 0,
+    "span_review": {
+      "overrides_file": "reviewed_span_overrides.json",
+      "overrides_sha256": "be9e1c2d9e759d84d6a397576ff57eb7fa4d0c62d0afc83726846371075933b8",
+      "repair_script_sha256": "30bb319b51739dbdaa06e7bf773af92a4c96bbe51e4a5b7a6545e9446ca547c2",
+      "recovered_declarations": 19,
+      "before_inventory_sha256": "a4cb823ffe67cfc6d250e126720ba9ac0c28d516de95899e1b792b3956129d7c",
+      "after_inventory_sha256": "3795ab616e11ab454822e89ae8c180476264edee6ba573bbe5ce1f033d11dcac",
+      "scope": "Explicitly reviewed, source-hash-pinned spans; no native AST, kernel or heartbeat verification",
+      "wrapper_policy": "Outer command wrappers are preserved separately and in context; src/statement begin at the declaration, including attributes/modifiers"
+    }
+  },
+  "verified_expanded_files": 4,
+  "materialization_overrides": 0,
+  "verification_scope": "Storage hashes and lossless record migration only. Existing Lean validation remains unchanged.",
+  "artifact_hashes": {
+    "context-index.json": "8e37e9f8eb0144ef2eb7096740ff124a776d7cbae781349f1a10c8b5df477da6",
+    "context.tar.gz": "1e8b55f7de1420f934bd4a2e36e17d4b1e3051fe131140a55fdc764163a8bc09",
+    "context.tar.gz.files.json.gz": "67c1711d794b25ed612726066a824b50a438980e12052fedaae3dfb85d992c22",
+    "environment/lake-manifest.json": "8b1ef3c35978100bd775cc723f40b17955e792907dfd13aa24d1c64bc1a728e3",
+    "environment/lakefile.toml": "64c36212ae1a4acfa82840864b36551279be77f8cb25d5b3dceb1091bc3429c0",
+    "environment/lean-toolchain": "bc84812c94489d1e3e191baa1dc10d5eb684382d7fe9d2a5ab085e72c1c67e47",
+    "evidence.tar.gz": "98867b076bac87ab3e882540eca72027cece3f0c1a770f255b9e248adf627d44",
+    "evidence.tar.gz.files.json.gz": "5631d951e87c9bd7b61058ced85c326c492a397b02a61e9a25cfd44c3a86384f",
+    "inventory.jsonl.gz": "3795ab616e11ab454822e89ae8c180476264edee6ba573bbe5ce1f033d11dcac",
+    "licenses/LICENSE": "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c",
+    "licenses/NOTICE": "9dcac19b97640a4f9f43a59bb376718581f35eaaf354d2f8f3b066e1bcfc9c14",
+    "subsets/benchmark.jsonl.gz": "b9ae793b06084a32676583a849c9b6170bced2a58f39f5668dd11d72ae11015c",
+    "subsets/equations.jsonl.gz": "da511b55f18d26076defdd79b89e3c5d68ed0dc9d278696465b699f50f95664b",
+    "subsets/excluded.jsonl.gz": "2aafcdff9a44b6408d687db5204140059a8b8bd39d78ab472e50df6481801de1",
+    "subsets/structures.jsonl.gz": "c56a545565d314cc97d169dba74c5c0976b2bd8d71b4aabfa12c411cfd6a99b5"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "source": "strata",
+    "id": "strata_0124",
+    "input_files": 11,
+    "exact_problem_restore": true
+  },
+  {
+    "source": "physlib",
+    "id": "physlib_1013",
+    "input_files": 9,
+    "exact_problem_restore": true
+  },
+  {
+    "source": "cslib",
+    "id": "cslib_00742",
+    "input_files": 9,
+    "exact_problem_restore": true
+  },
+  {
+    "source": "arklib",
+    "id": "arklib_01453",
+    "input_files": 9,
+    "exact_problem_restore": true
+  },
+  {
+    "source": "putnambench",
+    "id": "putnambench_00268",
+    "input_files": 9,
+    "exact_problem_restore": true
+  },
+  {
+    "source": "leanpool",
+    "id": "leanpool_00001",
+    "input_files": 10,
+    "exact_problem_restore": true
+  }
+]

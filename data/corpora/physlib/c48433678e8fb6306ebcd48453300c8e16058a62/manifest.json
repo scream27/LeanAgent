@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "source": "physlib",
+  "revision": "c48433678e8fb6306ebcd48453300c8e16058a62",
+  "toolchain": "leanprover/lean4:v4.32.0",
+  "url": "https://github.com/leanprover-community/physlib",
+  "records": 9008,
+  "inventory": {
+    "path": "inventory.jsonl.gz",
+    "sha256": "35e0b18342f44cb5e9da4f296220ce57c7736eed76931a877cb830923e6deaee",
+    "uncompressed_sha256": "73fe26cecd8cf8620bebf28876efd5209bc86b3a1b3b1fe73f8b2755544dcc12"
+  },
+  "subsets": {
+    "benchmark": {
+      "path": "subsets/benchmark.jsonl.gz",
+      "count": 8818,
+      "sha256": "30700dd0b06c3523cac272b3529b5e4067d79e40168a8ba08765b7ad75d02560",
+      "original_sha256": "2215c54dfaceea9129fef3e14305fb00d84db2eb0f2f8d42a33b2706c403a47b",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "equations": {
+      "path": "subsets/equations.jsonl.gz",
+      "count": 95,
+      "sha256": "f3c7806a8e84c7f4e6cfec17211dba4ef1e237ef83f48863a1142e09730f5cc0",
+      "original_sha256": "424c20ae64e12294dd940d0b0800295ff94012804cd126147dbd77d662c842c3",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "structures": {
+      "path": "subsets/structures.jsonl.gz",
+      "count": 78,
+      "sha256": "c96ba76180d6e45c8ea9798ce09658489344779699a280da9fe85759853c4c33",
+      "original_sha256": "1f3c70d343c2cb9659e50b381c1215c07188b73fe02a7f4d5966d201c4614ac1",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "excluded": {
+      "path": "subsets/excluded.jsonl.gz",
+      "count": 17,
+      "sha256": "604888306c14d2dbfa3a2a2fcbfd3f25ac2c3b0eb6974e8c8899ce2038ad5ec1",
+      "original_sha256": "73c097de5c7b4c25c599e4e7a1cb9bf6ceefecff01f1bb40486941f029ff7984",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    }
+  },
+  "context": {
+    "path": "data/corpora/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/context.tar.gz",
+    "sha256": "3c9074ec906db9289eef3c9566339e88a0e234f24ee7f3ce5051b13eeac3845b",
+    "files": 565,
+    "original_bytes": 7165089,
+    "file_ledger": "data/corpora/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/context.tar.gz.files.json.gz",
+    "file_ledger_sha256": "3ecf9f44165f86ad1fffc563ea66664d08ff0338cae8a0065be9fa450820bdb8"
+  },
+  "evidence": {
+    "path": "data/corpora/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/evidence.tar.gz",
+    "sha256": "088e0b369c6b871298754aa9c59767f7bf4b8008b47f44c5766886b36f276257",
+    "files": 580,
+    "original_bytes": 12009847,
+    "file_ledger": "data/corpora/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/evidence.tar.gz.files.json.gz",
+    "file_ledger_sha256": "ef32ab3090f0b710d87cfc9ad2e23c7d548ec7e67c39225e44791eee22af8462"
+  },
+  "legacy": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/physlib.tar.gz",
+    "sha256": "3cfd1f1345905f13cce446671d7f4b790206ee82eedc4f8690320419f309a06f",
+    "files": 37186,
+    "original_bytes": 103594795,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/physlib.tar.gz.files.json.gz",
+    "file_ledger_sha256": "04a3e292a3f1930a04b6bb43a44f5637591669f34ebaf2947d57ea92f6793847"
+  },
+  "original_manifest": {
+    "source": "https://github.com/leanprover-community/physlib",
+    "revision": "c48433678e8fb6306ebcd48453300c8e16058a62",
+    "toolchain": "leanprover/lean4:v4.32.0",
+    "files_scanned": 676,
+    "files_with_declarations": 565,
+    "total_declarations": 9008,
+    "warmup_shaped_complete_source": 8818,
+    "lexical_declarations": 9008,
+    "unresolved_declarations": 0,
+    "equation_style_complete_source": 95,
+    "direct_incomplete_source": 17,
+    "structure_style_complete_source": 78,
+    "declaration_kinds": {
+      "lemma": 7437,
+      "theorem": 1571
+    },
+    "proof_styles": {
+      "term": 1609,
+      "by": 7226,
+      "structure": 78,
+      "equations": 95
+    },
+    "private_declarations": 460,
+    "mutual_declarations": 0,
+    "extractor_sha256": "7da61f46a18357462c0500acec57de3ebe60e9060b83ccf1f2d4ecfdfdaf0830",
+    "lean_parser_sha256": "3677cdd899bf7c676f8dff4f266ac0313023d87a5308513c67574da4f00de889",
+    "lexical_audit_sha256": "13b9622ff1541a95949327143e73f032617b03257fc580694d7f93c440e1f544",
+    "extraction_methods": {
+      "native_lean_ast": 6755,
+      "layout_with_native_start_anchor": 2253
+    },
+    "layout_recovery": true,
+    "layout_parser_sha256": "2829f733ca2d6625969ef8e9d1a66b7d61026edb85d78a51ff2fde913abd938f",
+    "proof_tokens_sha256": "746f0c5b6d21015062f686b9bde4ea3623c17c2421d12f1436d741860c5404ed",
+    "validation_scope": "Native AST spans plus explicitly labeled, native-calibrated source-layout recovery when enabled; no elaboration or heartbeat by extractor"
+  },
+  "verified_expanded_files": 36032,
+  "materialization_overrides": 0,
+  "verification_scope": "Storage hashes and lossless record migration only. Existing Lean validation remains unchanged.",
+  "artifact_hashes": {
+    "context-index.json": "217d454bd4c0992868ec6dacadcd46ae0723bf4bb284e7a44ff695058de8e6f5",
+    "context.tar.gz": "3c9074ec906db9289eef3c9566339e88a0e234f24ee7f3ce5051b13eeac3845b",
+    "context.tar.gz.files.json.gz": "3ecf9f44165f86ad1fffc563ea66664d08ff0338cae8a0065be9fa450820bdb8",
+    "environment/lake-manifest.json": "a9531c3978f21e50cb72cc89c2a7644b296bee59a7f2ff92ca2408aac4a67311",
+    "environment/lakefile.toml": "363203af4cc4973b3185fa72cb9592e070aeba7a3c6bfa16e97ad96fd85a0105",
+    "environment/lean-toolchain": "cc346fd7850a83fb7af3902dfc378f74d8eb8c59c6d34322488269ebfe7615b1",
+    "evidence.tar.gz": "088e0b369c6b871298754aa9c59767f7bf4b8008b47f44c5766886b36f276257",
+    "evidence.tar.gz.files.json.gz": "ef32ab3090f0b710d87cfc9ad2e23c7d548ec7e67c39225e44791eee22af8462",
+    "inventory.jsonl.gz": "35e0b18342f44cb5e9da4f296220ce57c7736eed76931a877cb830923e6deaee",
+    "licenses/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "subsets/benchmark.jsonl.gz": "30700dd0b06c3523cac272b3529b5e4067d79e40168a8ba08765b7ad75d02560",
+    "subsets/equations.jsonl.gz": "f3c7806a8e84c7f4e6cfec17211dba4ef1e237ef83f48863a1142e09730f5cc0",
+    "subsets/excluded.jsonl.gz": "604888306c14d2dbfa3a2a2fcbfd3f25ac2c3b0eb6974e8c8899ce2038ad5ec1",
+    "subsets/structures.jsonl.gz": "c96ba76180d6e45c8ea9798ce09658489344779699a280da9fe85759853c4c33"
+  }
+}

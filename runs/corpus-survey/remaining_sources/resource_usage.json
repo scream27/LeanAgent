@@ -1,0 +1,111 @@
+{
+  "scope": "Sampled process-group RSS of Python jobs, not total Codex/app/system memory",
+  "sampling_interval_seconds": 0.5,
+  "rss_limit_mib": 768,
+  "heavy_jobs_sequential": true,
+  "lean_or_lake_build_executed": false,
+  "heartbeat_measured": false,
+  "maximum_observed_group_rss_mib": 187.41,
+  "runs": {
+    "small_sources_final": {
+      "command": [
+        "python3",
+        "-"
+      ],
+      "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+      "returncode": 0,
+      "stop_reason": null,
+      "peak_group_rss_mb": 29.69,
+      "max_group_rss_mb": 768,
+      "seconds": 23.28,
+      "lean_num_threads": 1,
+      "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/small_sources_final.log"
+    },
+    "leanpool": {
+      "command": [
+        "python3",
+        "scripts/extract_remaining.py",
+        "--source",
+        "leanpool",
+        "--repo",
+        "sources/leanpool",
+        "--revision",
+        "01db1d7049cf9668bda1e9e106875ee1278b43e6",
+        "--url",
+        "https://github.com/Vilin97/lean-pool",
+        "--out",
+        "leanpool",
+        "--compact"
+      ],
+      "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+      "returncode": 0,
+      "stop_reason": null,
+      "peak_group_rss_mb": 187.41,
+      "max_group_rss_mb": 768,
+      "seconds": 1099.427,
+      "lean_num_threads": 1,
+      "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/leanpool.log"
+    },
+    "leanpool_span_review": {
+      "command": [
+        "python3",
+        "scripts/repair_remaining.py",
+        "--out",
+        "leanpool"
+      ],
+      "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+      "returncode": 0,
+      "stop_reason": null,
+      "peak_group_rss_mb": 47.14,
+      "max_group_rss_mb": 768,
+      "seconds": 1.053,
+      "lean_num_threads": 1,
+      "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/leanpool_span_review.log"
+    },
+    "leanpool_wrapper_review": {
+      "command": [
+        "python3",
+        "scripts/repair_remaining.py",
+        "--out",
+        "leanpool",
+        "--refresh-reviewed-member"
+      ],
+      "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+      "returncode": 0,
+      "stop_reason": null,
+      "peak_group_rss_mb": 20.17,
+      "max_group_rss_mb": 768,
+      "seconds": 1.034,
+      "lean_num_threads": 1,
+      "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/leanpool_wrapper_review.log"
+    },
+    "all_tactics_final": {
+      "command": [
+        "python3",
+        "scripts/compare_all_sources.py"
+      ],
+      "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+      "returncode": 0,
+      "stop_reason": null,
+      "peak_group_rss_mb": 71.34,
+      "max_group_rss_mb": 768,
+      "seconds": 142.958,
+      "lean_num_threads": 1,
+      "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/all_tactics_final.log"
+    },
+    "export_verification": {
+      "command": [
+        "python3",
+        "scripts/verify_tactic_exports.py"
+      ],
+      "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+      "returncode": 0,
+      "stop_reason": null,
+      "peak_group_rss_mb": 59.25,
+      "max_group_rss_mb": 768,
+      "seconds": 2.585,
+      "lean_num_threads": 1,
+      "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/export_verification.log"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "url": "https://raw.githubusercontent.com/delta-lab-ai/lean-refactor/main/lean_refactor/utils.py",
+  "retrieved_date": "2026-10-14",
+  "sha256": "94933cbf4891f1df963111c5466f074267c40ee08ef05b7f79122a4c1740e55e",
+  "purpose": "Public reference proof_length implementation; selected pure functions loaded via AST, no module imports executed."
+}

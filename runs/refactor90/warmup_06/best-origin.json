@@ -1,0 +1,6 @@
+{
+  "variant": "candidate-linear-only",
+  "verification": "candidate-linear-only.listed-local.json",
+  "sha256": "f7feb1dedd61d1cd38c90f49feec197f60492c16e2ab2d35afaebf687cbf2822",
+  "selection": "Maximize the smaller of local heartbeat and token reductions; other Pareto candidates retained."
+}

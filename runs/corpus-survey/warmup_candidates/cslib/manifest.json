@@ -1,0 +1,27 @@
+{
+  "eligible": 1188,
+  "ge200": 35,
+  "top5pct": 60,
+  "top5pct_cutoff": 151,
+  "nominal_top5_count": 60,
+  "boundary_tie_extra": 0,
+  "selected_top_percent": 5.0505,
+  "intersection": 35,
+  "union": 60,
+  "warmup_numbers": [
+    7,
+    8,
+    9
+  ],
+  "preview_non_warmup": 25,
+  "warmup_length_basis": "same_source",
+  "exports": {
+    "top5pct.jsonl.gz": "670f2e0be834469790ffe4e1052860193dc4e7f30614ecb775d36a92a6acdd45",
+    "ge200.index.jsonl": "2cadfda8abff8b114ebb66d52ffc670cc07f67d11f5350b540bf9dd605e3ce44",
+    "README.md": "31f3a26a076e9a29ebf8167adc6a9bfb974a1013ed3dd8e1ff313423a485555a",
+    "intersection.index.jsonl": "2cadfda8abff8b114ebb66d52ffc670cc07f67d11f5350b540bf9dd605e3ce44",
+    "review_first.jsonl": "a42e5c7e41a35a4298c5b65e95104f7fb9ceb4c9b9fc3ebc2faf2e685974e106",
+    "top5pct.index.jsonl": "32aed5522e723d45620bbe961b9214cacf98a23ceae1b8e37bb788e5ca9e80d7",
+    "ge200.jsonl.gz": "7d1f30afd07c386af9b2b3296bfa4a68db6f1e9f00180cde29fb2458443e64e5"
+  }
+}

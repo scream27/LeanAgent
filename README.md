@@ -50,7 +50,7 @@ Lean 실행 환경은 문제에 고정된 버전과 의존성으로 후보를 �
 
 ## 폴더 구조 (초안)
 
-피드백을 거쳐 확정할 구조안입니다. 실제 폴더 생성과 기존 파일 배치는 확정 후 진행합니다.
+에이전트·하네스 부분은 구조 초안입니다. 수집 데이터와 기존 실험은 아래 구분에 맞춰 재배치했습니다.
 
 ```text
 LeanAgent-LeanRefactorArena/
@@ -69,7 +69,8 @@ LeanAgent-LeanRefactorArena/
 │       ├── prompts/     # 에이전트 지침과 전략별 프롬프트
 │       └── cli.py       # 실행 진입점
 ├── configs/             # 모델·전략·실행 예산 설정
-├── benchmarks/          # 문제 정보·원본 증명·환경 명세
+├── data/                # 출처·revision별 압축 코퍼스, catalog, 원본 보관본
+├── benchmarks/          # 공식 Arena 스냅샷·출처 명세
 ├── experiments/         # 실험별 코드·설정·분석
 ├── runs/                # 실행별 후보·측정값·로그
 ├── submissions/         # 최종 제출 증명·결과·재현 설정
@@ -94,6 +95,16 @@ experiments/
 
 실행에서 생성된 후보·측정값·로그는 `runs/`에 저장하고,
 최종 제출할 산출물은 `submissions/`에 모읍니다. 실행 기록의 세부 폴더 구성은 추후 확정합니다.
+
+## 수집 데이터 사용
+
+수집 코퍼스는 `data/corpora/<source>/<revision>/`에 압축 보관하고,
+`scripts/corpus.py`로 목록 확인·무결성 검사·문제별 추출을 수행합니다.
+기존 분석 코드는 `experiments/corpus-survey/`, 리팩터링 실험 코드는 `experiments/refactor90/`,
+실행 결과는 `runs/`에서 확인합니다. 상세 사용법과 원본 복원 절차는 `data/README.md`에 있습니다.
+
+압축 데이터와 대형 결과는 로컬에 보관하며 Git clone에는 포함되지 않습니다.
+에이전트에는 선택한 원본 문제와 허용 문맥을 별도로 전달합니다.
 
 ## 라이선스
 

@@ -1,0 +1,22 @@
+{
+  "compared": 7370,
+  "proof_matched": 7369,
+  "mismatches": [],
+  "missing": [
+    {
+      "source": "strata",
+      "file_path": "Strata/Languages/Core/StatementSemanticsProps.lean",
+      "name": "Core.updatedStatesDefMonotone",
+      "line": 289,
+      "reasons": [
+        "overlapping_declaration_anchors"
+      ]
+    }
+  ],
+  "inputs": {
+    "strata/inventory.jsonl": "5e633cfc79d8250b0ca6122b67d0e22248bbcb6f401b873a87b995000e866ecb",
+    "physlib/inventory.jsonl": "73fe26cecd8cf8620bebf28876efd5209bc86b3a1b3b1fe73f8b2755544dcc12"
+  },
+  "extractor_sha256": "19cd67c5e6f5afab5af61818b6c26f0cf36a6fe738767b7e5c5e56eba3821659",
+  "scope": "Exact proof string comparison against existing complete native AST spans; no Lean execution"
+}

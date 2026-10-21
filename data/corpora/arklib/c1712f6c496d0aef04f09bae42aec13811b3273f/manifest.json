@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "source": "arklib",
+  "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+  "toolchain": "leanprover/lean4:v4.31.0",
+  "url": "https://github.com/Verified-zkEVM/ArkLib",
+  "records": 2686,
+  "inventory": {
+    "path": "inventory.jsonl.gz",
+    "sha256": "eb07212a05a95cd8a8bee55f48984b099250bd60b57f7471b4c65c8ca0f9066f",
+    "uncompressed_sha256": "0ce891bbb2359b37a469bb1b783b915c0bbd12546c2a7f52a8e448341f2aafc1"
+  },
+  "subsets": {
+    "benchmark": {
+      "path": "subsets/benchmark.jsonl.gz",
+      "count": 2561,
+      "sha256": "f68f593965feb711bb2d9c057796f2f76083b3a7ed9ce52382cb67bc6dc8eb13",
+      "original_sha256": "bcc132d3b1ffb1be3318548bd4d2749de355b1ffe0efee6af650168582b5ffdb",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "equations": {
+      "path": "subsets/equations.jsonl.gz",
+      "count": 16,
+      "sha256": "a3c7dc02c454502b6642d700ab09ef3bdbb112c9a358cabff755428134817f12",
+      "original_sha256": "a71f4fb96650bbc1b24ecda32eb16134225038a05da855ca6cc75b175dd19393",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "structures": {
+      "path": "subsets/structures.jsonl.gz",
+      "count": 1,
+      "sha256": "8d34f3c23bbae151e1f219af1ada1ea25ef7401bacae49d0d0d14acf225232e1",
+      "original_sha256": "e91fde94f1a29998a28ee67db3bb4a274d56ba6d32221e59e15e4b5131a26b5d",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "excluded": {
+      "path": "subsets/excluded.jsonl.gz",
+      "count": 108,
+      "sha256": "acacb5b117af81009faf723311e955779f76fcdab972cfaf41bcb7989ba20483",
+      "original_sha256": "0dbcc22ac4346400f93364350d5e050b9902c658f15ff0165e198b350c07a871",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    }
+  },
+  "context": {
+    "path": "data/corpora/arklib/c1712f6c496d0aef04f09bae42aec13811b3273f/context.tar.gz",
+    "sha256": "97128876dd3a9b4d2643205fdb13aee24bf42d32b5fc15ee744e43b18a807d46",
+    "files": 240,
+    "original_bytes": 4261740,
+    "file_ledger": "data/corpora/arklib/c1712f6c496d0aef04f09bae42aec13811b3273f/context.tar.gz.files.json.gz",
+    "file_ledger_sha256": "8f71d0844ba99c69dbbb41d49e782f9a376f1271278f4bcfa963ea1856c1fb36"
+  },
+  "evidence": {
+    "path": "data/corpora/arklib/c1712f6c496d0aef04f09bae42aec13811b3273f/evidence.tar.gz",
+    "sha256": "0bd62ef6e41a4847f4a4a2ebbedf27b26ec3215b12d9baca1670ffeeb50580c6",
+    "files": 7,
+    "original_bytes": 538402,
+    "file_ledger": "data/corpora/arklib/c1712f6c496d0aef04f09bae42aec13811b3273f/evidence.tar.gz.files.json.gz",
+    "file_ledger_sha256": "0f7a486d45930a317f94f5c3c3d0f1ae4e15bf83318f98de1658df15bd34e7f3"
+  },
+  "legacy": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/arklib.tar.gz",
+    "sha256": "ec5ec035e7bf8af6a4d7a821380c4a6b6c4cbdf26c95f68b2cb033b2086278a8",
+    "files": 11000,
+    "original_bytes": 35358242,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/arklib.tar.gz.files.json.gz",
+    "file_ledger_sha256": "664d018a8c8de963f6145f3dda9d1958878eec8a557130eca3b58c4b3af31b3f"
+  },
+  "original_manifest": {
+    "source": "arklib",
+    "url": "https://github.com/Verified-zkEVM/ArkLib",
+    "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+    "toolchain": "leanprover/lean4:v4.31.0",
+    "revision_basis": "common_warmup_source_commit",
+    "files_scanned": 328,
+    "files_with_declarations": 240,
+    "total_declarations": 2686,
+    "lexical_declarations": 2686,
+    "unresolved_declarations": 0,
+    "source_bytes": 4750849,
+    "benchmark": 2561,
+    "excluded": 108,
+    "structures": 1,
+    "equations": 16,
+    "declaration_kinds": {
+      "theorem": 1429,
+      "lemma": 1257
+    },
+    "proof_styles": {
+      "term": 450,
+      "by": 2219,
+      "structure": 1,
+      "equations": 16
+    },
+    "extraction_methods": {
+      "lexical_layout": 2686
+    },
+    "native_parser_complete": false,
+    "source_scope": "all tracked .lean files in pinned Git tree, including tests/examples/problems/solutions; no fetched dependencies",
+    "compact": false,
+    "inventory_file": "inventory.jsonl",
+    "subset_format": "full_records",
+    "max_file_bytes": 2000000,
+    "validation_scope": "Full-file exact original-proof reinsertion; lexical token partition. No Lean AST, elaboration, kernel, axioms or heartbeat validation.",
+    "extractor_sha256": "19cd67c5e6f5afab5af61818b6c26f0cf36a6fe738767b7e5c5e56eba3821659",
+    "layout_parser_sha256": "2829f733ca2d6625969ef8e9d1a66b7d61026edb85d78a51ff2fde913abd938f",
+    "lexical_parser_sha256": "13b9622ff1541a95949327143e73f032617b03257fc580694d7f93c440e1f544"
+  },
+  "verified_expanded_files": 10744,
+  "materialization_overrides": 0,
+  "verification_scope": "Storage hashes and lossless record migration only. Existing Lean validation remains unchanged.",
+  "artifact_hashes": {
+    "context-index.json": "0ca95b85912d49dbf486781f0d412f701af219a4018f68db8c37423d89980708",
+    "context.tar.gz": "97128876dd3a9b4d2643205fdb13aee24bf42d32b5fc15ee744e43b18a807d46",
+    "context.tar.gz.files.json.gz": "8f71d0844ba99c69dbbb41d49e782f9a376f1271278f4bcfa963ea1856c1fb36",
+    "environment/lake-manifest.json": "25e545bb447c1f4e0bc1d55ffb17813ae58f9abd0c7cb48273186e0e5fd367a5",
+    "environment/lakefile.toml": "f1de06f1b58a7f069cf6cf505981db3d400bd4daee22d838f6649f2856672520",
+    "environment/lean-toolchain": "efac0b94923b2d8b6840cd35be9177ad0fc5ab2332f4f4311c98712cee92fdee",
+    "evidence.tar.gz": "0bd62ef6e41a4847f4a4a2ebbedf27b26ec3215b12d9baca1670ffeeb50580c6",
+    "evidence.tar.gz.files.json.gz": "0f7a486d45930a317f94f5c3c3d0f1ae4e15bf83318f98de1658df15bd34e7f3",
+    "inventory.jsonl.gz": "eb07212a05a95cd8a8bee55f48984b099250bd60b57f7471b4c65c8ca0f9066f",
+    "licenses/LICENSE": "c5accbbd8546e94c34aed24afe689a617627d18eed5a6c48277e48db57c23851",
+    "subsets/benchmark.jsonl.gz": "f68f593965feb711bb2d9c057796f2f76083b3a7ed9ce52382cb67bc6dc8eb13",
+    "subsets/equations.jsonl.gz": "a3c7dc02c454502b6642d700ab09ef3bdbb112c9a358cabff755428134817f12",
+    "subsets/excluded.jsonl.gz": "acacb5b117af81009faf723311e955779f76fcdab972cfaf41bcb7989ba20483",
+    "subsets/structures.jsonl.gz": "8d34f3c23bbae151e1f219af1ada1ea25ef7401bacae49d0d0d14acf225232e1"
+  }
+}

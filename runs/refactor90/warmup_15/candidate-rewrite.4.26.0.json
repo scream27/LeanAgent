@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean",
+    "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/warmup_15/4.26.0/candidate-rewrite.lean"
+  ],
+  "cwd": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/warmup_15/4.26.0",
+  "returncode": 0,
+  "stop_reason": null,
+  "peak_group_rss_mb": 1719.05,
+  "max_group_rss_mb": 2048,
+  "seconds": 3.631,
+  "min_free_disk_mb": null,
+  "lean_num_threads": 1,
+  "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/warmup_15/4.26.0/candidate-rewrite.log",
+  "scope": "listed_version_narrow_imports",
+  "lean": "4.26.0",
+  "mathlib": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+  "header_path": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/warmup_15/development-header.lean",
+  "tokens": 383,
+  "candidate_sha256": "40038acb75a485c86a0a656fd197a273597a095b56bd3db9b0fd027406e9338b",
+  "valid": true,
+  "heartbeats": [
+    {
+      "raw": 1866785,
+      "scaled": 1866
+    }
+  ]
+}

@@ -1,0 +1,1413 @@
+{
+  "leanpool": {
+    "tracked_lean_files": 22324,
+    "counts": {
+      "source_bytes": 468613970,
+      "sorry_tokens": 0,
+      "where": 943,
+      "nonanchored_keywords": 71,
+      "termination_by": 394,
+      "decreasing_by": 317,
+      "mutual": 82,
+      "line_anchored_declarations": 367380,
+      "line_anchored_theorem": 312056,
+      "line_anchored_lemma": 55324,
+      "inline_wrapped_declarations": 68,
+      "syntax_name_references": 3,
+      "genuine_declarations": 367448,
+      "theorem": 312084,
+      "lemma": 55364,
+      "line_anchored_files_with_decls": 19387,
+      "files_with_decls": 19393
+    },
+    "nonanchored_keyword_examples": [
+      [
+        "LeanPool/AFormalizationOfBorelDeterminacyInLean/Game/Games.lean",
+        157,
+        "Winning p)\ninclude hW in lemma pruned (hW' : G.ExistsWinning p.swap) : IsPruned G.tree := by\n  "
+      ],
+      [
+        "LeanPool/AFormalizationOfBorelDeterminacyInLean/Game/Games.lean",
+        160,
+        "Position)⟩\ninclude hW in lemma not_both_winning (hNe : [] ∈ G.tree) : ¬ G.ExistsWinning p.swap "
+      ],
+      [
+        "LeanPool/AFormalizationOfBorelDeterminacyInLean/Proof/CoveringLim.lean",
+        37,
+        "ucc).op))\n\ninclude hF in lemma transition_fixing_full {m n} (h : m ≤ n) :\n  Fixing (K + m) (F.m"
+      ],
+      [
+        "LeanPool/AFormalizationOfBorelDeterminacyInLean/Proof/CoveringLim.lean",
+        42,
+        "by omega))\ninclude hF in lemma transition_fixing {m n} (h : m ≤ n) :\n  Fixing m (F.map (homOfLE"
+      ],
+      [
+        "LeanPool/AFormalizationOfBorelDeterminacyInLean/Proof/Zero/Lift.lean",
+        69,
+        "riable {H}\ninclude hW in lemma take n h : (H.take n h).Winnable := by\n  intro ⟨m, hm⟩; apply hW"
+      ],
+      [
+        "LeanPool/AFormalizationOfBorelDeterminacyInLean/Proof/Zero/Lift.lean",
+        75,
+        "AsTrees in\ninclude hW in lemma liftMedium_mem : H.toWLift.liftMediumVal ∈ T' := by\n  dsimp [WLL"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        41,
+        "           \ninclude R in lemma map_pow_le_ker_evalₐ (n : ℕ) :\n    Ideal.map (algebraMap R (Adic"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        52,
+        "           \ninclude R in lemma ker_evalₐ_eq [IsLocalRing R] [IsNoetherianRing R] (n : ℕ) :\n    "
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        64,
+        "           \ninclude R in lemma eval_cauchy_stable (f : ℕ → AdicCompletion I R)\n    (hf : ∀ {m n"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        76,
+        "           \ninclude R in lemma factorPow_comp_evalₐ_noeth {m n : ℕ} (hmn : m ≤ n) (x : AdicComp"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        145,
+        " [IsNoetherianRing R] in lemma filtration_smul_le\n    (Mi : Ideal R) (J : Ideal (AdicCompletion"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        200,
+        " [IsNoetherianRing R] in lemma evalₐ_mk_smul_eq\n    (Mi : Ideal R) (n0 K : ℕ) (m s : R) (hm : m"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        229,
+        " [IsNoetherianRing R] in lemma smul_lift_of_filtration\n    (Mi : Ideal R)\n    (n0 K : ℕ)\n    (F"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        254,
+        " [IsNoetherianRing R] in lemma coeff_decomp_of_smul\n    (Mi : Ideal R)\n    (n0 K : ℕ)\n    (FN_n"
+      ],
+      [
+        "LeanPool/AndersonConjecture/AdicNoetherian.lean",
+        296,
+        " [IsNoetherianRing R] in lemma extract_filtration_rep\n    (Mi : Ideal R) (J : Ideal (AdicComple"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CloseUp/NoCommonFactor.lean",
+        42,
+        "           \ninclude T in theorem prime_height_le_one_mem_assoc\n    {R : NSubring T}\n    (P : Id"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CloseUp/NoCommonFactor.lean",
+        69,
+        "           \ninclude T in theorem no_common_I_not_le_assoc\n    {R : NSubring T}\n    [DecidableEq"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CloseUp/NoCommonFactor.lean",
+        619,
+        "           \ninclude T in theorem close_up_aux_no_common_nonzero\n    [IsAdicComplete (IsLocalRin"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CloseUp/NoCommonFactor.lean",
+        659,
+        "\n    ).down\ninclude T in theorem close_up_aux_no_common\n    [IsAdicComplete (IsLocalRing.maxima"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        38,
+        "           \ninclude T in theorem isAExtension_trans {R S U : NSubring T}\n    (h₁ : IsAExtension"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        48,
+        "ax_self]))\n\ninclude T in lemma card_lt_of_aext' (hT_aleph0 : Cardinal.aleph0 < Cardinal.mk T)\n "
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        56,
+        "           \ninclude T in theorem build_union_isNSubring\n    {ι' : Type u} [LinearOrder ι'] [Non"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        82,
+        "   \ninclude T in private theorem close_up_all_mk_next\n    [IsAdicComplete (IsLocalRing.maximalI"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        131,
+        "   \ninclude T in private theorem union_card_le_max\n    {ι : Type u} [LinearOrder ι] [Nonempty ι"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        409,
+        "\n⟩\n\ninclude T in private theorem close_up_all_one_pass_aux\n    [IsAdicComplete (IsLocalRing.max"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        430,
+        "           \ninclude T in theorem close_up_all_one_pass\n    [IsAdicComplete (IsLocalRing.maximal"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        449,
+        "           \ninclude T in theorem build_union_isNSubring_nat\n    (chain : NSubringChain T ℕ)\n   "
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        474,
+        "           \ninclude T in theorem close_up_all_omega\n    (R : NSubring T)\n    (hR_card : Cardina"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        635,
+        "           \ninclude T in theorem close_up_all\n    [IsAdicComplete (IsLocalRing.maximalIdeal T) "
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        654,
+        "           \ninclude T in theorem combined_step\n    [IsAdicComplete (IsLocalRing.maximalIdeal T)"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+        707,
+        "           \ninclude T in theorem combined_step_surj\n    [IsAdicComplete (IsLocalRing.maximalIde"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/Construction/Transfinite.lean",
+        577,
+        ", ht_ne⟩\n⟩\n\ninclude T in theorem transfinite_construction\n    [IsAdicComplete (IsLocalRing.maxi"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/HeightBound.lean",
+        74,
+        "           \ninclude T in theorem derive_mod_principal_trans\n    (R : NSubring T) (x : T) (y : R"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/HeightBound.lean",
+        156,
+        "           \ninclude T in theorem height_bound_wf_descent\n    (R : NSubring T) (x₁ x₂ : T) (y₁ y"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/HeightBound.lean",
+        613,
+        "al T) T] in\ninclude T in theorem build_height_bound\n    (R : NSubring T) (x₁ x₂ : T) (y₁ y₂ : R"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/HeightBound.lean",
+        1024,
+        "al T) T] in\ninclude T in theorem build_intersection_nsubring\n    (R : NSubring T) (x₁ x₂ : T) ("
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/KrullDomain.lean",
+        45,
+        "   \ninclude T in private theorem ker_pf_span_eq\n    (R : NSubring T) (P : Ideal T) (hP_prime : "
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/KrullDomain.lean",
+        194,
+        "al T) T] in\ninclude T in theorem intersection_close_up_ker_pf₁\n    (R : NSubring T) (y₂ : R.car"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/KrullDomain.lean",
+        225,
+        "           \ninclude T in theorem intersection_close_up_ker_pf₂\n    (R : NSubring T) (y₁ : R.car"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/KrullDomain.lean",
+        848,
+        "           \ninclude T in theorem\n  intersection_close_up\n    (R : NSubring T) (y₁ y₂ : R.carrie"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/UFDConstruction.lean",
+        49,
+        "           \ninclude T in theorem build_R_prime_in_S\n    (R : NSubring T) (x₁ x₂ : T) (y₁ y₂ : R"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/UFDConstruction.lean",
+        401,
+        "al T) T] in\ninclude T in theorem build_loc_away_ufd\n    (R : NSubring T) (x₁ x₂ : T) (y₁ y₂ : R"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/UFDConstruction.lean",
+        743,
+        "al T) T] in\ninclude T in theorem build_ufd_proof\n    (R : NSubring T) (x₁ x₂ : T) (y₁ y₂ : R.ca"
+      ],
+      [
+        "LeanPool/AndersonConjecture/Jensen/KrullDomain/UFDConstruction.lean",
+        778,
+        "           \ninclude T in theorem build_primes_preserved\n    (R : NSubring T) (x₁ x₂ : T) (y₁ y₂"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        29,
+        "ecidableEq F] in @[simp] lemma multiboxAxiomK! :\n    𝓢 ⊢! □^[n](φ ==> ψ) ==> □^[n]φ ==> □^[n]ψ "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        35,
+        "ecidableEq F] in @[simp] lemma multiboxAxiomK'! (h :\n    𝓢 ⊢! □^[n](φ ==> ψ)) : 𝓢 ⊢! □^[n]φ ==>"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        46,
+        "ecidableEq F] in @[simp] lemma box_iff! (h : 𝓢 ⊢! φ <=> ψ) : 𝓢 ⊢! □φ <=> □ψ :=\n  ⟨boxIff' h.som"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        54,
+        "ecidableEq F] in @[simp] lemma multibox_iff! (h : 𝓢 ⊢! φ <=> ψ) : 𝓢 ⊢! □^[n]φ <=> □^[n]ψ :=\n  ⟨"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        60,
+        "ecidableEq F] in @[simp] lemma diaDualityMp! : 𝓢 ⊢! ◇φ ==> ∼(□(∼φ)) := by\n  classical\n  exact ⟨"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        66,
+        "ecidableEq F] in @[simp] lemma diaDualityMpr! : 𝓢 ⊢! ∼(□(∼φ)) ==> ◇φ := by\n  classical\n  exact "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        211,
+        "ecidableEq F] in @[simp] lemma boxDne! : 𝓢 ⊢! □(∼∼φ) ==> □φ := by\n  classical\n  exact ⟨boxDne⟩\n"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        217,
+        "\nomit [DecidableEq F] in lemma boxDne'! (h : 𝓢 ⊢! □(∼∼φ)) : 𝓢 ⊢! □φ := by\n  classical\n  exact ⟨"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        224,
+        "ecidableEq F] in @[simp] lemma multiboxverum! : 𝓢 ⊢! (□^[n]⊤ : F) := by\n  classical\n  exact ⟨mu"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        230,
+        "ecidableEq F] in @[simp] lemma boxverum! : 𝓢 ⊢! (□⊤ : F) := by\n  classical\n  exact ⟨boxverum⟩\n\n"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        236,
+        "ecidableEq F] in @[simp] lemma boxdotverum! : 𝓢 ⊢! (⊡⊤ : F) := by\n  classical\n  exact ⟨boxdotve"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        244,
+        "\nomit [DecidableEq F] in lemma imply_multibox_distribute'! (h :\n    𝓢 ⊢! φ ==> ψ) : 𝓢 ⊢! □^[n]φ"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        250,
+        "\nomit [DecidableEq F] in lemma imply_box_distribute'! (h : 𝓢 ⊢! φ ==> ψ) : 𝓢 ⊢! □φ ==> □ψ :=\n  "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        330,
+        "ecidableEq F] in @[simp] lemma collectMultiboxAnd! :\n    𝓢 ⊢! □^[n]φ ⋏ □^[n]ψ ==> □^[n](φ ⋏ ψ) "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        336,
+        "ecidableEq F] in @[simp] lemma collectBoxAnd! : 𝓢 ⊢! □φ ⋏ □ψ ==> □(φ ⋏ ψ) := ⟨collectBoxAnd⟩\n\n "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        340,
+        "\nomit [DecidableEq F] in lemma collectMultiboxAnd'! (h :\n    𝓢 ⊢! □^[n]φ ⋏ □^[n]ψ) : 𝓢 ⊢! □^[n]"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        346,
+        "\nomit [DecidableEq F] in lemma collectBoxAnd'! (h : 𝓢 ⊢! □φ ⋏ □ψ) : 𝓢 ⊢! □(φ ⋏ ψ) :=\n  ⟨collect"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        411,
+        "ecidableEq F] in @[simp] lemma collectMultiboxOr! :\n    𝓢 ⊢! □^[n]φ ⋎ □^[n]ψ ==> □^[n](φ ⋎ ψ) :"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        417,
+        "ecidableEq F] in @[simp] lemma collectBoxOr! : 𝓢 ⊢! □φ ⋎ □ψ ==> □(φ ⋎ ψ) := ⟨collectBoxOr⟩\n\n   "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        421,
+        "\nomit [DecidableEq F] in lemma collectMultiboxOr'! (h :\n    𝓢 ⊢! □^[n]φ ⋎ □^[n]ψ) : 𝓢 ⊢! □^[n]("
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        427,
+        "\nomit [DecidableEq F] in lemma collectBoxOr'! (h : 𝓢 ⊢! □φ ⋎ □ψ) : 𝓢 ⊢! □(φ ⋎ ψ) :=\n  ⟨collectB"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        522,
+        "bleEq F] in @[simp 1100] lemma boxdot_axiomT! : 𝓢 ⊢! ⊡φ ==> φ := by\n  simp_all\n\n               "
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        527,
+        "\nomit [DecidableEq F] in lemma boxdot_nec! (d : 𝓢 ⊢! φ) : 𝓢 ⊢! ⊡φ := by\n  classical\n  exact ⟨bo"
+      ],
+      [
+        "LeanPool/Incompleteness/Foundation/Modal/Entailment/K.lean",
+        533,
+        "\nomit [DecidableEq F] in lemma boxdot_box! : 𝓢 ⊢! ⊡φ ==> □φ := by\n  simp_all\n\n                 "
+      ],
+      [
+        "scripts/exposition/Extract.lean",
+        371,
+        "if k == ``Parser.Command.theorem || k == `lemma then return true\n    for arg in s.getArgs do\n  "
+      ],
+      [
+        "scripts/exposition/Extract.lean",
+        371,
+        "Command.theorem || k == `lemma then return true\n    for arg in s.getArgs do\n      worklist := w"
+      ]
+    ],
+    "mutual_examples": [
+      [
+        "LeanPool/BeyondBethe/Complexitylib/Encoding/Data.lean",
+        44
+      ],
+      [
+        "LeanPool/ConnesKreimer/Coassoc.lean",
+        33
+      ],
+      [
+        "LeanPool/ConnesKreimer/Coassoc.lean",
+        196
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        39
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        171
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        423
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        464
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        633
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        648
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        752
+      ],
+      [
+        "LeanPool/ConnesKreimer/Core.lean",
+        788
+      ],
+      [
+        "LeanPool/IsoGraph/Canon/Algorithm.lean",
+        731
+      ],
+      [
+        "LeanPool/Lean4GlCoalgebras/Split/Completeness.lean",
+        1835
+      ],
+      [
+        "LeanPool/MisereGames/Misere/DeadEnding.lean",
+        556
+      ],
+      [
+        "LeanPool/MisereGames/Misere/Hereditary/MaintenanceProviso.lean",
+        181
+      ],
+      [
+        "LeanPool/MisereGames/Misere/PFree.lean",
+        396
+      ],
+      [
+        "LeanPool/MisereGames/Misere/PFree.lean",
+        453
+      ],
+      [
+        "LeanPool/MisereGames/Misere/PFreeBlocking.lean",
+        118
+      ],
+      [
+        "LeanPool/MisereGames/Misere/PFreeDeadEnding.lean",
+        41
+      ],
+      [
+        "LeanPool/MisereGames/Misere/TippingPoints.lean",
+        25
+      ]
+    ],
+    "top_projects": [
+      [
+        "ConwaySoifer",
+        39948
+      ],
+      [
+        "NavierStokesAndEuler",
+        35922
+      ],
+      [
+        "MovingSofa",
+        32362
+      ],
+      [
+        "NFWeakPartition",
+        22603
+      ],
+      [
+        "Zeta5Irrational",
+        14969
+      ],
+      [
+        "HopfProblem",
+        14945
+      ],
+      [
+        "DavisKahan",
+        10004
+      ],
+      [
+        "BeyondBethe",
+        9626
+      ],
+      [
+        "BrillNoetherGraphs",
+        8325
+      ],
+      [
+        "CaffarelliKohnNirenberg",
+        8294
+      ],
+      [
+        "RegtsSevenster",
+        7940
+      ],
+      [
+        "AnomalousDiffusion",
+        7827
+      ],
+      [
+        "ConwayRefinement",
+        7287
+      ],
+      [
+        "ClassificationOfSurfaces",
+        5468
+      ],
+      [
+        "MarkoffModP",
+        5068
+      ]
+    ],
+    "method": "Independent line-anchored declaration scanner plus all-keyword crosscheck; legacy survey mask with identical regex matching optimized by AST rewrite to use offsets, not extractor mask implementation; sequential files, no Lean processes.",
+    "syntax_name_references": [
+      {
+        "file": "scripts/exposition/Extract.lean",
+        "line": 371,
+        "keywords": [
+          "theorem",
+          "lemma"
+        ]
+      },
+      {
+        "file": "scripts/exposition/Extract.lean",
+        "line": 479,
+        "keywords": [
+          "lemma"
+        ]
+      }
+    ],
+    "nonanchored_examples_note": "70 of 71 examples retained; the omitted last item was independently checked at scripts/exposition/Extract.lean:479. Exactly 68 are genuine inline include/omit wrapper declarations.",
+    "revision_basis": "collection_time_HEAD_not_Arena_fixed_commit",
+    "warmup_count": 0,
+    "revision": "01db1d7049cf9668bda1e9e106875ee1278b43e6",
+    "tracked_source_unchanged": true,
+    "inline_only_declaration_files": [
+      "LeanPool/AndersonConjecture/Jensen/CloseUp/NoCommonFactor.lean",
+      "LeanPool/AndersonConjecture/Jensen/CombinedStep.lean",
+      "LeanPool/AndersonConjecture/Jensen/Construction/Transfinite.lean",
+      "LeanPool/AndersonConjecture/Jensen/KrullDomain/HeightBound.lean",
+      "LeanPool/AndersonConjecture/Jensen/KrullDomain/KrullDomain.lean",
+      "LeanPool/AndersonConjecture/Jensen/KrullDomain/UFDConstruction.lean"
+    ],
+    "initial_extraction_ledger_audit": {
+      "extracted": 367429,
+      "unresolved": 19,
+      "genuine_declarations_accounted": 367448,
+      "matches_independent_count": true,
+      "entries": [
+        {
+          "name": "Nat.Arith₁.const",
+          "file_path": "LeanPool/Incompleteness/Foundation/Vorspiel/Arith.lean",
+          "line": 349,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "equation_branches_after_type_lambda"
+        },
+        {
+          "name": "TLA.ProofMode.Entails_have_pred_implies",
+          "file_path": "LeanPool/Lentil/ProofMode/Tactics/Have.lean",
+          "line": 45,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_formula_notation_and_angle_brackets"
+        },
+        {
+          "name": "TLA.ProofMode.Entails_specialize_pure_by_name",
+          "file_path": "LeanPool/Lentil/ProofMode/Tactics/Specialize.lean",
+          "line": 148,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_formula_notation_and_angle_brackets"
+        },
+        {
+          "name": "TLA.ProofMode.Entails_specialize_valid_by_name",
+          "file_path": "LeanPool/Lentil/ProofMode/Tactics/Specialize.lean",
+          "line": 169,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_formula_notation_and_angle_brackets"
+        },
+        {
+          "name": "TLA.ProofMode.Entails_specialize_temporal_by_name",
+          "file_path": "LeanPool/Lentil/ProofMode/Tactics/Specialize.lean",
+          "line": 192,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_formula_notation_and_angle_brackets"
+        },
+        {
+          "name": "sw_otp",
+          "file_path": "LeanPool/MRiscX/Examples/SingleProofsOTP.lean",
+          "line": 147,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_state_transition_notation"
+        },
+        {
+          "name": "inc_otp_0",
+          "file_path": "LeanPool/MRiscX/Examples/SingleProofsOTP.lean",
+          "line": 247,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_state_transition_notation"
+        },
+        {
+          "name": "inc_otp_1",
+          "file_path": "LeanPool/MRiscX/Examples/SingleProofsOTP.lean",
+          "line": 289,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_state_transition_notation"
+        },
+        {
+          "name": "inc_otp_2",
+          "file_path": "LeanPool/MRiscX/Examples/SingleProofsOTP.lean",
+          "line": 342,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_state_transition_notation"
+        },
+        {
+          "name": "dec_otp",
+          "file_path": "LeanPool/MRiscX/Examples/SingleProofsOTP.lean",
+          "line": 394,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_state_transition_notation"
+        },
+        {
+          "name": "j_otp",
+          "file_path": "LeanPool/MRiscX/Examples/SingleProofsOTP.lean",
+          "line": 446,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "custom_state_transition_notation"
+        },
+        {
+          "name": "Module.Dual.pi.IsFaithfulPosMap.psiInvFun'_apply",
+          "file_path": "LeanPool/Monlib4/LinearAlgebra/Ips/Nontracial.lean",
+          "line": 634,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "typed_or_multiline_bra_ket_notation"
+        },
+        {
+          "name": "Qam.completeGraph_eq",
+          "file_path": "LeanPool/Monlib4/QuantumGraph/Example.lean",
+          "line": 84,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "typed_or_multiline_bra_ket_notation"
+        },
+        {
+          "name": "qam_A_is_sa_iff_aux3_aux6",
+          "file_path": "LeanPool/Monlib4/QuantumGraph/QamA.lean",
+          "line": 438,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "typed_or_multiline_bra_ket_notation"
+        },
+        {
+          "name": "psi_apply_complete_graph",
+          "file_path": "LeanPool/Monlib4/QuantumGraph/ToProjections.lean",
+          "line": 692,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "typed_or_multiline_bra_ket_notation"
+        },
+        {
+          "name": "RealQam.edges_eq_dim_iff",
+          "file_path": "LeanPool/Monlib4/QuantumGraph/ToProjections.lean",
+          "line": 712,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "typed_or_multiline_bra_ket_notation"
+        },
+        {
+          "name": "Nikodym.Scaffold.D_succ",
+          "file_path": "LeanPool/Nikodym/Nikodym/Construction/Digits.lean",
+          "line": 138,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "next_top_level_declaration_has_extra_indentation"
+        },
+        {
+          "name": "Nikodym.Scaffold.box_neg",
+          "file_path": "LeanPool/Nikodym/Nikodym/Construction/Scaffold.lean",
+          "line": 113,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "next_top_level_declaration_has_extra_indentation"
+        },
+        {
+          "name": "VirasoroProject.WittAlgebra.virasoroCocycleBilin_eq_neg_flip",
+          "file_path": "LeanPool/VirasoroProject/VirasoroCocycle.lean",
+          "line": 68,
+          "classification": "genuine_theorem_or_lemma_source_declaration_not_keyword_reference",
+          "layout_issue": "next_top_level_declaration_has_extra_indentation"
+        }
+      ],
+      "note": "Source declaration identity checked independently; this does not prove source compilation. Initial completed extraction before any focused repair."
+    },
+    "reviewed_span_override_audit": {
+      "override_file": "leanpool/reviewed_span_overrides.json",
+      "override_file_sha256": "be9e1c2d9e759d84d6a397576ff57eb7fa4d0c62d0afc83726846371075933b8",
+      "entries": [
+        {
+          "name": "Nat.Arith₁.const",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 349,
+          "delimiter_line": 350,
+          "end_line": 351
+        },
+        {
+          "name": "TLA.ProofMode.Entails_have_pred_implies",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 44,
+          "delimiter_line": 48,
+          "end_line": 48
+        },
+        {
+          "name": "TLA.ProofMode.Entails_specialize_pure_by_name",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 148,
+          "delimiter_line": 150,
+          "end_line": 153
+        },
+        {
+          "name": "TLA.ProofMode.Entails_specialize_valid_by_name",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 169,
+          "delimiter_line": 171,
+          "end_line": 174
+        },
+        {
+          "name": "TLA.ProofMode.Entails_specialize_temporal_by_name",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 192,
+          "delimiter_line": 194,
+          "end_line": 198
+        },
+        {
+          "name": "sw_otp",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 147,
+          "delimiter_line": 170,
+          "end_line": 242
+        },
+        {
+          "name": "inc_otp_0",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 247,
+          "delimiter_line": 268,
+          "end_line": 285
+        },
+        {
+          "name": "inc_otp_1",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 289,
+          "delimiter_line": 313,
+          "end_line": 340
+        },
+        {
+          "name": "inc_otp_2",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 342,
+          "delimiter_line": 366,
+          "end_line": 391
+        },
+        {
+          "name": "dec_otp",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 394,
+          "delimiter_line": 413,
+          "end_line": 442
+        },
+        {
+          "name": "j_otp",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 446,
+          "delimiter_line": 463,
+          "end_line": 537
+        },
+        {
+          "name": "Module.Dual.pi.IsFaithfulPosMap.psiInvFun'_apply",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 633,
+          "delimiter_line": 640,
+          "end_line": 648
+        },
+        {
+          "name": "Qam.completeGraph_eq",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 84,
+          "delimiter_line": 86,
+          "end_line": 87
+        },
+        {
+          "name": "qam_A_is_sa_iff_aux3_aux6",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 438,
+          "delimiter_line": 443,
+          "end_line": 468
+        },
+        {
+          "name": "psi_apply_complete_graph",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 692,
+          "delimiter_line": 694,
+          "end_line": 698
+        },
+        {
+          "name": "RealQam.edges_eq_dim_iff",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 712,
+          "delimiter_line": 715,
+          "end_line": 752
+        },
+        {
+          "name": "Nikodym.Scaffold.D_succ",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 138,
+          "delimiter_line": 138,
+          "end_line": 142
+        },
+        {
+          "name": "Nikodym.Scaffold.box_neg",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 113,
+          "delimiter_line": 113,
+          "end_line": 114
+        },
+        {
+          "name": "VirasoroProject.WittAlgebra.virasoroCocycleBilin_eq_neg_flip",
+          "checks": {
+            "file_hash": true,
+            "src_hash": true,
+            "proof_hash": true,
+            "reinsertion": true,
+            "declaration_line": true,
+            "keyword": true,
+            "ordered_ranges": true,
+            "independent_delimiter": true,
+            "independent_next_command_boundary": true
+          },
+          "start_line": 68,
+          "delimiter_line": 69,
+          "end_line": 78
+        }
+      ],
+      "all_checks_passed": true,
+      "method": "Independent source-file hashes, source/proof hashes, byte-to-char declaration anchors, flat ()[]{} balanced assignment scan (ignoring custom angle notation), separately scanned next-command boundaries, and original-proof reinsertion. Equation const span additionally inspected as two explicit pattern branches. No Lean execution or kernel validation.",
+      "final_export_check": {
+        "total_inventory_rows": 367448,
+        "reviewed_rows_checked": 19,
+        "checks": [
+          {
+            "id": "leanpool_367430",
+            "name": "Nat.Arith₁.const",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367431",
+            "name": "TLA.ProofMode.Entails_have_pred_implies",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367432",
+            "name": "TLA.ProofMode.Entails_specialize_pure_by_name",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367433",
+            "name": "TLA.ProofMode.Entails_specialize_valid_by_name",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367434",
+            "name": "TLA.ProofMode.Entails_specialize_temporal_by_name",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367435",
+            "name": "sw_otp",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367436",
+            "name": "inc_otp_0",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367437",
+            "name": "inc_otp_1",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367438",
+            "name": "inc_otp_2",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367439",
+            "name": "dec_otp",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367440",
+            "name": "j_otp",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367441",
+            "name": "Module.Dual.pi.IsFaithfulPosMap.psiInvFun'_apply",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367442",
+            "name": "Qam.completeGraph_eq",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367443",
+            "name": "qam_A_is_sa_iff_aux3_aux6",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367444",
+            "name": "psi_apply_complete_graph",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367445",
+            "name": "RealQam.edges_eq_dim_iff",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367446",
+            "name": "Nikodym.Scaffold.D_succ",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367447",
+            "name": "Nikodym.Scaffold.box_neg",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          },
+          {
+            "id": "leanpool_367448",
+            "name": "VirasoroProject.WittAlgebra.virasoroCocycleBilin_eq_neg_flip",
+            "actual_export_source_and_proof_match": true,
+            "statement_matches_declared_span": true,
+            "reinsertion_exact": true,
+            "wrapper_matches_source": true
+          }
+        ],
+        "all_passed": true,
+        "inventory_sha256": "3795ab616e11ab454822e89ae8c180476264edee6ba573bbe5ce1f033d11dcac",
+        "wrapper_normalization_checked": [
+          {
+            "id": "leanpool_367431",
+            "name": "TLA.ProofMode.Entails_have_pred_implies",
+            "wrappers": "omit newHyp in\n",
+            "statement_starts_at_declaration": true,
+            "root_wrapper_plus_src_equals_override_source": true,
+            "proof_hash_unchanged": true
+          },
+          {
+            "id": "leanpool_367441",
+            "name": "Module.Dual.pi.IsFaithfulPosMap.psiInvFun'_apply",
+            "wrappers": "omit [DecidableEq k] [DecidableEq k₂] in\n",
+            "statement_starts_at_declaration": true,
+            "root_wrapper_plus_src_equals_override_source": true,
+            "proof_hash_unchanged": true
+          }
+        ],
+        "wrapper_policy": "Root command wrappers retained separately; src and statement start at theorem declaration for both omit wrappers; original proof hashes unchanged."
+      }
+    },
+    "final_counts_match": {
+      "inventory_rows": 367448,
+      "independent_genuine_declarations": 367448,
+      "unresolved": 0,
+      "matches": true
+    }
+  },
+  "cslib": {
+    "tracked_lean_files": 181,
+    "counts": {
+      "files_with_decls": 140,
+      "genuine_declarations": 1692,
+      "theorem": 1108,
+      "lemma": 584,
+      "sorry_or_admit_tokens_across_all_source": 0,
+      "nonanchored_keywords": 0
+    },
+    "method": "Independent physlib_lexical declaration positions and broad masked-keyword crosscheck; source-only Python scan, no Lean invocation.",
+    "revision_basis": "common_warmup_source_commit",
+    "direct_sorry_declarations": 0,
+    "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+    "tracked_source_unchanged": true,
+    "warmup_source_checks": [
+      {
+        "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress",
+        "file_path": "Cslib/Languages/LambdaCalculus/LocallyNameless/Fsub/Safety.lean",
+        "full_src_matches": 1,
+        "statement_present": true
+      },
+      {
+        "name": "Cslib.SKI.parallelReduction_diamond",
+        "file_path": "Cslib/Languages/CombinatoryLogic/Confluence.lean",
+        "full_src_matches": 1,
+        "statement_present": true
+      },
+      {
+        "name": "Cslib.CCS.bisimilarity_congr_choice",
+        "file_path": "Cslib/Languages/CCS/BehaviouralTheory.lean",
+        "full_src_matches": 1,
+        "statement_present": true
+      }
+    ],
+    "warmup_export_checks": {
+      "checks": [
+        {
+          "warmup_number": 9,
+          "id": "cslib_01007",
+          "name": "Cslib.CCS.bisimilarity_congr_choice",
+          "equal_fields": {
+            "src": true,
+            "statement": true,
+            "proof_length": true,
+            "num_lines": true,
+            "header": true
+          }
+        },
+        {
+          "warmup_number": 8,
+          "id": "cslib_01049",
+          "name": "Cslib.SKI.parallelReduction_diamond",
+          "equal_fields": {
+            "src": true,
+            "statement": true,
+            "proof_length": true,
+            "num_lines": true,
+            "header": true
+          }
+        },
+        {
+          "warmup_number": 7,
+          "id": "cslib_01204",
+          "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress",
+          "equal_fields": {
+            "src": true,
+            "statement": true,
+            "proof_length": true,
+            "num_lines": true,
+            "header": true
+          }
+        }
+      ],
+      "missing_names": [],
+      "note": "Exact source-field comparison only; not kernel validation"
+    }
+  },
+  "arklib": {
+    "tracked_lean_files": 328,
+    "counts": {
+      "files_with_decls": 240,
+      "genuine_declarations": 2686,
+      "theorem": 1429,
+      "lemma": 1257,
+      "sorry_or_admit_tokens_across_all_source": 217,
+      "nonanchored_keywords": 0
+    },
+    "method": "Independent physlib_lexical declaration positions and broad masked-keyword crosscheck; source-only Python scan, no Lean invocation.",
+    "revision_basis": "common_warmup_source_commit",
+    "direct_sorry_declarations": 108,
+    "direct_sorry_count_method": "crosscheck of extracted inventory contains_sorry fields; full-source independent lexical scan found 217 sorry/admit tokens, including non-theorem definitions.",
+    "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+    "tracked_source_unchanged": true,
+    "warmup_source_checks": [
+      {
+        "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
+        "file_path": "ArkLib/ProofSystem/Binius/BinaryBasefold/Prelude.lean",
+        "full_src_matches": 1,
+        "statement_present": true
+      },
+      {
+        "name": "Binius.BinaryBasefold.fold_advances_evaluation_poly",
+        "file_path": "ArkLib/ProofSystem/Binius/BinaryBasefold/Prelude.lean",
+        "full_src_matches": 1,
+        "statement_present": true
+      },
+      {
+        "name": "interleaved_affine_gaps_imply_tensor_gaps",
+        "file_path": "ArkLib/Data/CodingTheory/ProximityGap/DG25/MainResults.lean",
+        "full_src_matches": 1,
+        "statement_present": true
+      }
+    ],
+    "warmup_export_checks": {
+      "checks": [
+        {
+          "warmup_number": 12,
+          "id": "arklib_00781",
+          "name": "interleaved_affine_gaps_imply_tensor_gaps",
+          "equal_fields": {
+            "src": true,
+            "statement": true,
+            "proof_length": true,
+            "num_lines": true,
+            "header": true
+          }
+        },
+        {
+          "warmup_number": 11,
+          "id": "arklib_02456",
+          "name": "Binius.BinaryBasefold.fold_advances_evaluation_poly",
+          "equal_fields": {
+            "src": true,
+            "statement": true,
+            "proof_length": true,
+            "num_lines": true,
+            "header": true
+          }
+        },
+        {
+          "warmup_number": 10,
+          "id": "arklib_02457",
+          "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
+          "equal_fields": {
+            "src": true,
+            "statement": true,
+            "proof_length": true,
+            "num_lines": true,
+            "header": true
+          }
+        }
+      ],
+      "missing_names": [],
+      "note": "Exact source-field comparison only; not kernel validation"
+    }
+  },
+  "putnambench": {
+    "tracked_lean_files": 674,
+    "counts": {
+      "files_with_decls": 672,
+      "genuine_declarations": 672,
+      "theorem": 672,
+      "lemma": 0,
+      "sorry_or_admit_tokens_across_all_source": 1018,
+      "nonanchored_keywords": 0
+    },
+    "method": "Independent physlib_lexical declaration positions and broad masked-keyword crosscheck; source-only Python scan, no Lean invocation.",
+    "revision_basis": "collection_time_HEAD_not_Arena_fixed_commit",
+    "direct_sorry_declarations": 672,
+    "direct_sorry_fraction": 1.0,
+    "complete_original_proofs": 0,
+    "arena_reference_proofs": 3,
+    "version_info_note": "Arena benchmark.py explicitly defines PutnamBench version_info SHA values as mathlib4 release commits, not PutnamBench source commits.",
+    "source_shape_note": "lean4/src has 672 problem theorem declarations, each containing sorry. Extra 2 Lean files are lakefile.lean and check_docstrings.lean. Numeric-solution rewriting only inlines answer abbreviations; it does not add proofs.",
+    "revision": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+    "tracked_source_unchanged": true,
+    "warmup_source_checks": [
+      {
+        "name": "putnam_1964_a4",
+        "file_path": "lean4/src/putnam_1964_a4.lean",
+        "full_src_matches": 0,
+        "statement_present": true
+      },
+      {
+        "name": "putnam_1964_b2",
+        "file_path": "lean4/src/putnam_1964_b2.lean",
+        "full_src_matches": 0,
+        "statement_present": true
+      },
+      {
+        "name": "putnam_1995_a3",
+        "file_path": "lean4/src/putnam_1995_a3.lean",
+        "full_src_matches": 0,
+        "statement_present": true
+      }
+    ]
+  },
+  "audit_scope": "Pinned tracked Lean source, theorem/lemma declarations only. Counts do not establish elaboration, axiom cleanliness, or heartbeat costs. No source files changed; no dependencies built.",
+  "policy_notes": {
+    "arklib": "Root AGENTS.md read. Build validation steps apply to source changes; this task read source only.",
+    "leanpool": "Root AGENTS.md read. No source or CI checks modified. README says 289 projects while embedded AGENTS stats are older, so actual Git source counts used.",
+    "putnambench": "README requests avoiding publication/new formal proofs to reduce contamination. This task only inventories existing source and existing Arena reference proofs."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+    "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0/Warmup07-reference.lean"
+  ],
+  "cwd": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0",
+  "returncode": 0,
+  "stop_reason": null,
+  "peak_group_rss_mb": 1090.03,
+  "max_group_rss_mb": 2048,
+  "seconds": 11.365,
+  "lean_num_threads": 1,
+  "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0/Warmup07-reference.log",
+  "scope": "listed_environment_local_full_source_context",
+  "lean": "4.32.0",
+  "cslib": "197a7be621263b84c67ca4f803f69205b36d06df",
+  "mathlib": "81a5d257c8e410db227a6665ed08f64fea08e997",
+  "tokens": 408,
+  "candidate_sha256": "ff4651bfd87d72475023b80d49338f8bb6a4520dca7b2914f9565a0a6d34f910",
+  "valid": true,
+  "heartbeats": [
+    {
+      "raw": 61937223,
+      "scaled": 61937
+    }
+  ]
+}

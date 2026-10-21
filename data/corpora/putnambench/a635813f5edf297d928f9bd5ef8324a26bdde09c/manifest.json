@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "source": "putnambench",
+  "revision": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "url": "https://github.com/trishullab/PutnamBench",
+  "records": 672,
+  "inventory": {
+    "path": "inventory.jsonl.gz",
+    "sha256": "ab3692b2c162289ae5c24050ca6f9954491dac9a86b6fee0ad9fcb62cf1172ab",
+    "uncompressed_sha256": "9fd98f5c553f5121ab1f9732e91f6498138545fbb3b69b5f66d039eaa029a51f"
+  },
+  "subsets": {
+    "benchmark": {
+      "path": "subsets/benchmark.jsonl.gz",
+      "count": 0,
+      "sha256": "6e94076f98b510377ce33225822d549b6299ecf994ad811f3efe616d3b4237c5",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "equations": {
+      "path": "subsets/equations.jsonl.gz",
+      "count": 0,
+      "sha256": "14845dcb3b049b1f03a78d36d10c2539724aad3748f7169172d25398bad1509d",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "structures": {
+      "path": "subsets/structures.jsonl.gz",
+      "count": 0,
+      "sha256": "000bc26951c70c0c80d71e08d4a51d6cb05a2eb4945b54b75bdfcabd07c9469d",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "excluded": {
+      "path": "subsets/excluded.jsonl.gz",
+      "count": 672,
+      "sha256": "fc8efd06e32f878053084bafeb24c68edf2c949f178783668e1cebce7f90623d",
+      "original_sha256": "9fd98f5c553f5121ab1f9732e91f6498138545fbb3b69b5f66d039eaa029a51f",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    }
+  },
+  "context": {
+    "path": "data/corpora/putnambench/a635813f5edf297d928f9bd5ef8324a26bdde09c/context.tar.gz",
+    "sha256": "601adeef8a75d0c6d881a3802d33078ad85d2da6bc147e7dd62114b36bd9581e",
+    "files": 672,
+    "original_bytes": 460592,
+    "file_ledger": "data/corpora/putnambench/a635813f5edf297d928f9bd5ef8324a26bdde09c/context.tar.gz.files.json.gz",
+    "file_ledger_sha256": "d23ada0f766349d51510b55d201da1d8b80540b05d23e0f72d5bc5f3b3c50dbe"
+  },
+  "evidence": {
+    "path": "data/corpora/putnambench/a635813f5edf297d928f9bd5ef8324a26bdde09c/evidence.tar.gz",
+    "sha256": "ee3556a4cbd954dd108e3486645b1d024049b00e5cff7eced215d473e4395326",
+    "files": 7,
+    "original_bytes": 264933,
+    "file_ledger": "data/corpora/putnambench/a635813f5edf297d928f9bd5ef8324a26bdde09c/evidence.tar.gz.files.json.gz",
+    "file_ledger_sha256": "d71be9412ca817398326bdf538772d416d0fad69af595cf12a51e03d282e1897"
+  },
+  "legacy": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/putnambench.tar.gz",
+    "sha256": "bdcd7d001e9a188f24fcd5a8cdaa9926b7a195c89a8ec8f3a64c970deb6ca6a3",
+    "files": 3376,
+    "original_bytes": 5862547,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/putnambench.tar.gz.files.json.gz",
+    "file_ledger_sha256": "bceaaeb20af154febb8ffba366e00e141e15e53621916556e9364cedc37a253a"
+  },
+  "original_manifest": {
+    "source": "putnambench",
+    "url": "https://github.com/trishullab/PutnamBench",
+    "revision": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "revision_basis": "repository_HEAD_at_collection_not_warmup_source_commit",
+    "files_scanned": 674,
+    "files_with_declarations": 672,
+    "total_declarations": 672,
+    "lexical_declarations": 672,
+    "unresolved_declarations": 0,
+    "source_bytes": 465435,
+    "excluded": 672,
+    "declaration_kinds": {
+      "theorem": 672
+    },
+    "proof_styles": {
+      "term": 662,
+      "by": 10
+    },
+    "extraction_methods": {
+      "lexical_layout": 672
+    },
+    "native_parser_complete": false,
+    "source_scope": "all tracked .lean files in pinned Git tree, including tests/examples/problems/solutions; no fetched dependencies",
+    "compact": false,
+    "inventory_file": "inventory.jsonl",
+    "subset_format": "full_records",
+    "max_file_bytes": 2000000,
+    "validation_scope": "Full-file exact original-proof reinsertion; lexical token partition. No Lean AST, elaboration, kernel, axioms or heartbeat validation.",
+    "extractor_sha256": "19cd67c5e6f5afab5af61818b6c26f0cf36a6fe738767b7e5c5e56eba3821659",
+    "layout_parser_sha256": "2829f733ca2d6625969ef8e9d1a66b7d61026edb85d78a51ff2fde913abd938f",
+    "lexical_parser_sha256": "13b9622ff1541a95949327143e73f032617b03257fc580694d7f93c440e1f544"
+  },
+  "verified_expanded_files": 2688,
+  "materialization_overrides": 0,
+  "verification_scope": "Storage hashes and lossless record migration only. Existing Lean validation remains unchanged.",
+  "artifact_hashes": {
+    "context-index.json": "63b7983262c8027f3615ee5d82562dc3c32273aa5bfa8a71c63da51c909f2615",
+    "context.tar.gz": "601adeef8a75d0c6d881a3802d33078ad85d2da6bc147e7dd62114b36bd9581e",
+    "context.tar.gz.files.json.gz": "d23ada0f766349d51510b55d201da1d8b80540b05d23e0f72d5bc5f3b3c50dbe",
+    "environment/lean4/lake-manifest.json": "86f328eaf63c87c7133c5fb4a480e1b368d1141631efb6f89f84ee71163cba0a",
+    "environment/lean4/lakefile.lean": "54d9a1a690a447499f8b14a219645eb62ed971a034a13a180c1d012ce9b197a0",
+    "environment/lean4/lean-toolchain": "7bc3447cbd72d5618fae8359a8f2eb94d86b4ad25dde7ce79df2a283247262e3",
+    "evidence.tar.gz": "ee3556a4cbd954dd108e3486645b1d024049b00e5cff7eced215d473e4395326",
+    "evidence.tar.gz.files.json.gz": "d71be9412ca817398326bdf538772d416d0fad69af595cf12a51e03d282e1897",
+    "inventory.jsonl.gz": "ab3692b2c162289ae5c24050ca6f9954491dac9a86b6fee0ad9fcb62cf1172ab",
+    "licenses/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "subsets/benchmark.jsonl.gz": "6e94076f98b510377ce33225822d549b6299ecf994ad811f3efe616d3b4237c5",
+    "subsets/equations.jsonl.gz": "14845dcb3b049b1f03a78d36d10c2539724aad3748f7169172d25398bad1509d",
+    "subsets/excluded.jsonl.gz": "fc8efd06e32f878053084bafeb24c68edf2c949f178783668e1cebce7f90623d",
+    "subsets/structures.jsonl.gz": "000bc26951c70c0c80d71e08d4a51d6cb05a2eb4945b54b75bdfcabd07c9469d"
+  }
+}
