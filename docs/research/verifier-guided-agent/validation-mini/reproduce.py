@@ -136,22 +136,31 @@ def env_for(project):
 # ---------------------------------------------------------------- Lean runner
 
 DIAG_RE = re.compile(r"^(?P<path>.+?):(?P<line>\d+):(?P<col>\d+): (?P<sev>error|warning|info)(?:\([^)]*\))?: ?(?P<msg>.*)$")
+SEV = {"error": "error", "warning": "warning", "information": "info", "info": "info"}
 
 
 def parse_diagnostics(stdout, lean_path):
-    diags, cur = [], None
+    """Parse `lean --json` output (one JSON message per line); unparsable lines are kept verbatim."""
+    diags = []
     for raw in stdout.splitlines():
+        if not raw.strip():
+            continue
+        try:
+            j = json.loads(raw)
+            pos = j.get("pos") or {}
+            diags.append({"severity": SEV.get(j.get("severity"), j.get("severity")), "line": pos.get("line"),
+                          "col": pos.get("column"), "message": (j.get("data") or "").rstrip(),
+                          **({"end_line": j["endPos"]["line"], "end_col": j["endPos"]["column"]}
+                             if j.get("endPos") else {})})
+            continue
+        except (json.JSONDecodeError, AttributeError):
+            pass
         m = DIAG_RE.match(raw)
-        if m and m.group("path").endswith(Path(lean_path).name):
-            cur = {"severity": m.group("sev"), "line": int(m.group("line")), "col": int(m.group("col")),
-                   "message": m.group("msg")}
-            diags.append(cur)
-        elif cur is not None:
-            cur["message"] += "\n" + raw
+        if m:
+            diags.append({"severity": m.group("sev"), "line": int(m.group("line")), "col": int(m.group("col")),
+                          "message": m.group("msg")})
         else:
             diags.append({"severity": "unparsed", "line": None, "col": None, "message": raw})
-    for d in diags:
-        d["message"] = d["message"].rstrip()
     return diags
 
 
@@ -162,7 +171,7 @@ def run_lean(project, lean_text, out_stem):
     lean_path = out_stem.with_suffix(".lean")
     lean_path.write_text(lean_text, encoding="utf-8")
     cwd = PROJECTS[project]["dir"]
-    cmd = [LAKE, "env", "lean", str(lean_path)]
+    cmd = [LAKE, "env", "lean", "--json", str(lean_path)]
     t0 = time.time()
     try:
         p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=TIMEOUT_S)
@@ -412,7 +421,8 @@ def local_repair(target, body, first, attempts_dir):
         rec["check"] = summarize_check(c)
         if op["op"] == "replace_span_extract":
             res = jload(str(stem) + ".result.json")
-            sugg, d = suggestion_in(res, span_first, span_first + (len(new_lines) - len(lines)) + (j - i) - 1)
+            ins = target.body_first_line + (j if unsolved else i)
+            sugg, d = suggestion_in(res, ins, ins)
             rec["raw_tool_output"] = d["message"] if d else None
             if sugg is None:
                 rec.update(result="no_suggestion")
@@ -428,7 +438,7 @@ def local_repair(target, body, first, attempts_dir):
         rec["local_error_cleared"] = local_cleared(target, c, span_first, first)
         rec["full_replay"] = c["kind"]
         rec["result"] = "full_replay_valid" if c["kind"] == "valid" else (
-            "local_fixed_downstream_failure" if rec["local_error_cleared"] and c["kind"] == "invalid" else "failed")
+            "original_error_cleared_full_replay_failed" if rec["local_error_cleared"] and c["kind"] == "invalid" else "failed")
         attempts.append(rec)
         if c["kind"] == "valid":
             success = {"op": rec, "body": new_body, "check": c}
@@ -491,26 +501,38 @@ def extract_valid(target, body, outdir, limit=3):
     return out
 
 
+HB_ELAB = """open Lean Elab Command in
+elab "#vm_count_heartbeats " "in" ppLine cmd:command : command => do
+  let start ← IO.getNumHeartbeats
+  try
+    elabCommand (← `(command| set_option Elab.async false in set_option maxHeartbeats 0 in $cmd))
+  finally
+    let finish ← IO.getNumHeartbeats
+    logInfo m!"VM_HEARTBEATS {(finish - start) / 1000}"
+
+"""
+
+
 def measure(target, body, stem):
     m = {"body_nonwhitespace_chars": {"value": len(re.sub(r"\s", "", body)), "kind": "local_estimate",
                                       "note": "character count, NOT the official token count"},
          "official_tokens": {"value": None, "kind": "not_measured", "reason": "official tokenizer not available"}}
-    if PROJECTS[target.project]["has_count_heartbeats"]:
-        stmt_line_start = target.source.rfind("\n", 0, target.decl_start) + 1
-        text = (target.source[:stmt_line_start] + "count_heartbeats in\n" + target.source[stmt_line_start:target.body_start]
-                + body + target.suffix)
-        res = run_lean(target.project, text, stem)
-        hb = None
-        for d in res["diagnostics"]:
-            mm = re.search(r"Used (\d+) heartbeats", d["message"])
-            if mm:
-                hb = int(mm.group(1))
-        m["heartbeats"] = {"value": hb, "kind": "local_estimate" if hb is not None else "not_measured",
-                           "method": "Mathlib `count_heartbeats in` on the declaration (instrumented run), single run",
-                           "run": rel(str(stem) + ".result.json")}
-    else:
-        m["heartbeats"] = {"value": None, "kind": "not_measured",
-                           "reason": "no count_heartbeats command in this environment; not added"}
+    text = (target.source[:target.decl_start] + HB_ELAB + "#vm_count_heartbeats in\n"
+            + target.source[target.decl_start:target.body_start] + body + target.suffix)
+    res = run_lean(target.project, text, stem)
+    hb = None
+    errs = [d for d in res["diagnostics"] if d["severity"] == "error"]
+    for d in res["diagnostics"]:
+        mm = re.search(r"VM_HEARTBEATS (\d+)", d["message"])
+        if mm:
+            hb = int(mm.group(1))
+    ok = hb is not None and not errs
+    m["heartbeats"] = {"value": hb if ok else None, "kind": "local_estimate" if ok else "not_measured",
+                       "method": "instrumented run: IO.getNumHeartbeats delta /1000 around the declaration with "
+                                 "Elab.async=false (same mechanism as Mathlib #count_heartbeats); single run; "
+                                 "not the official Arena measurement",
+                       "run": rel(str(stem) + ".result.json"),
+                       **({} if ok else {"reason": "instrumented run had errors or no output"})}
     return m
 
 
@@ -648,6 +670,8 @@ def run_case(cid):
                 meas[f"extracted_{k}"] = measure(target, e["substituted_body"], logs / f"04_measure_extracted_{k}")
     if success:
         meas["local_repair"] = measure(target, success["body"], logs / "04_measure_local_repair")
+    if gc["kind"] == "valid" and gold != cand:
+        meas["gold"] = measure(target, gold, logs / "04_measure_gold")
     versions = case["listed_versions"]
     available = case["available_versions"]
     meas["robustness"] = {"listed_versions": versions, "checked_versions": available,
@@ -767,7 +791,7 @@ def route_reason(route, cc, success, attempts):
         return (f"fixed local op {success['op']['op']}({success['op']['tactic']}) made the whole file valid on full "
                 f"replay; no LLM prompt expected")
     if route == "escalate_after_local_exhausted":
-        partial = [a["n"] for a in attempts if a.get("result") == "local_fixed_downstream_failure"]
+        partial = [a["n"] for a in attempts if a.get("result") == "original_error_cleared_full_replay_failed"]
         s = "all applicable local-ops-v1 attempts failed on full replay"
         if partial:
             s += f"; ops {partial} cleared the original error locally but full replay still failed"
@@ -806,6 +830,49 @@ def fixtures():
     sys.exit(0 if check_all(HERE / "policy-fixtures") else 1)
 
 
+def write_manifest():
+    from case_specs import CASES
+    cases = {}
+    for cid in sorted(CASES):
+        p = HERE / "cases" / cid / "case.json"
+        if p.exists():
+            c = jload(p)
+            cases[cid] = {k: c[k] for k in ("seed_id", "source_kind", "source_path", "observed_result",
+                                            "expected_route", "policy_decision", "validation_status")}
+    m = {
+        "name": "validation-mini",
+        "created": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        "generator": "Antigravity agent (Claude Opus) acting on gemini-validation-data-request.md; no model API used "
+                     "inside the harness",
+        "pipeline": {
+            "escalation_policy.py_sha256": file_sha(HERE.parent / "escalation_policy.py"),
+            "escalation-policy-and-data-recipe.md_sha256": file_sha(HERE.parent / "escalation-policy-and-data-recipe.md"),
+            "reproduce.py_sha256": file_sha(HERE / "reproduce.py"),
+            "case_specs.py_sha256": file_sha(HERE / "case_specs.py"),
+            "note": "No implemented Lean pipeline/local tactic list existed in the repository; local-ops-v1 below "
+                    "was defined by this harness and frozen before the first case run. Not changed afterwards.",
+        },
+        "local_policy": LOCAL_POLICY_V1,
+        "resource_settings": {"timeout_s_per_lean_run": TIMEOUT_S, "maxHeartbeats": "project default (not changed)",
+                              "parallelism": "sequential runs"},
+        "environments": jload(HERE / "environment.json"),
+        "data_sources": {
+            "arena_warmup": {"file": "~/lean_project/refactor_arena/benchmark_data_warmup.jsonl",
+                             "copied_records": "sources/warmup_seeds_1_3.jsonl (lines 1-3)",
+                             "sha256_of_full_file": "6209680cf00cde0765b77b24834cd72c64dd585b2f7e3f2a58209980ab59a804",
+                             "line_number_note": "dataset start_line values (2964/2733/950) differ from the git HEAD "
+                                                 "file positions (3089/2858/931); declarations were located by exact "
+                                                 "text match of `src` (unique)"},
+            "strata_sources": {f.name: file_sha(f) for f in sorted((HERE / "sources").glob("strata_*.lean"))},
+            "toy_sources": {f.name: file_sha(f) for f in sorted((HERE / "sources/toy").glob("*.lean"))},
+        },
+        "cases": cases,
+        "policy_fixtures": "policy-fixtures/ (synthetic=true; generated by make_policy_fixtures.py)",
+    }
+    jdump(m, HERE / "manifest.json")
+    print(json.dumps(cases, indent=1))
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "help"
     if cmd == "env":
@@ -821,6 +888,8 @@ if __name__ == "__main__":
             run_case(c)
     elif cmd == "policy":
         rerender()
+    elif cmd == "manifest":
+        write_manifest()
     elif cmd == "fixtures":
         fixtures()
     else:

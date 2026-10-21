@@ -118,10 +118,21 @@ CASES["R05"] = toy(
 CASES["R06"] = strata(S3, 3, SSP, "Core.InitsUpdatesComm") | dict(
     mutation=[("induction Hup generalizing σ''", "induction Hup")],
     expected_intent="Shorten the induction by dropping `generalizing σ''`, believing the final store need not vary; "
-                    "the induction hypothesis is then fixed to the outer σ''.",
+                    "observed in Lean: passes without error because σ'' is invariant across UpdateStates steps.",
     gold_alternatives=[[("induction Hup", "induction Hup generalizing σ''")]],
-    gold_strategy="original restored (no shorter variant without generalizing was found by the author)",
+    gold_strategy="original restored (candidate itself was unexpectedly valid; gold records original baseline)",
     prediction="failure in update_some where ih is applied to a different store -> escalate (block/body)",
+)
+
+# R06b induction context lost (additional variant that actually fails & escalates) --------
+CASES["R06b"] = strata(S3, 3, SSP, "Core.InitsUpdatesComm") | dict(
+    mutation=[("  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n", "")],
+    expected_intent="Remove the pre-induction auxiliary step `have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup` "
+                    "before `induction Hup generalizing σ''`, losing `Hk` from the induction hypothesis context.",
+    gold_alternatives=[[("  have Hlen1 := InitStatesLength Hinit\n",
+                         "  have Hk : (isDefined σ' ks) := UpdateStatesDefined Hup\n  have Hlen1 := InitStatesLength Hinit\n")]],
+    gold_strategy="restore the pre-induction auxiliary hypothesis `Hk` before `induction Hup`",
+    prediction="in update_some, `ih` or `simp_all` fails because `isDefined` is missing from induction context -> escalate",
 )
 
 # R07 unavailable lemma name -------------------------------------------------------------
