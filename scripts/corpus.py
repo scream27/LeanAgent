@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read, verify and materialize versioned corpus bundles without running Lean."""
 from __future__ import annotations
-import argparse, base64, gzip, hashlib, json, os, re, shutil, subprocess, sys, tarfile, tempfile
+import argparse, base64, gzip, hashlib, json, re, shutil, tarfile, tempfile
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -180,63 +180,12 @@ def verify(source,root=ROOT):
     return {'source':source,'records':len(ids),'historical_problem_files_reproduced':count,'status':'passed'}
 
 
-def safe_unpack(archive,destination):
-    """Regular files only, into a newly allocated directory; never extract links."""
-    with tarfile.open(archive,'r|gz') as tar:
-        seen=set()
-        for m in tar:
-            if not m.isfile() or m.name in seen:raise ValueError(f'Unsupported archive member: {m.name}')
-            seen.add(m.name)
-            p=resolve(destination,m.name)
-            if p.exists():raise FileExistsError(p)
-            p.parent.mkdir(parents=True,exist_ok=True)
-            with tar.extractfile(m) as inp,p.open('wb') as out:shutil.copyfileobj(inp,out)
-            p.chmod(m.mode & 0o777)
-
-
-def legacy(args,root=ROOT):
-    """Restore original collected data to central cache for the historical tools."""
-    cache=os.environ.get('PROJECT_CACHE_DIR')
-    if not cache:raise ValueError('Source env/use.sh before using the legacy workspace')
-    catalog=json.loads((root/'data/catalog.json').read_text())
-    work=Path(cache)/'corpus-legacy'/catalog['migration']
-    if args.prepare:
-        if work.exists():raise FileExistsError(f'Workspace exists: {work}; reuse it or choose a new cache root')
-        work.parent.mkdir(parents=True,exist_ok=True)
-        temp=Path(tempfile.mkdtemp(prefix='.restore-',dir=work.parent))
-        try:
-            for info in catalog['legacy_archives'].values():
-                p=resolve(root,info['path'])
-                if sha(p)!=info['sha256']:raise ValueError('Legacy archive mismatch')
-                safe_unpack(p,temp)
-            # Use the maintained tools, while immutable original tools remain in the archive.
-            for name in ['scripts','tests']:
-                shutil.rmtree(temp/name)
-                shutil.copytree(root/'experiments/corpus-survey'/name,temp/name)
-            for script in (root/'experiments/refactor90/scripts').glob('*.py'):
-                shutil.copy2(script,temp/'refactor90'/script.name)
-            (temp/'sources').symlink_to(root/'sources',target_is_directory=True)
-            (temp/'.workspace.json').write_text(json.dumps({'migration':catalog['migration'],'purpose':'historical research reproduction; never agent input'})+'\n')
-            temp.rename(work)
-        finally:
-            if temp.exists():shutil.rmtree(temp)
-    if not (work/'.workspace.json').is_file():raise ValueError('Run legacy --prepare first')
-    if args.script:
-        script=resolve(work,args.script)
-        if not script.is_file() or script.suffix!='.py':raise ValueError('Select a Python research script')
-        env=dict(os.environ,ARENA_CORPUS_WORKSPACE=str(work),PYTHONPATH=str(work/'scripts'))
-        return subprocess.call([sys.executable,str(script),*(args.arguments[1:] if args.arguments[:1]==['--'] else args.arguments)],cwd=work,env=env)
-    print(work)
-    return 0
-
-
 def main():
     ap=argparse.ArgumentParser(description=__doc__);sub=ap.add_subparsers(dest='command',required=True)
     sub.add_parser('list')
     p=sub.add_parser('verify');p.add_argument('sources',nargs='*')
     p=sub.add_parser('materialize');p.add_argument('source');p.add_argument('ids',nargs='+');p.add_argument('--output',required=True,type=Path)
     p=sub.add_parser('export');p.add_argument('source');p.add_argument('--subset',required=True);p.add_argument('--output',required=True,type=Path)
-    p=sub.add_parser('legacy');p.add_argument('--prepare',action='store_true');p.add_argument('--script');p.add_argument('arguments',nargs=argparse.REMAINDER)
     args=ap.parse_args()
     try:
         if args.command=='list':print(json.dumps(json.loads((ROOT/'data/catalog.json').read_text())['corpora'],ensure_ascii=False,indent=2))
@@ -259,7 +208,6 @@ def main():
             finally:
                 if pending.exists():pending.unlink()
             print(args.output)
-        elif args.command=='legacy':return legacy(args)
     except (ValueError,KeyError,OSError) as e:ap.exit(1,f'Error: {e}\n')
     return 0
 

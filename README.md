@@ -100,8 +100,8 @@ experiments/
 
 수집 코퍼스는 `data/corpora/<source>/<revision>/`에 압축 보관하고,
 `scripts/corpus.py`로 목록 확인·무결성 검사·문제별 추출을 수행합니다.
-기존 분석 코드는 `experiments/corpus-survey/`, 리팩터링 실험 코드는 `experiments/refactor90/`,
-실행 결과는 `runs/`에서 확인합니다. 상세 사용법과 원본 복원 절차는 `data/README.md`에 있습니다.
+과거 실험 코드는 Git 이력에 남기고, 실행 결과는 `runs/`에 보존합니다.
+현재 데이터 사용법과 과거 코드 확인 방법은 `data/README.md`에 있습니다.
 
 압축 데이터와 대형 결과는 로컬에 보관하며 Git clone에는 포함되지 않습니다.
 에이전트에는 선택한 원본 문제와 허용 문맥을 별도로 전달합니다.

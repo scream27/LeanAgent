@@ -120,19 +120,6 @@ class CorpusStorageTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             corpus.load('sample', self.root)
 
-    def test_archive_rejects_traversal_and_links(self):
-        for name, link in [('../escaped', False), ('/absolute', False), ('link', True)]:
-            archive = self.root / 'bad.tar.gz'
-            with tarfile.open(archive, 'w:gz') as tar:
-                member = tarfile.TarInfo(name)
-                if link:
-                    member.type = tarfile.SYMTYPE
-                    member.linkname = '/tmp'
-                tar.addfile(member)
-            with self.assertRaises(ValueError):
-                corpus.safe_unpack(archive, self.root / 'extract')
-        self.assertFalse((self.root / 'escaped').exists())
-
     def test_resolve_rejects_external_symlink(self):
         (self.root / 'link').symlink_to(self.root.parent, target_is_directory=True)
         with self.assertRaises(ValueError):

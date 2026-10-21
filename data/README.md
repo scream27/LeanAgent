@@ -65,25 +65,20 @@ python3 scripts/corpus.py export strata --subset verified_benchmark \
 원래 부분집합 파일의 필드 배치·공백까지 필요한 경우 raw 보관본을 사용합니다.
 `problem_dir` 등 레코드 안의 경로는 수집 당시의 논리 경로이며 현재 저장소의 실재 경로가 아닙니다.
 
-## 기존 실험 재현
+## 과거 실험 코드
 
-기존 추출·분석 스크립트는 `experiments/corpus-survey/scripts/`에 보관합니다.
-전체 코퍼스의 펼쳐진 구성을 필요로 하므로 아래 명령으로 재현 작업 공간을 한 번 준비합니다.
-복원에는 약 1.1 GiB의 파일 내용과 파일시스템 여유 공간이 필요합니다.
+기존 수집·분석 및 Refactor90 코드는 첫 재구조화 커밋 `13e4072`에 보존한 뒤
+현재 `experiments/`에서 제거했습니다. 해당 코드 전용 `legacy` 실행 명령도 제거했습니다.
+과거 코드와 당시 실행 절차는 다음과 같이 확인할 수 있습니다.
 
 ```bash
-python3 scripts/corpus.py legacy --prepare
-python3 scripts/corpus.py legacy --script scripts/compare_all_sources.py -- --help
+git ls-tree -r --name-only 13e4072 -- experiments
+git show 13e4072:data/README.md
 ```
 
-작업 공간은 `$PROJECT_CACHE_DIR/corpus-legacy/2026-10-21-layout-v1`입니다.
-`--prepare`는 이미 있는 공간을 덮어쓰지 않습니다. 이후에는 `legacy --script ...`만 사용합니다.
-기존 scripts/tests와 `refactor90` 경로를 복원하고 유지보수한 스크립트를 배치합니다.
-원래 스크립트 바이트는 raw 보관본 안에 남습니다.
-
-이 공간은 **개발·분석용**입니다. 모든 문제와 과거 결과가 포함되므로 에이전트 입력으로 제공하지 않습니다.
-재현 중 만든 결과를 보존하려면 `runs/<새 실행명>/`으로 옮기고 입력·코드 해시를 함께 기록합니다.
-기존 `runs/corpus-survey/`와 `runs/refactor90/`는 과거 기록이므로 덮어쓰지 않습니다.
+과거 실행을 재현해야 한다면 해당 커밋의 코드·문서와 로컬 raw 보관본을 함께 사용합니다.
+`runs/corpus-survey/`와 `runs/refactor90/`는 과거 결과이며 새 실행으로 덮어쓰지 않습니다.
+복원한 과거 작업 공간에는 전체 코퍼스와 개선 후보가 있으므로 에이전트 입력으로 제공하지 않습니다.
 
 ## 원본 보존과 공유
 
