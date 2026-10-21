@@ -1,0 +1,46 @@
+{
+  "collection_date": "2026-10-14",
+  "sources": {
+    "cslib": {
+      "url": "https://github.com/leanprover/cslib",
+      "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+      "toolchain": "leanprover/lean4:v4.32.0",
+      "revision_basis": "common_warmup_source_commit",
+      "toolchain_file": "lean-toolchain",
+      "repo": "sources/cslib",
+      "out": "cslib"
+    },
+    "arklib": {
+      "url": "https://github.com/Verified-zkEVM/ArkLib",
+      "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+      "toolchain": "leanprover/lean4:v4.31.0",
+      "revision_basis": "common_warmup_source_commit",
+      "toolchain_file": "lean-toolchain",
+      "repo": "sources/arklib",
+      "out": "arklib"
+    },
+    "putnambench": {
+      "url": "https://github.com/trishullab/PutnamBench",
+      "revision": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+      "toolchain": "leanprover/lean4:v4.33.1",
+      "revision_basis": "repository_HEAD_at_collection_not_warmup_source_commit",
+      "toolchain_file": "lean4/lean-toolchain",
+      "repo": "sources/putnambench",
+      "out": "putnambench"
+    },
+    "leanpool": {
+      "url": "https://github.com/Vilin97/lean-pool",
+      "revision": "01db1d7049cf9668bda1e9e106875ee1278b43e6",
+      "toolchain": "leanprover/lean4:v4.35.0-rc3",
+      "revision_basis": "repository_HEAD_at_collection_not_warmup_source_commit",
+      "toolchain_file": "lean-toolchain",
+      "repo": "sources/leanpool",
+      "out": "leanpool"
+    }
+  },
+  "notes": [
+    "PutnamBench warm-up hashes identify mathlib4 commits, not PutnamBench source revisions.",
+    "LeanPool has no released warm-up rows in the pinned Arena snapshot.",
+    "No Lake dependency downloads or builds. All source commits are immutable snapshot inputs."
+  ]
+}

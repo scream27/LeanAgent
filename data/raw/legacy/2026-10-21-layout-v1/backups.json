@@ -1,0 +1,58 @@
+{
+  "strata": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/strata.tar.gz",
+    "sha256": "91382a6698925887e6554ca479a914d201000d457b640ff92cafc49dde5484a6",
+    "files": 2574,
+    "original_bytes": 12674664,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/strata.tar.gz.files.json.gz",
+    "file_ledger_sha256": "e670285063304ae9df5e1e03522291ccf4c5c8d1d1b9d5ecd7b456962e7159c6"
+  },
+  "physlib": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/physlib.tar.gz",
+    "sha256": "3cfd1f1345905f13cce446671d7f4b790206ee82eedc4f8690320419f309a06f",
+    "files": 37186,
+    "original_bytes": 103594795,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/physlib.tar.gz.files.json.gz",
+    "file_ledger_sha256": "04a3e292a3f1930a04b6bb43a44f5637591669f34ebaf2947d57ea92f6793847"
+  },
+  "cslib": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/cslib.tar.gz",
+    "sha256": "7d3079e57bd3a7235d409e9aa515a07276498ecfa128b0d243cf15d9833ec714",
+    "files": 6924,
+    "original_bytes": 14336307,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/cslib.tar.gz.files.json.gz",
+    "file_ledger_sha256": "88a381b4ff1b92f70face2b5a846c58dacab04b7e00d2099396d35971c833f9f"
+  },
+  "arklib": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/arklib.tar.gz",
+    "sha256": "ec5ec035e7bf8af6a4d7a821380c4a6b6c4cbdf26c95f68b2cb033b2086278a8",
+    "files": 11000,
+    "original_bytes": 35358242,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/arklib.tar.gz.files.json.gz",
+    "file_ledger_sha256": "664d018a8c8de963f6145f3dda9d1958878eec8a557130eca3b58c4b3af31b3f"
+  },
+  "putnambench": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/putnambench.tar.gz",
+    "sha256": "bdcd7d001e9a188f24fcd5a8cdaa9926b7a195c89a8ec8f3a64c970deb6ca6a3",
+    "files": 3376,
+    "original_bytes": 5862547,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/putnambench.tar.gz.files.json.gz",
+    "file_ledger_sha256": "bceaaeb20af154febb8ffba366e00e141e15e53621916556e9364cedc37a253a"
+  },
+  "leanpool": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/leanpool.tar.gz",
+    "sha256": "22c74261599cd7fe241f441a63918c2d4bb2fbe32519c9e63ee14e085ef5195a",
+    "files": 19419,
+    "original_bytes": 681463078,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/leanpool.tar.gz.files.json.gz",
+    "file_ledger_sha256": "fc937debc899568bf0e8e77e37ea44650d0bad933f76a2fb249bb541e2244e3b"
+  },
+  "workspace": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/workspace.tar.gz",
+    "sha256": "6e02d75ce01a362dfbf62f427e5fffce3cb3db4f1f2f6b0123768ffb141c1f38",
+    "files": 645,
+    "original_bytes": 229222651,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/workspace.tar.gz.files.json.gz",
+    "file_ledger_sha256": "ea2982b620a2e67e65c67416d81eeffb06e1510560e4bcd7270f82cd8e8e421c"
+  }
+}

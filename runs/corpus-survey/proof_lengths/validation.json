@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "warmup_exact_matches": 15,
+  "unit_tests_passed": 3,
+  "stored_lengths_recomputed_and_asserted": 380489,
+  "input_hashes_rechecked": true,
+  "all_subset_histogram_totals_checked": true,
+  "summary_sha256": "11ec92fc217b81ad3986d8666086517747ab7629fed6f1763c568d843b413fbd",
+  "python": "3.9.6 (default, Mar  6 2026, 16:22:43) \n[Clang 21.0.0 (clang-2100.0.123.102)]",
+  "matplotlib": "3.9.4",
+  "numpy": "2.0.2",
+  "bounded_run": {
+    "command": [
+      "/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent-LeanRefactorArena/.venv/bin/python",
+      "scripts/proof_length_distribution.py"
+    ],
+    "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+    "returncode": 0,
+    "stop_reason": null,
+    "peak_group_rss_mb": 76.41,
+    "max_group_rss_mb": 768,
+    "seconds": 87.785,
+    "lean_num_threads": 1,
+    "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/proof_lengths.log"
+  }
+}

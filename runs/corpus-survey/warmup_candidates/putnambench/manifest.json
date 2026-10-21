@@ -1,0 +1,23 @@
+{
+  "eligible": 0,
+  "ge200": 0,
+  "top5pct": 0,
+  "top5pct_cutoff": null,
+  "nominal_top5_count": 0,
+  "boundary_tie_extra": 0,
+  "selected_top_percent": null,
+  "intersection": 0,
+  "union": 0,
+  "warmup_numbers": [],
+  "preview_non_warmup": 0,
+  "warmup_length_basis": "same_source",
+  "exports": {
+    "top5pct.jsonl.gz": "8c3578877e1406627ce27232b9f8ddf813be60c256bae7322e56d5a754a83839",
+    "ge200.index.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "README.md": "eb01c384152dc680437568e65ee790d71b812ddbb2a890b20999bc2914558de6",
+    "intersection.index.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "review_first.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "top5pct.index.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ge200.jsonl.gz": "7e12892e84934425e1705ebf60f144468e39e3154a82c7383f1e7c4ff7a86b67"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "eligible": 312108,
+  "ge200": 47484,
+  "top5pct": 15611,
+  "top5pct_cutoff": 505,
+  "nominal_top5_count": 15606,
+  "boundary_tie_extra": 5,
+  "selected_top_percent": 5.0018,
+  "intersection": 15611,
+  "union": 47484,
+  "warmup_numbers": [],
+  "preview_non_warmup": 25,
+  "warmup_length_basis": "all_15_no_source_specific_warmup",
+  "exports": {
+    "top5pct.jsonl.gz": "e130b1f22b811fd8b4df0c9126d2ffe6498f4aefee7a0db0a78002e2c8859a10",
+    "ge200.index.jsonl": "1295077b0ab255ca5235a4c282e7e14fc8db052f33c4f52cc629ff3a1efd3739",
+    "README.md": "c866ddcc7498dc02b1e32bc92859a9bf602eada42943549b625cc48ff8218c33",
+    "intersection.index.jsonl": "f6b3d13bdba4126d21d273aaf6aa76ad52539425c0a721d572c5299a004b1b3a",
+    "review_first.jsonl": "cb58aee1d5d53e3338de1e700d2cb1bfe4a987008e705cf3c49fad5c55848078",
+    "top5pct.index.jsonl": "f6b3d13bdba4126d21d273aaf6aa76ad52539425c0a721d572c5299a004b1b3a",
+    "ge200.jsonl.gz": "3d5ce6f26c4999ea6493a2071044782cc96e846e750a2cd8936103f0b055d6a4"
+  }
+}

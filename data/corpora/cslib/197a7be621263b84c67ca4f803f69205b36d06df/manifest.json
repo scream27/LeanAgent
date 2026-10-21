@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "source": "cslib",
+  "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+  "toolchain": "leanprover/lean4:v4.32.0",
+  "url": "https://github.com/leanprover/cslib",
+  "records": 1692,
+  "inventory": {
+    "path": "inventory.jsonl.gz",
+    "sha256": "1595a5c892ceb1885c1af9c9e566d17fd4bd1aba82a0592589a6e1e364c979ae",
+    "uncompressed_sha256": "464d6ffd51fee573fe4261d32be051be80ec8ff389a67371beb568ef598b25f3"
+  },
+  "subsets": {
+    "benchmark": {
+      "path": "subsets/benchmark.jsonl.gz",
+      "count": 1629,
+      "sha256": "dceb0d4df1bd18ad5f1f7379e18e6489e038d815b18807739bd75e11e9fcbea1",
+      "original_sha256": "e4da68bf0a0ee973e9810134cde2defa0e35062d4e64e96b38cd7a8dad634be9",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "equations": {
+      "path": "subsets/equations.jsonl.gz",
+      "count": 35,
+      "sha256": "bf038f608d0a6b0240ebffac8f5445bfa2774a8b13b5da2cea58ef43dcdbf8b5",
+      "original_sha256": "c6a93cdee22fa8312ee05c52b4fceb2b40d4837d502ae523791f60d36e41aa31",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "structures": {
+      "path": "subsets/structures.jsonl.gz",
+      "count": 28,
+      "sha256": "5794c2454938bdb0319dc3a993e747e8c77c8a6de2307d8357cab4747ccf08d8",
+      "original_sha256": "4913e9bd88a7b18c65c94b98b8dd33439a7c903343bc56a9c98575680bd7f6cc",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "excluded": {
+      "path": "subsets/excluded.jsonl.gz",
+      "count": 0,
+      "sha256": "6142c2f24093cabbed54857caea601844b15b99114e9b55e0aae58025abc8dad",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    }
+  },
+  "context": {
+    "path": "data/corpora/cslib/197a7be621263b84c67ca4f803f69205b36d06df/context.tar.gz",
+    "sha256": "d60b88ff5be58cceb510a2da0efc733516fd4d35236cf1d51ccc89a2933a9e46",
+    "files": 140,
+    "original_bytes": 979721,
+    "file_ledger": "data/corpora/cslib/197a7be621263b84c67ca4f803f69205b36d06df/context.tar.gz.files.json.gz",
+    "file_ledger_sha256": "f454f63b597c9b745f92119e368cdc3cdd6c7e3c4b6e502c6af133a4cb78f6b1"
+  },
+  "evidence": {
+    "path": "data/corpora/cslib/197a7be621263b84c67ca4f803f69205b36d06df/evidence.tar.gz",
+    "sha256": "80275848033ccab1af54690cc7e7b839d64e7ef43e5d0eaca1813234cbde6641",
+    "files": 7,
+    "original_bytes": 326624,
+    "file_ledger": "data/corpora/cslib/197a7be621263b84c67ca4f803f69205b36d06df/evidence.tar.gz.files.json.gz",
+    "file_ledger_sha256": "550e04e211424d3e90c5ce39ae49fdac29e2c392f893777d7d4d1e78b877b6ea"
+  },
+  "legacy": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/cslib.tar.gz",
+    "sha256": "7d3079e57bd3a7235d409e9aa515a07276498ecfa128b0d243cf15d9833ec714",
+    "files": 6924,
+    "original_bytes": 14336307,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/cslib.tar.gz.files.json.gz",
+    "file_ledger_sha256": "88a381b4ff1b92f70face2b5a846c58dacab04b7e00d2099396d35971c833f9f"
+  },
+  "original_manifest": {
+    "source": "cslib",
+    "url": "https://github.com/leanprover/cslib",
+    "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+    "toolchain": "leanprover/lean4:v4.32.0",
+    "revision_basis": "common_warmup_source_commit",
+    "files_scanned": 181,
+    "files_with_declarations": 140,
+    "total_declarations": 1692,
+    "lexical_declarations": 1692,
+    "unresolved_declarations": 0,
+    "source_bytes": 1065143,
+    "benchmark": 1629,
+    "structures": 28,
+    "equations": 35,
+    "declaration_kinds": {
+      "theorem": 1108,
+      "lemma": 584
+    },
+    "proof_styles": {
+      "by": 1188,
+      "term": 441,
+      "structure": 28,
+      "equations": 35
+    },
+    "extraction_methods": {
+      "lexical_layout": 1692
+    },
+    "native_parser_complete": false,
+    "source_scope": "all tracked .lean files in pinned Git tree, including tests/examples/problems/solutions; no fetched dependencies",
+    "compact": false,
+    "inventory_file": "inventory.jsonl",
+    "subset_format": "full_records",
+    "max_file_bytes": 2000000,
+    "validation_scope": "Full-file exact original-proof reinsertion; lexical token partition. No Lean AST, elaboration, kernel, axioms or heartbeat validation.",
+    "extractor_sha256": "19cd67c5e6f5afab5af61818b6c26f0cf36a6fe738767b7e5c5e56eba3821659",
+    "layout_parser_sha256": "2829f733ca2d6625969ef8e9d1a66b7d61026edb85d78a51ff2fde913abd938f",
+    "lexical_parser_sha256": "13b9622ff1541a95949327143e73f032617b03257fc580694d7f93c440e1f544"
+  },
+  "verified_expanded_files": 6768,
+  "materialization_overrides": 0,
+  "verification_scope": "Storage hashes and lossless record migration only. Existing Lean validation remains unchanged.",
+  "artifact_hashes": {
+    "context-index.json": "5849c6fdca14712ec058a50013c87df4a0f68127c9d98384483663c222ba9af4",
+    "context.tar.gz": "d60b88ff5be58cceb510a2da0efc733516fd4d35236cf1d51ccc89a2933a9e46",
+    "context.tar.gz.files.json.gz": "f454f63b597c9b745f92119e368cdc3cdd6c7e3c4b6e502c6af133a4cb78f6b1",
+    "environment/lake-manifest.json": "ceba7d0fee50fcc84cb20db139450ffc9dbd9dfe343333409b2085f8d6776115",
+    "environment/lakefile.toml": "e0412daf10ba26001d837b14f8809f34b5fc0a15bcfbf2ee9349d3e670615e86",
+    "environment/lean-toolchain": "2773c517aa90b66ea8a2c52bddddf84393157797f8341be0df45294fff7fd32e",
+    "evidence.tar.gz": "80275848033ccab1af54690cc7e7b839d64e7ef43e5d0eaca1813234cbde6641",
+    "evidence.tar.gz.files.json.gz": "550e04e211424d3e90c5ce39ae49fdac29e2c392f893777d7d4d1e78b877b6ea",
+    "inventory.jsonl.gz": "1595a5c892ceb1885c1af9c9e566d17fd4bd1aba82a0592589a6e1e364c979ae",
+    "licenses/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "subsets/benchmark.jsonl.gz": "dceb0d4df1bd18ad5f1f7379e18e6489e038d815b18807739bd75e11e9fcbea1",
+    "subsets/equations.jsonl.gz": "bf038f608d0a6b0240ebffac8f5445bfa2774a8b13b5da2cea58ef43dcdbf8b5",
+    "subsets/excluded.jsonl.gz": "6142c2f24093cabbed54857caea601844b15b99114e9b55e0aae58025abc8dad",
+    "subsets/structures.jsonl.gz": "5794c2454938bdb0319dc3a993e747e8c77c8a6de2307d8357cab4747ccf08d8"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "arena_revision": "56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c",
+  "retrieved_at": "2026-10-13T02:56:00.814785+00:00",
+  "files": {
+    "benchmark_data_warmup.jsonl": {
+      "url": "https://huggingface.co/spaces/delta-lab-ai/lean-refactor-arena/resolve/56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c/benchmark_data_warmup.jsonl",
+      "sha256": "6209680cf00cde0765b77b24834cd72c64dd585b2f7e3f2a58209980ab59a804",
+      "bytes": 113826
+    },
+    "benchmark_heartbeats.jsonl": {
+      "url": "https://huggingface.co/spaces/delta-lab-ai/lean-refactor-arena/resolve/56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c/benchmark_heartbeats.jsonl",
+      "sha256": "f342873a128281f858b9514ca4f3079dac8703515ff8a5510d5edffeecc0b6cb",
+      "bytes": 1119
+    },
+    "benchmark.py": {
+      "url": "https://huggingface.co/spaces/delta-lab-ai/lean-refactor-arena/resolve/56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c/benchmark.py",
+      "sha256": "3374ad5dc51e72c54b0d7629a3506d3750e2780df594eb635359a087d39c2bdc",
+      "bytes": 6839
+    },
+    "app.py": {
+      "url": "https://huggingface.co/spaces/delta-lab-ai/lean-refactor-arena/resolve/56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c/app.py",
+      "sha256": "e75c63bfb1f3c97254d2b0fcdc59f92a4d583c70394a472ab3cfa9429204681b",
+      "bytes": 182556
+    }
+  },
+  "sources": {
+    "strata": {
+      "label": "Strata",
+      "url": "https://github.com/strata-org/Strata",
+      "blurb": "AWS's mechanized program-verification framework."
+    },
+    "physlib": {
+      "label": "PhysLib",
+      "url": "https://github.com/leanprover-community/physlib",
+      "blurb": "Formalized physics in Lean, on top of Mathlib."
+    },
+    "cslib": {
+      "label": "CSLib",
+      "url": "https://github.com/leanprover/cslib",
+      "blurb": "The Lean community's computer-science library."
+    },
+    "arklib": {
+      "label": "ArkLib",
+      "url": "https://github.com/Verified-zkEVM/ArkLib",
+      "blurb": "Formally verified cryptographic arguments for zkVMs."
+    },
+    "putnambench": {
+      "label": "PutnamBench",
+      "url": "https://github.com/trishullab/PutnamBench",
+      "blurb": "Formalized Putnam competition mathematics."
+    },
+    "leanpool": {
+      "label": "LeanPool",
+      "url": "https://github.com/Vilin97/lean-pool",
+      "blurb": "Lean 4 formalizations beyond mathlib's scope."
+    }
+  }
+}

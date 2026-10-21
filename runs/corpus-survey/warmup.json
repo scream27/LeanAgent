@@ -1,0 +1,577 @@
+[
+  {
+    "number": 1,
+    "name": "CallElimCorrect.substOldPostSubset",
+    "source": "strata",
+    "official_proof_length": 313,
+    "official_reference_heartbeat": 5175,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.26.0": "451e5f047bafa010d178856db76c00029bfa4d7f"
+      }
+    ],
+    "file_path": "Strata/Transform/CallElimCorrect.lean",
+    "src_sha256": "dbdbf6e6ea4e52714e1c16cef7626602865b5f0b737c5397d71c0f6fbfc59fc4",
+    "approximate_tactic_heads": {
+      "apply": 23,
+      "simp_all": 20,
+      "simp": 15,
+      "intros": 15,
+      "case": 9,
+      "assumption": 9,
+      "rename_i": 5,
+      "cases": 5,
+      "split": 2,
+      "induction": 1,
+      "exact": 1,
+      "have": 1
+    },
+    "line_span_matches_at_pilot_revision": false,
+    "src_present_at_pilot_revision": true,
+    "src_match_count_at_pilot_revision": 1,
+    "located_lines_at_pilot_revision": [
+      3089,
+      3185
+    ]
+  },
+  {
+    "number": 2,
+    "name": "CallElimCorrect.extractedOldExprInVars",
+    "source": "strata",
+    "official_proof_length": 222,
+    "official_reference_heartbeat": 2696,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.26.0": "451e5f047bafa010d178856db76c00029bfa4d7f"
+      }
+    ],
+    "file_path": "Strata/Transform/CallElimCorrect.lean",
+    "src_sha256": "2cc5b82de593a0cbc83f9b386cc95245e97d4b18ac4d8a89294c9d0cb0917345",
+    "approximate_tactic_heads": {
+      "apply": 25,
+      "intros": 11,
+      "simp_all": 10,
+      "assumption": 8,
+      "cases": 7,
+      "case": 5,
+      "exact": 3,
+      "rename_i": 3,
+      "simp": 2,
+      "induction": 1,
+      "unfold": 1,
+      "split": 1,
+      "next": 1,
+      "exfalso": 1,
+      "specialize": 1,
+      "constructor": 1,
+      "rfl": 1
+    },
+    "line_span_matches_at_pilot_revision": false,
+    "src_present_at_pilot_revision": true,
+    "src_match_count_at_pilot_revision": 1,
+    "located_lines_at_pilot_revision": [
+      2858,
+      2939
+    ]
+  },
+  {
+    "number": 3,
+    "name": "Core.InitsUpdatesComm",
+    "source": "strata",
+    "official_proof_length": 224,
+    "official_reference_heartbeat": 4251,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.29.1": "384e22374e0872095ad9c6f74c5998c09cfd93a9"
+      },
+      {
+        "v4.27.0": "4348c65a93a3b57b1a4541991ed2d2fcdd9fa35d"
+      },
+      {
+        "v4.26.0": "451e5f047bafa010d178856db76c00029bfa4d7f"
+      }
+    ],
+    "file_path": "Strata/Languages/Core/StatementSemanticsProps.lean",
+    "src_sha256": "0bd9a59f8ee210f7aa33326b61e40934872abaced72cb270dd62288ee1cb1973",
+    "approximate_tactic_heads": {
+      "apply": 13,
+      "simp_all": 7,
+      "have": 5,
+      "exact": 5,
+      "simp": 5,
+      "intros": 2,
+      "case": 2,
+      "refine": 2,
+      "rw": 2,
+      "exists": 1,
+      "induction": 1,
+      "constructor": 1,
+      "split": 1,
+      "next": 1,
+      "specialize": 1
+    },
+    "line_span_matches_at_pilot_revision": false,
+    "src_present_at_pilot_revision": true,
+    "src_match_count_at_pilot_revision": 1,
+    "located_lines_at_pilot_revision": [
+      931,
+      985
+    ]
+  },
+  {
+    "number": 4,
+    "name": "fundamental_theorem_of_variational_calculus'",
+    "source": "physlib",
+    "official_proof_length": 851,
+    "official_reference_heartbeat": 11947,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.32.0": "c48433678e8fb6306ebcd48453300c8e16058a62"
+      }
+    ],
+    "file_path": "Physlib/Mathematics/VariationalCalculus/Basic.lean",
+    "src_sha256": "ae3a05ebcb1ec68d71b29734366ba8e73e3d3068bcc3a53e5b71ec3990bc84dd",
+    "approximate_tactic_heads": {
+      "have": 23,
+      "linarith": 8,
+      "simp": 6,
+      "rw": 4,
+      "intro": 4,
+      "exact": 4,
+      "obtain": 3,
+      "by_contra": 1,
+      "apply": 1,
+      "simpa": 1,
+      "intros": 1,
+      "convert": 1,
+      "nlinarith": 1,
+      "positivity": 1,
+      "refine": 1,
+      "show": 1,
+      "by_cases": 1,
+      "constructor": 1
+    }
+  },
+  {
+    "number": 5,
+    "name": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema",
+    "source": "physlib",
+    "official_proof_length": 1372,
+    "official_reference_heartbeat": 26970,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.32.0": "c48433678e8fb6306ebcd48453300c8e16058a62"
+      }
+    ],
+    "file_path": "Physlib/Electromagnetism/Dynamics/IsExtrema.lean",
+    "src_sha256": "9839fbd7f2dedf9c22190403722dc98210c990a14188a042ddf41ab5e050496c",
+    "approximate_tactic_heads": {
+      "rw": 18,
+      "simp": 13,
+      "congr": 12,
+      "exact": 6,
+      "funext": 6,
+      "have": 4,
+      "apply": 4,
+      "rfl": 2,
+      "field_simp": 2,
+      "calc": 1,
+      "change": 1,
+      "intro": 1,
+      "ring": 1
+    }
+  },
+  {
+    "number": 6,
+    "name": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time",
+    "source": "physlib",
+    "official_proof_length": 1217,
+    "official_reference_heartbeat": 42225,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.32.0": "c48433678e8fb6306ebcd48453300c8e16058a62"
+      }
+    ],
+    "file_path": "Physlib/QFT/PerturbationTheory/WickAlgebra/TimeOrder.lean",
+    "src_sha256": "b0b0bdda4094c15be7cfd13caee9f73b03ddf22c9de85a90567a1291cc6f0306",
+    "approximate_tactic_heads": {
+      "simp": 14,
+      "rw": 12,
+      "simp_all": 7,
+      "intro": 4,
+      "have": 3,
+      "change": 2,
+      "apply": 2,
+      "rintro": 2,
+      "calc": 1,
+      "decide": 1,
+      "congr": 1,
+      "by_cases": 1
+    }
+  },
+  {
+    "number": 7,
+    "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress",
+    "source": "cslib",
+    "official_proof_length": 408,
+    "official_reference_heartbeat": 59830,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.33.0-rc2": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+      },
+      {
+        "v4.32.0": "197a7be621263b84c67ca4f803f69205b36d06df"
+      },
+      {
+        "v4.31.0": "8ea71c8df91acd63285515a04da952b23b78d266"
+      }
+    ],
+    "file_path": "Cslib/Languages/LambdaCalculus/LocallyNameless/Fsub/Safety.lean",
+    "src_sha256": "e8b89255b06b284c8a4f4ba9a140c458d8c4640f63014c9c0037585855039be7",
+    "approximate_tactic_heads": {
+      "grind": 19,
+      "exists": 11,
+      "case": 10,
+      "cases": 8,
+      "obtain": 8,
+      "right": 6,
+      "have": 3,
+      "left": 2,
+      "constructor": 2,
+      "apply": 2,
+      "generalize": 1,
+      "induction": 1,
+      "subst": 1,
+      "specialize": 1
+    }
+  },
+  {
+    "number": 8,
+    "name": "Cslib.SKI.parallelReduction_diamond",
+    "source": "cslib",
+    "official_proof_length": 407,
+    "official_reference_heartbeat": 1383,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.33.0-rc2": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+      },
+      {
+        "v4.32.0": "197a7be621263b84c67ca4f803f69205b36d06df"
+      },
+      {
+        "v4.31.0": "8ea71c8df91acd63285515a04da952b23b78d266"
+      },
+      {
+        "v4.30.0": "c7944a9fb44c3298f1a960a5e574ab23a6ab8ed5"
+      }
+    ],
+    "file_path": "Cslib/Languages/CombinatoryLogic/Confluence.lean",
+    "src_sha256": "35f528e8e77dceff098e735cfb0ee98ea989fecca8258a7d59632f211cc5ffdc",
+    "approximate_tactic_heads": {
+      "case": 19,
+      "exact": 16,
+      "use": 13,
+      "refl": 11,
+      "rw": 6,
+      "cases": 5,
+      "apply": 3,
+      "constructor": 2,
+      "intro": 1,
+      "grind": 1
+    }
+  },
+  {
+    "number": 9,
+    "name": "Cslib.CCS.bisimilarity_congr_choice",
+    "source": "cslib",
+    "official_proof_length": 251,
+    "official_reference_heartbeat": 3858,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.33.0-rc2": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+      },
+      {
+        "v4.32.0": "197a7be621263b84c67ca4f803f69205b36d06df"
+      },
+      {
+        "v4.31.0": "8ea71c8df91acd63285515a04da952b23b78d266"
+      }
+    ],
+    "file_path": "Cslib/Languages/CCS/BehaviouralTheory.lean",
+    "src_sha256": "90ec3fb53d6c4e9485868b3d1f1bceac5de6abc8b429d456281744fd1b0fa828",
+    "approximate_tactic_heads": {
+      "constructor": 15,
+      "case": 10,
+      "apply": 10,
+      "obtain": 8,
+      "exists": 7,
+      "intro": 4,
+      "cases": 4,
+      "assumption": 3
+    }
+  },
+  {
+    "number": 10,
+    "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
+    "source": "arklib",
+    "official_proof_length": 1463,
+    "official_reference_heartbeat": 15645,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.31.0": "c1712f6c496d0aef04f09bae42aec13811b3273f"
+      },
+      {
+        "v4.30.0": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4"
+      },
+      {
+        "v4.29.0": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c"
+      },
+      {
+        "v4.28.0": "673fa440714eb1949b8b50a28f2a4f52b1837e9b"
+      }
+    ],
+    "file_path": "ArkLib/ProofSystem/Binius/BinaryBasefold/Prelude.lean",
+    "src_sha256": "561da2e1599d85a33fddbdbdb9eca3f05f504c3dfaa7e32d367eef4eba532033",
+    "approximate_tactic_heads": {
+      "have": 28,
+      "omega": 27,
+      "simp": 20,
+      "exact": 16,
+      "rw": 15,
+      "apply": 9,
+      "use": 5,
+      "unfold": 4,
+      "intro": 3,
+      "dsimp": 2,
+      "change": 2,
+      "gcongr": 2,
+      "norm_num": 1,
+      "obtain": 1,
+      "refine": 1,
+      "rcases": 1,
+      "rfl": 1,
+      "calc": 1
+    }
+  },
+  {
+    "number": 11,
+    "name": "Binius.BinaryBasefold.fold_advances_evaluation_poly",
+    "source": "arklib",
+    "official_proof_length": 1906,
+    "official_reference_heartbeat": 45273,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.31.0": "c1712f6c496d0aef04f09bae42aec13811b3273f"
+      },
+      {
+        "v4.30.0": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4"
+      },
+      {
+        "v4.29.0": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c"
+      }
+    ],
+    "file_path": "ArkLib/ProofSystem/Binius/BinaryBasefold/Prelude.lean",
+    "src_sha256": "67401740132ca27612c5a143c6dd3a90205f5d84a7c0850182c9391592a0752f",
+    "approximate_tactic_heads": {
+      "rw": 40,
+      "omega": 38,
+      "have": 27,
+      "simp": 21,
+      "apply": 5,
+      "congr": 4,
+      "ring": 3,
+      "intro": 2,
+      "ring_nf": 1,
+      "rfl": 1,
+      "calc": 1,
+      "simp_rw": 1
+    }
+  },
+  {
+    "number": 12,
+    "name": "interleaved_affine_gaps_imply_tensor_gaps",
+    "source": "arklib",
+    "official_proof_length": 1353,
+    "official_reference_heartbeat": 9198,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.31.0": "c1712f6c496d0aef04f09bae42aec13811b3273f"
+      },
+      {
+        "v4.30.0": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4"
+      },
+      {
+        "v4.29.0": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c"
+      }
+    ],
+    "file_path": "ArkLib/Data/CodingTheory/ProximityGap/DG25/MainResults.lean",
+    "src_sha256": "5e8c33db1f147ea33ed9adae552f5f17c7559384f868799a83392817c2e56979",
+    "approximate_tactic_heads": {
+      "have": 19,
+      "simp": 12,
+      "show": 10,
+      "intro": 7,
+      "rw": 7,
+      "rfl": 6,
+      "exact": 6,
+      "simp_rw": 4,
+      "omega": 4,
+      "apply": 4,
+      "unfold": 3,
+      "funext": 2,
+      "classical": 1,
+      "induction": 1,
+      "contradiction": 1,
+      "cases": 1,
+      "by_cases": 1,
+      "specialize": 1
+    }
+  },
+  {
+    "number": 13,
+    "name": "putnam_1964_a4",
+    "source": "putnambench",
+    "official_proof_length": 1769,
+    "official_reference_heartbeat": 111476,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.25.0": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33"
+      },
+      {
+        "v4.26.0": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67"
+      },
+      {
+        "v4.27.0": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+      }
+    ],
+    "file_path": "",
+    "src_sha256": "27b46ee810644ab2f6c3950cda14346274705204b619350947ad97d90e62b669",
+    "approximate_tactic_heads": {
+      "have": 55,
+      "omega": 29,
+      "simp_all": 13,
+      "simp": 12,
+      "exact": 9,
+      "intro": 6,
+      "ring_nf": 6,
+      "linarith": 6,
+      "constructor": 5,
+      "norm_cast": 5,
+      "obtain": 3,
+      "rw": 3,
+      "aesop": 2,
+      "norm_num": 2,
+      "classical": 1,
+      "rcases": 1,
+      "nlinarith": 1,
+      "apply": 1,
+      "by_cases": 1,
+      "cases": 1,
+      "induction": 1,
+      "field_simp": 1,
+      "use": 1
+    }
+  },
+  {
+    "number": 14,
+    "name": "putnam_1964_b2",
+    "source": "putnambench",
+    "official_proof_length": 1754,
+    "official_reference_heartbeat": 134499,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.25.0": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33"
+      },
+      {
+        "v4.26.0": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67"
+      }
+    ],
+    "file_path": "",
+    "src_sha256": "16f0c2b3e008d0002b83f9550e553fb9acd22cbb4daf5ec813ecd68282738892",
+    "approximate_tactic_heads": {
+      "have": 83,
+      "exact": 19,
+      "intro": 18,
+      "tauto": 16,
+      "simp_all": 16,
+      "simp": 14,
+      "rw": 10,
+      "aesop": 10,
+      "apply": 6,
+      "by_contra": 5,
+      "obtain": 4,
+      "ext": 3,
+      "by_cases": 3,
+      "exfalso": 3,
+      "constructor": 2,
+      "simpa": 2,
+      "push_neg": 2,
+      "cases": 2,
+      "intros": 2,
+      "norm_num": 2,
+      "linarith": 2,
+      "omega": 2,
+      "contradiction": 1,
+      "classical": 1,
+      "ring_nf": 1,
+      "calc": 1,
+      "nlinarith": 1
+    }
+  },
+  {
+    "number": 15,
+    "name": "putnam_1995_a3",
+    "source": "putnambench",
+    "official_proof_length": 4085,
+    "official_reference_heartbeat": 14130,
+    "heartbeat_status": "published_reference_not_locally_measured",
+    "version_info": [
+      {
+        "v4.25.0": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33"
+      },
+      {
+        "v4.26.0": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67"
+      },
+      {
+        "v4.27.0": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+      }
+    ],
+    "file_path": "",
+    "src_sha256": "56dcc03e9f1d22a0655aeb46aa929c75efddb21f2fa73d7504b648792b6e8329",
+    "approximate_tactic_heads": {
+      "have": 76,
+      "exact": 34,
+      "rw": 18,
+      "simp": 17,
+      "ring": 16,
+      "intro": 12,
+      "calc": 8,
+      "rfl": 7,
+      "apply": 6,
+      "decide": 3,
+      "by_cases": 2,
+      "norm_num": 2,
+      "linarith": 1,
+      "use": 1,
+      "norm_cast": 1,
+      "simpa": 1,
+      "contradiction": 1,
+      "cases": 1,
+      "exfalso": 1
+    }
+  }
+]

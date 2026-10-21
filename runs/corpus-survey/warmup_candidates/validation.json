@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "checks": [
+    "source input hashes unchanged",
+    "gzip full record integrity and proof/source SHA",
+    "selection thresholds and exclusions",
+    "full record IDs equal sorted index IDs",
+    "intersection IDs exact",
+    "preview excludes official warmups",
+    "export hashes match manifests"
+  ],
+  "sources": {
+    "strata": {
+      "ge200": 29,
+      "top5pct": 29
+    },
+    "physlib": {
+      "ge200": 612,
+      "top5pct": 361
+    },
+    "cslib": {
+      "ge200": 35,
+      "top5pct": 60
+    },
+    "arklib": {
+      "ge200": 359,
+      "top5pct": 107
+    },
+    "putnambench": {
+      "ge200": 0,
+      "top5pct": 0
+    },
+    "leanpool": {
+      "ge200": 47484,
+      "top5pct": 15611
+    }
+  },
+  "unit_tests_passed": 3,
+  "heartbeat_measured": false,
+  "bounded_run": {
+    "command": [
+      "python3",
+      "scripts/select_warmup_candidates.py"
+    ],
+    "cwd": "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena",
+    "returncode": 0,
+    "stop_reason": null,
+    "peak_group_rss_mb": 108.25,
+    "max_group_rss_mb": 768,
+    "seconds": 12.373,
+    "lean_num_threads": 1,
+    "log": "/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/remaining_extract/warmup_candidates.log"
+  },
+  "summary_sha256": "a0ecc374fba887c5123062095e8f6afffe309ace30245145e52674607212eebe"
+}

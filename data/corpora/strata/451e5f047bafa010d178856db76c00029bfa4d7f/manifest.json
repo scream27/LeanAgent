@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "source": "strata",
+  "revision": "451e5f047bafa010d178856db76c00029bfa4d7f",
+  "toolchain": "leanprover/lean4:v4.26.0",
+  "url": "https://github.com/strata-org/Strata",
+  "records": 615,
+  "inventory": {
+    "path": "inventory.jsonl.gz",
+    "sha256": "888876ad90cff94e45180caaa45c953a7969b72001225faffe5849db0f592ab0",
+    "uncompressed_sha256": "5e633cfc79d8250b0ca6122b67d0e22248bbcb6f401b873a87b995000e866ecb"
+  },
+  "subsets": {
+    "benchmark": {
+      "path": "subsets/benchmark.jsonl.gz",
+      "count": 603,
+      "sha256": "1bf558d440e860e60d6f3365263d8aff75aceb9f342c916086ebf31edbae113d",
+      "original_sha256": "a66136697b782504756c00f0fed49b938f9346a31039d321ec9a2948b9c5062a",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "equations": {
+      "path": "subsets/equations.jsonl.gz",
+      "count": 3,
+      "sha256": "aeaf0f81d932b777050853c2500dddf3837f290e8c6f6c6fc2acc926fce0bcd9",
+      "original_sha256": "9b15b9eba9c7d8ce064b0e3557a45e30555e97a01507bb01010db91fbb50a672",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "excluded": {
+      "path": "subsets/excluded.jsonl.gz",
+      "count": 9,
+      "sha256": "a462312956225c6f8755678b77c8c195bdcd2e8d5c9a25c38796433b3ad256bd",
+      "original_sha256": "653d6054659c52b0b03dc2106ee089a5dd563f0b793ae622b742889f79408b63",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "verified_benchmark": {
+      "path": "subsets/verified_benchmark.jsonl.gz",
+      "count": 598,
+      "sha256": "cbf9e7718e7b57739bf17a17cac2a94dc43ca38596eb479c34e37f27602af860",
+      "original_sha256": "8eac1e4f53d78ab184bfe051beb54c7bc63cca54290da20b442dbf166e282a0f",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "verified_equations": {
+      "path": "subsets/verified_equations.jsonl.gz",
+      "count": 3,
+      "sha256": "668b8ce8d755145ec8f42bcfdf3850918f80ca009642394a28f6e72b67f92412",
+      "original_sha256": "418bd57952a59f0ca5682203bffeb60235f27e37f098118122fcd5ad238a2293",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    },
+    "axiom_excluded": {
+      "path": "subsets/axiom_excluded.jsonl.gz",
+      "count": 14,
+      "sha256": "2a481986581ae0a09d78af5914c62f385943490e6d648da2239d1df1173dab8a",
+      "original_sha256": "ed9957e47aa364079ac3c5277418c0a260cbc86ae5ae5e4424aa11c7564bc9bd",
+      "semantics": "inventory row plus annotations; original bytes in legacy archive"
+    }
+  },
+  "context": {
+    "path": "data/corpora/strata/451e5f047bafa010d178856db76c00029bfa4d7f/context.tar.gz",
+    "sha256": "eb1b7c3db95eb55f95afa4aa9519942aa57661eb129f1830e5fc6f00660dba08",
+    "files": 44,
+    "original_bytes": 806685,
+    "file_ledger": "data/corpora/strata/451e5f047bafa010d178856db76c00029bfa4d7f/context.tar.gz.files.json.gz",
+    "file_ledger_sha256": "23203042959e363b848d53fbabc403ec82c6d581ef721e4f0291a9eaaffefdf3"
+  },
+  "evidence": {
+    "path": "data/corpora/strata/451e5f047bafa010d178856db76c00029bfa4d7f/evidence.tar.gz",
+    "sha256": "f0b5544f3219125d6b699e45ad35843701547195ea14d30ed397c66343866151",
+    "files": 57,
+    "original_bytes": 3555054,
+    "file_ledger": "data/corpora/strata/451e5f047bafa010d178856db76c00029bfa4d7f/evidence.tar.gz.files.json.gz",
+    "file_ledger_sha256": "27b1ede21bdbc868002b108d17b01ecc0a31d044a10db565e26edf3b06d3cfc9"
+  },
+  "legacy": {
+    "path": "data/raw/legacy/2026-10-21-layout-v1/strata.tar.gz",
+    "sha256": "91382a6698925887e6554ca479a914d201000d457b640ff92cafc49dde5484a6",
+    "files": 2574,
+    "original_bytes": 12674664,
+    "file_ledger": "data/raw/legacy/2026-10-21-layout-v1/strata.tar.gz.files.json.gz",
+    "file_ledger_sha256": "e670285063304ae9df5e1e03522291ccf4c5c8d1d1b9d5ecd7b456962e7159c6"
+  },
+  "original_manifest": {
+    "source": "https://github.com/strata-org/Strata",
+    "revision": "451e5f047bafa010d178856db76c00029bfa4d7f",
+    "toolchain": "leanprover/lean4:v4.26.0",
+    "files_scanned": 377,
+    "files_with_declarations": 44,
+    "total_declarations": 615,
+    "warmup_shaped_complete_source": 603,
+    "equation_style_complete_source": 3,
+    "direct_incomplete_source": 9,
+    "declaration_kinds": {
+      "theorem": 615
+    },
+    "proof_styles": {
+      "by": 589,
+      "term": 23,
+      "equations": 3
+    },
+    "private_declarations": 20,
+    "mutual_declarations": 2,
+    "extractor_sha256": "19ba45f174ad587eb7b890e3589f3573ee1f86ffca7c573f448935243d8fbad6",
+    "lean_parser_sha256": "e7bfa97a64d2310c999b8c482a121256cb41d764bb014864518a79604f743ef8",
+    "proof_tokens_sha256": "746f0c5b6d21015062f686b9bde4ea3623c17c2421d12f1436d741860c5404ed",
+    "validation_scope": "native syntax and exact source spans; no elaboration or heartbeat by extractor"
+  },
+  "verified_expanded_files": 2460,
+  "materialization_overrides": 615,
+  "verification_scope": "Storage hashes and lossless record migration only. Existing Lean validation remains unchanged.",
+  "artifact_hashes": {
+    "context-index.json": "0c6d6b128c3fecbbdc3f9442cf4aa42aca6f7ac6220737846a1aabfa273b95a3",
+    "context.tar.gz": "eb1b7c3db95eb55f95afa4aa9519942aa57661eb129f1830e5fc6f00660dba08",
+    "context.tar.gz.files.json.gz": "23203042959e363b848d53fbabc403ec82c6d581ef721e4f0291a9eaaffefdf3",
+    "environment/lake-manifest.json": "5aab41f14cc55b5049ae81535506b6998bfadd9d983af6130fa92f4a39bd244c",
+    "environment/lakefile.toml": "5c0abe83aaa82d837d50cf987102ff3138a15aec988912f06166a39e5ee578ae",
+    "environment/lean-toolchain": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8",
+    "evidence.tar.gz": "f0b5544f3219125d6b699e45ad35843701547195ea14d30ed397c66343866151",
+    "evidence.tar.gz.files.json.gz": "27b1ede21bdbc868002b108d17b01ecc0a31d044a10db565e26edf3b06d3cfc9",
+    "inventory.jsonl.gz": "888876ad90cff94e45180caaa45c953a7969b72001225faffe5849db0f592ab0",
+    "licenses/LICENSE-APACHE": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+    "licenses/LICENSE-MIT": "f190f35125c4ec9f6804d3ed940b72270d3e793af35b0c32d09bf85cae4e0d8a",
+    "licenses/NOTICE": "d4290ed64c2edd0fce1d84e3f9dfb2881240fe534def76b8cd29ed6af683e287",
+    "materialization_overrides.jsonl.gz": "ef02a066f76c6b9ce6418053c65087c80e501e1be53090a647a46eaf719ba4e6",
+    "subsets/axiom_excluded.jsonl.gz": "2a481986581ae0a09d78af5914c62f385943490e6d648da2239d1df1173dab8a",
+    "subsets/benchmark.jsonl.gz": "1bf558d440e860e60d6f3365263d8aff75aceb9f342c916086ebf31edbae113d",
+    "subsets/equations.jsonl.gz": "aeaf0f81d932b777050853c2500dddf3837f290e8c6f6c6fc2acc926fce0bcd9",
+    "subsets/excluded.jsonl.gz": "a462312956225c6f8755678b77c8c195bdcd2e8d5c9a25c38796433b3ad256bd",
+    "subsets/verified_benchmark.jsonl.gz": "cbf9e7718e7b57739bf17a17cac2a94dc43ca38596eb479c34e37f27602af860",
+    "subsets/verified_equations.jsonl.gz": "668b8ce8d755145ec8f42bcfdf3850918f80ca009642394a28f6e72b67f92412"
+  }
+}

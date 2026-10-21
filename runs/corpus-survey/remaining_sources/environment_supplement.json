@@ -1,0 +1,17 @@
+{
+  "putnambench/environment/lean4/lake-manifest.json": {
+    "source_path": "lean4/lake-manifest.json",
+    "revision": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+    "sha256": "86f328eaf63c87c7133c5fb4a480e1b368d1141631efb6f89f84ee71163cba0a"
+  },
+  "putnambench/environment/lean4/lakefile.lean": {
+    "source_path": "lean4/lakefile.lean",
+    "revision": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+    "sha256": "54d9a1a690a447499f8b14a219645eb62ed971a034a13a180c1d012ce9b197a0"
+  },
+  "leanpool/NOTICE": {
+    "source_path": "NOTICE",
+    "revision": "01db1d7049cf9668bda1e9e106875ee1278b43e6",
+    "sha256": "9dcac19b97640a4f9f43a59bb376718581f35eaaf354d2f8f3b066e1bcfc9c14"
+  }
+}

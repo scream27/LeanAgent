@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "Input/script SHA, current manifests, exported all/no_direct_sorry counts, occurrences, prevalence; not Lean or tactic-parser semantic validation",
+  "declarations_by_source": {
+    "strata": 615,
+    "physlib": 9008,
+    "cslib": 1692,
+    "arklib": 2686,
+    "putnambench": 672,
+    "leanpool": 367448,
+    "putnambench_warmup": 3
+  },
+  "summary_sha256": "b9dfd0aa2adfc7a5dc3b7a78e0f0fd3cdf926a63aa8cb3e7e60b1db6db8cac42",
+  "declarations_sha256": "3d8df2e01d90370f1bd7770c32b885aa9d020333dd3f466fbdb7a9f43a551952",
+  "verification_script_sha256": "5f7bced3c105a14e80d814aa1a78edbcba7d16f0057abbba95d88ac5c20c685b"
+}
