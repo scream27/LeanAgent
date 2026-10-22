@@ -1,0 +1,136 @@
+{
+  "valid": true,
+  "tokens": 79,
+  "environments": {
+    "v4-31-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/warmup15-xhigh/v4.31.0/cslib-extension:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/cslib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/mathlib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/plausible/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/LeanSearchClient/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/importGraph/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/proofwidgets/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/aesop/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/Qq/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/batteries/build/lib/lean",
+            "/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent/version-guidance/toolchains/v4.31.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.862432,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "ced22f5cce60060fd632cc6cd72f6d4e56bac4e8ab586c14decb8cc6ad65adb3",
+          "log": "check.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/warmup15-xhigh/v4.31.0/cslib-extension:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/cslib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/mathlib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/plausible/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/LeanSearchClient/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/importGraph/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/proofwidgets/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/aesop/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/Qq/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/batteries/build/lib/lean",
+            "/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent/version-guidance/toolchains/v4.31.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.971267,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "d11081cd85dee3e0e8cc8b524f5b86160daa8a1987ca4e1b59398fb0a684c7da",
+          "log": "measure-1.log",
+          "log_sha256": "b1fcc3e216b11607c2d94b14b16e6579fdca61f8585949b4104a2d6ad6950b0d",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 512896,
+            "scaled": 512,
+            "target": "Cslib.CCS.bisimilarity_congr_choice"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/warmup15-xhigh/v4.31.0/cslib-extension:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/cslib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/mathlib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/plausible/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/LeanSearchClient/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/importGraph/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/proofwidgets/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/aesop/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/Qq/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/batteries/build/lib/lean",
+            "/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent/version-guidance/toolchains/v4.31.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 2.478423,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "ed8219b2636d4842fd0f84f1d7d78b9ca7029f160f194e82f97eb7cfe5b220bb",
+          "log": "measure-2.log",
+          "log_sha256": "db357725ac822cc4d42c4c4e94f69391b1d42fc2a750be2f82f9d6d0b4117642",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 512859,
+            "scaled": 512,
+            "target": "Cslib.CCS.bisimilarity_congr_choice"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/warmup15-xhigh/v4.31.0/cslib-extension:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/cslib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/mathlib/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/plausible/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/LeanSearchClient/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/importGraph/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/proofwidgets/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/aesop/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/Qq/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent/version-guidance/v4.31.0/batteries/build/lib/lean",
+            "/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent/version-guidance/toolchains/v4.31.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.31.0/정소미-final/v4-31-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 2.086263,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "89c1212678c78bcfd5056e30d1f54c49499d7a4f2e440a73a2a3837bf0d18e8a",
+          "log": "measure-3.log",
+          "log_sha256": "53d003add596085dc27729ed22d610a60effe72c5ee8b9a4e9462f2cfe9ae1c8",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 512931,
+            "scaled": 512,
+            "target": "Cslib.CCS.bisimilarity_congr_choice"
+          }
+        }
+      ],
+      "median_heartbeats": 512,
+      "error": null
+    }
+  },
+  "error": null
+}

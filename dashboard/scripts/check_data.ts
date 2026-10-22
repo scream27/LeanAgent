@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { parseSnapshot } from '../src/lib/model.ts';
 
@@ -13,6 +14,13 @@ for (const file of files) {
   const snapshot = parseSnapshot(JSON.parse(readFileSync(new URL(file, root), 'utf8')));
   if (`${snapshot.id}.json` !== file) {
     throw new Error(`Snapshot ID does not match filename: ${file}`);
+  }
+  for (const problem of snapshot.problems) {
+    for (const candidate of problem.teamResults ?? []) {
+      if (createHash('sha256').update(candidate.proof).digest('hex') !== candidate.candidateHash) {
+        throw new Error(`P${problem.id} ${candidate.id}: published proof does not match its verified hash.`);
+      }
+    }
   }
   console.log(`Validated ${file}: ${snapshot.problems.length} problems`);
 }

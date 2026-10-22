@@ -1,0 +1,136 @@
+{
+  "valid": true,
+  "tokens": 123,
+  "environments": {
+    "v4-32-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/Qq/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/Qq/.lake/build/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.346698,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "6466eb5d5fe151ad7cdf6f56472391991b48fa7dc4af61f80344af9c3ebb0fac",
+          "log": "check.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/Qq/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/Qq/.lake/build/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.581323,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "b12db693d4dee1698cc45e6596ae259c7939aa81ab6ed32e9eab075716f97160",
+          "log": "measure-1.log",
+          "log_sha256": "f67f9a97aced18e53f4bfdf2283a64e9e6886f89ef72e32e0c572ff7b96aab86",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 1384920,
+            "scaled": 1384,
+            "target": "fundamental_theorem_of_variational_calculus'"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/Qq/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/Qq/.lake/build/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.50346,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "d034df106c941178f5e21bf20c9f7afae0851d56ef15516425ae2f4c946ca2f6",
+          "log": "measure-2.log",
+          "log_sha256": "f33631221ec4f3a460923fd29d3710974d810d4e425791c63b82679779277b35",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 1384929,
+            "scaled": 1384,
+            "target": "fundamental_theorem_of_variational_calculus'"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/physlib/lake/packages/Qq/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/refactor90/cslib-4.32.0:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/mathlib/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/plausible/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/batteries/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/aesop/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/importGraph/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/jwkweon/00_work/00_project/cache/05_pseudolab/01_LEArN/.cache/physlib-c48433678e8fb6306ebcd48453300c8e16058a62/.lake/packages/Qq/.lake/build/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P04/v4.32.0/권주원-20261016/v4-32-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.577695,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "c7f96cb0d9d728f917f65b454be6c51feb2621ed0f4ec86c4c2b2d6d732bbfc9",
+          "log": "measure-3.log",
+          "log_sha256": "e8fc2ebcc98b56f9be8654c91c784eabb11828d97a165e99065330a25bd70c39",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 1384929,
+            "scaled": 1384,
+            "target": "fundamental_theorem_of_variational_calculus'"
+          }
+        }
+      ],
+      "median_heartbeats": 1384,
+      "error": null
+    }
+  },
+  "error": null
+}

@@ -1,0 +1,136 @@
+{
+  "valid": true,
+  "tokens": 79,
+  "environments": {
+    "v4-32-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/cslib/197a7be621263b84c67ca4f803f69205b36d06df/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.70195,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "ced22f5cce60060fd632cc6cd72f6d4e56bac4e8ab586c14decb8cc6ad65adb3",
+          "log": "check.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/cslib/197a7be621263b84c67ca4f803f69205b36d06df/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.834583,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "a4cc89b9798dabe41d5f5a0dbd870e174044d9a362f3073b34446663a90ce20b",
+          "log": "measure-1.log",
+          "log_sha256": "1dbc60a5e6736abd432c0d3b2002d4d1d5b11b583696754cbc4809c969566c45",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 512881,
+            "scaled": 512,
+            "target": "Cslib.CCS.bisimilarity_congr_choice"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/cslib/197a7be621263b84c67ca4f803f69205b36d06df/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.798039,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "b4d00f356aba6b86d3815830434089c8bd45482556cbb1491f54b74eccc6f3f6",
+          "log": "measure-2.log",
+          "log_sha256": "786360754e7d6eb76df5eb843bf94f514ae560faca6d81bdb1cfacd17eba8117",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 512846,
+            "scaled": 512,
+            "target": "Cslib.CCS.bisimilarity_congr_choice"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/cslib/197a7be621263b84c67ca4f803f69205b36d06df/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-01/P09/v4.32.0/정소미-final/v4-32-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 1.903531,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "623b061d0c9524cb816d2f381d76e080cf330aa959df7d96b716660b96b635d8",
+          "log": "measure-3.log",
+          "log_sha256": "c703f030d1ce553993833bddb015a8702ad33a6e974951dcb06a49d2012b4a8f",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 512884,
+            "scaled": 512,
+            "target": "Cslib.CCS.bisimilarity_congr_choice"
+          }
+        }
+      ],
+      "median_heartbeats": 512,
+      "error": null
+    }
+  },
+  "error": null
+}

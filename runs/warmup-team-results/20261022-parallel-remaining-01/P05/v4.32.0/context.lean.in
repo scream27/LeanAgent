@@ -1,0 +1,80 @@
+/-
+Copyright (c) 2025 Joseph Tooby-Smith. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Joseph Tooby-Smith
+-/
+module
+
+{{HARNESS_IMPORT}}
+public import Physlib.Electromagnetism.Dynamics.Lagrangian
+{{HARNESS_COMMANDS}}
+/-!
+
+# Extrema of the Lagrangian density
+
+## i. Overview
+
+In this module we define what it means for an electromagnetic potential
+to be an extremum of the Lagrangian density in presence of a Lorentz current density.
+
+This is equivalent to the electromagnetic potential satisfying
+Maxwell's equations with sources, i.e. Gauss's law and Ampère's law.
+
+## ii. Key results
+
+- `IsExtrema` : The condition on an electromagnetic potential to be an extrema of the lagrangian.
+- `isExtrema_iff_gauss_ampere_magneticFieldMatrix` : The electromagnetic potential is an extrema
+  of the lagrangian if and only if Gauss's law and Ampère's law hold
+  (in terms of the magnetic field matrix).
+- `time_deriv_time_deriv_magneticFieldMatrix_of_isExtrema` : A wave-like equation for the
+  magnetic field matrix from the extrema condition.
+- `time_deriv_time_deriv_electricField_of_isExtrema` : A wave-like equation for the
+  electric field from the extrema condition.
+
+## iii. Table of contents
+
+- A. The condition for an extrema of the Lagrangian density
+  - A.1. Extrema condition in terms of the field strength matrix
+  - A.2. Extrema condition in terms of tensors
+  - A.3. Equivariance of the extrema condition
+- B. Gauss's law and Ampère's law and the extrema condition
+- C. Time derivatives from the extrema condition
+- D. Second time derivatives from the extrema condition
+  - D.1. Second time derivatives of the magnetic field from the extrema condition
+  - D.2. Second time derivatives of the electric field from the extrema condition
+
+## iv. References
+
+-/
+
+@[expose] public section
+namespace Electromagnetism
+open Module realLorentzTensor
+open TensorSpecies
+open Tensor ContDiff
+
+namespace ElectromagneticPotential
+
+open TensorSpecies
+open Tensor
+open SpaceTime
+open TensorProduct
+open minkowskiMatrix
+open InnerProductSpace
+open Lorentz.Vector
+open Time Space
+attribute [-simp] Fintype.sum_sum_type
+attribute [-simp] Nat.succ_eq_add_one
+
+/-!
+
+## A. The condition for an extrema of the Lagrangian density
+
+-/
+
+{{DECLARATION}}
+
+
+end ElectromagneticPotential
+
+end Electromagnetism

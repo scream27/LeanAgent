@@ -1,0 +1,20 @@
+{
+  "id": "v4-32-0",
+  "project": "/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/physlib/v4.32.0",
+  "toolchain": "leanprover/lean4:v4.32.0",
+  "command": [
+    "/usr/bin/sandbox-exec",
+    "-p",
+    "(version 1) (allow default) (deny network*) (deny file-write*)",
+    "/usr/bin/env",
+    "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+    "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+    "-j1",
+    "-M2048",
+    "-T200000"
+  ],
+  "template": "/-\nCopyright (c) 2025 Joseph Tooby-Smith. All rights reserved.\nReleased under Apache 2.0 license as described in the file LICENSE.\nAuthors: Joseph Tooby-Smith\n-/\nmodule\n\n{{HARNESS_IMPORT}}\npublic import Physlib.Electromagnetism.Dynamics.Lagrangian\n{{HARNESS_COMMANDS}}\n/-!\n\n# Extrema of the Lagrangian density\n\n## i. Overview\n\nIn this module we define what it means for an electromagnetic potential\nto be an extremum of the Lagrangian density in presence of a Lorentz current density.\n\nThis is equivalent to the electromagnetic potential satisfying\nMaxwell's equations with sources, i.e. Gauss's law and Ampère's law.\n\n## ii. Key results\n\n- `IsExtrema` : The condition on an electromagnetic potential to be an extrema of the lagrangian.\n- `isExtrema_iff_gauss_ampere_magneticFieldMatrix` : The electromagnetic potential is an extrema\n  of the lagrangian if and only if Gauss's law and Ampère's law hold\n  (in terms of the magnetic field matrix).\n- `time_deriv_time_deriv_magneticFieldMatrix_of_isExtrema` : A wave-like equation for the\n  magnetic field matrix from the extrema condition.\n- `time_deriv_time_deriv_electricField_of_isExtrema` : A wave-like equation for the\n  electric field from the extrema condition.\n\n## iii. Table of contents\n\n- A. The condition for an extrema of the Lagrangian density\n  - A.1. Extrema condition in terms of the field strength matrix\n  - A.2. Extrema condition in terms of tensors\n  - A.3. Equivariance of the extrema condition\n- B. Gauss's law and Ampère's law and the extrema condition\n- C. Time derivatives from the extrema condition\n- D. Second time derivatives from the extrema condition\n  - D.1. Second time derivatives of the magnetic field from the extrema condition\n  - D.2. Second time derivatives of the electric field from the extrema condition\n\n## iv. References\n\n-/\n\n@[expose] public section\nnamespace Electromagnetism\nopen Module realLorentzTensor\nopen TensorSpecies\nopen Tensor ContDiff\n\nnamespace ElectromagneticPotential\n\nopen TensorSpecies\nopen Tensor\nopen SpaceTime\nopen TensorProduct\nopen minkowskiMatrix\nopen InnerProductSpace\nopen Lorentz.Vector\nopen Time Space\nattribute [-simp] Fintype.sum_sum_type\nattribute [-simp] Nat.succ_eq_add_one\n\n/-!\n\n## A. The condition for an extrema of the Lagrangian density\n\n-/\n\n{{DECLARATION}}\n\n\nend ElectromagneticPotential\n\nend Electromagnetism\n",
+  "timeout_seconds": 90,
+  "sourceRevision": "c48433678e8fb6306ebcd48453300c8e16058a62",
+  "sourcePath": "Physlib/Electromagnetism/Dynamics/IsExtrema.lean"
+}

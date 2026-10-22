@@ -34,6 +34,17 @@ export function DetailPanel({ problem, metric, snapshot }: { problem: Problem | 
       {problem.environment ? <div className="provenance"><span>측정 환경</span><code>{problem.environment}</code></div> : null}
       {problem.candidateHash ? <details className="evidence"><summary>측정 근거 · {problem.candidateHash.slice(0, 10)}</summary><p>후보 SHA-256: <code>{problem.candidateHash}</code></p>{problem.evidence.map(e => <code key={e}>{e}</code>)}</details> : null}
     </>}
+    {problem.teamResults ? <section className="team-results" aria-label="팀원 후보">
+      <h3>수집한 후보 · {problem.teamResults.length}개</h3><p>{problem.selectionReason}</p>
+      {problem.teamResults.map(candidate => <details key={candidate.id} className="team-candidate">
+        <summary>{candidate.author} · {waitingLabel({ ...problem, status: candidate.status })}{candidate.id === problem.selectedCandidateId ? ' · 대표 표시' : ''}</summary>
+        <p>{candidate.note}</p>
+        <p>원본 → 후보: 토큰 {format(candidate.baseline?.tokens ?? null, 0)} → {format(candidate.candidate?.tokens ?? null, 0)} · HB {format(candidate.baseline?.heartbeats ?? null, 0)} → {format(candidate.candidate?.heartbeats ?? null, 0)}</p>
+        <p>{candidate.versions.map(v => `${v.version}: ${v.status === 'pass' ? '통과' : v.status === 'fail' ? '실패' : '대기'}`).join(' · ')}</p>
+        <p className="candidate-origin">{candidate.sourcePath}<br/>{candidate.sourceState === 'committed' ? '원본 커밋' : '로컬 파일 스냅샷 · 기준 커밋'}: {candidate.sourceCommit}<br/>후보 SHA-256: {candidate.candidateHash}</p>
+        <pre className="candidate-code"><code>{candidate.proof}</code></pre>
+      </details>)}
+    </section> : null}
     <div className="dataset-total"><span>전체 {snapshot.problems.length}문제 대회식 종합</span><strong>{format(total.value)}{total.value === null ? '' : '점'}</strong><small>{total.count} / {total.total}문제 산출 완료{total.value === null ? ' · 전체 점수 집계 대기' : ' · 공식 점수 아님'}</small></div>
   </aside>;
 }

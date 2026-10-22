@@ -1,0 +1,1 @@
+REFACTOR_EVAL 3e46706cc5724e849371469883650e3e {"axioms":["propext","Classical.choice","Quot.sound"],"raw":512846,"scaled":512,"target":"Cslib.CCS.bisimilarity_congr_choice"}

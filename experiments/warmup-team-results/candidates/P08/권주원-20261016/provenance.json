@@ -1,0 +1,17 @@
+{
+  "id": "권주원-20261016",
+  "author": "권주원",
+  "path": "experiments/warmup-team-results/candidates/P08/권주원-20261016/candidate.lean",
+  "sha256": "54cf769c3d3ab519f5a599656d533b2e6f4d198fb96cdbc37cb2e3be3d881372",
+  "sourcePath": "docs/research/refactoring/warmup/권주원/evidence/2026-10-16-warmup15-xhigh/P08/best.lean",
+  "sourceCommit": "0c7f0b5d27b71da3c985c1d8f0df19f7dec3658b",
+  "sourceSha256": "087c7e0453a25b1ab53f56e4ca6d7014b728e6e02da47a7f1c715725e91b7d6b",
+  "sourceState": "working-tree-snapshot",
+  "extraction": {
+    "kind": "body",
+    "blocks": null
+  },
+  "preamble": "",
+  "note": "기존 best.json에 선택된 후보. 이번 수집에서 점수로 재선택하지 않음.",
+  "generation": "historical-team-experiment; not a Track1 API run"
+}

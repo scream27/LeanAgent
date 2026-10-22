@@ -1,0 +1,86 @@
+[
+  {
+    "problem": 10,
+    "version": "v4.31.0",
+    "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+    "status": "environment_unavailable",
+    "reason": "ArkLib 및 CompPoly·VCVio 등 고정 의존성의 빌드 산출물이 로컬에 없으며 전체 의존성 환경 복원이 필요함"
+  },
+  {
+    "problem": 10,
+    "version": "v4.30.0",
+    "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
+    "status": "environment_unavailable",
+    "reason": "ArkLib 및 CompPoly·VCVio 등 고정 의존성의 빌드 산출물이 로컬에 없으며 전체 의존성 환경 복원이 필요함"
+  },
+  {
+    "problem": 10,
+    "version": "v4.29.0",
+    "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
+    "status": "environment_unavailable",
+    "reason": "ArkLib 및 CompPoly·VCVio 등 고정 의존성의 빌드 산출물이 로컬에 없으며 전체 의존성 환경 복원이 필요함"
+  },
+  {
+    "problem": 10,
+    "version": "v4.28.0",
+    "revision": "673fa440714eb1949b8b50a28f2a4f52b1837e9b",
+    "status": "environment_unavailable",
+    "reason": "ArkLib 및 CompPoly·VCVio 등 고정 의존성의 빌드 산출물이 로컬에 없으며 전체 의존성 환경 복원이 필요함"
+  },
+  {
+    "problem": 13,
+    "version": "v4.25.0",
+    "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 13,
+    "version": "v4.26.0",
+    "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 13,
+    "version": "v4.27.0",
+    "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 14,
+    "version": "v4.25.0",
+    "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 14,
+    "version": "v4.26.0",
+    "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 15,
+    "version": "v4.25.0",
+    "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 15,
+    "version": "v4.26.0",
+    "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  },
+  {
+    "problem": 15,
+    "version": "v4.27.0",
+    "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+    "status": "environment_unavailable",
+    "reason": "고정 Mathlib Git checkout 및 전체 import Mathlib 산출물이 없음. 잔존 v4.26 캐시는 일부 모듈뿐이고, 다른 전체 캐시는 v4.33.1로 핀이 달라 사용하지 않음"
+  }
+]

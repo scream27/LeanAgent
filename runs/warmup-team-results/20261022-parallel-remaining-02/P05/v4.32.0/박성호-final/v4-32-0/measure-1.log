@@ -1,0 +1,1 @@
+REFACTOR_EVAL d3aca312e7d0416fb44bfa45811ac329 {"axioms":["propext","Classical.choice","Quot.sound"],"raw":11318404,"scaled":11318,"target":"Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema"}

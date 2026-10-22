@@ -1,0 +1,5 @@
+REFACTOR_EVAL 2b46a0af9e40478a9f7608a671b0ddd6 {"axioms":["Quot.sound","propext","Classical.choice"],"raw":4671685,"scaled":4671,"target":"Core.InitsUpdatesComm"}
+/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P03/v4.26.0/baseline/v4-26-0/measure-1.lean:2045:8: warning: declaration uses 'sorry'
+/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P03/v4.26.0/baseline/v4-26-0/measure-1.lean:2056:8: warning: declaration uses 'sorry'
+/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P03/v4.26.0/baseline/v4-26-0/measure-1.lean:2070:8: warning: declaration uses 'sorry'
+/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P03/v4.26.0/baseline/v4-26-0/measure-1.lean:2115:8: warning: declaration uses 'sorry'

@@ -1,0 +1,136 @@
+{
+  "valid": true,
+  "tokens": 1372,
+  "environments": {
+    "v4-32-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 10.660725,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "2d0f26a1f67edf9cbd8ca6146824ab262c6f932c395be04b8b335fc70a4a86f9",
+          "log": "check.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 8.840366,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "843a2a3361eef768cfcf8cbc5d8f56fafdf5ef9830ee8ffa54fdfb2e1af6eacd",
+          "log": "measure-1.log",
+          "log_sha256": "96fa6195c050e8ccce5af0880c8bce6ab99fca71f4101b95392af07365d74ad0",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 26982423,
+            "scaled": 26982,
+            "target": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 8.729799,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "6d63a968528dab614e93ea4c345d93f9e14a5e6b0ab2ba8430ecb39714ff21ec",
+          "log": "measure-2.log",
+          "log_sha256": "82701e4ae0bbc181d3b016815dc783d1e19c7782b9fbf421dca31393f67c1161",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 26988389,
+            "scaled": 26988,
+            "target": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/baseline/v4-32-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 8.806722,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "3b28e3295ea9e9680d5dde98fdfcd1ddcd8b6309c224affd8775cfa8ed08ea1d",
+          "log": "measure-3.log",
+          "log_sha256": "d6c38c95280b0d1c65d8cf2cd5f821ee4c6fd056e841652c1bd2f646a0a9b5f1",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 26975677,
+            "scaled": 26975,
+            "target": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema"
+          }
+        }
+      ],
+      "median_heartbeats": 26982,
+      "error": null
+    }
+  },
+  "error": null
+}

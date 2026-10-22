@@ -300,3 +300,14 @@ footer { display: flex; align-items: center; justify-content: space-between; gap
 }
 @media (max-width: 359px) { .problem-grid, .fifty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .release-schedule { flex-basis: 100%; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+/* Team result provenance and read-only proof review. */
+.warmup-label { font-size: 14px; font-weight: 600; }
+.tile-author { font-size: 10px; line-height: 1.5; opacity: .85; }
+.team-results { border-top: 1px solid #e3e8e6; padding-top: 20px; margin-top: 20px; }
+.team-results h3 { font-size: 14px; }
+.team-results p { font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.team-candidate { border-top: 1px solid #e3e8e6; padding: 12px 0; }
+.team-candidate summary { cursor: pointer; font-size: 13px; line-height: 1.6; }
+.candidate-origin { color: #61716b; }
+.candidate-code { max-height: 360px; overflow: auto; background: #f4f7f5; padding: 12px; font-size: 11px; line-height: 1.6; }

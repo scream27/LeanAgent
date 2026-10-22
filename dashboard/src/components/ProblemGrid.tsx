@@ -16,7 +16,7 @@ function ProblemTile({ problem, metric, selected, onSelect }: { problem: Problem
   const warning = (value !== null && value <= 60) || ['failed', 'unsubmitted'].includes(problem.status);
   const Arrow = delta !== null && delta < 0 ? ArrowDownRight : delta !== null && delta > 0 ? ArrowUpRight : Minus;
   const unit = METRICS.find(m => m.id === metric)!.unit;
-  const measured = problem.status === 'measured' ? problem.candidate : null;
+  const measured = ['measured', 'partial'].includes(problem.status) ? problem.candidate : null;
   const tokens = measured ? measured.tokens.toLocaleString('ko-KR') : '—';
   const heartbeats = measured ? measured.heartbeats.toLocaleString('ko-KR', { maximumFractionDigits: 20 }) : '—';
   return <button className={`problem-tile ${warning ? 'tone-warning' : value === null ? 'tone-unknown' : ''} ${selected ? 'is-selected' : ''} ${problem.status === 'unreleased' ? 'is-locked' : ''}`}
@@ -30,14 +30,14 @@ function ProblemTile({ problem, metric, selected, onSelect }: { problem: Problem
       <span title={`선택 후보의 증명 토큰 수${problem.baseline ? ` · 원본 ${problem.baseline.tokens.toLocaleString('ko-KR')}` : ''}`}><span>토큰</span><strong>{tokens}</strong></span>
       <span title={`선택 후보의 heartbeat${problem.environment ? ` · ${problem.environment}` : ''}`}><abbr title="Heartbeat">HB</abbr><strong>{heartbeats}</strong></span>
     </span> : null}
-    <span className="tile-name">{problem.status === 'unreleased' ? '11.01 공개 예정' : shortName(problem.name)}</span>
+    {problem.teamResults ? <span className="tile-author">{problem.teamResults.find(c => c.id === problem.selectedCandidateId)?.author ?? '후보 없음'} · {waitingLabel(problem)}</span> : null}<span className="tile-name">{problem.status === 'unreleased' ? '11.01 공개 예정' : shortName(problem.name)}</span>
   </button>;
 }
 
 export function ProblemGrid(props: Props) {
   const { snapshot, metric, onMetric, query, onQuery, source, onSource, sort, onSort, visible, selected, onSelect } = props;
   const sources = [...new Set(snapshot.problems.filter(p => p.source !== 'unknown').map(p => p.source))];
-  const measuredProblems = snapshot.problems.filter(p => p.status === 'measured');
+  const measuredProblems = snapshot.problems.filter(p => ['measured', 'partial'].includes(p.status));
   const heartbeatUnit = measuredProblems.length && measuredProblems.every(p => p.environment.includes('raw heartbeat')) ? 'raw' : measuredProblems.length && measuredProblems.every(p => p.environment.includes('scaled heartbeat')) ? 'scaled' : null;
   return <section className="panel grid-panel" aria-labelledby="grid-title">
     <div className="panel-title"><h2 id="grid-title">문제별 개선 현황</h2><span>{visible.length} / {snapshot.problems.length}문제</span></div>

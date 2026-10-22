@@ -1,0 +1,17 @@
+{
+  "id": "권주원-development",
+  "author": "권주원",
+  "path": "experiments/warmup-team-results/candidates/P13/권주원-development/candidate.lean",
+  "sha256": "639587d781669920f53805ab49450d40002e358e33cff361e679bcbbb1f09348",
+  "sourcePath": "docs/research/refactoring/warmup/권주원/evidence/2026-10-16-warmup15-xhigh/P13/development-best.lean",
+  "sourceCommit": "0c7f0b5d27b71da3c985c1d8f0df19f7dec3658b",
+  "sourceSha256": "4171b81b3c6b8da0fb60731207e3dee793365eb5bf566b0d0a947aa297929de6",
+  "sourceState": "working-tree-snapshot",
+  "extraction": {
+    "kind": "body",
+    "blocks": null
+  },
+  "preamble": "",
+  "note": "추가 import를 사용한 개발 후보. 지정 환경에서 별도 재검증 필요.",
+  "generation": "historical-team-experiment; not a Track1 API run"
+}

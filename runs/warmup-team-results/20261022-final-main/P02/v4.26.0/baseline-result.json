@@ -1,0 +1,133 @@
+{
+  "valid": true,
+  "tokens": 222,
+  "environments": {
+    "v4-26-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/strata/lake/build/lib/lean:/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 10.492151,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "8dc9dd65eaa087df85d378a8a44591ff0001787ffb6a402dc40336952d53946f",
+          "log": "check.log",
+          "log_sha256": "16fec5ca3e04c927096c3730e6c617125a15f9ed8fb291c2d384ca0411bc48cf"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/strata/lake/build/lib/lean:/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 12.561143,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "6e4bdfbf54809b93f0528c45c90576cde6eb5bae709fa4b6ad7ab38ce6719f39",
+          "log": "measure-1.log",
+          "log_sha256": "e7f7f50a662d6f5ed4fe8898c7b9faa39f78af1e60059b8e12cdfcd6f30b7481",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Quot.sound"
+            ],
+            "raw": 2694882,
+            "scaled": 2694,
+            "target": "CallElimCorrect.extractedOldExprInVars"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/strata/lake/build/lib/lean:/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 11.387163,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "c20c93b552b68c715049451a166968a088588d7352424d05eb70f5b2424ff19b",
+          "log": "measure-2.log",
+          "log_sha256": "29c8c394d00c29bc5543ff8bf071ef9faa45eab13deffee4b6d2420cf3a2fde6",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Quot.sound"
+            ],
+            "raw": 2695038,
+            "scaled": 2695,
+            "target": "CallElimCorrect.extractedOldExprInVars"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/sources/strata/lake/build/lib/lean:/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/lib/lean",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/baseline/v4-26-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 11.338883,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "4d85f0b983544695f42fee819595cc89d4d13f593d02bdb02434297ef07678ac",
+          "log": "measure-3.log",
+          "log_sha256": "cd18bd3309255e7205dd424461ecd3b087d321a8877bc7b3bfacfde49f1ea252",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Quot.sound"
+            ],
+            "raw": 2695001,
+            "scaled": 2695,
+            "target": "CallElimCorrect.extractedOldExprInVars"
+          }
+        }
+      ],
+      "median_heartbeats": 2695,
+      "error": null
+    }
+  },
+  "error": null
+}

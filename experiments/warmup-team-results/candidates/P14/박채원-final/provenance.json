@@ -1,0 +1,19 @@
+{
+  "id": "박채원-final",
+  "author": "박채원",
+  "path": "experiments/warmup-team-results/candidates/P14/박채원-final/candidate.lean",
+  "sha256": "cfc6d844740f6ec56444dc84842227f9c831c834eb049ae44334354607d30a54",
+  "sourcePath": "docs/research/refactoring/warmup/박채원/report.md",
+  "sourceCommit": "0c7f0b5d27b71da3c985c1d8f0df19f7dec3658b",
+  "sourceSha256": "5319580ef0ee9ea1956a017cecaed7307d45f2a3b5722a3adf0d10eb6ec91d9d",
+  "sourceState": "committed",
+  "extraction": {
+    "kind": "markdown",
+    "blocks": [
+      1
+    ]
+  },
+  "preamble": "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen Set Function Filter Topology\n\n",
+  "note": "",
+  "generation": "historical-team-experiment; not a Track1 API run"
+}

@@ -57,7 +57,7 @@ export default function App() {
     const blob = new Blob([JSON.stringify(snapshot, null, 2) + '\n'], { type: 'application/json' });
     const url = URL.createObjectURL(blob); const anchor = document.createElement('a');
     anchor.href = url; anchor.download = `${snapshot.id.replace(/[^a-zA-Z0-9-]/g, '-')}.json`; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setNotice('현재 스냅샷을 JSON으로 내보냈습니다. 본대회 데이터 입력 양식으로도 사용할 수 있습니다.');
+    setNotice('현재 스냅샷을 JSON으로 내보냈습니다. 저장된 결과를 다시 불러올 수 있습니다.');
   }
 
   const queryLower = query.trim().toLowerCase();
@@ -74,17 +74,17 @@ export default function App() {
     <a href="#main" className="skip-link">본문으로 바로가기</a>
     <header className="site-header"><div className="header-inner"><div className="brand"><Brackets size={29} strokeWidth={3}/><span>LeanArena</span><small>팀 스코어보드</small></div><span className="measurement-status"><i/>로컬 측정</span></div></header>
     <main id="main">
-      <div className="page-heading"><div><h1>더 짧은 증명, 더 나은 점수.</h1><p>문제별 점수와 개선을 한눈에 확인하세요.</p></div><div className="file-actions"><input ref={input} type="file" accept=".json,application/json" className="sr-only" tabIndex={-1} aria-label="JSON 파일 선택" onChange={e => void importFile(e.target.files?.[0])}/><button className="button import-button" onClick={() => input.current?.click()}><Upload size={16}/>JSON 불러오기</button><button className="button icon-button" onClick={exportSnapshot} disabled={!snapshot} aria-label="현재 스냅샷 JSON 내보내기" title="현재 스냅샷 JSON 내보내기"><Download size={17}/></button></div></div>
+      <div className="page-heading"><div><h1>{snapshot?.dataset === 'warmup' ? '웜업 15문제 · 팀 실험 결과' : '더 짧은 증명, 더 나은 점수.'}</h1><p>팀원이 공유한 후보와 공통 환경에서 재검증한 결과를 확인하세요.</p></div><div className="file-actions"><input ref={input} type="file" accept=".json,application/json" className="sr-only" tabIndex={-1} aria-label="JSON 파일 선택" onChange={e => void importFile(e.target.files?.[0])}/><button className="button import-button" onClick={() => input.current?.click()}><Upload size={16}/>JSON 불러오기</button><button className="button icon-button" onClick={exportSnapshot} disabled={!snapshot} aria-label="현재 스냅샷 JSON 내보내기" title="현재 스냅샷 JSON 내보내기"><Download size={17}/></button></div></div>
       {error ? <div role="alert" className="notification error"><Info size={17}/><span>{error}</span><button aria-label="오류 닫기" onClick={() => setError('')}><X size={16}/></button></div> : null}
       {notice ? <div role="status" className="notification success"><Check size={17}/><span>{notice}</span><button aria-label="알림 닫기" onClick={() => setNotice('')}><X size={16}/></button></div> : null}
       {!snapshot ? <div className="loading-state">{error ? <button className="button" onClick={() => window.location.reload()}>다시 불러오기</button> : loaded ? '아직 등록된 결과가 없습니다.' : '결과를 불러오고 있습니다…'}</div> : <>
-        <div className="dataset-bar"><div className="dataset-tabs" role="group" aria-label="문제 보기"><button aria-pressed={scope === 'all'} className={scope === 'all' ? 'active' : ''} onClick={() => setScope('all')}>전체 <span>{snapshot.problems.length}</span></button><button aria-pressed={scope === 'released'} className={scope === 'released' ? 'active' : ''} onClick={() => setScope('released')}>현재 공개 <span>{snapshot.problems.filter(p => p.status !== 'unreleased').length}</span></button></div><span className="release-schedule">{snapshot.problems.some(p => p.status === 'unreleased') ? `${snapshot.problems.filter(p => p.status === 'unreleased').length}문제 · 11.01 공개 예정` : '전체 문제 공개'}</span><label className="snapshot-picker"><span>실험 기록</span><select aria-label="실험 기록" value={snapshot.id} onChange={e => chooseSnapshot(e.target.value)}>{snapshots.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}</select></label></div>
+        <div className="dataset-bar">{snapshot.dataset === 'warmup' ? <span className="warmup-label">P01–P15 · 팀원 후보 재검증</span> : <><div className="dataset-tabs" role="group" aria-label="문제 보기"><button aria-pressed={scope === 'all'} className={scope === 'all' ? 'active' : ''} onClick={() => setScope('all')}>전체 <span>{snapshot.problems.length}</span></button><button aria-pressed={scope === 'released'} className={scope === 'released' ? 'active' : ''} onClick={() => setScope('released')}>현재 공개 <span>{snapshot.problems.filter(p => p.status !== 'unreleased').length}</span></button></div><span className="release-schedule">{snapshot.problems.some(p => p.status === 'unreleased') ? `${snapshot.problems.filter(p => p.status === 'unreleased').length}문제 · 공개 대기` : '전체 문제 공개'}</span></>}<label className="snapshot-picker"><span>실험 기록</span><select aria-label="실험 기록" value={snapshot.id} onChange={e => chooseSnapshot(e.target.value)}>{snapshots.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}</select></label></div>
         <SummaryCards snapshot={snapshot}/>
         <div className={`workbench ${scope === 'all' && snapshot.problems.length === 50 ? 'competition-layout' : ''}`}>
           <ProblemGrid {...{ snapshot, metric, query, source, sort, visible, selected }} compact={scope === 'all'} onMetric={setMetric} onQuery={setQuery} onSource={setSource} onSort={setSort} onSelect={chooseProblem}/>
           <DetailPanel problem={selected} metric={metric} snapshot={snapshot}/>
         </div>
-        <ScoringGuide/>
+        <ScoringGuide warmup={snapshot.dataset === 'warmup'}/>
         <footer><span>LeanArena <span className="dot-separator">/</span> 가짜연구소</span><span>데이터 기준 {new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeZone: 'Asia/Seoul' }).format(new Date(snapshot.measuredAt))} · 저장된 실험 스냅샷</span></footer>
       </>}
     </main>

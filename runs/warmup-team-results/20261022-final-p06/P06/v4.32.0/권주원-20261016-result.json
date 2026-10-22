@@ -1,0 +1,136 @@
+{
+  "valid": true,
+  "tokens": 556,
+  "environments": {
+    "v4-32-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 4.564276,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "12a6196c2b2cb9af0de6d9cabca62013efda893c6af54ebb4fdd0c6a65246033",
+          "log": "check.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 4.701993,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "43ac9ea5a169dc8da741cc3ec17d16a8a13565ec60daac856a5f2e1ea1c89205",
+          "log": "measure-1.log",
+          "log_sha256": "486367ac6ff85624af1b70ad2d1b6b4e993ca925707fcc32b660281c0249eb6d",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 20611402,
+            "scaled": 20611,
+            "target": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 4.751564,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "146f2b6f0563a2b0d82987727d17ef932462d044f33ce11dda6d31ed9e052f6c",
+          "log": "measure-2.log",
+          "log_sha256": "dccf5a0004b992aadd3acf0fa6a1a510bdd266e5b0014112fffe025a95c1462d",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 20611509,
+            "scaled": 20611,
+            "target": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/권주원-20261016/v4-32-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 4.727917,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "9f8460c3c1999be2a97d97c721a06b3a46b2b2b6dc8c37885c2c53740aa3e759",
+          "log": "measure-3.log",
+          "log_sha256": "a241c2ca1302a6997523c02081223208345984b4cc4e2a730d00d645b85b8395",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 20610863,
+            "scaled": 20610,
+            "target": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time"
+          }
+        }
+      ],
+      "median_heartbeats": 20611,
+      "error": null
+    }
+  },
+  "error": null
+}

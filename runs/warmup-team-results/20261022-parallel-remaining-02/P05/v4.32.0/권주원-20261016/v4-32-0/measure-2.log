@@ -1,0 +1,8 @@
+REFACTOR_EVAL f8a302e5bc2f4a0cbd78bd4b4480fb1d {"axioms":["propext","Classical.choice","Quot.sound"],"raw":9490824,"scaled":9490,"target":"Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema"}
+/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-parallel-remaining-02/P05/v4.32.0/권주원-20261016/v4-32-0/measure-2.lean:436:19: warning: This simp argument is unused:
+  Pi.sub_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [̵P̵i̵.̵s̵u̵b̵_̵a̵p̵p̵l̵y̵,̵ ̵s̵u̵b̵_̵r̵i̵g̵h̵t̵_̵i̵n̵j̵]̵[̲s̲u̲b̲_̲r̲i̲g̲h̲t̲_̲i̲n̲j̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

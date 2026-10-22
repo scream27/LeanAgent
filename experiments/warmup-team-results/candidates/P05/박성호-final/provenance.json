@@ -1,0 +1,17 @@
+{
+  "id": "박성호-final",
+  "author": "박성호",
+  "path": "experiments/warmup-team-results/candidates/P05/박성호-final/candidate.lean",
+  "sha256": "294ddf305dee94ccf19c3974265b59ab5e4e354b48383555134f5e4e6b0a729c",
+  "sourcePath": "docs/research/refactoring/warmup/박성호/evidence/P05.lean",
+  "sourceCommit": "0c7f0b5d27b71da3c985c1d8f0df19f7dec3658b",
+  "sourceSha256": "294ddf305dee94ccf19c3974265b59ab5e4e354b48383555134f5e4e6b0a729c",
+  "sourceState": "committed",
+  "extraction": {
+    "kind": "declaration",
+    "blocks": null
+  },
+  "preamble": "",
+  "note": "",
+  "generation": "historical-team-experiment; not a Track1 API run"
+}

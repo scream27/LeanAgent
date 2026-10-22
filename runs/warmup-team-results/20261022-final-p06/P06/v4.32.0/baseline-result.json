@@ -1,0 +1,136 @@
+{
+  "valid": true,
+  "tokens": 1217,
+  "environments": {
+    "v4-32-0": {
+      "valid": true,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0/check.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 6.294491,
+          "stderr": "",
+          "source": "check.lean",
+          "source_sha256": "f74e11087297e1b0305fd73810d0354b85293c1f75d80fb63dad79d371d779e6",
+          "log": "check.log",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0/measure-1.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 6.221984,
+          "stderr": "",
+          "source": "measure-1.lean",
+          "source_sha256": "c90330e50ddbc9e367538bf50c6ce6dc58546c6179a66bd5444451fd3d7c1e48",
+          "log": "measure-1.log",
+          "log_sha256": "c3505965a04bf12b3c59309f80c507ccea9695c4b3d190e8c99639eb25d174d8",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 42045623,
+            "scaled": 42045,
+            "target": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0/measure-2.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 5.412871,
+          "stderr": "",
+          "source": "measure-2.lean",
+          "source_sha256": "60d844bd3f566ed801373ab78ad77fe008aebf38da2272901ec31fd2e27b4c4a",
+          "log": "measure-2.log",
+          "log_sha256": "1fdbea013761941ec803958640df5b859723545e7b0a21c29cb4d0ecea329b47",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 42028738,
+            "scaled": 42028,
+            "target": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time"
+          }
+        },
+        {
+          "command": [
+            "/usr/bin/sandbox-exec",
+            "-p",
+            "(version 1) (allow default) (deny network*) (deny file-write*)",
+            "/usr/bin/env",
+            "LEAN_PATH=/Users/jwkweon/00_work/00_project/cache/05_pseudolab/LeanAgent-LeanRefactorArena/warmup-team-results/remaining-dependencies/physlib/c48433678e8fb6306ebcd48453300c8e16058a62/lib",
+            "/Users/jwkweon/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+            "-j1",
+            "-M2048",
+            "-T200000",
+            "--root=/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0",
+            "/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-p06/P06/v4.32.0/baseline/v4-32-0/measure-3.lean"
+          ],
+          "returncode": 0,
+          "timed_out": false,
+          "seconds": 5.387601,
+          "stderr": "",
+          "source": "measure-3.lean",
+          "source_sha256": "7123736ae93bba8b9e8a3fb05e2b9dfc213ce98be99d3a0dcebc43da18e2e7c5",
+          "log": "measure-3.log",
+          "log_sha256": "9aa5c496599ebe76859ca1de6de07a760ea25fecdf6252ed58feee08af2fea32",
+          "measurement": {
+            "axioms": [
+              "propext",
+              "Classical.choice",
+              "Quot.sound"
+            ],
+            "raw": 42021725,
+            "scaled": 42021,
+            "target": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time"
+          }
+        }
+      ],
+      "median_heartbeats": 42028,
+      "error": null
+    }
+  },
+  "error": null
+}

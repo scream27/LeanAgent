@@ -1,0 +1,19 @@
+{
+  "id": "손지연-final",
+  "author": "손지연",
+  "path": "experiments/warmup-team-results/candidates/P07/손지연-final/candidate.lean",
+  "sha256": "66c1018745361d88bb74dc092d2bc48bc32d5c8140f3c2b31b5bc994953cf194",
+  "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+  "sourceCommit": "0c7f0b5d27b71da3c985c1d8f0df19f7dec3658b",
+  "sourceSha256": "bb87f731959c1d98979d5c689af870e4a7555a10ec1959269b7fc0104a915dfe",
+  "sourceState": "committed",
+  "extraction": {
+    "kind": "markdown",
+    "blocks": [
+      2
+    ]
+  },
+  "preamble": "",
+  "note": "",
+  "generation": "historical-team-experiment; not a Track1 API run"
+}

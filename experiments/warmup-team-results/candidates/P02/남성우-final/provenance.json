@@ -1,0 +1,20 @@
+{
+  "id": "남성우-final",
+  "author": "남성우",
+  "path": "experiments/warmup-team-results/candidates/P02/남성우-final/candidate.lean",
+  "sha256": "2bd0d1e1a5b75be5f48049b853bba5925c7788e86b3fb47285bbcde86c71d2e4",
+  "sourcePath": "docs/research/refactoring/warmup/남성우/report.html",
+  "sourceCommit": "0c7f0b5d27b71da3c985c1d8f0df19f7dec3658b",
+  "sourceSha256": "598679872e3efbb07842591214b100ce7b8d7b88ee9197a9faa3265e5b264da1",
+  "sourceState": "committed",
+  "extraction": {
+    "kind": "html-body",
+    "blocks": [
+      3,
+      5
+    ]
+  },
+  "preamble": "",
+  "note": "",
+  "generation": "historical-team-experiment; not a Track1 API run"
+}

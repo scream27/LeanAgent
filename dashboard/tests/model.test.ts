@@ -105,3 +105,44 @@ test('a completed 50-problem import can show a real whole-set mean', () => {
   const completed = { ...raw, problems: Array.from({ length: 50 }, (_, i) => ({ ...example, id: i + 1 })) } satisfies Snapshot;
   assert.equal(aggregate(parseSnapshot(completed).problems, 'combined').value, 75);
 });
+
+function warmupFixture(): Snapshot {
+  const candidate = { id:'author-final',author:'팀원',proof:'theorem test : True := by trivial',
+    sourcePath:'docs/report.md',sourceCommit:'a'.repeat(40),sourceState:'committed',candidateHash:'b'.repeat(64),
+    status:'measured' as const, baseline:example.baseline,candidate:example.candidate,versions:example.versions,
+    environment:example.environment,note:'재검증' };
+  return { ...raw, dataset:'warmup', problems:Array.from({length:15},(_,i)=>({
+    ...structuredClone(example), id:i+1,candidateHash:candidate.candidateHash,
+    selectedCandidateId:candidate.id,selectionReason:'담당자 최종본',teamResults:[structuredClone(candidate)],
+  })) };
+}
+test('warmup accepts exactly fifteen slots and preserves proof provenance', () => {
+  const result=parseSnapshot(warmupFixture());
+  assert.equal(result.problems.length,15);
+  assert.equal(result.problems[0].teamResults?.[0].author,'팀원');
+  assert.equal(result.problems[0].teamResults?.[0].proof,'theorem test : True := by trivial');
+  assert.throws(()=>parseSnapshot({...warmupFixture(),problems:warmupFixture().problems.slice(1)}),/15/);
+});
+test('warmup refuses a representative whose metrics differ from its candidate', () => {
+  const data=warmupFixture();data.problems[0].candidate={tokens:1,heartbeats:1};
+  assert.throws(()=>parseSnapshot(data),/대표 후보/);
+});
+test('warmup blocks legacy zero-score failure states and duplicate candidate ids', () => {
+  const legacy=warmupFixture();legacy.problems[0].status='failed';legacy.problems[0].candidate=null;
+  assert.throws(()=>parseSnapshot(legacy),/0/);
+  const duplicate=warmupFixture();duplicate.problems[0].teamResults!.push(duplicate.problems[0].teamResults![0]);
+  assert.throws(()=>parseSnapshot(duplicate),/ID/);
+});
+test('unavailable or unsupported team results never count as zero scores', () => {
+  for (const status of ['missing','blocked','unsupported','proof_failed'] as const) {
+    const p={...example,status,candidate:null};
+    assert.equal(valueOf(p,'combined'),null);
+    assert.equal(aggregate([p],'improvement').count,0);
+  }
+});
+test('partial checks expose paired measurements but not invented compatibility', () => {
+  const p={...example,status:'partial' as const,versions:[...example.versions,{version:'other',revision:'def',status:'pending' as const}]};
+  assert.equal(valueOf(p,'improvement'),62.5);
+  assert.equal(valueOf(p,'compatibility'),null);
+  assert.equal(valueOf(p,'combined'),null);
+});

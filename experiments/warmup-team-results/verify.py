@@ -1,0 +1,197 @@
+"""Re-measure imported candidates using the pinned PR3 evaluator, without selecting winners.
+
+No model calls, downloads, source checkout changes, or commits. Existing Lean libraries
+are used read-only. Unsupported inputs and missing environments remain explicit.
+"""
+from __future__ import annotations
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+EXP = Path(__file__).resolve().parent
+EVALUATOR_REVISION = 'c18ec56682462847e2f4d8b6d60aa79ec071a10b'
+
+
+def sha(data): return hashlib.sha256(data).hexdigest()
+def write(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.tmp')
+    tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+    tmp.replace(path)
+def git_file(source, revision, name):
+    result = subprocess.run(['git','-C',str(source),'show',f'{revision}:{name}'],capture_output=True)
+    if result.returncode: raise ValueError(f'지정 커밋의 소스 없음: {revision}:{name}')
+    return result.stdout.decode()
+
+def evaluator(cache):
+    runtime = cache / 'evaluator' / EVALUATOR_REVISION
+    files = subprocess.check_output(['git','-C',str(ROOT),'ls-tree','-r','--name-only',EVALUATOR_REVISION,'refactor_eval'],text=True).splitlines()
+    for name in files:
+        target = runtime/name; target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_text(git_file(ROOT,EVALUATOR_REVISION,name))
+    sys.path.insert(0,str(runtime))
+    from refactor_eval.lean import LeanEvaluator
+    return LeanEvaluator()
+
+def discover(leanagent):
+    """Read only binary/library locations from historical records; never execute their commands."""
+    mapping = {}
+    evidence = leanagent/'docs/research/refactoring/warmup/권주원/evidence/2026-10-16-warmup15-xhigh'
+    for file in sorted(evidence.glob('P*/runs/*/result.json')):
+        e = json.loads(file.read_text()).get('environment',{})
+        if not e.get('lean_path') or not e.get('lean_binary'): continue
+        key = f"v{e['lean_version']}@{e['source_revision']}"
+        paths = [str(Path(p).resolve()) for p in e['lean_path'].split(':') if Path(p).is_dir()]
+        row = {'binary': e['lean_binary'], 'libraryPaths': paths, 'locationSource': str(file.relative_to(leanagent))}
+        # Prefer records with a usable compiler and more existing search roots.
+        if key not in mapping or (Path(row['binary']).is_file(),len(paths)) > (Path(mapping[key]['binary']).is_file(),len(mapping[key]['libraryPaths'])):
+            mapping[key] = row
+    return mapping
+
+def trailing_doc_start(text):
+    """Locate the immediately trailing declaration doc, respecting nested comments.
+
+    Module docs (/-!) are independent commands and must never be measured as the target.
+    """
+    i=0; last=None
+    while i<len(text):
+        if text.startswith('--',i):
+            end=text.find('\n',i); i=len(text) if end<0 else end
+        elif text.startswith('/-',i):
+            start=i; depth=1; i+=2
+            while i<len(text) and depth:
+                if text.startswith('/-',i): depth+=1; i+=2
+                elif text.startswith('-/',i): depth-=1; i+=2
+                else: i+=1
+            if depth: raise ValueError('Unclosed context comment')
+            last=(start,i)
+        elif text[i]=='"':
+            i+=1
+            while i<len(text):
+                if text[i]=='\\': i+=2
+                elif text[i]=='"': i+=1; break
+                else: i+=1
+        else: i+=1
+    if last and not text[last[1]:].strip() and text.startswith('/--',last[0]): return last[0]
+    return None
+
+def template(meta, source):
+    original = meta['src']
+    if source.count(original) != 1:
+        raise ValueError('공식 원본 선언과 소스 문맥의 일치 위치를 유일하게 찾지 못함')
+    prefix, suffix = source.split(original)
+    # Move attached documentation and scoped commands WITH the target into the
+    # evaluator input, preserving them in both baseline and candidate compilation.
+    # Otherwise a doc comment / `set_option ... in` attaches to the instrumentation.
+    lead = ''
+    start = trailing_doc_start(prefix)
+    if start is not None:
+        lead, prefix = prefix[start:], prefix[:start]
+    while True:
+        match = re.search(r'(?m)^(?:set_option [^\n]+ in|omit [^\n]+ in|@\[[^\n]+\])\s*\Z', prefix)
+        if not match: break
+        lead, prefix = prefix[match.start():] + lead, prefix[:match.start()]
+    body = prefix + '{{DECLARATION}}\n' + suffix
+    imports = list(re.finditer(r'(?m)^(?:(?:public|private|meta) )*import [^\n]+\n', body))
+    if not imports: raise ValueError('No import boundary for the instrumentation')
+    boundary = imports[-1].end()
+    body = body[:boundary] + '{{HARNESS_COMMANDS}}\n' + body[boundary:]
+    module = re.search(r'(?m)^module\s*\n',body)
+    pos = module.end() if module else 0
+    return body[:pos] + '{{HARNESS_IMPORT}}\n' + body[pos:], lead
+
+def main(args):
+    cache = Path(os.environ['PROJECT_CACHE_DIR'])/'warmup-team-results'
+    envroot = Path(os.environ['PROJECT_ENV_DIR']) if os.environ.get('PROJECT_ENV_DIR') else Path('/Users/jwkweon/00_work/00_project/env/05_pseudolab/LeanAgent-LeanRefactorArena')
+    run = args.run.resolve(); run.mkdir(parents=True,exist_ok=False)
+    ev = evaluator(cache)
+    from refactor_eval.tokens import validate_declaration, TOKENIZER_ID
+    manifest = json.loads((EXP/'manifest.json').read_text())
+    mapping = json.loads(args.environments.read_text()) if args.environments else discover(args.leanagent.resolve())
+    write(run/'environments.local.json', mapping)
+    write(run/'import-manifest.json', manifest)
+    summary = {'schemaVersion':1,'startedAt':datetime.now(timezone.utc).isoformat(),'evaluatorRevision':EVALUATOR_REVISION,
+               'tokenizer':TOKENIZER_ID,'repetitions':3,'manifestSha256':sha((EXP/'manifest.json').read_bytes()),
+               'runnerSha256':sha(Path(__file__).read_bytes()),'problems':[]}
+    for p in manifest['problems']:
+        if args.only and p['id'] not in args.only: continue
+        ident = f"P{p['id']:02}"; meta = json.loads((EXP/'configs'/ident/'problem.json').read_text())
+        row = {'id':p['id'],'baseline':{},'candidates':{},'environments':{}}
+        summary['problems'].append(row)
+        prepared = {}
+        for c in p['candidates']:
+            raw=(ROOT/c['path']).read_bytes()
+            if sha(raw)!=c['sha256']: raise ValueError(f'Candidate changed: {c["path"]}')
+            code=raw.decode(); target=run/ident/'candidates'/c['id']/'candidate.lean'
+            target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
+            result={'sha256':c['sha256'],'environments':{},'inputError':None}
+            row['candidates'][c['id']]=result
+            try: validate_declaration(code,meta['statement'])
+            except ValueError as error: result['inputError']=str(error)
+            else: prepared[c['id']]=code
+        for pin in meta['version_info']:
+            version,revision=next(iter(pin.items())); key=f'{version}@{revision}'
+            print(ident,key,flush=True)
+            info={'version':version,'revision':revision,'status':'blocked','reason':None}
+            row['environments'][key]=info
+            try:
+                local=mapping.get(key)
+                if not local or not Path(local['binary']).is_file() or not local['libraryPaths']:
+                    raise ValueError('지정 버전의 컴파일러 또는 빌드된 의존성 경로가 준비되지 않음')
+                if meta['file_path']:
+                    source=git_file(ROOT/'sources'/meta['source'],revision,meta['file_path'])
+                    lock=git_file(ROOT/'sources'/meta['source'],revision,'lake-manifest.json')
+                else:
+                    # Standalone benchmark problems pin Mathlib, not the PutnamBench repository.
+                    if not local.get('project'): raise ValueError('Standalone problem requires a pinned Mathlib project')
+                    libproject=Path(local['project'])
+                    head=subprocess.check_output(['git','-C',str(libproject),'rev-parse','HEAD'],text=True).strip()
+                    if head!=revision: raise ValueError('Mathlib project revision mismatch')
+                    source=meta['header']+meta['src']
+                    lock=git_file(libproject,revision,'lake-manifest.json')
+                context, lead=template(meta,source)
+                project=envroot/'warmup-team-results'/meta['source']/version
+                project.mkdir(parents=True,exist_ok=True)
+                (project/'lean-toolchain').write_text(f'leanprover/lean4:{version}\n')
+                (project/'lake-manifest.json').write_text(lock)
+                config={'statement':lead+meta['statement'],'name':meta['name']}
+                command=['/usr/bin/env', 'LEAN_PATH='+':'.join(local['libraryPaths']),local['binary'],'-j1','-M2048','-T200000']
+                # The fixed, reviewed proofs need no filesystem writes or network access.
+                if sys.platform=='darwin':
+                    command=['/usr/bin/sandbox-exec','-p','(version 1) (allow default) (deny network*) (deny file-write*)',*command]
+                environment={'id':version.replace('.','-'),'project':str(project),'toolchain':f'leanprover/lean4:{version}',
+                             'command':command,'template':context,'timeout_seconds':90}
+                fp=ev.fingerprint(environment)
+                info.update(fingerprint=fp,sourceSha256=sha(source.encode()),compilerSha256=sha(Path(local['binary']).read_bytes()))
+                configdir=run/ident/version;configdir.mkdir(parents=True,exist_ok=True)
+                (configdir/'context.lean.in').write_text(context)
+                (configdir/'baseline.lean').write_text(meta['src'])
+                write(configdir/'environment.json',{**environment,'sourceRevision':revision,'sourcePath':meta['file_path']})
+                before=ev.evaluate(lead+meta['src'],config,[environment],configdir/'baseline',3)
+                row['baseline'][key]=before
+                write(configdir/'baseline-result.json',before)
+                if not before['valid']:
+                    raise ValueError('고정 환경에서 원본 재검증 실패: '+str([e['error'] for e in before['environments'].values() if e.get('error')]))
+                info.update(status='ready')
+                for cid,code in prepared.items():
+                    result=ev.evaluate(lead+code,config,[environment],configdir/cid,3)
+                    row['candidates'][cid]['environments'][key]=result
+                    write(configdir/(cid+'-result.json'),result)
+                    print(' ',cid,'pass' if result['valid'] else 'fail',flush=True)
+            except (ValueError,OSError) as error:
+                info['reason']=str(error); print(' blocked:',str(error)[:160],flush=True)
+            write(run/'summary.json',summary)
+    summary['finishedAt']=datetime.now(timezone.utc).isoformat()
+    write(run/'summary.json',summary)
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--leanagent',type=Path,required=True)
+    parser.add_argument('--only',type=int,nargs='+');parser.add_argument('--environments',type=Path);parser.add_argument('--run',type=Path,required=True)
+    main(parser.parse_args())
