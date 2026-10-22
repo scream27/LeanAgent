@@ -106,6 +106,12 @@ experiments/
 압축 데이터와 대형 결과는 로컬에 보관하며 Git clone에는 포함되지 않습니다.
 에이전트에는 선택한 원본 문제와 허용 문맥을 별도로 전달합니다.
 
+## 팀 대시보드
+
+[LeanArena 팀 스코어보드](https://lean-arena-dashboard.vercel.app)에서 문제별 토큰·heartbeat·호환성과 원본 대비 개선을 확인할 수 있습니다. 앱은 `dashboard/`의 React + Vite 프로젝트이며, 실행법·데이터 형식·배포 상태는 [대시보드 안내](dashboard/README.md)에 정리했습니다.
+
+현재 화면은 보관된 과거 실험 JSON을 표시합니다. 우리 저장소의 제출 후보 구조가 확정되면 기존 15문제를 연결하며, 자동 배포는 별도 변경으로 도입합니다.
+
 ## 라이선스
 
 이 저장소는 [MIT License](LICENSE)를 따릅니다. 외부 benchmark와 라이브러리는 각 원출처의 라이선스를 확인합니다.
