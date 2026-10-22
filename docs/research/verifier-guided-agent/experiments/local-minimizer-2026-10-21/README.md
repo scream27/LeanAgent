@@ -2,6 +2,21 @@
 
 2026-10-21 · 남성우 · warm-up development experiment.
 
+## Completed result
+
+All **15 problems / 36 problem-version pairs** are complete. Mean local final score:
+**35.238 → 35.785 (+0.547 points)**. A improves 3 problems, retains 12, and regresses
+none; P8 is excluded from search. All final selected bodies pass their listed versions.
+310 proposals produce 4 distinct valid proofs; improvement is concentrated in P12.
+
+- [Presentation](presentation.html), [Korean review](REVIEW.md), [scores](results.csv).
+- [Selected bodies](selected.json), [Arena-format export](submission.jsonl).
+- [Integrity audit](audit.json), [search diagnostics](diagnostics.json).
+
+The export contains all 15 original declarations with selected proof bodies. It was
+not uploaded to the Arena evaluator. The GitHub checkpoint was incomplete; this
+final report replaces its partial averages.
+
 ## Question and comparison
 
 Does bounded local minimization improve the final combined score of proofs already
@@ -142,3 +157,13 @@ and the previous code freeze in `freeze-v2.json`. Search, ranking, primary
 measurement, and score calculation are unchanged. `test_secondary.py` prevents
 reintroducing a requirement for secondary HB. Earlier secondary HB observations
 remain in the evidence but do not contribute to scoring.
+
+
+## 제공 heartbeat와의 차이
+
+원본 토큰은 15/15 제공값과 일치하지만, Putnam 원본 HB는 P13 +26.56%,
+P14 −10.42%, P15 +27.05% 차이가 난다. 원인은 확정하지 않았다.
+이를 잡음으로 무시하거나 공식 worker 재현 성공으로 표현하지 않는다.
+이번 점수는 동일한 고정 환경·계측기로 원본과 후보를 새로 잰 상대 비교다.
+Putnam에서는 A 전후 선택이 같아 이번 추가 개선량에는 기여하지 않았다.
+`measurement-comparison.json`에서 전체 값을 확인할 수 있다.

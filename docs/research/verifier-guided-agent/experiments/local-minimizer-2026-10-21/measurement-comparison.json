@@ -18,6 +18,15 @@
     "hb_relative_difference_percent": 0.06517062314539412
   },
   {
+    "id": 3,
+    "name": "Core.InitsUpdatesComm",
+    "provided_tokens": 224,
+    "measured_tokens": 224,
+    "provided_hb": 4251,
+    "measured_hb": 4253.027,
+    "hb_relative_difference_percent": 0.047682898141609975
+  },
+  {
     "id": 4,
     "name": "fundamental_theorem_of_variational_calculus'",
     "provided_tokens": 851,
@@ -97,5 +106,32 @@
     "provided_hb": 9198,
     "measured_hb": 9282.289,
     "hb_relative_difference_percent": 0.9163839965209863
+  },
+  {
+    "id": 13,
+    "name": "putnam_1964_a4",
+    "provided_tokens": 1769,
+    "measured_tokens": 1769,
+    "provided_hb": 111476,
+    "measured_hb": 141079.656,
+    "hb_relative_difference_percent": 26.55608023251641
+  },
+  {
+    "id": 14,
+    "name": "putnam_1964_b2",
+    "provided_tokens": 1754,
+    "measured_tokens": 1754,
+    "provided_hb": 134499,
+    "measured_hb": 120478.018,
+    "hb_relative_difference_percent": -10.424599439401039
+  },
+  {
+    "id": 15,
+    "name": "putnam_1995_a3",
+    "provided_tokens": 4085,
+    "measured_tokens": 4085,
+    "provided_hb": 14130,
+    "measured_hb": 17952.462,
+    "hb_relative_difference_percent": 27.05210191082803
   }
 ]

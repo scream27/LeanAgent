@@ -56,6 +56,16 @@ def main():
             if r['status']!='complete':continue
             checks+=1
             if r['final_score']<r['control_score'] or r['final_score']<100/3:issues.append(f"P{r['id']} fallback regression")
+    submission_path=HERE/'submission.jsonl'
+    if submission_path.exists():
+        entries=[json.loads(line) for line in submission_path.read_text().splitlines()]
+        selected=json.loads((HERE/'selected.json').read_text())
+        if len(entries)!=len(ROWS) or len(selected)!=len(ROWS):issues.append('submission coverage mismatch')
+        for row,entry,choice in zip(ROWS,entries,selected):
+            checks+=1
+            original=row['src'][len(row['statement']):].lstrip()[2:].lstrip()
+            expected=row['src'][:-len(original)]+choice['proof_body']
+            if entry['name']!=row['name'] or entry['proof']!=expected:issues.append('submission declaration/body mismatch: '+row['name'])
     out={'checks':checks,'problem_version_pairs':pairs,'attempts':attempts,'issues':issues,
          'scope':'artifact integrity and score consistency; Lean results are preserved external evidence'}
     (HERE/'audit.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')

@@ -24,7 +24,7 @@ def main():
         invocations+=1
     out={'operators':by_operator,'unsupported_suggestions':dict(suggestion_categories),
          'lean_invocations_with_record':invocations,
-         'note':'Only completed per-problem results contribute attempt counts; invocation count includes current partial work. A valid query is not an eligible explicit proof.'}
+         'note':'Attempt counts use completed per-problem results; invocation count covers runs/ and excludes pilots, compatibility probes, and environment setup. A valid query is not an eligible explicit proof.'}
     (HERE/'diagnostics.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(out,ensure_ascii=False,indent=2))
 

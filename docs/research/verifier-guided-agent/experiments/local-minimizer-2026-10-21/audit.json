@@ -1,12 +1,7 @@
 {
-  "checks": 337,
-  "problem_version_pairs": 27,
-  "attempts": 244,
-  "issues": [
-    "P3 v4.26.0 missing",
-    "P13 primary missing",
-    "P14 primary missing",
-    "P15 primary missing"
-  ],
+  "checks": 442,
+  "problem_version_pairs": 36,
+  "attempts": 310,
+  "issues": [],
   "scope": "artifact integrity and score consistency; Lean results are preserved external evidence"
 }
