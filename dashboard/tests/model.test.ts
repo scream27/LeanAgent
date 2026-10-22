@@ -4,14 +4,30 @@ import { readFileSync } from 'node:fs';
 import { aggregate, deltaOf, parseSnapshot, reduction, valueOf } from '../src/lib/model.ts';
 import type { Problem, Snapshot } from '../src/lib/model.ts';
 
-const raw = JSON.parse(readFileSync(new URL('../public/data/warmup-2026-10-16.json', import.meta.url), 'utf8'));
+// Synthetic test inputs; these are not published team results.
+const example: Problem = {
+  id: 1, name: 'test.theorem', source: 'test', status: 'measured',
+  baseline: { tokens: 100, heartbeats: 1000 }, candidate: { tokens: 50, heartbeats: 250 },
+  baselineCompatibility: 100, versions: [{ version: '4.26', revision: 'abc', status: 'pass' }],
+  environment: 'test environment', candidateHash: '', evidence: [], note: '',
+};
+const raw: Snapshot = {
+  schemaVersion: 1, id: 'test', label: 'Test fixture', dataset: 'competition',
+  measuredAt: '2000-01-01T00:00:00Z', releaseDate: null, provenance: 'synthetic test',
+  problems: Array.from({ length: 50 }, (_, i) => ({ ...structuredClone(example), id: i + 1,
+    status: i < 9 ? 'measured' : i < 15 ? 'pending' : 'unreleased',
+    baseline: i < 9 ? { ...example.baseline! } : null,
+    candidate: i < 9 ? { ...example.candidate! } : null,
+  })),
+};
 const snapshot = parseSnapshot(raw);
-const example: Problem = { ...snapshot.problems[0], baseline: { tokens: 100, heartbeats: 1000 }, candidate: { tokens: 50, heartbeats: 250 }, baselineCompatibility: 100, versions: [{ version: '4.26', revision: 'abc', status: 'pass' }] };
 
-test('50 slots preserve 15 current problems and 35 unreleased slots', () => {
-  assert.equal(snapshot.problems.length, 50);
-  assert.equal(snapshot.problems.filter(p => p.status === 'unreleased').length, 35);
-  assert.equal(snapshot.problems.filter(p => p.status === 'measured').length, 9);
+test('published entries reference valid team result files', () => {
+  const files = JSON.parse(readFileSync(new URL('../public/data/index.json', import.meta.url), 'utf8'));
+  assert.ok(Array.isArray(files));
+  for (const file of files) {
+    parseSnapshot(JSON.parse(readFileSync(new URL(`../public/data/${file}`, import.meta.url), 'utf8')));
+  }
 });
 test('measured scoring uses reductions and a three-axis arithmetic mean', () => {
   assert.equal(valueOf(example, 'tokens'), 50);
@@ -47,7 +63,7 @@ test('pending and unreleased do not contribute zero to a local reduction average
   const result = aggregate(snapshot.problems, 'improvement');
   assert.equal(result.count, 9);
   assert.equal(result.total, 50);
-  assert.ok(result.value! > 70 && result.value! < 71);
+  assert.equal(result.value, 62.5);
   assert.equal(aggregate(snapshot.problems, 'combined').value, null);
 });
 test('whole competition mean includes failed and unsubmitted problems as zero', () => {
@@ -58,12 +74,6 @@ test('whole competition mean includes failed and unsubmitted problems as zero', 
 test('all pending yields no numeric average', () => {
   assert.equal(aggregate(snapshot.problems.slice(15), 'improvement').value, null);
 });
-test('historical results preserve all 15 checked problems without mixing runs', () => {
-  const past = parseSnapshot(JSON.parse(readFileSync(new URL('../public/data/warmup-2026-10-10.json', import.meta.url), 'utf8')));
-  assert.equal(aggregate(past.problems, 'combined').count, 15);
-  assert.equal(past.problems[0].candidate?.tokens, 188);
-  assert.equal(snapshot.problems[0].candidate?.tokens, 43);
-});
 test('import rejects missing, duplicate and out-of-range slots', () => {
   assert.throws(() => parseSnapshot({ ...raw, problems: raw.problems.slice(0, 49) }), /50/);
   const duplicate = structuredClone(raw); duplicate.problems[1].id = 1;
@@ -73,7 +83,7 @@ test('import rejects missing, duplicate and out-of-range slots', () => {
 });
 test('import rejects non-finite or negative metrics and malformed dates', () => {
   for (const value of [-1, Infinity, NaN]) {
-    const data = structuredClone(raw); data.problems[0].candidate.heartbeats = value;
+    const data = structuredClone(raw); data.problems[0].candidate!.heartbeats = value;
     assert.throws(() => parseSnapshot(data), /유한/);
   }
   assert.throws(() => parseSnapshot({ ...raw, measuredAt: 'not a date' }), /시각/);
@@ -85,7 +95,8 @@ test('import rejects measured records without measurements and duplicated pins',
   assert.throws(() => parseSnapshot(duplicate), /중복/);
 });
 test('exports only whitelisted fields from imported data', () => {
-  const data = structuredClone(raw); data.extra = 'do not retain'; data.problems[0].secret = 'do not retain';
+  const data = { ...structuredClone(raw), extra: 'do not retain' };
+  Object.assign(data.problems[0], { secret: 'do not retain' });
   const result = parseSnapshot(data);
   assert.equal('extra' in result, false);
   assert.equal('secret' in result.problems[0], false);

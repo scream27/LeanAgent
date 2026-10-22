@@ -20,7 +20,7 @@ export type Snapshot = {
   schemaVersion: 1;
   id: string;
   label: string;
-  dataset: 'warmup' | 'competition';
+  dataset: 'competition';
   measuredAt: string;
   releaseDate: string | null;
   provenance: string;
@@ -89,11 +89,11 @@ function measurement(v: unknown, label: string) {
 // Imported JSON is data only. Reject inconsistent records before replacing the visible snapshot.
 export function parseSnapshot(input: unknown): Snapshot {
   if (!isRecord(input) || input.schemaVersion !== 1) throw new Error('schemaVersion: 1 형식의 스냅샷이 필요합니다.');
-  if (!['warmup', 'competition'].includes(String(input.dataset))) throw new Error('dataset은 warmup 또는 competition이어야 합니다.');
+  if (input.dataset !== 'competition') throw new Error('dataset은 competition이어야 합니다.');
   for (const k of ['id', 'label', 'measuredAt', 'provenance']) requireText(input[k], k);
   if (!input.id || !input.label || !Number.isFinite(Date.parse(String(input.measuredAt)))) throw new Error('ID, 이름 또는 측정 시각이 올바르지 않습니다.');
   if (input.releaseDate !== null && (typeof input.releaseDate !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(input.releaseDate))) throw new Error('releaseDate는 YYYY-MM-DD 또는 null이어야 합니다.');
-  const count = input.dataset === 'warmup' ? 15 : 50;
+  const count = 50;
   if (!Array.isArray(input.problems) || input.problems.length !== count) throw new Error(`${input.dataset} 스냅샷에는 정확히 ${count}문제가 필요합니다.`);
   const ids = new Set<number>();
   for (const p of input.problems) {

@@ -9,8 +9,9 @@ import type { Metric, Problem, Snapshot } from './lib/model';
 
 export default function App() {
   const [snapshots, setSnapshots] = useState<Snapshot[]>([]);
-  const [snapshotId, setSnapshotId] = useState('warmup-2026-10-16');
+  const [snapshotId, setSnapshotId] = useState('');
   const [error, setError] = useState('');
+  const [loaded, setLoaded] = useState(false);
   const [notice, setNotice] = useState('');
   const [metric, setMetric] = useState<Metric>('improvement');
   const [selectedId, setSelectedId] = useState(1);
@@ -28,6 +29,7 @@ export default function App() {
       if (!Array.isArray(files) || files.some(f => typeof f !== 'string' || !/^[a-z0-9-]+\.json$/.test(f))) throw new Error('데이터 목록 형식이 올바르지 않습니다.');
       const data = await Promise.all(files.map(async f => parseSnapshot(await get(`/data/${f}`))));
       setSnapshots(data);
+      setLoaded(true);
     })().catch(e => { if (e.name !== 'AbortError') setError(`스냅샷을 불러오지 못했습니다. ${e.message}`); });
     return () => controller.abort();
   }, []);
@@ -75,7 +77,7 @@ export default function App() {
       <div className="page-heading"><div><h1>더 짧은 증명, 더 나은 점수.</h1><p>문제별 점수와 개선을 한눈에 확인하세요.</p></div><div className="file-actions"><input ref={input} type="file" accept=".json,application/json" className="sr-only" tabIndex={-1} aria-label="JSON 파일 선택" onChange={e => void importFile(e.target.files?.[0])}/><button className="button import-button" onClick={() => input.current?.click()}><Upload size={16}/>JSON 불러오기</button><button className="button icon-button" onClick={exportSnapshot} disabled={!snapshot} aria-label="현재 스냅샷 JSON 내보내기" title="현재 스냅샷 JSON 내보내기"><Download size={17}/></button></div></div>
       {error ? <div role="alert" className="notification error"><Info size={17}/><span>{error}</span><button aria-label="오류 닫기" onClick={() => setError('')}><X size={16}/></button></div> : null}
       {notice ? <div role="status" className="notification success"><Check size={17}/><span>{notice}</span><button aria-label="알림 닫기" onClick={() => setNotice('')}><X size={16}/></button></div> : null}
-      {!snapshot ? <div className="loading-state">{error ? <button className="button" onClick={() => window.location.reload()}>다시 불러오기</button> : '실험 기록을 불러오고 있습니다…'}</div> : <>
+      {!snapshot ? <div className="loading-state">{error ? <button className="button" onClick={() => window.location.reload()}>다시 불러오기</button> : loaded ? '아직 등록된 결과가 없습니다.' : '결과를 불러오고 있습니다…'}</div> : <>
         <div className="dataset-bar"><div className="dataset-tabs" role="group" aria-label="문제 보기"><button aria-pressed={scope === 'all'} className={scope === 'all' ? 'active' : ''} onClick={() => setScope('all')}>전체 <span>{snapshot.problems.length}</span></button><button aria-pressed={scope === 'released'} className={scope === 'released' ? 'active' : ''} onClick={() => setScope('released')}>현재 공개 <span>{snapshot.problems.filter(p => p.status !== 'unreleased').length}</span></button></div><span className="release-schedule">{snapshot.problems.some(p => p.status === 'unreleased') ? `${snapshot.problems.filter(p => p.status === 'unreleased').length}문제 · 11.01 공개 예정` : '전체 문제 공개'}</span><label className="snapshot-picker"><span>실험 기록</span><select aria-label="실험 기록" value={snapshot.id} onChange={e => chooseSnapshot(e.target.value)}>{snapshots.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}</select></label></div>
         <SummaryCards snapshot={snapshot}/>
         <div className={`workbench ${scope === 'all' && snapshot.problems.length === 50 ? 'competition-layout' : ''}`}>
