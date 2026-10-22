@@ -1,0 +1,5 @@
+ATTEMPT 13 1 simp? invalid None
+ATTEMPT 13 3 aesop? invalid None
+ATTEMPT 13 4 assumption invalid None
+ATTEMPT 13 5 rfl invalid None
+ATTEMPT 13 6 simp? invalid None

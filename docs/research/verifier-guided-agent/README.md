@@ -23,5 +23,6 @@ Lean 도구 연결과 검증 피드백을 이용한 증명 생성·오류 분석
 | 남성우 | 자동화 수리의 HB 비용과 후속 모델 최적화 | [자동화 수리 후 최적화](./automation-repair-and-optimization.md) | 2026-10-13 |
 | 남성우 | Escalation 조건·프롬프트 출력 및 Gemini 데이터 제작 | [정책과 recipe](./escalation-policy-and-data-recipe.md) · [Gemini 전달 요청서](./gemini-validation-data-request.md) · [정책 코드](./escalation_policy.py) | 2026-10-14 |
 | 남성우 | Warm-up 15문제·3개 프롬프트 실제 실행 및 지정 버전 검증 | [실험 결과](./experiments/warmup-2026-10-15/REPORT.md) · [실행 방법과 한계](./experiments/warmup-2026-10-15/README.md) · [선택 proof](./experiments/warmup-2026-10-15/selected.json) | 2026-10-17 |
+| 남성우 | 실험 A: AST Local Proof Minimizer 구현·Warm-up 검증 | [발표 HTML](./experiments/local-minimizer-2026-10-21/presentation.html) · [리뷰](./experiments/local-minimizer-2026-10-21/REVIEW.md) · [실행·재현](./experiments/local-minimizer-2026-10-21/README.md) | 2026-10-22 |
 
 자료를 이 폴더에 자유로운 형식으로 작성하고, 위 표에 링크를 추가합니다.

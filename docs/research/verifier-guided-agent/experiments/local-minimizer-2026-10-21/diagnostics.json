@@ -1,0 +1,42 @@
+{
+  "operators": {
+    "simp?": {
+      "attempts": 49,
+      "invalid": 25,
+      "no_supported_suggestion": 23,
+      "query_invalid": 23,
+      "valid": 1
+    },
+    "exact?": {
+      "attempts": 46,
+      "no_supported_suggestion": 45,
+      "query_invalid": 45,
+      "valid": 1
+    },
+    "assumption": {
+      "attempts": 46,
+      "invalid": 46
+    },
+    "rfl": {
+      "attempts": 46,
+      "invalid": 46
+    },
+    "delete": {
+      "attempts": 25,
+      "valid": 2,
+      "invalid": 23
+    },
+    "aesop?": {
+      "attempts": 32,
+      "no_supported_suggestion": 14,
+      "query_invalid": 14,
+      "invalid": 18
+    }
+  },
+  "unsupported_suggestions": {
+    "no_try_this_in_output": 70,
+    "has_try_this_but_not_extracted": 12
+  },
+  "lean_invocations_with_record": 450,
+  "note": "Only completed per-problem results contribute attempt counts; invocation count includes current partial work. A valid query is not an eligible explicit proof."
+}

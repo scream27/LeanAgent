@@ -1,0 +1,29 @@
+{
+  "complete_problems": 11,
+  "total_problems": 15,
+  "all_complete": false,
+  "version_checks": 27,
+  "attempts": 226,
+  "valid_proposals": 4,
+  "worse_proposals": 0,
+  "outcomes": {
+    "invalid": 144,
+    "no_supported_suggestion": 78,
+    "valid": 4
+  },
+  "improved": 3,
+  "unchanged": 8,
+  "regressed": 0,
+  "model_api_calls": 0,
+  "original_fallbacks": 2,
+  "improved_over_original": 9,
+  "mean_control_score": 34.7305396256646,
+  "mean_final_score": 35.47588481590563,
+  "mean_gain_points": 0.745345190241029,
+  "median_gain_points": 0.0,
+  "searched_problems": 10,
+  "largest_gain_share": 0.7363947288378163,
+  "mean_token_gain_points": 0.41867645453570945,
+  "mean_heartbeat_gain_points": 0.32666873570531735,
+  "mean_robustness_gain_points": 0.0
+}
