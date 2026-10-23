@@ -6,7 +6,7 @@
 
 
 후보 출처와 검증 상태는 `../submissions/warmup/manifest.json`에 있습니다.
-원본·출처·실행법은 `../experiments/warmup-team-results/README.md`에 있습니다.
+제출 후보·출처·재검증 실행법은 `../submissions/warmup/README.md`에 있습니다.
 문제별 대표 표시는 담당자 최종본을 우선하며, 다른 후보도 상세 화면에서 확인할 수 있습니다.
 동일한 15개 대표 후보는 `../submissions/warmup/best/`에 보관하며, 제출 준비 묶음의 `manifest.json`에서 파일 해시와 검증 상태를 확인할 수 있습니다.
 
@@ -26,7 +26,7 @@ npm run dev
 
 결과 JSON은 `public/data/`에 두고 `index.json`에 파일 이름을 적습니다.
 파일 형식은 `src/lib/model.ts`에 있습니다. `warmup`은 15문제, `competition`은 50문제를 받습니다.
-웜업 JSON은 `experiments/warmup-team-results/export.py`로 생성하며 점수를 직접 편집하지 않습니다. 확인하지 않은 결과는 대기로 표시합니다.
+P10·P11·P13·P14·P15의 웜업 JSON은 `scripts/publish_warmup_verification.py`로 검증 artifact에서 갱신하며 점수를 직접 편집하지 않습니다. 나머지 문제는 기존 측정 결과를 유지합니다. 확인하지 않은 결과는 대기로 표시합니다.
 JSON 불러오기는 현재 화면에서만 적용됩니다.
 
 ## 확인

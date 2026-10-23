@@ -1,0 +1,65 @@
+name: Verify pinned warmup environments
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: warmup-environments-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: ${{ matrix.source }} ${{ matrix.version }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          - source: putnambench
+            version: v4.25.0
+          - source: putnambench
+            version: v4.26.0
+          - source: putnambench
+            version: v4.27.0
+          - source: arklib
+            version: v4.28.0
+          - source: arklib
+            version: v4.29.0
+          - source: arklib
+            version: v4.30.0
+          - source: arklib
+            version: v4.31.0
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install pinned Elan
+        run: |
+          export ELAN_HOME="$RUNNER_TEMP/elan"
+          echo "ELAN_HOME=$ELAN_HOME" >> "$GITHUB_ENV"
+          echo "MATHLIB_CACHE_DIR=$RUNNER_TEMP/mathlib-cache" >> "$GITHUB_ENV"
+          echo "XDG_CACHE_HOME=$RUNNER_TEMP/cache" >> "$GITHUB_ENV"
+          echo "PYTHONPYCACHEPREFIX=$RUNNER_TEMP/pycache" >> "$GITHUB_ENV"
+          curl --fail --location --retry 3 https://github.com/leanprover/elan/releases/download/v4.2.4/elan-x86_64-unknown-linux-gnu.tar.gz -o "$RUNNER_TEMP/elan.tar.gz"
+          tar xzf "$RUNNER_TEMP/elan.tar.gz" -C "$RUNNER_TEMP"
+          "$RUNNER_TEMP/elan-init" -y --no-modify-path --default-toolchain none
+          echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
+      - name: Prepare pinned dependencies and verify original and candidates
+        env:
+          SOURCE: ${{ matrix.source }}
+          VERSION: ${{ matrix.version }}
+        run: python3 scripts/verify_warmup_pins.py --source "$SOURCE" --version "$VERSION" --memory-mb 6144 --work "$RUNNER_TEMP/verification" --output "verification-results/$SOURCE-$VERSION"
+      - name: Preserve verification evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: warmup-${{ matrix.source }}-${{ matrix.version }}
+          path: verification-results/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,1 +1,0 @@
-REFACTOR_EVAL 25547a6cabd84af08b3c5b08014648a1 {"axioms":["propext","Classical.choice","Quot.sound"],"raw":45375566,"scaled":45375,"target":"Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress"}

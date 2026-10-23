@@ -3,9 +3,9 @@
   "id": "warmup-team-results",
   "label": "웜업 · 팀원 후보 재검증",
   "dataset": "warmup",
-  "measuredAt": "2026-10-23T10:26:46.525165+00:00",
+  "measuredAt": "2026-10-23T13:27:30.284396+00:00",
   "releaseDate": null,
-  "provenance": "LeanAgent 후보를 PR3 평가기 c18ec56682462847e2f4d8b6d60aa79ec071a10b로 재검증. 원본·후보 동일 환경, 3회 중앙값. 기존 보고서 점수 미사용. Track1 API 실행 결과 아님. 정리 요청에 따라 수집 사본과 이번 실행의 원시 로그는 삭제했으며, 측정 결과와 후보 해시는 보존했습니다.",
+  "provenance": "PR3 평가기 c18ec56682462847e2f4d8b6d60aa79ec071a10b의 원본·후보 동일 환경 3회 중앙값. P10·P11·P13·P14·P15는 GitHub Actions Linux x86_64에서 지정 커밋 의존성을 복원해 재검증. 나머지 문제는 기존 로컬 측정 유지. Track1 API 실행 결과 아님.",
   "problems": [
     {
       "id": 1,
@@ -929,37 +929,43 @@
       "id": 10,
       "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
       "source": "arklib",
-      "status": "blocked",
-      "baseline": null,
-      "candidate": null,
+      "status": "measured",
+      "baseline": {
+        "tokens": 1463,
+        "heartbeats": 15908
+      },
+      "candidate": {
+        "tokens": 484,
+        "heartbeats": 8807
+      },
       "versions": [
         {
           "version": "v4.31.0",
           "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.30.0",
           "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.29.0",
           "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.28.0",
           "revision": "673fa440714eb1949b8b50a28f2a4f52b1837e9b",
-          "status": "pending"
+          "status": "pass"
         }
       ],
-      "environment": "v4.31.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+      "environment": "v4.31.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
       "candidateHash": "73cd94253cff6e1ccc075c49eccb86e828df51fe7dd7bc91f8b732a5ef3c02ed",
-      "note": "v4.31.0: 컴파일러·의존성 준비 필요 v4.30.0: 컴파일러·의존성 준비 필요 v4.29.0: 컴파일러·의존성 준비 필요 v4.28.0: 컴파일러·의존성 준비 필요",
-      "baselineCompatibility": null,
+      "note": "고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다.",
+      "baselineCompatibility": 100,
       "evidence": [
-        "submissions/warmup/manifest.json",
+        "submissions/warmup/verification-results.json",
         "submissions/warmup/best/P10.lean"
       ],
       "selectedCandidateId": "박성호-final",
@@ -973,33 +979,39 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "73cd94253cff6e1ccc075c49eccb86e828df51fe7dd7bc91f8b732a5ef3c02ed",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 1463,
+            "heartbeats": 15908
+          },
+          "candidate": {
+            "tokens": 484,
+            "heartbeats": 8807
+          },
           "versions": [
             {
               "version": "v4.31.0",
               "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.30.0",
               "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.29.0",
               "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.28.0",
               "revision": "673fa440714eb1949b8b50a28f2a4f52b1837e9b",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.31.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "v4.31.0: 컴파일러·의존성 준비 필요 v4.30.0: 컴파일러·의존성 준비 필요 v4.29.0: 컴파일러·의존성 준비 필요 v4.28.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.31.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         }
       ]
     },
@@ -1007,32 +1019,38 @@
       "id": 11,
       "name": "Binius.BinaryBasefold.fold_advances_evaluation_poly",
       "source": "arklib",
-      "status": "blocked",
-      "baseline": null,
-      "candidate": null,
+      "status": "measured",
+      "baseline": {
+        "tokens": 1906,
+        "heartbeats": 45535
+      },
+      "candidate": {
+        "tokens": 1656,
+        "heartbeats": 41620
+      },
       "versions": [
         {
           "version": "v4.31.0",
           "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.30.0",
           "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.29.0",
           "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-          "status": "pending"
+          "status": "pass"
         }
       ],
-      "environment": "v4.31.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+      "environment": "v4.31.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
       "candidateHash": "06afddcc6cdeaaba9efc456f5ef500b2f37c9e2eb180cc665056d85e4d342d4f",
-      "note": "담당자가 명시적으로 선택한 후보. 후속 세션 best와 구분. v4.31.0: 컴파일러·의존성 준비 필요 v4.30.0: 컴파일러·의존성 준비 필요 v4.29.0: 컴파일러·의존성 준비 필요",
-      "baselineCompatibility": null,
+      "note": "담당자가 명시적으로 선택한 후보. 후속 세션 best와 구분. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다.",
+      "baselineCompatibility": 100,
       "evidence": [
-        "submissions/warmup/manifest.json",
+        "submissions/warmup/verification-results.json",
         "submissions/warmup/best/P11.lean"
       ],
       "selectedCandidateId": "박선영-final",
@@ -1046,28 +1064,34 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "06afddcc6cdeaaba9efc456f5ef500b2f37c9e2eb180cc665056d85e4d342d4f",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 1906,
+            "heartbeats": 45535
+          },
+          "candidate": {
+            "tokens": 1656,
+            "heartbeats": 41620
+          },
           "versions": [
             {
               "version": "v4.31.0",
               "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.30.0",
               "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.29.0",
               "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.31.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "담당자가 명시적으로 선택한 후보. 후속 세션 best와 구분. v4.31.0: 컴파일러·의존성 준비 필요 v4.30.0: 컴파일러·의존성 준비 필요 v4.29.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.31.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "담당자가 명시적으로 선택한 후보. 후속 세션 best와 구분. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         }
       ]
     },
@@ -1143,32 +1167,38 @@
       "id": 13,
       "name": "putnam_1964_a4",
       "source": "putnambench",
-      "status": "blocked",
-      "baseline": null,
-      "candidate": null,
+      "status": "measured",
+      "baseline": {
+        "tokens": 1769,
+        "heartbeats": 115674
+      },
+      "candidate": {
+        "tokens": 259,
+        "heartbeats": 2931
+      },
       "versions": [
         {
           "version": "v4.25.0",
           "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.26.0",
           "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.27.0",
           "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-          "status": "pending"
+          "status": "pass"
         }
       ],
-      "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+      "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
       "candidateHash": "6bf40078bbbbbafe922d313feb4228bc8c6262269d3a13231482b25c001feda9",
-      "note": "담당자 발표의 최종 수정본. 지역 이름 단축을 포함한 마지막 코드 블록. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요 v4.27.0: 컴파일러·의존성 준비 필요",
-      "baselineCompatibility": null,
+      "note": "담당자 발표의 최종 수정본. 지역 이름 단축을 포함한 마지막 코드 블록. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다.",
+      "baselineCompatibility": 100,
       "evidence": [
-        "submissions/warmup/manifest.json",
+        "submissions/warmup/verification-results.json",
         "submissions/warmup/best/P13.lean"
       ],
       "selectedCandidateId": "권주원-final",
@@ -1182,28 +1212,34 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "6bf40078bbbbbafe922d313feb4228bc8c6262269d3a13231482b25c001feda9",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 1769,
+            "heartbeats": 115674
+          },
+          "candidate": {
+            "tokens": 259,
+            "heartbeats": 2931
+          },
           "versions": [
             {
               "version": "v4.25.0",
               "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.26.0",
               "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.27.0",
               "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "담당자 발표의 최종 수정본. 지역 이름 단축을 포함한 마지막 코드 블록. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요 v4.27.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "담당자 발표의 최종 수정본. 지역 이름 단축을 포함한 마지막 코드 블록. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         },
         {
           "id": "권주원-development",
@@ -1213,28 +1249,34 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "working-tree-snapshot",
           "candidateHash": "639587d781669920f53805ab49450d40002e358e33cff361e679bcbbb1f09348",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 1769,
+            "heartbeats": 115674
+          },
+          "candidate": {
+            "tokens": 183,
+            "heartbeats": 2996
+          },
           "versions": [
             {
               "version": "v4.25.0",
               "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.26.0",
               "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.27.0",
               "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "추가 import를 사용한 개발 후보. 지정 환경에서 별도 재검증 필요. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요 v4.27.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "추가 import를 사용한 개발 후보. 지정 환경에서 별도 재검증 필요. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         }
       ]
     },
@@ -1242,27 +1284,33 @@
       "id": 14,
       "name": "putnam_1964_b2",
       "source": "putnambench",
-      "status": "blocked",
-      "baseline": null,
-      "candidate": null,
+      "status": "measured",
+      "baseline": {
+        "tokens": 1754,
+        "heartbeats": 134471
+      },
+      "candidate": {
+        "tokens": 364,
+        "heartbeats": 1699
+      },
       "versions": [
         {
           "version": "v4.25.0",
           "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.26.0",
           "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-          "status": "pending"
+          "status": "pass"
         }
       ],
-      "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+      "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
       "candidateHash": "cfc6d844740f6ec56444dc84842227f9c831c834eb049ae44334354607d30a54",
-      "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요",
-      "baselineCompatibility": null,
+      "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다.",
+      "baselineCompatibility": 100,
       "evidence": [
-        "submissions/warmup/manifest.json",
+        "submissions/warmup/verification-results.json",
         "submissions/warmup/best/P14.lean"
       ],
       "selectedCandidateId": "박채원-local-v426",
@@ -1276,23 +1324,29 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "cfc6d844740f6ec56444dc84842227f9c831c834eb049ae44334354607d30a54",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 1754,
+            "heartbeats": 134471
+          },
+          "candidate": {
+            "tokens": 364,
+            "heartbeats": 1699
+          },
           "versions": [
             {
               "version": "v4.25.0",
               "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.26.0",
               "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         },
         {
           "id": "박채원-final",
@@ -1302,23 +1356,29 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "cfc6d844740f6ec56444dc84842227f9c831c834eb049ae44334354607d30a54",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 1754,
+            "heartbeats": 134471
+          },
+          "candidate": {
+            "tokens": 364,
+            "heartbeats": 1699
+          },
           "versions": [
             {
               "version": "v4.25.0",
               "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.26.0",
               "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         }
       ]
     },
@@ -1326,32 +1386,38 @@
       "id": 15,
       "name": "putnam_1995_a3",
       "source": "putnambench",
-      "status": "blocked",
-      "baseline": null,
-      "candidate": null,
+      "status": "measured",
+      "baseline": {
+        "tokens": 4085,
+        "heartbeats": 14303
+      },
+      "candidate": {
+        "tokens": 283,
+        "heartbeats": 2107
+      },
       "versions": [
         {
           "version": "v4.25.0",
           "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.26.0",
           "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.27.0",
           "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-          "status": "pending"
+          "status": "pass"
         }
       ],
-      "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+      "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
       "candidateHash": "df3d7440b9e416612f6ad85bb1311171baa6746aef7ad7d7951177254eed19dd",
-      "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요 v4.27.0: 컴파일러·의존성 준비 필요",
-      "baselineCompatibility": null,
+      "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다.",
+      "baselineCompatibility": 100,
       "evidence": [
-        "submissions/warmup/manifest.json",
+        "submissions/warmup/verification-results.json",
         "submissions/warmup/best/P15.lean"
       ],
       "selectedCandidateId": "박채원-local-v426",
@@ -1365,28 +1431,34 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "df3d7440b9e416612f6ad85bb1311171baa6746aef7ad7d7951177254eed19dd",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 4085,
+            "heartbeats": 14303
+          },
+          "candidate": {
+            "tokens": 283,
+            "heartbeats": 2107
+          },
           "versions": [
             {
               "version": "v4.25.0",
               "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.26.0",
               "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.27.0",
               "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요 v4.27.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "담당자 측정 파일에서 선언 추출. 계측용 앞뒤 명령은 원본 및 별도 파일에 보존. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         },
         {
           "id": "박채원-final",
@@ -1396,28 +1468,34 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "df3d7440b9e416612f6ad85bb1311171baa6746aef7ad7d7951177254eed19dd",
-          "status": "blocked",
-          "baseline": null,
-          "candidate": null,
+          "status": "measured",
+          "baseline": {
+            "tokens": 4085,
+            "heartbeats": 14303
+          },
+          "candidate": {
+            "tokens": 283,
+            "heartbeats": 2107
+          },
           "versions": [
             {
               "version": "v4.25.0",
               "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.26.0",
               "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.27.0",
               "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-              "status": "pending"
+              "status": "pass"
             }
           ],
-          "environment": "v4.26.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "v4.25.0: 컴파일러·의존성 준비 필요 v4.26.0: 컴파일러·의존성 준비 필요 v4.27.0: 컴파일러·의존성 준비 필요"
+          "environment": "v4.26.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
         }
       ]
     }

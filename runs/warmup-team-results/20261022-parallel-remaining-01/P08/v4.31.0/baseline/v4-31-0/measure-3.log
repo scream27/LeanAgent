@@ -1,1 +1,0 @@
-REFACTOR_EVAL 3c9e25d9d60b403f826c38d7a90bfb93 {"axioms":["propext","Classical.choice","Quot.sound"],"raw":1381280,"scaled":1381,"target":"Cslib.SKI.parallelReduction_diamond"}

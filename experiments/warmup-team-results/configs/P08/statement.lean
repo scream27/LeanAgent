@@ -1,1 +1,0 @@
-theorem parallelReduction_diamond : Diamond ParallelReduction

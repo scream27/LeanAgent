@@ -1,3 +1,0 @@
-/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/권주원-20261016/v4-26-0/measure-3.lean:193:8: warning: declaration uses 'sorry'
-REFACTOR_EVAL dc845a31d3c34e47ba9d583837742ae1 {"axioms":["propext","Quot.sound"],"raw":481630,"scaled":481,"target":"CallElimCorrect.extractedOldExprInVars"}
-/Users/jwkweon/00_work/00_project/05_pseudolab/LeanAgent-LeanRefactorArena/runs/warmup-team-results/20261022-final-main/P02/v4.26.0/권주원-20261016/v4-26-0/measure-3.lean:3237:8: warning: declaration uses 'sorry'

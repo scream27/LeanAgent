@@ -4,8 +4,8 @@
   "selectionPolicy": "assigned-author-final",
   "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
   "benchmarkRevision": "56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c",
-  "dashboardSnapshotSha256": "a81d845338e43e0383a4b75883f62b57985b9f0c2c48ed7bf67f413c47f7dff7",
-  "measuredAt": "2026-10-23T10:26:46.525165+00:00",
+  "dashboardSnapshotSha256": "5c11481f9742838d44da73c5a887aed9d3168a3a54d169e61823490983f12167",
+  "measuredAt": "2026-10-23T13:27:30.284396+00:00",
   "officiallySubmitted": false,
   "apiEligibility": "not-assessed; historical team experiments, not a Track1 API run",
   "allDesignatedVersionsVerified": false,
@@ -265,28 +265,28 @@
       "sourceSha256": "73cd94253cff6e1ccc075c49eccb86e828df51fe7dd7bc91f8b732a5ef3c02ed",
       "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "blocked",
-      "allDesignatedVersionsVerified": false,
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
       "versions": [
         {
           "version": "v4.31.0",
           "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.30.0",
           "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.29.0",
           "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.28.0",
           "revision": "673fa440714eb1949b8b50a28f2a4f52b1837e9b",
-          "status": "pending"
+          "status": "pass"
         }
       ]
     },
@@ -302,23 +302,23 @@
       "sourceSha256": "06afddcc6cdeaaba9efc456f5ef500b2f37c9e2eb180cc665056d85e4d342d4f",
       "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "blocked",
-      "allDesignatedVersionsVerified": false,
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
       "versions": [
         {
           "version": "v4.31.0",
           "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.30.0",
           "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.29.0",
           "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-          "status": "pending"
+          "status": "pass"
         }
       ]
     },
@@ -366,23 +366,23 @@
       "sourceSha256": "8b2c7203567aae8058da89cb751b0a1e96439b8d7437190c1faa0eaf2445be4b",
       "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "blocked",
-      "allDesignatedVersionsVerified": false,
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
       "versions": [
         {
           "version": "v4.25.0",
           "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.26.0",
           "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.27.0",
           "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-          "status": "pending"
+          "status": "pass"
         }
       ]
     },
@@ -398,18 +398,18 @@
       "sourceSha256": "0bab6da4d6253afa0b1c781e8158c86fe87d6191ccfd09bcb254096a5bcf9640",
       "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "blocked",
-      "allDesignatedVersionsVerified": false,
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
       "versions": [
         {
           "version": "v4.25.0",
           "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.26.0",
           "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-          "status": "pending"
+          "status": "pass"
         }
       ]
     },
@@ -425,23 +425,23 @@
       "sourceSha256": "917a0781537fed62a8e9c0106b2b0742fda75c67ebe23f22a77adf26f91b4fee",
       "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "blocked",
-      "allDesignatedVersionsVerified": false,
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
       "versions": [
         {
           "version": "v4.25.0",
           "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.26.0",
           "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.27.0",
           "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
-          "status": "pending"
+          "status": "pass"
         }
       ]
     }
