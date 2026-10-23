@@ -1,0 +1,452 @@
+{
+  "schemaVersion": 1,
+  "dataset": "warmup",
+  "selectionPolicy": "assigned-author-final",
+  "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+  "benchmarkRevision": "56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c",
+  "dashboardSnapshotSha256": "a81d845338e43e0383a4b75883f62b57985b9f0c2c48ed7bf67f413c47f7dff7",
+  "measuredAt": "2026-10-23T10:26:46.525165+00:00",
+  "officiallySubmitted": false,
+  "apiEligibility": "not-assessed; historical team experiments, not a Track1 API run",
+  "allDesignatedVersionsVerified": false,
+  "problems": [
+    {
+      "id": 1,
+      "name": "CallElimCorrect.substOldPostSubset",
+      "author": "남성우",
+      "candidateId": "남성우-final",
+      "path": "best/P01.lean",
+      "sha256": "2861c028472142b869a9e2df832101f14b32381f61d35cbaf62aff9e5a1870d8",
+      "sourcePath": "docs/research/refactoring/warmup/남성우/report.html",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "598679872e3efbb07842591214b100ce7b8d7b88ee9197a9faa3265e5b264da1",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
+      "versions": [
+        {
+          "version": "v4.26.0",
+          "revision": "451e5f047bafa010d178856db76c00029bfa4d7f",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "CallElimCorrect.extractedOldExprInVars",
+      "author": "남성우",
+      "candidateId": "남성우-final",
+      "path": "best/P02.lean",
+      "sha256": "2bd0d1e1a5b75be5f48049b853bba5925c7788e86b3fb47285bbcde86c71d2e4",
+      "sourcePath": "docs/research/refactoring/warmup/남성우/report.html",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "598679872e3efbb07842591214b100ce7b8d7b88ee9197a9faa3265e5b264da1",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
+      "versions": [
+        {
+          "version": "v4.26.0",
+          "revision": "451e5f047bafa010d178856db76c00029bfa4d7f",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Core.InitsUpdatesComm",
+      "author": "권주원",
+      "candidateId": "권주원-final",
+      "path": "best/P03.lean",
+      "sha256": "b26ec6c9d391fec384f763798852cb9a77a82e277061ec5728c49427c9f74fc2",
+      "sourcePath": "docs/research/refactoring/warmup/권주원/presentation.html",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "8b2c7203567aae8058da89cb751b0a1e96439b8d7437190c1faa0eaf2445be4b",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "partial",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.29.1",
+          "revision": "384e22374e0872095ad9c6f74c5998c09cfd93a9",
+          "status": "pending"
+        },
+        {
+          "version": "v4.27.0",
+          "revision": "4348c65a93a3b57b1a4541991ed2d2fcdd9fa35d",
+          "status": "pending"
+        },
+        {
+          "version": "v4.26.0",
+          "revision": "451e5f047bafa010d178856db76c00029bfa4d7f",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "fundamental_theorem_of_variational_calculus'",
+      "author": "정소미",
+      "candidateId": "정소미-final",
+      "path": "best/P04.lean",
+      "sha256": "534b3f8929bc01e93d50fe36133ffc14ac729ff0eee74cacbc8cb03fe5ac0eb8",
+      "sourcePath": "docs/research/refactoring/warmup/정소미/evidence/P4/final.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "534b3f8929bc01e93d50fe36133ffc14ac729ff0eee74cacbc8cb03fe5ac0eb8",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
+      "versions": [
+        {
+          "version": "v4.32.0",
+          "revision": "c48433678e8fb6306ebcd48453300c8e16058a62",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema",
+      "author": "박성호",
+      "candidateId": "박성호-final",
+      "path": "best/P05.lean",
+      "sha256": "294ddf305dee94ccf19c3974265b59ab5e4e354b48383555134f5e4e6b0a729c",
+      "sourcePath": "docs/research/refactoring/warmup/박성호/evidence/P05.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "294ddf305dee94ccf19c3974265b59ab5e4e354b48383555134f5e4e6b0a729c",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
+      "versions": [
+        {
+          "version": "v4.32.0",
+          "revision": "c48433678e8fb6306ebcd48453300c8e16058a62",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time",
+      "author": "권주원",
+      "candidateId": "권주원-final",
+      "path": "best/P06.lean",
+      "sha256": "13fa4d936f31ad00fb889421ab5d7c9ad3fdd602e5a2c7e9f28282d5253875f1",
+      "sourcePath": "docs/research/refactoring/warmup/권주원/presentation.html",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "8b2c7203567aae8058da89cb751b0a1e96439b8d7437190c1faa0eaf2445be4b",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "measured",
+      "allDesignatedVersionsVerified": true,
+      "versions": [
+        {
+          "version": "v4.32.0",
+          "revision": "c48433678e8fb6306ebcd48453300c8e16058a62",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress",
+      "author": "손지연",
+      "candidateId": "손지연-final",
+      "path": "best/P07.lean",
+      "sha256": "66c1018745361d88bb74dc092d2bc48bc32d5c8140f3c2b31b5bc994953cf194",
+      "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "bb87f731959c1d98979d5c689af870e4a7555a10ec1959269b7fc0104a915dfe",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "partial",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.33.0-rc2",
+          "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+          "status": "pending"
+        },
+        {
+          "version": "v4.32.0",
+          "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+          "status": "pass"
+        },
+        {
+          "version": "v4.31.0",
+          "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Cslib.SKI.parallelReduction_diamond",
+      "author": "박선영",
+      "candidateId": "박선영-final",
+      "path": "best/P08.lean",
+      "sha256": "56b6f27c11c9f36d561362f3a2abb4265c407bd0f44603959d6781a5215e4ec6",
+      "sourcePath": "docs/research/refactoring/warmup/박선영/evidence/P8/selected.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "56b6f27c11c9f36d561362f3a2abb4265c407bd0f44603959d6781a5215e4ec6",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "partial",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.33.0-rc2",
+          "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+          "status": "pending"
+        },
+        {
+          "version": "v4.32.0",
+          "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+          "status": "pass"
+        },
+        {
+          "version": "v4.31.0",
+          "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
+          "status": "pass"
+        },
+        {
+          "version": "v4.30.0",
+          "revision": "c7944a9fb44c3298f1a960a5e574ab23a6ab8ed5",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Cslib.CCS.bisimilarity_congr_choice",
+      "author": "정소미",
+      "candidateId": "정소미-final",
+      "path": "best/P09.lean",
+      "sha256": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
+      "sourcePath": "docs/research/refactoring/warmup/정소미/evidence/P9/final.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "partial",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.33.0-rc2",
+          "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+          "status": "pending"
+        },
+        {
+          "version": "v4.32.0",
+          "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+          "status": "pass"
+        },
+        {
+          "version": "v4.31.0",
+          "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Binius.BinaryBasefold.fiberwise_dist_lt_imp_dist_lt_unique_decoding_radius",
+      "author": "박성호",
+      "candidateId": "박성호-final",
+      "path": "best/P10.lean",
+      "sha256": "73cd94253cff6e1ccc075c49eccb86e828df51fe7dd7bc91f8b732a5ef3c02ed",
+      "sourcePath": "docs/research/refactoring/warmup/박성호/evidence/P10.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "73cd94253cff6e1ccc075c49eccb86e828df51fe7dd7bc91f8b732a5ef3c02ed",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "blocked",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.31.0",
+          "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+          "status": "pending"
+        },
+        {
+          "version": "v4.30.0",
+          "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
+          "status": "pending"
+        },
+        {
+          "version": "v4.29.0",
+          "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
+          "status": "pending"
+        },
+        {
+          "version": "v4.28.0",
+          "revision": "673fa440714eb1949b8b50a28f2a4f52b1837e9b",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Binius.BinaryBasefold.fold_advances_evaluation_poly",
+      "author": "박선영",
+      "candidateId": "박선영-final",
+      "path": "best/P11.lean",
+      "sha256": "06afddcc6cdeaaba9efc456f5ef500b2f37c9e2eb180cc665056d85e4d342d4f",
+      "sourcePath": "docs/research/refactoring/warmup/박선영/evidence/P11/selected.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "06afddcc6cdeaaba9efc456f5ef500b2f37c9e2eb180cc665056d85e4d342d4f",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "blocked",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.31.0",
+          "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+          "status": "pending"
+        },
+        {
+          "version": "v4.30.0",
+          "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
+          "status": "pending"
+        },
+        {
+          "version": "v4.29.0",
+          "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "interleaved_affine_gaps_imply_tensor_gaps",
+      "author": "손지연",
+      "candidateId": "손지연-final",
+      "path": "best/P12.lean",
+      "sha256": "0b696bdf18421ecfda5f0d12ced0dffe9e1090d01f6f7a6d2f34b385aecd3b85",
+      "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "bb87f731959c1d98979d5c689af870e4a7555a10ec1959269b7fc0104a915dfe",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "unsupported",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.31.0",
+          "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
+          "status": "pending"
+        },
+        {
+          "version": "v4.30.0",
+          "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
+          "status": "pending"
+        },
+        {
+          "version": "v4.29.0",
+          "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "putnam_1964_a4",
+      "author": "권주원",
+      "candidateId": "권주원-final",
+      "path": "best/P13.lean",
+      "sha256": "6bf40078bbbbbafe922d313feb4228bc8c6262269d3a13231482b25c001feda9",
+      "sourcePath": "docs/research/refactoring/warmup/권주원/presentation.html",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "8b2c7203567aae8058da89cb751b0a1e96439b8d7437190c1faa0eaf2445be4b",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "blocked",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.25.0",
+          "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
+          "status": "pending"
+        },
+        {
+          "version": "v4.26.0",
+          "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+          "status": "pending"
+        },
+        {
+          "version": "v4.27.0",
+          "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "putnam_1964_b2",
+      "author": "박채원",
+      "candidateId": "박채원-local-v426",
+      "path": "best/P14.lean",
+      "sha256": "cfc6d844740f6ec56444dc84842227f9c831c834eb049ae44334354607d30a54",
+      "sourcePath": "docs/research/refactoring/warmup/박채원/evidence/local-v4.26/P14_mine.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "0bab6da4d6253afa0b1c781e8158c86fe87d6191ccfd09bcb254096a5bcf9640",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "blocked",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.25.0",
+          "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
+          "status": "pending"
+        },
+        {
+          "version": "v4.26.0",
+          "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "putnam_1995_a3",
+      "author": "박채원",
+      "candidateId": "박채원-local-v426",
+      "path": "best/P15.lean",
+      "sha256": "df3d7440b9e416612f6ad85bb1311171baa6746aef7ad7d7951177254eed19dd",
+      "sourcePath": "docs/research/refactoring/warmup/박채원/evidence/local-v4.26/P15_mine.lean",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "917a0781537fed62a8e9c0106b2b0742fda75c67ebe23f22a77adf26f91b4fee",
+      "sourceState": "committed",
+      "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
+      "status": "blocked",
+      "allDesignatedVersionsVerified": false,
+      "versions": [
+        {
+          "version": "v4.25.0",
+          "revision": "1ccd71f89cbbd82ae7d097723ce1722ca7b01c33",
+          "status": "pending"
+        },
+        {
+          "version": "v4.26.0",
+          "revision": "2df2f0150c275ad53cb3c90f7c98ec15a56a1a67",
+          "status": "pending"
+        },
+        {
+          "version": "v4.27.0",
+          "revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "sourceRepository": "https://github.com/Pseudo-Lab/LeanAgent",
+  "benchmarkSnapshot": "benchmarks/arena/56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c/benchmark_data_warmup.jsonl",
+  "rawVerificationArtifactsRetained": false
+}
