@@ -1,4 +1,4 @@
-name: Dashboard CI
+name: Dashboard CI and Production
 
 on:
   pull_request:
@@ -18,7 +18,7 @@ permissions:
 
 concurrency:
   group: dashboard-ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   check:
@@ -47,3 +47,40 @@ jobs:
         run: npm run data:check
       - name: Build
         run: npm run build
+
+  deploy:
+    name: Deploy production dashboard
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERCEL_ORG_ID: team_NVZHpKfsscaAUAhvimCrDeGP
+      VERCEL_PROJECT_ID: prj_3e8Wjo50Pwb0G1lNq0Vh22iD9OPS
+    defaults:
+      run:
+        working-directory: dashboard
+    steps:
+      - name: Check out tested source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Deploy to the existing Vercel production project
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo '::error::Register the VERCEL_TOKEN repository secret before production deployment.'
+            exit 1
+          fi
+          npm exec --yes --package=vercel@65.0.0 -- vercel deploy \
+            --prod --yes --non-interactive \
+            --scope "$VERCEL_ORG_ID" --project "$VERCEL_PROJECT_ID" \
+            --token "$VERCEL_TOKEN" \
+            --meta "githubCommitSha=$GITHUB_SHA" --meta "githubCommitRef=main"
+      - name: Verify production serves the tested snapshots
+        run: npm run deploy:check
