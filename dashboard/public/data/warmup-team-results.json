@@ -812,7 +812,7 @@
       "id": 9,
       "name": "Cslib.CCS.bisimilarity_congr_choice",
       "source": "cslib",
-      "status": "partial",
+      "status": "measured",
       "baseline": {
         "tokens": 251,
         "heartbeats": 3854
@@ -825,7 +825,7 @@
         {
           "version": "v4.33.0-rc2",
           "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.32.0",
@@ -840,11 +840,12 @@
       ],
       "environment": "v4.32.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
       "candidateHash": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
-      "note": "v4.33.0-rc2: 컴파일러·의존성 준비 필요",
-      "baselineCompatibility": null,
+      "note": "2026-10-26: 동일한 후보·명제를 지정된 세 커밋과 고정 의존성에서 각각 3회 전체 파일 검증해 모두 통과했습니다. 호환성만 보완했으며 기존 v4.32.0 토큰·HB 측정값은 유지합니다.",
+      "baselineCompatibility": 100,
       "evidence": [
         "submissions/warmup/manifest.json",
-        "submissions/warmup/best/P09.lean"
+        "submissions/warmup/best/P09.lean",
+        "research/p09/experiment.json · full-source-local-2026-10-26 · 호환성 보완"
       ],
       "selectedCandidateId": "정소미-final",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
@@ -857,7 +858,7 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "committed",
           "candidateHash": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
-          "status": "partial",
+          "status": "measured",
           "baseline": {
             "tokens": 251,
             "heartbeats": 3854
@@ -870,7 +871,7 @@
             {
               "version": "v4.33.0-rc2",
               "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.32.0",
@@ -884,7 +885,7 @@
             }
           ],
           "environment": "v4.32.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "v4.33.0-rc2: 컴파일러·의존성 준비 필요"
+          "note": "2026-10-26: 동일한 후보·명제를 지정된 세 커밋과 고정 의존성에서 각각 3회 전체 파일 검증해 모두 통과했습니다. 호환성만 보완했으며 기존 v4.32.0 토큰·HB 측정값은 유지합니다."
         },
         {
           "id": "권주원-20261016",
@@ -894,7 +895,7 @@
           "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
           "sourceState": "working-tree-snapshot",
           "candidateHash": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
-          "status": "partial",
+          "status": "measured",
           "baseline": {
             "tokens": 251,
             "heartbeats": 3854
@@ -907,7 +908,7 @@
             {
               "version": "v4.33.0-rc2",
               "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.32.0",
@@ -921,7 +922,7 @@
             }
           ],
           "environment": "v4.32.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "기존 best.json에 선택된 후보. 이번 수집에서 점수로 재선택하지 않음. v4.33.0-rc2: 컴파일러·의존성 준비 필요"
+          "note": "2026-10-26: 동일한 후보·명제를 지정된 세 커밋과 고정 의존성에서 각각 3회 전체 파일 검증해 모두 통과했습니다. 호환성만 보완했으며 기존 v4.32.0 토큰·HB 측정값은 유지합니다."
         }
       ]
     },

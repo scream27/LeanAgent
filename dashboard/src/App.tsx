@@ -4,6 +4,8 @@ import { DetailPanel } from './components/DetailPanel';
 import { ProblemGrid } from './components/ProblemGrid';
 import { ScoringGuide } from './components/ScoringGuide';
 import { SummaryCards } from './components/SummaryCards';
+import { TeamActivity } from './components/TeamActivity';
+import { ProofResearch } from './components/ProofResearch';
 import { parseSnapshot, valueOf } from './lib/model';
 import type { Metric, Problem, Snapshot } from './lib/model';
 
@@ -79,11 +81,14 @@ export default function App() {
       {notice ? <div role="status" className="notification success"><Check size={17}/><span>{notice}</span><button aria-label="알림 닫기" onClick={() => setNotice('')}><X size={16}/></button></div> : null}
       {!snapshot ? <div className="loading-state">{error ? <button className="button" onClick={() => window.location.reload()}>다시 불러오기</button> : loaded ? '아직 등록된 결과가 없습니다.' : '결과를 불러오고 있습니다…'}</div> : <>
         <div className="dataset-bar">{snapshot.dataset === 'warmup' ? <span className="warmup-label">P01–P15 · 팀원 후보 재검증</span> : <><div className="dataset-tabs" role="group" aria-label="문제 보기"><button aria-pressed={scope === 'all'} className={scope === 'all' ? 'active' : ''} onClick={() => setScope('all')}>전체 <span>{snapshot.problems.length}</span></button><button aria-pressed={scope === 'released'} className={scope === 'released' ? 'active' : ''} onClick={() => setScope('released')}>현재 공개 <span>{snapshot.problems.filter(p => p.status !== 'unreleased').length}</span></button></div><span className="release-schedule">{snapshot.problems.some(p => p.status === 'unreleased') ? `${snapshot.problems.filter(p => p.status === 'unreleased').length}문제 · 공개 대기` : '전체 문제 공개'}</span></>}<label className="snapshot-picker"><span>실험 기록</span><select aria-label="실험 기록" value={snapshot.id} onChange={e => chooseSnapshot(e.target.value)}>{snapshots.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}</select></label></div>
-        <SummaryCards snapshot={snapshot}/>
+        <nav className="section-nav" aria-label="대시보드 섹션"><a href="#results">문제별 점수</a><a href="#team-records">팀원 전체 PR · 30</a><a href="#p09-research">P04·P09 연구</a></nav>
+        <div id="results"><SummaryCards snapshot={snapshot}/></div>
         <div className={`workbench ${scope === 'all' && snapshot.problems.length === 50 ? 'competition-layout' : ''}`}>
           <ProblemGrid {...{ snapshot, metric, query, source, sort, visible, selected }} compact={scope === 'all'} onMetric={setMetric} onQuery={setQuery} onSource={setSource} onSort={setSort} onSelect={chooseProblem}/>
           <DetailPanel problem={selected} metric={metric} snapshot={snapshot}/>
         </div>
+        <TeamActivity/>
+        <ProofResearch/>
         <ScoringGuide warmup={snapshot.dataset === 'warmup'}/>
         <footer><span>LeanArena <span className="dot-separator">/</span> 가짜연구소</span><span>데이터 기준 {new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeZone: 'Asia/Seoul' }).format(new Date(snapshot.measuredAt))} · 저장된 실험 스냅샷</span></footer>
       </>}

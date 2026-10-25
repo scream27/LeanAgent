@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "problemId": 9,
+  "verificationDate": "2026-10-26",
+  "protocol": "full-source-local-2026-10-26",
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "compatibility": {
+    "problemId": 9,
+    "candidateHash": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
+    "matchingTeamResultIds": [
+      "정소미-final",
+      "권주원-20261016"
+    ],
+    "versions": [
+      {
+        "version": "v4.33.0-rc2",
+        "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+        "status": "pass",
+        "verificationProtocol": "full-source-local-2026-10-26",
+        "repetitions": 3
+      },
+      {
+        "version": "v4.32.0",
+        "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+        "status": "pass",
+        "verificationProtocol": "full-source-local-2026-10-26",
+        "repetitions": 3
+      },
+      {
+        "version": "v4.31.0",
+        "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
+        "status": "pass",
+        "verificationProtocol": "full-source-local-2026-10-26",
+        "repetitions": 3
+      }
+    ],
+    "baselineCompatibility": 1.0,
+    "candidateCompatibility": 1.0,
+    "status": "measured",
+    "historicalMetricsToPreserve": {
+      "baseline": {
+        "tokens": 251,
+        "heartbeats": 3854
+      },
+      "candidate": {
+        "tokens": 79,
+        "heartbeats": 512
+      },
+      "environment": "v4.32.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1"
+    },
+    "note": "기존 후보와 동일한 SHA256·원문 바이트를 정확한 지정 커밋·의존성에서 전체 파일 교체 방식으로3회씩 재검증.3개 지정 버전 모두 통과.기존4.32 측정 HB512는 유지하며 이번 전체 파일 계측값과 혼합하지 않음.",
+    "evidence": [
+      "published-proof-match.json",
+      "pinned-environment-checks.json",
+      "summary.json",
+      "runs.csv",
+      "commands.json"
+    ]
+  },
+  "results": {
+    "problem": 9,
+    "date": "2026-10-26",
+    "menu": {
+      "tested": 22,
+      "valid": 12,
+      "invalid": 10
+    },
+    "v4.32": {
+      "reference": {
+        "runs": [
+          "v4.32-reference-r1",
+          "v4.32-reference-r2",
+          "v4.32-reference-r3"
+        ],
+        "tokens": 251,
+        "heartbeats": [
+          3856,
+          3856,
+          3856
+        ],
+        "median_heartbeat": 3856,
+        "all_valid": true
+      },
+      "baseline": {
+        "runs": [
+          "baseline-r1",
+          "v4.32-baseline-r2",
+          "v4.32-baseline-r3"
+        ],
+        "tokens": 79,
+        "heartbeats": [
+          516,
+          516,
+          516
+        ],
+        "median_heartbeat": 516,
+        "all_valid": true,
+        "token_reduction": 68.52589641434264,
+        "heartbeat_reduction": 86.61825726141079,
+        "improvement_average": 77.57207683787672,
+        "delta_vs_baseline": 0
+      },
+      "shortest": {
+        "runs": [
+          "02-elim-map",
+          "v4.32-02-elim-map-r2",
+          "v4.32-02-elim-map-r3"
+        ],
+        "tokens": 76,
+        "heartbeats": [
+          642,
+          642,
+          642
+        ],
+        "median_heartbeat": 642,
+        "all_valid": true,
+        "token_reduction": 69.7211155378486,
+        "heartbeat_reduction": 83.350622406639,
+        "improvement_average": 76.5358689722438,
+        "delta_vs_baseline": -1.0362078656329174
+      },
+      "explicit_apply": {
+        "runs": [
+          "03-apply-map",
+          "v4.32-03-apply-map-r2",
+          "v4.32-03-apply-map-r3"
+        ],
+        "tokens": 79,
+        "heartbeats": [
+          515,
+          515,
+          515
+        ],
+        "median_heartbeat": 515,
+        "all_valid": true,
+        "token_reduction": 68.52589641434264,
+        "heartbeat_reduction": 86.6441908713693,
+        "improvement_average": 77.58504364285596,
+        "delta_vs_baseline": 0.012966804979242852
+      }
+    },
+    "v4.31": {
+      "baseline": {
+        "runs": [
+          "v4.31-baseline-r1",
+          "v4.31-baseline-r2",
+          "v4.31-baseline-r3"
+        ],
+        "tokens": 79,
+        "heartbeats": [
+          516,
+          516,
+          516
+        ],
+        "median_heartbeat": 516,
+        "all_valid": true
+      },
+      "shortest": {
+        "runs": [
+          "v4.31-02-elim-map-r1",
+          "v4.31-02-elim-map-r2",
+          "v4.31-02-elim-map-r3"
+        ],
+        "tokens": 76,
+        "heartbeats": [
+          642,
+          642,
+          642
+        ],
+        "median_heartbeat": 642,
+        "all_valid": true
+      },
+      "reference": {
+        "runs": [
+          "v4.31-reference-r1",
+          "v4.31-reference-r2",
+          "v4.31-reference-r3"
+        ],
+        "tokens": 251,
+        "heartbeats": [
+          3859,
+          3859,
+          3859
+        ],
+        "median_heartbeat": 3859,
+        "all_valid": true
+      }
+    },
+    "decision": "Keep baseline for combined token and heartbeat reduction average;76-token candidate is a length-oriented tradeoff.1HB gain of79-token candidate is tiny and only confirmed in full-source local harness.",
+    "token_counter_official_rows_match": 15,
+    "whole_source_checkout_modified": false,
+    "limits": [
+      "Adaptive search on one fixed theorem, no generalization claim.",
+      "Local full-source harness measures baseline516; dashboard512 uses a separate path, not directly interchangeable.",
+      "No official submission or independent-machine clean-install reproduction."
+    ],
+    "v4.33rc2": {
+      "reference": {
+        "runs": [
+          "v4.33rc2-reference-r1",
+          "v4.33rc2-reference-r2",
+          "v4.33rc2-reference-r3"
+        ],
+        "tokens": 251,
+        "heartbeats": [
+          3858,
+          3858,
+          3858
+        ],
+        "median_heartbeat": 3858,
+        "all_valid": true
+      },
+      "baseline": {
+        "runs": [
+          "v4.33rc2-baseline-r1",
+          "v4.33rc2-baseline-r2",
+          "v4.33rc2-baseline-r3"
+        ],
+        "tokens": 79,
+        "heartbeats": [
+          510,
+          510,
+          510
+        ],
+        "median_heartbeat": 510,
+        "all_valid": true
+      },
+      "shortest": {
+        "runs": [
+          "v4.33rc2-02-elim-map-r1",
+          "v4.33rc2-02-elim-map-r2",
+          "v4.33rc2-02-elim-map-r3"
+        ],
+        "tokens": 76,
+        "heartbeats": [
+          635,
+          635,
+          635
+        ],
+        "median_heartbeat": 635,
+        "all_valid": true
+      }
+    },
+    "published_version_requirements": [
+      {
+        "version": "v4.33.0-rc2",
+        "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+        "status": "pending"
+      },
+      {
+        "version": "v4.32.0",
+        "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+        "status": "pass"
+      },
+      {
+        "version": "v4.31.0",
+        "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
+        "status": "pass"
+      }
+    ],
+    "exact_pinned_environments_verified": true,
+    "published_proof_bytes_equal": true,
+    "total_verifier_runs": 50,
+    "selected_repeated_run_count": 30,
+    "compatibility": {
+      "candidate_sha256": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
+      "status": "pass",
+      "passed_versions": 3,
+      "total_versions": 3,
+      "protocol": "full-source local verification; whole downstream source compiles; expected axioms; unchanged published proof bytes; pinned source/dependencies;3 fresh processes per version",
+      "baseline_controls_pass": true,
+      "public_metric_history_preserved": true
+    }
+  },
+  "proofs": {
+    "baseline": {
+      "proof": "theorem bisimilarity_congr_choice :\n    (p ~[lts (defs := defs)] q) → (choice p r) ~[lts (defs := defs)] (choice q r) := by\n  intro h\n  exists ChoiceBisim, ChoiceBisim.choice h\n  rintro _ _ (h | h) μ <;> apply (Bisimilarity.isBisimulation _ _ h μ).imp <;> intro f s t <;>\n    repeat' first\n    | exact (f _ ‹_›).imp fun _ => And.imp (by first | exact id | exact Tr.choiceL) ChoiceBisim.bisim\n    | exact ⟨s, Tr.choiceR ‹_›, ChoiceBisim.bisim (HomBisimilarity.refl _)⟩\n    | cases t\n",
+      "sha256": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a"
+    },
+    "reference": {
+      "proof": "theorem bisimilarity_congr_choice :\n    (p ~[lts (defs := defs)] q) → (choice p r) ~[lts (defs := defs)] (choice q r) := by\n  intro h\n  exists @ChoiceBisim _ _ defs\n  constructor\n  · constructor; assumption\n  intro s1 s2 r μ\n  constructor\n  case left =>\n    intro s1' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n        exists s2'\n        constructor\n        · apply Tr.choiceL htr2\n        · constructor\n          apply hb.le_bisimilarity _ _ hr2\n      case choiceR a b c htr =>\n        exists s1'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s2', htr2, hr2⟩ := hb.follow_fst hr htr\n      exists s2'\n      constructor\n      · assumption\n      constructor\n      apply hb.le_bisimilarity _ _ hr2\n  case right =>\n    intro s2' htr\n    cases r\n    case choice p q r hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      cases htr\n      case choiceL a b c htr =>\n        obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n        exists s1'\n        constructor\n        · apply Tr.choiceL htr1\n        · constructor\n          apply hb.le_bisimilarity _ _ hr1\n      case choiceR a b c htr =>\n        exists s2'\n        constructor\n        · apply Tr.choiceR htr\n        · constructor\n          apply HomBisimilarity.refl\n    case bisim hbisim =>\n      obtain ⟨rel, hr, hb⟩ := hbisim\n      obtain ⟨s1', htr1, hr1⟩ := hb.follow_snd hr htr\n      exists s1'\n      constructor\n      · assumption\n      · constructor\n        apply hb.le_bisimilarity _ _ hr1",
+      "sha256": "90ec3fb53d6c4e9485868b3d1f1bceac5de6abc8b429d456281744fd1b0fa828"
+    },
+    "02-elim-map": {
+      "proof": "theorem bisimilarity_congr_choice :\n    (p ~[lts (defs := defs)] q) → (choice p r) ~[lts (defs := defs)] (choice q r) := by\n  intro h\n  exists ChoiceBisim, ChoiceBisim.choice h\n  rintro _ _ (h | h) μ <;> apply (Bisimilarity.isBisimulation _ _ h μ).imp <;> intro f s t <;>\n    repeat' first\n    | exact (f _ ‹_›).imp fun _ => And.imp (by solve_by_elim [Tr.choiceL]) ChoiceBisim.bisim\n    | exact ⟨s, Tr.choiceR ‹_›, ChoiceBisim.bisim (HomBisimilarity.refl _)⟩\n    | cases t\n",
+      "sha256": "213c09c7454b3ae7617961882e525327ef514efdf57a17cb474f1ee32805eba6"
+    },
+    "03-apply-map": {
+      "proof": "theorem bisimilarity_congr_choice :\n    (p ~[lts (defs := defs)] q) → (choice p r) ~[lts (defs := defs)] (choice q r) := by\n  intro h\n  exists ChoiceBisim, ChoiceBisim.choice h\n  rintro _ _ (h | h) μ <;> apply (Bisimilarity.isBisimulation _ _ h μ).imp <;> intro f s t <;>\n    repeat' first\n    | exact (f _ ‹_›).imp fun _ => And.imp (by first | exact id | apply Tr.choiceL) ChoiceBisim.bisim\n    | exact ⟨s, Tr.choiceR ‹_›, ChoiceBisim.bisim (HomBisimilarity.refl _)⟩\n    | cases t\n",
+      "sha256": "70de2169ec69ef3169c7fceac86112b74069406bb60ae1432e6695b63a69bce4"
+    }
+  },
+  "candidateLedger": [
+    {
+      "tag": "01-aesop-map",
+      "valid": "False",
+      "tokens": "73",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "02-elim-map",
+      "valid": "True",
+      "tokens": "76",
+      "heartbeat": "642",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "03-apply-map",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "515",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "04-reflexive",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "527",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "05-exists-solve",
+      "valid": "False",
+      "tokens": "75",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "06-aesop-all",
+      "valid": "False",
+      "tokens": "45",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "07-first-cases",
+      "valid": "True",
+      "tokens": "112",
+      "heartbeat": "517",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "08-apply-reorder",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "520",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "09-apply-rules-map",
+      "valid": "False",
+      "tokens": "76",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "10-grind-map",
+      "valid": "False",
+      "tokens": "73",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "11-aesop-choice-map",
+      "valid": "False",
+      "tokens": "78",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "12-dot-choice",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "516",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "13-dot-bisim",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "515",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "14-repeat",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "519",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "15-case-second",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "618",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "16-assumption-map",
+      "valid": "True",
+      "tokens": "81",
+      "heartbeat": "530",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "17-full-grind",
+      "valid": "False",
+      "tokens": "28",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [sorryAx]"
+    },
+    {
+      "tag": "18-case-grind",
+      "valid": "False",
+      "tokens": "37",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "19-grind-lts-map",
+      "valid": "False",
+      "tokens": "76",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "20-trivial-choice-map",
+      "valid": "True",
+      "tokens": "79",
+      "heartbeat": "519",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "21-apply-id-map",
+      "valid": "False",
+      "tokens": "79",
+      "heartbeat": "",
+      "check_returncode": "1",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]"
+    },
+    {
+      "tag": "22-choice-first-elim",
+      "valid": "True",
+      "tokens": "76",
+      "heartbeat": "746",
+      "check_returncode": "0",
+      "statement_unchanged": "True",
+      "forbidden_patterns": "",
+      "axioms": "'Cslib.CCS.bisimilarity_congr_choice' depends on axioms: [propext, Classical.choice, Quot.sound]"
+    }
+  ],
+  "publishedProofMatch": {
+    "checked_at_utc": "2026-10-25T16:19:10.107770+00:00",
+    "source_url": "https://lean-arena-dashboard.vercel.app/data/warmup-team-results.json",
+    "selected_candidate_id": "정소미-final",
+    "published_candidate_sha256": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
+    "local_candidate_file_sha256": "12c49a5118cd4a455ecbc9c793284fe24bb4123803196cf73139ba254aad7f7a",
+    "proof_bytes_equal": true,
+    "required_versions": [
+      {
+        "version": "v4.33.0-rc2",
+        "revision": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+        "status": "pending"
+      },
+      {
+        "version": "v4.32.0",
+        "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
+        "status": "pass"
+      },
+      {
+        "version": "v4.31.0",
+        "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
+        "status": "pass"
+      }
+    ],
+    "original_source_declaration_matches_reference": {
+      "cslib": true,
+      "cslib-v4.31.0": true,
+      "cslib-v4.33.0-rc2": true
+    }
+  },
+  "pinnedEnvironments": {
+    "p9-4.32": {
+      "verified": true,
+      "commit": "197a7be621263b84c67ca4f803f69205b36d06df",
+      "toolchain": "leanprover/lean4:v4.32.0",
+      "lean_version_output": "Lean (version 4.32.0, arm64-apple-darwin24.6.0, commit 8c9756b28d64dab099da31a4c09229a9e6a2ef35, Release)",
+      "source_sha256": "d08a2996a8afa14dca972376a50530677214b54d870aa95d98ae23ac69b4fb61",
+      "lake_manifest_sha256": "ceba7d0fee50fcc84cb20db139450ffc9dbd9dfe343333409b2085f8d6776115",
+      "tracked_changes": false,
+      "dependencies": [
+        {
+          "name": "mathlib",
+          "commit": "81a5d257c8e410db227a6665ed08f64fea08e997",
+          "tracked_changes": false
+        },
+        {
+          "name": "plausible",
+          "commit": "e12c1910fe855cbfc38803cd4e55543906d5fa62",
+          "tracked_changes": false
+        },
+        {
+          "name": "LeanSearchClient",
+          "commit": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+          "tracked_changes": false
+        },
+        {
+          "name": "importGraph",
+          "commit": "7e9612bf0b9ee66db3cb5b9988a35afc706f5a12",
+          "tracked_changes": false
+        },
+        {
+          "name": "proofwidgets",
+          "commit": "6e311e2a844da9b2cc3971187df2fe0066947b93",
+          "tracked_changes": false
+        },
+        {
+          "name": "aesop",
+          "commit": "a7dbf0c63b694e47f425f3dcddbc0e178bb432d3",
+          "tracked_changes": false
+        },
+        {
+          "name": "Qq",
+          "commit": "38d591e778f100aec9762bb582f9c7f55f50e9dc",
+          "tracked_changes": false
+        },
+        {
+          "name": "batteries",
+          "commit": "023ce7d62a0531e22a5331e20b587817a80d49ff",
+          "tracked_changes": false
+        },
+        {
+          "name": "Cli",
+          "commit": "88679d088c9720c27ebdf2ba4dafe17341747f94",
+          "tracked_changes": false
+        }
+      ]
+    },
+    "p9-4.31": {
+      "verified": true,
+      "commit": "8ea71c8df91acd63285515a04da952b23b78d266",
+      "toolchain": "leanprover/lean4:v4.31.0",
+      "lean_version_output": "Lean (version 4.31.0, arm64-apple-darwin24.6.0, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+      "source_sha256": "d08a2996a8afa14dca972376a50530677214b54d870aa95d98ae23ac69b4fb61",
+      "lake_manifest_sha256": "c192257881ee32336e32f1e5ebc660f8890bbefaba391f1b360f961a033fba32",
+      "tracked_changes": false,
+      "dependencies": [
+        {
+          "name": "mathlib",
+          "commit": "fabf563a7c95a166b8d7b6efca11c8b4dc9d911f",
+          "tracked_changes": false
+        },
+        {
+          "name": "plausible",
+          "commit": "63045536fe95024e6c18fc7b48e03f506701c5bc",
+          "tracked_changes": false
+        },
+        {
+          "name": "LeanSearchClient",
+          "commit": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+          "tracked_changes": false
+        },
+        {
+          "name": "importGraph",
+          "commit": "5c7542ed018c78194f1e2b903eaf6a792b74c03d",
+          "tracked_changes": false
+        },
+        {
+          "name": "proofwidgets",
+          "commit": "24b0d9dc081c5423f8eec7e866c441e5184f29d9",
+          "tracked_changes": false
+        },
+        {
+          "name": "aesop",
+          "commit": "e3cb2f741431ce31bf73549fb52316a57368b06f",
+          "tracked_changes": false
+        },
+        {
+          "name": "Qq",
+          "commit": "f46324995fca5f0483b742e4eb4daec7f4ee50d2",
+          "tracked_changes": false
+        },
+        {
+          "name": "batteries",
+          "commit": "fa08db58b30eb033edcdab331bba000827f9f785",
+          "tracked_changes": false
+        },
+        {
+          "name": "Cli",
+          "commit": "92564e5770e4d09f2d86dfbf8ada1e9c715b384c",
+          "tracked_changes": false
+        }
+      ]
+    },
+    "p9-4.33rc2": {
+      "verified": true,
+      "commit": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc",
+      "toolchain": "leanprover/lean4:v4.33.0-rc2",
+      "lean_version_output": "Lean (version 4.33.0-rc2, arm64-apple-darwin24.6.0, commit d8b18978322de05a8f3dba51ef03cf5461676c17, Release)",
+      "source_sha256": "ab051b1bb5547a874efe3491ed0c9acc785de2234344046c0d95d4dee178f73e",
+      "lake_manifest_sha256": "c5acf9a59cf6956eb89589ff09b6a35adbc79fb220886f61442fe02d8b21aae0",
+      "tracked_changes": false,
+      "dependencies": [
+        {
+          "name": "mathlib",
+          "commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+          "tracked_changes": false
+        },
+        {
+          "name": "plausible",
+          "commit": "123d15766ba49356c02ebad2a4462dfe12d79899",
+          "tracked_changes": false
+        },
+        {
+          "name": "LeanSearchClient",
+          "commit": "f5c090429dff3cf66cb65562526c9ea6e8edfbcb",
+          "tracked_changes": false
+        },
+        {
+          "name": "importGraph",
+          "commit": "bb3469a87774349fe01898d8bf2fc6a1ce6411ca",
+          "tracked_changes": false
+        },
+        {
+          "name": "proofwidgets",
+          "commit": "222c58dad7706a6e7cae46c0edd65ea881d3ee27",
+          "tracked_changes": false
+        },
+        {
+          "name": "aesop",
+          "commit": "7db8190085343afde2f5d2cdcc9bac719b6ec02c",
+          "tracked_changes": false
+        },
+        {
+          "name": "Qq",
+          "commit": "ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33",
+          "tracked_changes": false
+        },
+        {
+          "name": "batteries",
+          "commit": "76e1c118b0700b4ceafe99532e887d6431625e1a",
+          "tracked_changes": false
+        },
+        {
+          "name": "Cli",
+          "commit": "1319485273bf87833fa472afbcefdedecb16b45f",
+          "tracked_changes": false
+        }
+      ]
+    }
+  },
+  "sourceFile": "Cslib/Languages/CCS/BehaviouralTheory.lean",
+  "note": "Full-source local verification, independent fresh Lean processes; same computer. Historical source-anchored performance numbers are preserved and not mixed."
+}
