@@ -7,7 +7,7 @@ on:
       - 'dashboard/**'
       - '.github/workflows/dashboard-ci.yml'
   push:
-    branches: [main, codex/dashboard-ci]
+    branches: [main]
     paths:
       - 'dashboard/**'
       - '.github/workflows/dashboard-ci.yml'
@@ -47,6 +47,15 @@ jobs:
         run: npm run data:check
       - name: Build
         run: npm run build
+      - name: Save the tested site
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dashboard-${{ github.sha }}
+          path: dashboard/dist/
+          if-no-files-found: error
+          retention-days: 3
+          overwrite: true
 
   deploy:
     name: Deploy production dashboard
@@ -55,8 +64,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      VERCEL_ORG_ID: team_NVZHpKfsscaAUAhvimCrDeGP
-      VERCEL_PROJECT_ID: prj_3e8Wjo50Pwb0G1lNq0Vh22iD9OPS
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+      DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
     defaults:
       run:
         working-directory: dashboard
@@ -69,18 +79,24 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '24'
-      - name: Deploy to the existing Vercel production project
+      - name: Download the tested site
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dashboard-${{ github.sha }}
+          path: dashboard/dist/
+      - name: Deploy to Cloudflare Pages
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          WRANGLER_SEND_METRICS: 'false'
         run: |
-          if [ -z "$VERCEL_TOKEN" ]; then
-            echo '::error::Register the VERCEL_TOKEN repository secret before production deployment.'
-            exit 1
-          fi
-          npm exec --yes --package=vercel@65.0.0 -- vercel deploy \
-            --prod --yes --non-interactive \
-            --scope "$VERCEL_ORG_ID" --project "$VERCEL_PROJECT_ID" \
-            --token "$VERCEL_TOKEN" \
-            --meta "githubCommitSha=$GITHUB_SHA" --meta "githubCommitRef=main"
+          for key in CLOUDFLARE_ACCOUNT_ID CLOUDFLARE_PAGES_PROJECT DASHBOARD_URL CLOUDFLARE_API_TOKEN; do
+            if [ -z "${!key}" ]; then
+              echo "::error::Configure $key in the repository Actions settings (see dashboard/README.md)."
+              exit 1
+            fi
+          done
+          npm exec --yes --package=wrangler@4.152.0 -- wrangler pages deploy dist \
+            --project-name "$CLOUDFLARE_PAGES_PROJECT" \
+            --branch main --commit-hash "$GITHUB_SHA"
       - name: Verify production serves the tested snapshots
         run: npm run deploy:check

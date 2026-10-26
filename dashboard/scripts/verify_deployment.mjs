@@ -1,7 +1,8 @@
 import { readFile } from 'node:fs/promises';
 import { setTimeout } from 'node:timers/promises';
 
-const base = 'https://lean-arena-dashboard.vercel.app';
+const base = process.env.DASHBOARD_URL?.replace(/\/$/, '');
+if (!base) throw new Error('Set DASHBOARD_URL to the production site URL before checking deployment');
 const index = await readFile(new URL('../public/data/index.json', import.meta.url), 'utf8');
 const files = JSON.parse(index);
 if (!Array.isArray(files) || !files.length || files.some(f => !/^[a-z0-9-]+\.json$/.test(f))) {

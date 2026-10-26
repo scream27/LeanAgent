@@ -47,15 +47,37 @@ npm run build
 
 ## 배포
 
-운영 주소: https://lean-arena-dashboard.vercel.app
+운영 주소: https://lean-arena-dashboard.pages.dev
 
-`.github/workflows/dashboard-ci.yml`이 main의 `dashboard/**` 또는 해당 워크플로 변경을 처리합니다. PR에서는 테스트·데이터 검사·빌드만 실행하며, main에서는 검사 성공 후 기존 Vercel 운영 프로젝트로 배포합니다. Actions의 수동 실행도 main에서만 운영 배포할 수 있습니다.
+Cloudflare Pages의 Direct Upload 프로젝트 `lean-arena-dashboard`를 사용합니다. GitHub Actions 저장소 변수 `DASHBOARD_URL`에도 이 주소를 설정합니다.
 
-- Vercel 프로젝트: `lean-arena-dashboard` (`prj_3e8Wjo50Pwb0G1lNq0Vh22iD9OPS`)
-- 팀: `team_NVZHpKfsscaAUAhvimCrDeGP`
-- GitHub Actions 저장소 Secret: `VERCEL_TOKEN` — 이 프로젝트를 배포할 수 있는 토큰. 토큰 만료 전에 Secret을 갱신합니다.
-- Vercel CLI: `65.0.0`으로 고정. GitHub와 Vercel의 직접 Git 연결은 필요하지 않습니다.
+`.github/workflows/dashboard-ci.yml`이 main의 `dashboard/**` 또는 해당 워크플로 변경을 처리합니다. PR에서는 테스트·데이터 검사·빌드만 실행하며, main에서는 검사 성공 후 **같은 실행에서 검증한 `dist/` artifact**를 Cloudflare Pages로 배포합니다. Actions의 수동 실행도 main에서만 운영 배포합니다. Cloudflare의 별도 Git 연결이나 팀원별 유료 좌석은 필요하지 않습니다.
 
-`vercel.json`은 Vercel 빌드에서도 테스트와 데이터 검사를 실행합니다. 배포 후 `npm run deploy:check`가 운영 주소의 데이터 목록 및 모든 JSON을 해당 커밋과 비교합니다. 이전 데이터가 남아 있으면 배포 작업은 실패합니다. main 배포는 순차 실행해 이전 실행이 나중 배포를 덮어쓰지 않도록 합니다.
+### 최초 연결
 
-재배포는 GitHub Actions의 **Dashboard CI and Production → Run workflow → main**에서 실행합니다. `check` 성공만으로 운영 배포가 끝난 것은 아니며, `deploy`의 데이터 확인까지 성공했는지 확인합니다.
+1. Cloudflare **Workers & Pages → Create application → Pages → Direct Upload**에서 프로젝트를 만들고 운영 브랜치를 `main`으로 설정합니다.
+2. 대상 계정으로 범위를 제한한 **Account → Cloudflare Pages → Edit** 권한의 API 토큰을 만듭니다.
+3. 이 저장소의 **Settings → Secrets and variables → Actions**에 다음 항목을 등록합니다. 토큰은 코드·문서·채팅에 붙이지 않습니다.
+
+| 종류 | 이름 | 값 |
+| --- | --- | --- |
+| Secret | `CLOUDFLARE_API_TOKEN` | 대상 계정의 Pages 배포 권한을 가진 API 토큰 |
+| Variable | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 계정 ID |
+| Variable | `CLOUDFLARE_PAGES_PROJECT` | 생성한 Pages 프로젝트 이름 |
+| Variable | `DASHBOARD_URL` | 해당 프로젝트의 실제 운영 URL (`https://…pages.dev`) |
+
+Wrangler CLI는 `4.152.0`으로 고정합니다. 배포 토큰 `lean-arena-github-actions`의 만료일은 2027-10-26이며, 만료 전에 Secret을 갱신합니다. 필수 설정이 없으면 배포 단계가 명시적인 오류로 중단됩니다.
+
+### 배포 확인과 재실행
+
+`public/_headers`의 보안 헤더와 데이터 재검증 캐시 정책은 Vite 빌드 결과에도 포함됩니다. 배포 후 `npm run deploy:check`가 `DASHBOARD_URL`의 데이터 목록 및 모든 스냅샷 JSON을 해당 커밋과 비교합니다. 이전 데이터가 남아 있으면 배포 작업은 실패합니다.
+
+로컬에서 운영 데이터를 확인하려면 다음과 같이 실제 주소를 지정합니다.
+
+```sh
+DASHBOARD_URL=https://lean-arena-dashboard.pages.dev npm run deploy:check
+```
+
+재배포는 GitHub Actions의 **Dashboard CI and Production → Run workflow → main**에서 실행합니다. `check` 성공만으로 운영 배포가 끝난 것은 아니며, `deploy`의 데이터 확인까지 성공했는지 확인합니다. PR·다른 브랜치에서 수동 실행하면 검증만 수행합니다.
+
+Cloudflare에서 운영 확인을 마친 후 기존 Vercel 자동 배포용 Secret과 변수를 정리할 수 있습니다. 이전 Vercel 프로젝트는 전환 확인 전까지 복구용으로 유지합니다.

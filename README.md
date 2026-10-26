@@ -3,7 +3,7 @@
 가짜연구소 LeanAgent 팀의 Lean Refactor Arena 참가 코드입니다.
 기존 Lean 증명을 리팩터링해 증명 길이와 검증 비용을 줄이고, 지정된 Lean 버전에서의 호환성을 검증합니다.
 
-팀 실험 결과 대시보드: [lean-arena-dashboard.vercel.app](https://lean-arena-dashboard.vercel.app)
+팀 실험 결과 대시보드: [lean-arena-dashboard.pages.dev](https://lean-arena-dashboard.pages.dev)
 
 ## 목표
 
