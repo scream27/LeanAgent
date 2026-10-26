@@ -4,8 +4,8 @@
   "selectionPolicy": "assigned-author-final",
   "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
   "benchmarkRevision": "56aa7b8f738d1d6a0a24a55e03cdea1a84007b6c",
-  "dashboardSnapshotSha256": "85bdd59f266c081efd8fdb45cd64d9279936bb75c73d5b433c528f5a20b4a2a9",
-  "measuredAt": "2026-10-26T10:32:31.072241+00:00",
+  "dashboardSnapshotSha256": "5c11481f9742838d44da73c5a887aed9d3168a3a54d169e61823490983f12167",
+  "measuredAt": "2026-10-23T13:27:30.284396+00:00",
   "officiallySubmitted": false,
   "apiEligibility": "not-assessed; historical team experiments, not a Track1 API run",
   "allDesignatedVersionsVerified": false,
@@ -158,13 +158,13 @@
       "author": "손지연",
       "candidateId": "손지연-final",
       "path": "best/P07.lean",
-      "sha256": "a5463ce0c227809919c02f9dee135565a88d06ff5a4f0aadaf1a45f5c9e4a07e",
-      "sourcePath": "submissions/warmup/best/P07.lean",
-      "sourceCommit": "45a5d26975ca5127197ebd05251bc456532f837d",
-      "sourceSha256": "a5463ce0c227809919c02f9dee135565a88d06ff5a4f0aadaf1a45f5c9e4a07e",
-      "sourceState": "working-tree-snapshot",
+      "sha256": "66c1018745361d88bb74dc092d2bc48bc32d5c8140f3c2b31b5bc994953cf194",
+      "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "bb87f731959c1d98979d5c689af870e4a7555a10ec1959269b7fc0104a915dfe",
+      "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "pending",
+      "status": "partial",
       "allDesignatedVersionsVerified": false,
       "versions": [
         {
@@ -175,12 +175,12 @@
         {
           "version": "v4.32.0",
           "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.31.0",
           "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
-          "status": "pending"
+          "status": "pass"
         }
       ]
     },
@@ -328,29 +328,29 @@
       "author": "손지연",
       "candidateId": "손지연-final",
       "path": "best/P12.lean",
-      "sha256": "cbc9d9819e788a9c7f1bfa917c17edfd7b31907a3b7c17b765b0a3eddff1abc4",
-      "sourcePath": "submissions/warmup/best/P12.lean",
-      "sourceCommit": "45a5d26975ca5127197ebd05251bc456532f837d",
-      "sourceSha256": "cbc9d9819e788a9c7f1bfa917c17edfd7b31907a3b7c17b765b0a3eddff1abc4",
-      "sourceState": "working-tree-snapshot",
+      "sha256": "0b696bdf18421ecfda5f0d12ced0dffe9e1090d01f6f7a6d2f34b385aecd3b85",
+      "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+      "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+      "sourceSha256": "bb87f731959c1d98979d5c689af870e4a7555a10ec1959269b7fc0104a915dfe",
+      "sourceState": "committed",
       "selectionReason": "담당자가 공유한 최종본 우선. 없으면 명시적으로 선택된 팀 실험 후보를 표시. 점수 순위 선정 아님.",
-      "status": "measured",
-      "allDesignatedVersionsVerified": true,
+      "status": "unsupported",
+      "allDesignatedVersionsVerified": false,
       "versions": [
         {
           "version": "v4.31.0",
           "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-          "status": "pass"
+          "status": "pending"
         },
         {
           "version": "v4.30.0",
           "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-          "status": "pass"
+          "status": "pending"
         },
         {
           "version": "v4.29.0",
           "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-          "status": "pass"
+          "status": "pending"
         }
       ]
     },

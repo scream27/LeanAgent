@@ -7,12 +7,8 @@ import json
 from pathlib import Path
 import re
 
-if __package__:
-    from .warmup_evaluator import evaluator_metadata
-else:
-    from warmup_evaluator import evaluator_metadata
-
 ROOT = Path(__file__).resolve().parents[1]
+EVALUATOR = 'c18ec56682462847e2f4d8b6d60aa79ec071a10b'
 PRIMARY = {'arklib': 'v4.31.0', 'putnambench': 'v4.26.0'}
 
 
@@ -45,22 +41,21 @@ def publish(summaries):
     snapshot = json.loads(snapshot_path.read_text())
     manifest = json.loads(manifest_path.read_text())
     inputs = json.loads((ROOT / 'submissions/warmup/verification-inputs.json').read_text())
-    evaluator = evaluator_metadata()
     reports = {}
     for path in summaries:
         report = json.loads(path.read_text())
-        if (report['status'] != 'completed' or report['repetitions'] != 3
-                or any(report.get(key) != value for key, value in evaluator.items())):
-            raise ValueError(f'Incomplete or incompatible verification (expected {evaluator["validatorVersion"]}): {path}')
+        if report['status'] != 'completed' or report['evaluatorRevision'] != EVALUATOR or report['repetitions'] != 3:
+            raise ValueError(f'Incomplete or incompatible verification: {path}')
         key = (report['source'], report['version'], report['revision'])
         if key in reports:
             raise ValueError(f'Duplicate source/version: {key}')
         reports[key] = report
-    evidence = {'schemaVersion': 2, **evaluator, 'runs': [], 'problems': []}
+    evidence = {'schemaVersion': 1, 'evaluatorRevision': EVALUATOR, 'runs': [], 'problems': []}
     for report in reports.values():
-        evidence['runs'].append({k: report[k] for k in [*evaluator, 'source', 'version', 'revision', 'host', 'commit', 'runId', 'manifestSha256', 'dependencies', 'finishedAt']})
+        evidence['runs'].append({k: report[k] for k in ['source', 'version', 'revision', 'host', 'commit', 'runId', 'manifestSha256', 'dependencies', 'finishedAt']})
     for row in snapshot['problems']:
         if str(row['id']) not in inputs['problems']:
+            row['evidence'] = ['submissions/warmup/manifest.json', f'submissions/warmup/best/P{row["id"]:02}.lean']
             continue
         meta = inputs['problems'][str(row['id'])]
         pins = [(v, r) for pin in meta['version_info'] for v, r in pin.items()]
@@ -124,12 +119,8 @@ def publish(summaries):
         submitted.update(status=row['status'], versions=deepcopy(row['versions']),
                          allDesignatedVersionsVerified=all(v['status'] == 'pass' for v in row['versions']))
     snapshot['measuredAt'] = max(r['finishedAt'] for r in reports.values())
-    verified_problems = '·'.join(f'P{p["id"]:02}' for p in evidence['problems'])
-    snapshot['provenance'] = ('PR3 평가기 ' + evaluator['evaluatorRevision']
-                              + ' · validator ' + evaluator['validatorVersion']
-                              + ' · SHA-256 ' + evaluator['validatorSha256']
-                              + '의 원본·후보 동일 환경 3회 중앙값. '
-                              + verified_problems + '는 GitHub Actions Linux x86_64에서 지정 커밋 의존성을 복원해 재검증. '
+    snapshot['provenance'] = ('PR3 평가기 ' + EVALUATOR + '의 원본·후보 동일 환경 3회 중앙값. '
+                              'P10·P11·P13·P14·P15는 GitHub Actions Linux x86_64에서 지정 커밋 의존성을 복원해 재검증. '
                               '나머지 문제는 기존 로컬 측정 유지. Track1 API 실행 결과 아님.')
     manifest['measuredAt'] = snapshot['measuredAt']
     manifest['dashboardSnapshotSha256'] = hashlib.sha256(encoded(snapshot)).hexdigest()

@@ -1,4 +1,4 @@
-"""Restore exact library pins and measure warmup proofs with patched, frozen PR3 code.
+"""Restore exact library pins and measure warmup proofs with the frozen PR3 evaluator.
 
 Builds run in the supplied work directory. Evidence is written separately; this
 command never edits candidates, published scores, or upstream tracked sources.
@@ -16,12 +16,8 @@ import subprocess
 import sys
 import traceback
 
-if __package__:
-    from .warmup_evaluator import EVALUATOR_REVISION, restore_evaluator
-else:
-    from warmup_evaluator import EVALUATOR_REVISION, restore_evaluator
-
 ROOT = Path(__file__).resolve().parents[1]
+EVALUATOR_REVISION = 'c18ec56682462847e2f4d8b6d60aa79ec071a10b'
 REPOSITORIES = {'arklib': 'https://github.com/Verified-zkEVM/ArkLib.git',
                 'putnambench': 'https://github.com/leanprover-community/mathlib4.git'}
 
@@ -129,9 +125,6 @@ def main(args):
             raise RuntimeError(f'{command[0]} failed ({result.returncode}); see {logfile.name}: {text[-2000:]}')
         return text.strip() if capture else None
     try:
-        runtime = work / 'evaluator'
-        report.update(restore_evaluator(ROOT, runtime))
-        write(output / 'summary.json', report)
         project = work / 'project'
         run(['git', 'init', str(project)])
         run(['git', 'remote', 'add', 'origin', REPOSITORIES[args.source]], project)
@@ -145,10 +138,7 @@ def main(args):
         lock = (project / 'lake-manifest.json').read_bytes()
         run(['elan', 'toolchain', 'install', toolchain], project)
         run(['lake', 'exe', 'cache', 'get'], project)
-        targets = (['+ArkLib.ProofSystem.Binius.BinaryBasefold.Prelude:olean']
-                   if args.source == 'arklib' else ['+Mathlib:olean'])
-        if args.source == 'arklib' and any(row['id'] == 12 for row, _, _ in rows):
-            targets.append('+ArkLib.Data.CodingTheory.ProximityGap.DG25.MainResults:olean')
+        target = '+ArkLib.ProofSystem.Binius.BinaryBasefold.Prelude:olean' if args.source == 'arklib' else '+Mathlib:olean'
         if (project / 'lake-manifest.json').read_bytes() != lock:
             raise ValueError('Preparation changed the pinned dependency manifest')
         packages = []
@@ -166,7 +156,7 @@ def main(args):
             packages.append({'name': package['name'], 'revision': head})
         report['dependencies'] = packages
         report['manifestSha256'] = sha(lock)
-        run(['lake', 'build', *targets], project)
+        run(['lake', 'build', target], project)
         if (project / 'lake-manifest.json').read_bytes() != lock:
             raise ValueError('Build changed the pinned dependency manifest')
         if sys.platform == 'linux':
@@ -175,6 +165,12 @@ def main(args):
             probe = output / 'import-probe.lean'
             probe.write_text('import Mathlib\nimport Aesop\n#check Nat\n')
             run(['lake', 'env', 'lean', f'-M{args.memory_mb}', str(probe)], project)
+        runtime = work / 'evaluator'
+        names = subprocess.check_output(['git', '-C', str(ROOT), 'ls-tree', '-r', '--name-only', EVALUATOR_REVISION, 'refactor_eval'], text=True).splitlines()
+        for name in names:
+            dest = runtime / name
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(subprocess.check_output(['git', '-C', str(ROOT), 'show', f'{EVALUATOR_REVISION}:{name}']))
         sys.path.insert(0, str(runtime))
         from refactor_eval.lean import LeanEvaluator
         from refactor_eval.tokens import TOKENIZER_ID

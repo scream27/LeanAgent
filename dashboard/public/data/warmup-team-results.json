@@ -3,9 +3,9 @@
   "id": "warmup-team-results",
   "label": "웜업 · 팀원 후보 재검증",
   "dataset": "warmup",
-  "measuredAt": "2026-10-26T10:32:31.072241+00:00",
+  "measuredAt": "2026-10-23T13:27:30.284396+00:00",
   "releaseDate": null,
-  "provenance": "PR3 평가기 c18ec56682462847e2f4d8b6d60aa79ec071a10b · validator lean-declaration-cardinality-v1 · SHA-256 514dd5f732ad92ba7c9a8e3dfef45574342e32f15ffda61b9017ca5bd7450cf3의 원본·후보 동일 환경 3회 중앙값. P10·P11·P12·P13·P14·P15는 GitHub Actions Linux x86_64에서 지정 커밋 의존성을 복원해 재검증. 나머지 문제는 기존 로컬 측정 유지. Track1 API 실행 결과 아님.",
+  "provenance": "PR3 평가기 c18ec56682462847e2f4d8b6d60aa79ec071a10b의 원본·후보 동일 환경 3회 중앙값. P10·P11·P13·P14·P15는 GitHub Actions Linux x86_64에서 지정 커밋 의존성을 복원해 재검증. 나머지 문제는 기존 로컬 측정 유지. Track1 API 실행 결과 아님.",
   "problems": [
     {
       "id": 1,
@@ -563,9 +563,15 @@
       "id": 7,
       "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.progress",
       "source": "cslib",
-      "status": "pending",
-      "baseline": null,
-      "candidate": null,
+      "status": "partial",
+      "baseline": {
+        "tokens": 408,
+        "heartbeats": 61948
+      },
+      "candidate": {
+        "tokens": 300,
+        "heartbeats": 45378
+      },
       "versions": [
         {
           "version": "v4.33.0-rc2",
@@ -575,17 +581,17 @@
         {
           "version": "v4.32.0",
           "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
-          "status": "pending"
+          "status": "pass"
         },
         {
           "version": "v4.31.0",
           "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
-          "status": "pending"
+          "status": "pass"
         }
       ],
       "environment": "v4.32.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-      "candidateHash": "a5463ce0c227809919c02f9dee135565a88d06ff5a4f0aadaf1a45f5c9e4a07e",
-      "note": "수정 후보를 best 파일과 동기화했습니다. 패치한 평가기로 macOS 로컬의 지정 세 버전에서 원본·후보 검증과 각 3회 측정을 통과했습니다. 공통 환경 결과 게시 전이며 이전 후보의 측정값·호환성은 새 후보에 이월하지 않습니다.",
+      "candidateHash": "66c1018745361d88bb74dc092d2bc48bc32d5c8140f3c2b31b5bc994953cf194",
+      "note": "v4.33.0-rc2: 컴파일러·의존성 준비 필요",
       "baselineCompatibility": null,
       "evidence": [
         "submissions/warmup/manifest.json",
@@ -597,14 +603,20 @@
         {
           "id": "손지연-final",
           "author": "손지연",
-          "proof": "lemma Typing.progress (der : Typing [] t τ) : t.Value ∨ ∃ t', t ⭢βᵛ t' := by\n  generalize eq : [] = Γ at der\n  -- Retain the typing derivation to recover local closure after induction.\n  have wholeTyped : Typing Γ t τ := der\n  induction der <;> subst eq\n  case var => grind\n  case app t₁ _ _ t₂ leftTyped rightTyped ihLeft ihRight =>\n    right\n    rcases ihLeft rfl leftTyped with leftValue | ⟨t₁', step⟩\n    · rcases ihRight rfl rightTyped with rightValue | ⟨t₂', step⟩\n      · obtain ⟨σ, body, rfl⟩ := leftTyped.canonical_form_abs leftValue\n        exact ⟨_, Red.abs leftValue.lc rightValue⟩\n      · exact ⟨_, Red.appᵣ leftValue step⟩\n    · exact ⟨_, Red.appₗ rightTyped.wf.2.1 step⟩\n  case tapp σ' typed _ ih =>\n    right\n    rcases ih rfl typed with value | ⟨t', step⟩\n    · obtain ⟨_, body, eq⟩ := typed.canonical_form_tabs value\n      refine ⟨body ^ᵗᵞ σ', ?_⟩\n      grind\n    · refine ⟨.tapp t' σ', ?_⟩\n      grind\n  case let' t₁ σ t₂ τ L typed _ ih _ =>\n    right\n    rcases ih rfl typed with value | ⟨t₁', step⟩\n    · refine ⟨t₂ ^ᵗᵗ t₁, ?_⟩\n      grind\n    · refine ⟨t₁'.let' t₂, ?_⟩\n      grind\n  case inl typed _ ih | inr typed _ ih =>\n    -- The two injections share the same value and congruence-step argument.\n    rcases ih rfl typed with value | ⟨t', step⟩\n    · left\n      constructor\n      exact value\n    · right\n      exact ⟨_, by constructor; exact step⟩\n  case case t₁ _ _ t₂ _ t₃ _ typed _ _ ih _ _ =>\n    right\n    rcases ih rfl typed with value | ⟨t₁', step⟩\n    · obtain ⟨t₁, side⟩ := typed.canonical_form_sum value\n      have bodies := Term.body_case.mp wholeTyped.wf.2.1\n      rcases side with rfl | rfl\n      · cases value with\n        | inl val => exact ⟨_, Red.case_inl val bodies.2.1 bodies.2.2⟩\n      · cases value with\n        | inr val => exact ⟨_, Red.case_inr val bodies.2.1 bodies.2.2⟩\n    · refine ⟨t₁'.case t₂ t₃, ?_⟩\n      grind\n  case sub => grind\n  case abs | tabs =>\n    left\n    constructor\n    exact wholeTyped.wf.2.1\n",
-          "sourcePath": "submissions/warmup/best/P07.lean",
-          "sourceCommit": "45a5d26975ca5127197ebd05251bc456532f837d",
-          "sourceState": "working-tree-snapshot",
-          "candidateHash": "a5463ce0c227809919c02f9dee135565a88d06ff5a4f0aadaf1a45f5c9e4a07e",
-          "status": "pending",
-          "baseline": null,
-          "candidate": null,
+          "proof": "lemma Typing.progress (der : Typing [] t τ) : t.Value ∨ ∃ t', t ⭢βᵛ t' := by\n  generalize eq : [] = Γ at der\n  -- Retain the typing derivation to recover local closure after induction.\n  have wholeTyped : Typing Γ t τ := der\n  induction der <;> subst eq\n  case var => grind\n  case app t₁ _ _ t₂ leftTyped rightTyped ihLeft ihRight =>\n    right\n    rcases ihLeft rfl leftTyped with leftValue | ⟨t₁', step⟩\n    · rcases ihRight rfl rightTyped with rightValue | ⟨t₂', step⟩\n      · obtain ⟨σ, body, rfl⟩ := leftTyped.canonical_form_abs leftValue\n        exact ⟨_, Red.abs leftValue.lc rightValue⟩\n      · exact ⟨_, Red.appᵣ leftValue step⟩\n    · exact ⟨_, Red.appₗ rightTyped.wf.2.1 step⟩\n  case tapp σ' typed _ ih =>\n    right\n    rcases ih rfl typed with value | ⟨t', step⟩\n    · obtain ⟨_, body, eq⟩ := typed.canonical_form_tabs value\n      exists body ^ᵗᵞ σ'\n      grind\n    · exists .tapp t' σ'\n      grind\n  case let' t₁ σ t₂ τ L typed _ ih _ =>\n    right\n    rcases ih rfl typed with value | ⟨t₁', step⟩\n    · exists t₂ ^ᵗᵗ t₁\n      grind\n    · exists t₁'.let' t₂\n      grind\n  case inl typed _ ih | inr typed _ ih =>\n    -- The two injections share the same value and congruence-step argument.\n    rcases ih rfl typed with value | ⟨t', step⟩\n    · left\n      constructor\n      exact value\n    · right\n      exact ⟨_, by constructor; exact step⟩\n  case case t₁ _ _ t₂ _ t₃ _ typed _ _ ih _ _ =>\n    right\n    rcases ih rfl typed with value | ⟨t₁', step⟩\n    · obtain ⟨t₁, side⟩ := typed.canonical_form_sum value\n      cases side <;> [exists t₂ ^ᵗᵗ t₁; exists t₃ ^ᵗᵗ t₁] <;> grind\n    · exists t₁'.case t₂ t₃\n      grind\n  case sub => grind\n  case abs | tabs =>\n    left\n    constructor\n    exact wholeTyped.wf.2.1\n",
+          "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+          "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+          "sourceState": "committed",
+          "candidateHash": "66c1018745361d88bb74dc092d2bc48bc32d5c8140f3c2b31b5bc994953cf194",
+          "status": "partial",
+          "baseline": {
+            "tokens": 408,
+            "heartbeats": 61948
+          },
+          "candidate": {
+            "tokens": 300,
+            "heartbeats": 45378
+          },
           "versions": [
             {
               "version": "v4.33.0-rc2",
@@ -614,16 +626,16 @@
             {
               "version": "v4.32.0",
               "revision": "197a7be621263b84c67ca4f803f69205b36d06df",
-              "status": "pending"
+              "status": "pass"
             },
             {
               "version": "v4.31.0",
               "revision": "8ea71c8df91acd63285515a04da952b23b78d266",
-              "status": "pending"
+              "status": "pass"
             }
           ],
           "environment": "v4.32.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "수정 후보를 best 파일과 동기화했습니다. 패치한 평가기로 macOS 로컬의 지정 세 버전에서 원본·후보 검증과 각 3회 측정을 통과했습니다. 공통 환경 결과 게시 전이며 이전 후보의 측정값·호환성은 새 후보에 이월하지 않습니다."
+          "note": "v4.33.0-rc2: 컴파일러·의존성 준비 필요"
         },
         {
           "id": "권주원-20261016",
@@ -1088,38 +1100,32 @@
       "id": 12,
       "name": "interleaved_affine_gaps_imply_tensor_gaps",
       "source": "arklib",
-      "status": "measured",
-      "baseline": {
-        "tokens": 1353,
-        "heartbeats": 9199
-      },
-      "candidate": {
-        "tokens": 747,
-        "heartbeats": 3501
-      },
+      "status": "unsupported",
+      "baseline": null,
+      "candidate": null,
       "versions": [
         {
           "version": "v4.31.0",
           "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-          "status": "pass"
+          "status": "pending"
         },
         {
           "version": "v4.30.0",
           "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-          "status": "pass"
+          "status": "pending"
         },
         {
           "version": "v4.29.0",
           "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-          "status": "pass"
+          "status": "pending"
         }
       ],
-      "environment": "v4.31.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-      "candidateHash": "cbc9d9819e788a9c7f1bfa917c17edfd7b31907a3b7c17b765b0a3eddff1abc4",
-      "note": "보조 증명을 대상 정리 내부의 have로 옮기고, Nonempty F 인스턴스와 명시적 Code.distFromCode 표기를 사용한 담당자 수정 후보. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다.",
-      "baselineCompatibility": 100,
+      "environment": "v4.31.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+      "candidateHash": "0b696bdf18421ecfda5f0d12ced0dffe9e1090d01f6f7a6d2f34b385aecd3b85",
+      "note": "보조정리 전체를 보존. 단일 선언만 받는 PR3 평가기에서는 지원 범위 확인 필요. PR3 단일 선언 검증 규약에서 처리하지 못함: The theorem statement must be preserved byte-for-byte v4.31.0: 컴파일러·의존성 준비 필요 v4.30.0: 컴파일러·의존성 준비 필요 v4.29.0: 컴파일러·의존성 준비 필요",
+      "baselineCompatibility": null,
       "evidence": [
-        "submissions/warmup/verification-results.json",
+        "submissions/warmup/manifest.json",
         "submissions/warmup/best/P12.lean"
       ],
       "selectedCandidateId": "손지연-final",
@@ -1128,39 +1134,33 @@
         {
           "id": "손지연-final",
           "author": "손지연",
-          "proof": "theorem interleaved_affine_gaps_imply_tensor_gaps\n    (hC_proximityGapAffineLines : e_ε_correlatedAgreementAffineLinesNat\n      (F := F) (A := A) (ι := ι) (C := MC) (e := e) (ε := ε))\n    (h_interleaved_gaps : ∀ m : ℕ, m ≥ 1 →\n      e_ε_correlatedAgreementAffineLinesNat (F := F)\n        (A := InterleavedSymbol A (Fin m)) (ι := ι) (C := MC ^⋈ (Fin m)) e ε) :\n    ∀ (ϑ : ℕ), (hϑ_gt_0 : ϑ > 0) → δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A)\n      (ι := ι) (C := MC) (ϑ := ϑ) (e := e) (ε := ε) := by\n  classical\n  letI : Nonempty F := ⟨0⟩\n  have tensor_success_split {n : ℕ}\n      (u : WordStack A (Fin (2 ^ (n + 1))) ι) :\n      Pr_{let r ← $ᵖ (Fin (n + 1) → F)}[Code.distFromCode (multilinearCombine u r) (MC : Set (Word A ι)) ≤ e] =\n      Pr_{let r_last ← $ᵖ F; let r_init ← $ᵖ (Fin n → F)}[\n        multilinearCombine_affineComb_split_last_close (MC := MC) u e r_last r_init] := by\n    classical\n    have fold (r : Fin (n + 1) → F) :\n        (Code.distFromCode (multilinearCombine u r) (MC : Set (Word A ι)) ≤ e) =\n          multilinearCombine_affineComb_split_last_close (MC := MC) u e\n            (r (Fin.last n)) (fun i => r i.castSucc) := by\n      unfold multilinearCombine_affineComb_split_last_close\n      rw [multilinearCombine_recursive_form]\n      rfl\n    simp_rw [fold]\n    exact prob_split_last_uniform_sampling_of_finFun _\n\n\n  have tensor_gap_one\n      (hC : e_ε_correlatedAgreementAffineLinesNat (F := F) (A := A) (ι := ι) (C := MC) e ε) :\n      δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A) (ι := ι) (C := MC) 1 e ε := by\n    classical\n    intro u hprob\n    simp_rw [multilinearCombine₁_eq_affineLineEvaluation (F := F) (u := u)] at hprob\n    simp_rw [prob_uniform_singleton_finFun_eq (F := F)\n      (P := fun r => Code.distFromCode (affineLineEvaluation (u 0) (u 1) r) (MC : Set (Word A ι)) ≤ e),\n      Nat.cast_one, ENNReal.coe_one, one_mul] at hprob\n    have hCA := hC (u 0) (u 1) hprob\n    have hu : u = finMapTwoWords (u 0) (u 1) := by\n      funext i\n      fin_cases i <;> rfl\n    simpa only [jointProximityNat₂, ← hu] using hCA\n\n\n  have tensor_gap_succ {n : ℕ}\n      (ih : δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A) (ι := ι) (C := MC) n e ε)\n      (hGaps : ∀ m : ℕ, m ≥ 1 → e_ε_correlatedAgreementAffineLinesNat (F := F)\n        (A := InterleavedSymbol A (Fin m)) (ι := ι) (C := MC ^⋈ (Fin m)) e ε) :\n      δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A) (ι := ι) (C := MC) (n + 1) e ε := by\n    classical\n    intro u hprob\n    let U₀ := (splitHalfRowWiseInterleavedWords (ϑ := n) u).1\n    let U₁ := (splitHalfRowWiseInterleavedWords (ϑ := n) u).2\n    let good := R_star_tensor MC (m := n) (e := e) (ε := ε) U₀ U₁\n    have hgood : Pr_{let r ← $ᵖ F}[r ∈ good] >\n        (ε : ENNReal) / (Fintype.card F : ENNReal) := by\n      apply prob_R_star_gt_threshold (MC := MC) (u := u) (e := e)\n      rwa [← tensor_success_split (u := u)]\n    have hclose : ∀ r : F, r ∈ good →\n        Code.distFromCode (affineLineEvaluation (⋈|U₀) (⋈|U₁) r) (MC ^⋈ (Fin (2 ^ n))) ≤ e := by\n      intro r hr\n      exact correlatedAgreement_of_mem_R_star_tensor (MC := MC) (ih := ih) (u := u) ⟨r, hr⟩\n    apply CA_split_rowwise_implies_CA (C := MC) (u := u) (e := e)\n    apply hGaps (2 ^ n) Nat.one_le_two_pow (⋈|U₀) (⋈|U₁)\n    exact lt_of_lt_of_le hgood (Pr_le_Pr_of_implies (D := $ᵖ F) (h_imp := hclose))\n\n  intro ϑ\n  induction ϑ with\n  | zero => intro h; omega\n  | succ n ih =>\n    cases n with\n    | zero => intro _; exact tensor_gap_one hC_proximityGapAffineLines\n    | succ n =>\n      intro _\n      exact tensor_gap_succ (ih (Nat.succ_pos n)) h_interleaved_gaps\n",
-          "sourcePath": "submissions/warmup/best/P12.lean",
-          "sourceCommit": "45a5d26975ca5127197ebd05251bc456532f837d",
-          "sourceState": "working-tree-snapshot",
-          "candidateHash": "cbc9d9819e788a9c7f1bfa917c17edfd7b31907a3b7c17b765b0a3eddff1abc4",
-          "status": "measured",
-          "baseline": {
-            "tokens": 1353,
-            "heartbeats": 9199
-          },
-          "candidate": {
-            "tokens": 747,
-            "heartbeats": 3501
-          },
+          "proof": "-- The helpers below expose the sampling and induction interfaces explicitly.\nomit [DecidableEq F] [NoZeroDivisors F] [Fintype A] [Module.Free F A] [Nontrivial ↥MC]\n\nomit [Nonempty ι] [DecidableEq ι] in\n/-- Split the last coordinate once, keeping all probability coercions behind an equality. -/\nprivate lemma tensor_success_split {n : ℕ}\n    (u : WordStack A (Fin (2 ^ (n + 1))) ι) :\n    Pr_{let r ← $ᵖ (Fin (n + 1) → F)}[Δ₀(multilinearCombine u r, MC) ≤ e] =\n    Pr_{let r_last ← $ᵖ F; let r_init ← $ᵖ (Fin n → F)}[\n      multilinearCombine_affineComb_split_last_close (MC := MC) u e r_last r_init] := by\n  classical\n  have fold (r : Fin (n + 1) → F) :\n      (Δ₀(multilinearCombine u r, MC) ≤ e) =\n        multilinearCombine_affineComb_split_last_close (MC := MC) u e\n          (r (Fin.last n)) (fun i => r i.castSucc) := by\n    unfold multilinearCombine_affineComb_split_last_close\n    rw [multilinearCombine_recursive_form]\n    rfl\n  simp_rw [fold]\n  exact prob_split_last_uniform_sampling_of_finFun _\n\n/-- The one-coordinate tensor statement is exactly the affine-line statement. -/\nprivate lemma tensor_gap_one\n    (hC : e_ε_correlatedAgreementAffineLinesNat (F := F) (A := A) (ι := ι) (C := MC) e ε) :\n    δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A) (ι := ι) (C := MC) 1 e ε := by\n  classical\n  intro u hprob\n  simp_rw [multilinearCombine₁_eq_affineLineEvaluation (F := F) (u := u)] at hprob\n  simp_rw [prob_uniform_singleton_finFun_eq (F := F)\n    (P := fun r => Δ₀(affineLineEvaluation (u 0) (u 1) r, MC) ≤ e),\n    Nat.cast_one, ENNReal.coe_one, one_mul] at hprob\n  have hCA := hC (u 0) (u 1) hprob\n  have hu : u = finMapTwoWords (u 0) (u 1) := by\n    funext i\n    fin_cases i <;> rfl\n  simpa only [jointProximityNat₂, ← hu] using hCA\n\n/-- Lift the tensor statement by one coordinate via the good-parameter set R*. -/\nprivate lemma tensor_gap_succ {n : ℕ}\n    (ih : δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A) (ι := ι) (C := MC) n e ε)\n    (hGaps : ∀ m : ℕ, m ≥ 1 → e_ε_correlatedAgreementAffineLinesNat (F := F)\n      (A := InterleavedSymbol A (Fin m)) (ι := ι) (C := MC ^⋈ (Fin m)) e ε) :\n    δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A) (ι := ι) (C := MC) (n + 1) e ε := by\n  classical\n  intro u hprob\n  let U₀ := (splitHalfRowWiseInterleavedWords (ϑ := n) u).1\n  let U₁ := (splitHalfRowWiseInterleavedWords (ϑ := n) u).2\n  let good := R_star_tensor MC (m := n) (e := e) (ε := ε) U₀ U₁\n  have hgood : Pr_{let r ← $ᵖ F}[r ∈ good] >\n      (ε : ENNReal) / (Fintype.card F : ENNReal) := by\n    apply prob_R_star_gt_threshold (MC := MC) (u := u) (e := e)\n    rwa [← tensor_success_split (MC := MC) (u := u)]\n  have hclose : ∀ r : F, r ∈ good →\n      Δ₀(affineLineEvaluation (⋈|U₀) (⋈|U₁) r, MC ^⋈ (Fin (2 ^ n))) ≤ e := by\n    intro r hr\n    exact correlatedAgreement_of_mem_R_star_tensor (MC := MC) (ih := ih) (u := u) ⟨r, hr⟩\n  apply CA_split_rowwise_implies_CA (C := MC) (u := u) (e := e)\n  apply hGaps (2 ^ n) Nat.one_le_two_pow (⋈|U₀) (⋈|U₁)\n  exact lt_of_lt_of_le hgood (Pr_le_Pr_of_implies (D := $ᵖ F) (h_imp := hclose))\n\ntheorem interleaved_affine_gaps_imply_tensor_gaps\n    (hC_proximityGapAffineLines : e_ε_correlatedAgreementAffineLinesNat\n      (F := F) (A := A) (ι := ι) (C := MC) (e := e) (ε := ε))\n    (h_interleaved_gaps : ∀ m : ℕ, m ≥ 1 →\n      e_ε_correlatedAgreementAffineLinesNat (F := F)\n        (A := InterleavedSymbol A (Fin m)) (ι := ι) (C := MC ^⋈ (Fin m)) e ε) :\n    ∀ (ϑ : ℕ), (hϑ_gt_0 : ϑ > 0) → δ_ε_multilinearCorrelatedAgreement_Nat (F := F) (A := A)\n      (ι := ι) (C := MC) (ϑ := ϑ) (e := e) (ε := ε) := by\n  intro ϑ\n  induction ϑ with\n  | zero => intro h; omega\n  | succ n ih =>\n    cases n with\n    | zero => intro _; exact tensor_gap_one (MC := MC) hC_proximityGapAffineLines\n    | succ n =>\n      intro _\n      exact tensor_gap_succ (MC := MC) (ih (Nat.succ_pos n)) h_interleaved_gaps\n",
+          "sourcePath": "docs/research/refactoring/warmup/손지연/report.md",
+          "sourceCommit": "5eb5a8c61350d59f1c2f0655c18387abb58cafe4",
+          "sourceState": "committed",
+          "candidateHash": "0b696bdf18421ecfda5f0d12ced0dffe9e1090d01f6f7a6d2f34b385aecd3b85",
+          "status": "unsupported",
+          "baseline": null,
+          "candidate": null,
           "versions": [
             {
               "version": "v4.31.0",
               "revision": "c1712f6c496d0aef04f09bae42aec13811b3273f",
-              "status": "pass"
+              "status": "pending"
             },
             {
               "version": "v4.30.0",
               "revision": "e6d77b18ca1334a91faf4d1ccf9f96d854d58ba4",
-              "status": "pass"
+              "status": "pending"
             },
             {
               "version": "v4.29.0",
               "revision": "de71a9dfd2f5a343e8895517b7efe857d9f1ce5c",
-              "status": "pass"
+              "status": "pending"
             }
           ],
-          "environment": "v4.31.0 · Linux x86_64 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
-          "note": "보조 증명을 대상 정리 내부의 have로 옮기고, Nonempty F 인스턴스와 명시적 Code.distFromCode 표기를 사용한 담당자 수정 후보. 고정 커밋의 의존성을 복원하여 원본·후보를 모든 지정 버전에서 재검증했습니다."
+          "environment": "v4.31.0 · scaled heartbeat · 독립 프로세스 3회 중앙값 · lean-source-anchored-v1",
+          "note": "보조정리 전체를 보존. 단일 선언만 받는 PR3 평가기에서는 지원 범위 확인 필요. PR3 단일 선언 검증 규약에서 처리하지 못함: The theorem statement must be preserved byte-for-byte v4.31.0: 컴파일러·의존성 준비 필요 v4.30.0: 컴파일러·의존성 준비 필요 v4.29.0: 컴파일러·의존성 준비 필요"
         }
       ]
     },

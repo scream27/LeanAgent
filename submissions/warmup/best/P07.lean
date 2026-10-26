@@ -16,16 +16,16 @@ lemma Typing.progress (der : Typing [] t τ) : t.Value ∨ ∃ t', t ⭢βᵛ t'
     right
     rcases ih rfl typed with value | ⟨t', step⟩
     · obtain ⟨_, body, eq⟩ := typed.canonical_form_tabs value
-      refine ⟨body ^ᵗᵞ σ', ?_⟩
+      exists body ^ᵗᵞ σ'
       grind
-    · refine ⟨.tapp t' σ', ?_⟩
+    · exists .tapp t' σ'
       grind
   case let' t₁ σ t₂ τ L typed _ ih _ =>
     right
     rcases ih rfl typed with value | ⟨t₁', step⟩
-    · refine ⟨t₂ ^ᵗᵗ t₁, ?_⟩
+    · exists t₂ ^ᵗᵗ t₁
       grind
-    · refine ⟨t₁'.let' t₂, ?_⟩
+    · exists t₁'.let' t₂
       grind
   case inl typed _ ih | inr typed _ ih =>
     -- The two injections share the same value and congruence-step argument.
@@ -39,13 +39,8 @@ lemma Typing.progress (der : Typing [] t τ) : t.Value ∨ ∃ t', t ⭢βᵛ t'
     right
     rcases ih rfl typed with value | ⟨t₁', step⟩
     · obtain ⟨t₁, side⟩ := typed.canonical_form_sum value
-      have bodies := Term.body_case.mp wholeTyped.wf.2.1
-      rcases side with rfl | rfl
-      · cases value with
-        | inl val => exact ⟨_, Red.case_inl val bodies.2.1 bodies.2.2⟩
-      · cases value with
-        | inr val => exact ⟨_, Red.case_inr val bodies.2.1 bodies.2.2⟩
-    · refine ⟨t₁'.case t₂ t₃, ?_⟩
+      cases side <;> [exists t₂ ^ᵗᵗ t₁; exists t₃ ^ᵗᵗ t₁] <;> grind
+    · exists t₁'.case t₂ t₃
       grind
   case sub => grind
   case abs | tabs =>

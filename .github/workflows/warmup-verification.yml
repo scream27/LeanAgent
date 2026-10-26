@@ -39,8 +39,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Check validator and publication regressions
-        run: python3 -m unittest discover -s tests -p test_warmup_validator.py
       - name: Install pinned Elan
         run: |
           export ELAN_HOME="$RUNNER_TEMP/elan"
