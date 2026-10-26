@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "problem": "../examples/first-harness/problem.json",
+  "template": "../examples/first-harness/context.lean.in",
+  "project": "../examples/first-harness/project",
+  "prompt": "../examples/first-harness/prompt.txt",
+  "lean": {
+    "toolchain": "leanprover/lean4:v4.26.0",
+    "command": [
+      "lean",
+      "-j1",
+      "-M1024",
+      "-T20000"
+    ],
+    "timeout_seconds": 30,
+    "repetitions": 3
+  },
+  "limits": {
+    "max_calls": 3,
+    "max_proof_characters": 4000,
+    "max_feedback_characters": 1200,
+    "max_request_characters": 24000
+  },
+  "model": {
+    "backend": "fixture",
+    "responses": "../examples/first-harness/responses.json"
+  }
+}

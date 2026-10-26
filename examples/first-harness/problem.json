@@ -1,0 +1,6 @@
+{
+  "id": "smoke-nat-add-zero",
+  "name": "first_harness_identity",
+  "statement": "theorem first_harness_identity (n : Nat) : n + 0 = n",
+  "reference": "theorem first_harness_identity (n : Nat) : n + 0 = n := by\n  have h : n + 0 = n := Nat.add_zero n\n  exact h\n"
+}

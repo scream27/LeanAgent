@@ -1,0 +1,5 @@
+[
+  "{\"proof\":\"by\\n  exact False.elim (by assumption)\"}",
+  "{\"proof\":\"by\\n  simpa only [Nat.add_zero]\"}",
+  "{\"proof\":\"by\\n  rfl\"}"
+]

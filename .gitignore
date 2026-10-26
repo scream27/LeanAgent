@@ -3,6 +3,12 @@
 __pycache__/
 *.pyc
 .DS_Store
+*.egg-info
+/build
+/dist
+.env
+/configs/*.local.json
+/runs/first-harness/
 
 # Versioned large data is distributed separately; metadata remains reviewable.
 /data/**/*.gz
