@@ -27,7 +27,7 @@ def prepare_input(item,project,command,source_root=None):
  (d/'prompt.txt').write_text((REPO/'examples/first-harness/prompt.txt').read_text())
  stub=d/'project';stub.mkdir(exist_ok=True);pin=(project/'lean-toolchain').read_text();(stub/'lean-toolchain').write_text(pin)
  write(d/'environment.json',{'project':str(project),'command':command,'version_info':r['version_info']})
- write(d/'config.json',{'schema_version':1,'problem':'problem.json','template':'context.lean.in','project':'project','prompt':'prompt.txt','lean':{'toolchain':pin.strip(),'command':command,'timeout_seconds':180,'repetitions':3},'limits':{'max_calls':3,'max_proof_characters':50000,'max_feedback_characters':14000,'max_request_characters':160000},'model':{'backend':'external','id':'current-conversation-model','exchange_directory':str(REPO/'runs/live-practice-2026-10-28'/str(n)/'exchange'),'timeout_seconds':43200,'max_tokens':20000}})
+ write(d/'config.json',{'schema_version':1,'problem':'problem.json','template':'context.lean.in','project':'project','prompt':'prompt.txt','lean':{'toolchain':pin.strip(),'command':command,'timeout_seconds':None,'repetitions':3},'limits':{'max_calls':3,'max_proof_characters':50000,'max_feedback_characters':14000,'max_request_characters':160000},'model':{'backend':'external','id':'current-conversation-model','exchange_directory':str(REPO/'runs/live-practice-2026-10-28'/str(n)/'exchange'),'timeout_seconds':43200,'max_tokens':20000}})
 
 if __name__=='__main__':
  rows=manifest()

@@ -53,8 +53,8 @@ def read_text(path: Path) -> str:
     return path.read_bytes().decode("utf-8")
 
 
-def execute(command: list[str], cwd: Path, timeout: float, *, input_text=None, separate_stderr=False) -> dict:
-    """Kill the process group on timeout, including Lake's child Lean process."""
+def execute(command: list[str], cwd: Path, timeout: float | None, *, input_text=None, separate_stderr=False) -> dict:
+    """None waits without a wall-clock deadline; interruption still cleans up children."""
     started = time.monotonic()
     process = subprocess.Popen(command, cwd=cwd, stdout=subprocess.PIPE,
                                stdin=subprocess.PIPE if input_text is not None else subprocess.DEVNULL,

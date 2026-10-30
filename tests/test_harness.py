@@ -76,6 +76,28 @@ class HarnessTests(unittest.TestCase):
                 patch.object(harness.LeanEvaluator, "evaluate", side_effect=AssertionError("Lean called")):
             self.assertTrue(harness.replay(self.output)["record_replay_passed"])
 
+    def test_unlimited_lean_timeout_survives_snapshot_and_replay(self):
+        self.config["lean"]["timeout_seconds"] = None
+        result = self.run_experiment()
+        self.assertTrue(result["final_valid"])
+        self.assertIsNone(harness.read(self.output / "input/config.json")["lean"]["timeout_seconds"])
+        self.assertTrue(harness.replay(self.output)["record_replay_passed"])
+        actual = execute([sys.executable, "-c", "print('finished')"], self.root, None)
+        self.assertEqual(actual["returncode"], 0)
+        self.assertFalse(actual["timed_out"])
+        self.assertEqual(actual["output"].strip(), "finished")
+
+    def test_timeout_validation_preserves_historical_positive_limits(self):
+        for value in (None, 180):
+            self.config["lean"]["timeout_seconds"] = value
+            self.save()
+            self.assertEqual(harness.load_config(self.path)[0]["lean"]["timeout_seconds"], value)
+        for value in (0, -1, True, "unlimited"):
+            self.config["lean"]["timeout_seconds"] = value
+            self.save()
+            with self.assertRaisesRegex(ValueError, "Lean timeout"):
+                harness.load_config(self.path)
+
     def test_independent_runs_have_same_requests_without_shared_state(self):
         first = self.run_experiment()
         second_dir = self.root / "another-run"

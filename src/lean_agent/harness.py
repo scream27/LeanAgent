@@ -65,8 +65,8 @@ def load_config(path):
             raise ValueError("Expected positive integer: " + key)
     if not positive(lean["repetitions"]) or lean["repetitions"] % 2 != 1:
         raise ValueError("Lean repetitions must be a positive odd integer")
-    if not positive(lean["timeout_seconds"]):
-        raise ValueError("Expected positive Lean timeout")
+    if lean["timeout_seconds"] is not None and not positive(lean["timeout_seconds"]):
+        raise ValueError("Lean timeout must be null (unlimited) or a positive integer")
     if not lean["command"] or not all(isinstance(x, str) and x for x in lean["command"]):
         raise ValueError("Lean command must be an argument list")
     if model["backend"] not in ("fixture", "openrouter", "external"):

@@ -61,3 +61,7 @@ P12의 동일 선택 증명은 4.31/4.30/4.29/4.28 모두 통과했다. P8·P9�
 The report now separates LLM feedback repair, unchanged-code verification recovery, and manually implemented harness adapter fixes. No end-to-end general local proof repair agent was run on these 29 cases. P15 step002 timed out in measure-3 after ordinary compilation and two successful measurements. P19 step002, step003 and final timed out in ordinary compilation. Each command had a 180-second wall-clock limit, not a heartbeat limit. P19 step003 is byte-identical to the final selection; the final posthoc retry verifies that same code without rewriting the original failure record.
 
 `case_studies.py` renders exact elapsed times from raw records, observed proof repair examples, and explicitly unmeasured follow-up policies. In particular the P19 omega change was authored by the model; retry only recovered the existing candidate.
+
+## 사용자 요청에 따른 후속 실행 정책
+
+앞으로 Lean 검증에는 wall-clock 시간제한을 두지 않는다(`lean.timeout_seconds: null`). 당시 180초는 대회 제한이 아니라 실험 운영 설정이었다. 후보의 비용은 기존 heartbeat 계측·점수로 비교하며 별도의 실행 시간 감점을 넣지 않는다. 기존 입력 snapshot, raw 결과, 과거 재시도 스크립트는 당시 프로토콜의 재현 자료로 보존한다. 새 입력 생성 및 호환성 검증 스크립트의 기본값은 무제한으로 변경했다. 과거 디렉터리를 재사용하거나 과거 점수를 새 정책의 결과로 바꾸지 않는다. 무제한 기준선 재실험은 아직 수행하지 않았다.

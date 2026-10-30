@@ -56,3 +56,7 @@ All 29 primary attempts are terminal: 16 final passes, 12 baseline rejections, a
 `aggregate.json` states score denominators. Unverified rows do not receive invented zero scores. Primary-only proxies and local final scores with all requested versions measured are separate. These source-token scores are not directly comparable with an official leaderboard score.
 
 Extra-version audits run the exact selected proof without generation, repair or reselection. Source checkouts and raw evidence survive sequential cleanup of generated toolchains and dependency caches.
+
+## 사용자 요청에 따른 후속 실행 정책
+
+앞으로 Lean 검증에는 wall-clock 시간제한을 두지 않는다(`lean.timeout_seconds: null`). 당시 180초는 대회 제한이 아니라 실험 운영 설정이었다. 후보의 비용은 기존 heartbeat 계측·점수로 비교하며 별도의 실행 시간 감점을 넣지 않는다. 기존 입력 snapshot, raw 결과, 과거 재시도 스크립트는 당시 프로토콜의 재현 자료로 보존한다. 새 입력 생성 및 호환성 검증 스크립트의 기본값은 무제한으로 변경했다. 과거 디렉터리를 재사용하거나 과거 점수를 새 정책의 결과로 바꾸지 않는다. 무제한 기준선 재실험은 아직 수행하지 않았다.

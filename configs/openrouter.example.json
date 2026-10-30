@@ -12,7 +12,7 @@
       "-M1024",
       "-T20000"
     ],
-    "timeout_seconds": 30,
+    "timeout_seconds": null,
     "repetitions": 3
   },
   "limits": {

@@ -15,7 +15,7 @@ for item in items:
  lines=source.replace(row['src'],'{{DECLARATION}}').splitlines(True);imports=[i for i,l in enumerate(lines) if re.match(r'^(public |private |meta )?import ',l)]
  lines.insert(max(imports)+1,'{{HARNESS_COMMANDS}}\n');lines.insert(min(imports),'{{HARNESS_IMPORT}}\n');template=''.join(lines)
  problem=harness.read(root/'raw-v2/input/problem.json');selected=(root/'raw-v2/selected.lean').read_text();assert selected.startswith(problem['statement'])
- env={'id':'compat','project':str(P),'template':template,'toolchain':(P/'lean-toolchain').read_text().strip(),'command':[sys.executable,str(HERE/'lean_env.py'),str(S/'elan'),str(S/'cache'),'-j1'],'timeout_seconds':180}
+ env={'id':'compat','project':str(P),'template':template,'toolchain':(P/'lean-toolchain').read_text().strip(),'command':[sys.executable,str(HERE/'lean_env.py'),str(S/'elan'),str(S/'cache'),'-j1'],'timeout_seconds':None}
  ev=CompatibilityEvaluator(P);fingerprint=ev.fingerprint(env)
  if (out/'input.json').exists():
   previous=harness.read(out/'input.json');assert previous['fingerprint']==fingerprint and previous['selected_sha256']==hashlib.sha256(selected.encode()).hexdigest(),'Changed audit input/environment'
