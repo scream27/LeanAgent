@@ -1,4 +1,4 @@
-# Live relay observations (provisional)
+# Live relay observations
 
 These are observed cases, not population-wide success claims. Problem IDs refer to manifest.json.
 
@@ -19,8 +19,8 @@ These are observed cases, not population-wide success claims. Problem IDs refer 
 - These runs use live conversation responses, not prewritten future candidates.
 - Three responses maximum per problem. A repair consumes the same response budget.
 - Selection is performed by the common harness; the model does not declare its own success.
-- Primary-version proxies are not official final scores or full-version robustness.
-- No deterministic repair arm has been added to this run: the suggestions above are proposed follow-up experiments. This preserves a useful raw harness baseline for later attaching the repair agent.
+- Local scores are not official leaderboard scores. The completed compatibility audits below establish the requested version checks for the selected proofs.
+- No general deterministic proof-editing repair agent was attached to the primary run. A separate posthoc unchanged-code timeout retry and ranking was executed. The local proof-editing suggestions above remain proposed follow-up experiments.
 
 ## Additional observed failures
 
@@ -55,3 +55,9 @@ ArkLib v4.30.0의 pinned manifest는 Lake 경고를 출력한다. 공용 fingerp
 ## 지정 버전 감사 완료
 
 P12의 동일 선택 증명은 4.31/4.30/4.29/4.28 모두 통과했다. P8·P9는 앞서 지정 3개 버전에서 모두 통과했다. 기본 최종 통과 16개의 local final score 평균은 40.558이며 원본 기준은 33.333이다. 이 집합에만 재시도 결과를 적용하면 40.641, 회수된 P19까지 포함한 17개 평균은 41.403이다. 분모가 다른 평균의 차이를 개선 효과로 단정하지 않는다. 기본 실행의 12개 원본 차단과 P19 final timeout 기록은 그대로 유지했다.
+
+## Timeout and repair scope clarification
+
+The report now separates LLM feedback repair, unchanged-code verification recovery, and manually implemented harness adapter fixes. No end-to-end general local proof repair agent was run on these 29 cases. P15 step002 timed out in measure-3 after ordinary compilation and two successful measurements. P19 step002, step003 and final timed out in ordinary compilation. Each command had a 180-second wall-clock limit, not a heartbeat limit. P19 step003 is byte-identical to the final selection; the final posthoc retry verifies that same code without rewriting the original failure record.
+
+`case_studies.py` renders exact elapsed times from raw records, observed proof repair examples, and explicitly unmeasured follow-up policies. In particular the P19 omega change was authored by the model; retry only recovered the existing candidate.
