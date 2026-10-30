@@ -1,0 +1,234 @@
+{
+  "common_harness_tests": {
+    "passed": 19,
+    "failed": 0
+  },
+  "bridge_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "artifact_audit": {
+    "checks": 50,
+    "passed": true,
+    "issues": [],
+    "records": [
+      {
+        "check": "1: raw replay",
+        "passed": true
+      },
+      {
+        "check": "1: local artifact hashes",
+        "passed": true
+      },
+      {
+        "check": "1: raw fixed statement",
+        "passed": true
+      },
+      {
+        "check": "1: raw fixed surrounding source",
+        "passed": true
+      },
+      {
+        "check": "1: raw final valid",
+        "passed": true
+      },
+      {
+        "check": "1: raw three samples",
+        "passed": true
+      },
+      {
+        "check": "1: raw axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "1: raw axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "1: raw axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "1: local fixed statement",
+        "passed": true
+      },
+      {
+        "check": "1: local fixed surrounding source",
+        "passed": true
+      },
+      {
+        "check": "1: local final valid",
+        "passed": true
+      },
+      {
+        "check": "1: local three samples",
+        "passed": true
+      },
+      {
+        "check": "1: local axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "1: local axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "1: local axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "1: retained best by common ranking",
+        "passed": true
+      },
+      {
+        "check": "1: response schema",
+        "passed": true
+      },
+      {
+        "check": "1: exported proof matches selection",
+        "passed": true
+      },
+      {
+        "check": "1: measured candidates contain no query tactic",
+        "passed": true
+      },
+      {
+        "check": "1: adapter was archived",
+        "passed": true
+      },
+      {
+        "check": "2: raw replay",
+        "passed": true
+      },
+      {
+        "check": "2: local artifact hashes",
+        "passed": true
+      },
+      {
+        "check": "2: raw fixed statement",
+        "passed": true
+      },
+      {
+        "check": "2: raw fixed surrounding source",
+        "passed": true
+      },
+      {
+        "check": "2: raw final valid",
+        "passed": true
+      },
+      {
+        "check": "2: raw three samples",
+        "passed": true
+      },
+      {
+        "check": "2: raw axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "2: raw axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "2: raw axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "2: local fixed statement",
+        "passed": true
+      },
+      {
+        "check": "2: local fixed surrounding source",
+        "passed": true
+      },
+      {
+        "check": "2: local final valid",
+        "passed": true
+      },
+      {
+        "check": "2: local three samples",
+        "passed": true
+      },
+      {
+        "check": "2: local axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "2: local axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "2: local axiom allowance",
+        "passed": true
+      },
+      {
+        "check": "2: retained best by common ranking",
+        "passed": true
+      },
+      {
+        "check": "2: response schema",
+        "passed": true
+      },
+      {
+        "check": "2: exported proof matches selection",
+        "passed": true
+      },
+      {
+        "check": "2: measured candidates contain no query tactic",
+        "passed": true
+      },
+      {
+        "check": "2: adapter was archived",
+        "passed": true
+      },
+      {
+        "check": "JSON followup environment stable",
+        "passed": true
+      },
+      {
+        "check": "JSON followup artifact hashes",
+        "passed": true
+      },
+      {
+        "check": "JSON 0: matched source location",
+        "passed": true
+      },
+      {
+        "check": "JSON 0: explicit replay valid",
+        "passed": true
+      },
+      {
+        "check": "JSON 0: no missed better candidate",
+        "passed": true
+      },
+      {
+        "check": "JSON 1: matched source location",
+        "passed": true
+      },
+      {
+        "check": "JSON 1: explicit replay valid",
+        "passed": true
+      },
+      {
+        "check": "JSON 1: no missed better candidate",
+        "passed": true
+      }
+    ]
+  },
+  "raw_replay": {
+    "1": {
+      "lean_called": false,
+      "model_called": false,
+      "record_replay_passed": true,
+      "selected_sha256": "2861c028472142b869a9e2df832101f14b32381f61d35cbaf62aff9e5a1870d8",
+      "steps": 3
+    },
+    "2": {
+      "lean_called": false,
+      "model_called": false,
+      "record_replay_passed": true,
+      "selected_sha256": "2bd0d1e1a5b75be5f48049b853bba5925c7788e86b3fb47285bbcde86c71d2e4",
+      "steps": 3
+    }
+  },
+  "scope": "Two pinned Strata problems, actual Lean checks and three-sample measurements; official_evaluation=false"
+}

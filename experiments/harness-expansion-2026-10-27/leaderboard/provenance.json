@@ -1,0 +1,7 @@
+{
+  "captured_at_utc": "2026-10-27T11:11:53.041246+00:00",
+  "url": "https://delta-lab-ai-lean-refactor-arena.hf.space",
+  "api": "/gradio_api/call/leaderboard",
+  "track": "closed",
+  "operation": "read-only public leaderboard"
+}

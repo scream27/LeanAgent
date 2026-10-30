@@ -1,0 +1,21 @@
+0 : Digit
+1 : Digit
+2 : Digit
+3 : Digit
+4 : Digit
+5 : Digit
+6 : Digit
+7 : Digit
+8 : Digit
+9 : Digit
+PosintDecimal.mk' 3 [1, 4] ⋯ : PosintDecimal
+PosintDecimal.mk' 3 [] ⋯ : PosintDecimal
+PosintDecimal.mk' 1 [0] ⋯ : PosintDecimal
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:315:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:319:4: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:321:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:324:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:327:4: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:327:4: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:327:4: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/21/raw-v2/baseline/fixed/check.lean:332:8: warning: declaration uses 'sorry'

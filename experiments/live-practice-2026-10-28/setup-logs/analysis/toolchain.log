@@ -1,0 +1,5 @@
+info: downloading https://releases.lean-lang.org/lean4/v4.24.0/lean-4.24.0-darwin_aarch64.tar.zst
+info: installing /Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan/toolchains/leanprover--lean4---v4.24.0
+
+leanprover/lean4:v4.24.0 installed - Lean (version 4.24.0, arm64-apple-darwin23.6.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)
+

@@ -58,7 +58,7 @@ def load_config(path):
     if config.get("schema_version") != 1:
         raise ValueError("Expected config schema_version 1")
     limits, lean, model = config["limits"], config["lean"], config["model"]
-    if set(model) - {"backend", "responses", "id", "provider", "max_tokens", "temperature", "seed", "timeout_seconds"}:
+    if set(model) - {"backend", "responses", "id", "provider", "max_tokens", "temperature", "seed", "timeout_seconds", "exchange_directory"}:
         raise ValueError("Unexpected model setting; credentials belong in environment variables")
     for key in ("max_calls", "max_proof_characters", "max_feedback_characters", "max_request_characters"):
         if not positive(limits[key]):
@@ -69,8 +69,15 @@ def load_config(path):
         raise ValueError("Expected positive Lean timeout")
     if not lean["command"] or not all(isinstance(x, str) and x for x in lean["command"]):
         raise ValueError("Lean command must be an argument list")
-    if model["backend"] not in ("fixture", "openrouter"):
+    if model["backend"] not in ("fixture", "openrouter", "external"):
         raise ValueError("Unknown model backend")
+    if model["backend"] == "external":
+        if not isinstance(model.get("id"), str) or not model["id"]:
+            raise ValueError("External model requires an explicit identity")
+        if not isinstance(model.get("exchange_directory"), str) or not Path(model["exchange_directory"]).is_absolute():
+            raise ValueError("External exchange_directory must be absolute")
+        if not positive(model.get("timeout_seconds")):
+            raise ValueError("External reply timeout must be positive")
     if model["backend"] == "openrouter":
         for key in ("id", "provider"):
             if not isinstance(model[key], str) or not model[key] or "REPLACE" in model[key]:

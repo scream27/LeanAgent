@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-30T05:27:00.298762+00:00",
+  "deleted_generated_directories": [
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/arklib-v4.28.0/project/.lake",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/arklib-v4.28.0/elan",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/arklib-v4.28.0/cache"
+  ],
+  "audit": "runs/live-practice-2026-10-28/12/compatibility/v4.28.0/result.json"
+}

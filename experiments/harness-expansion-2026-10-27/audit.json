@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "All frozen input hashes match",
+    "P4: fixed statement, valid final, no worse selection, 3 fresh samples, replay, safe axioms",
+    "P5: fixed statement, valid final, no worse selection, 3 fresh samples, replay, safe axioms",
+    "P6: fixed statement, valid final, no worse selection, 3 fresh samples, replay, safe axioms",
+    "Prepared upstream source remains unchanged"
+  ]
+}

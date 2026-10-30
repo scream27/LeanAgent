@@ -1,0 +1,5 @@
+[
+  "direct positivity and contradiction",
+  "remove repeated nlinarith hypotheses",
+  "restrict nlinarith to explicit premises"
+]

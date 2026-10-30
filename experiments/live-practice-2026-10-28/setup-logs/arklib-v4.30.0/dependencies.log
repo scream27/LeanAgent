@@ -1,0 +1,41 @@
+warning: manifest out of date: git revision of dependency 'VCVio' changed; use `lake update VCVio` to update it
+info: CompPoly: cloning https://github.com/Verified-zkEVM/CompPoly
+info: CompPoly: checking out revision '18c1613e9186c7afa79a4179eea5f4b80d8e9e00'
+info: checkdecls: cloning https://github.com/PatrickMassot/checkdecls.git
+info: checkdecls: checking out revision '3d425859e73fcfbef85b9638c2a91708ef4a22d4'
+info: doc-gen4: cloning https://github.com/leanprover/doc-gen4
+info: doc-gen4: checking out revision '689fdeecf45e08cc048214680d40cfe2491be78b'
+info: VCVio: cloning https://github.com/Verified-zkEVM/VCV-io
+info: VCVio: checking out revision '5f7707fbeb0c53754580b0a506af8952f75e9019'
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4
+info: mathlib: checking out revision 'c5ea00351c28e24afc9f0f84379aa41082b1188f'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision 'a456461b368b71d2accd95234832cd9c174b5437'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision 'c5d5b8fe6e5158def25cd28eb94e4141ad97c843'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision '515cf9d0c00ece5e661f6de4326a53dedc1e8ea1'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision 'a84b3e2475d5c5ab979567b1ad8aea21b764bcf8'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '558915ae105bfd8074e22d597613d1961822adc2'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision 'a6e6c34c4ef182f83b219a3a5a385f51f44bdc4c'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '32dc18cde3684679f3c003de608743b57498c56f'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '6b907cf12b2e445ccb7c24bc208ef04a1f39e84c'
+info: leansqlite: cloning https://github.com/leanprover/leansqlite
+info: leansqlite: checking out revision 'a1d21d8b5f230205bb04c3bff479383f66802c0b'
+info: UnicodeBasic: cloning https://github.com/fgdorais/lean4-unicode-basic
+info: UnicodeBasic: checking out revision 'f8c99ff779ec217063545b3b191747c92e7fbfb3'
+info: BibtexQuery: cloning https://github.com/dupuisf/BibtexQuery
+info: BibtexQuery: checking out revision '5d31b64fb703c5d77f6ef4d1fb958f9bdf1ea539'
+info: MD4Lean: cloning https://github.com/acmepjz/md4lean
+info: MD4Lean: checking out revision '6a3fb240133bcb7e1a066fdc784b3fdc304e3fc5'
+info: PolyFun: cloning https://github.com/Verified-zkEVM/PolyFun.git
+info: PolyFun: checking out revision '5d3a160ed751b9227af90adb9da41d0eae2e0238'
+info: loom2: cloning https://github.com/quangvdao/loom2
+info: loom2: checking out revision 'eccaa1ebdb8f8a0c671f04971110c9011787d7c3'
+info: Hax: cloning https://github.com/cryspen/hax
+info: Hax: checking out revision '492a34e33c8744b9672eb3cf1c982ac40469f7d4'

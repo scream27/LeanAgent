@@ -1,0 +1,1 @@
+{"type": "CardinalityNotationFalsePositive", "message": "Single-declaration lexical gate rejects Finset cardinality #(...) / #D. No model response generated.", "evidence": "raw-v2/baseline/result.json"}

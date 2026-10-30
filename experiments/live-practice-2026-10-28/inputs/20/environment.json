@@ -1,0 +1,15 @@
+{
+  "project": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/repository/lean_refactor/cc_agent/workspace/analysis",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache",
+    "-j1"
+  ],
+  "version_info": [
+    {
+      "v4.24.0": "a2372caad69ab61a42a0e997106b87e00d9d7d65"
+    }
+  ]
+}

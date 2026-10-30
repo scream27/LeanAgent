@@ -1,0 +1,9 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/003/evaluation/fixed/check.lean:173:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/003/evaluation/fixed/check.lean:2138:20: warning: This simp argument is unused:
+  OldExpressions.substOldExpr_nil
+
+Hint: Omit it from the simp argument list.
+  simp [createFvar,̵ ̵O̵l̵d̵E̵x̵p̵r̵e̵s̵s̵i̵o̵n̵s̵.̵s̵u̵b̵s̵t̵O̵l̵d̵E̵x̵p̵r̵_̵n̵i̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/003/evaluation/fixed/check.lean:3287:8: warning: declaration uses 'sorry'

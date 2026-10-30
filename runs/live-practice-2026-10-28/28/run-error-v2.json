@@ -1,0 +1,1 @@
+{"type": "ModuleAxiomInspectionFalsePositive", "message": "Module-mode wrapper reports imported ordinary theorems as axioms. Independent legacy import #print axioms reports only standard axioms. Original is not established invalid.", "diagnostic": "experiments/live-practice-2026-10-28/diagnostics/strata-axioms.log"}

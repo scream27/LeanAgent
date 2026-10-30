@@ -1,0 +1,13 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw-v2/steps/001/evaluation/fixed/check.lean:173:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw-v2/steps/001/evaluation/fixed/check.lean:1159:4: error: Type mismatch
+  Hwfc.abscongr σ σ' e (e.substFvar fro (Lambda.LExpr.fvar () to none)) (ih Hinv)
+has type
+  ∀
+    (ty :
+      { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata)
+    (m :
+      Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType),
+    δ σ (Lambda.LExpr.abs ty m e) = δ σ' (Lambda.LExpr.abs ty m (e.substFvar fro (Lambda.LExpr.fvar () to none)))
+but is expected to have type
+  δ σ (Lambda.LExpr.abs m ty e) = δ σ' (Lambda.LExpr.abs m ty (e.substFvar fro (Lambda.LExpr.fvar () to none)))
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw-v2/steps/001/evaluation/fixed/check.lean:3283:8: warning: declaration uses 'sorry'

@@ -1,0 +1,21 @@
+{
+  "project": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/cslib-v4.33.0-rc2/project",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/cslib-v4.33.0-rc2/elan",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/cslib-v4.33.0-rc2/cache",
+    "-j1"
+  ],
+  "version_info": [
+    {
+      "v4.33.0-rc2": "3aa9d4416c185e0b9faeb72bbd65abe85b95dbcc"
+    },
+    {
+      "v4.32.0": "197a7be621263b84c67ca4f803f69205b36d06df"
+    },
+    {
+      "v4.31.0": "8ea71c8df91acd63285515a04da952b23b78d266"
+    }
+  ]
+}

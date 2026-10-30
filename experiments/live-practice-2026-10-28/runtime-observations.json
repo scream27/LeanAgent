@@ -1,0 +1,73 @@
+{
+  "timeouts": [
+    {
+      "id": 15,
+      "stage": "candidate 2 measurement",
+      "reason": "Timeout; no proof-error conclusion. Environment build overlapped. Diagnostic recheck pending."
+    },
+    {
+      "id": 18,
+      "stage": "baseline measurement",
+      "reason": "Timeout under concurrent build; repeat baseline after other verification jobs finish, preserving initial logs.",
+      "retry_pending": false,
+      "retry_result": {
+        "environments": {
+          "fixed": {
+            "error": {
+              "kind": "axioms",
+              "message": "['propext', 'Quot.sound', 'Classical.choice', 'sorryAx']"
+            },
+            "median_heartbeats": null,
+            "runs": [
+              {
+                "command": [
+                  "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache",
+                  "-j1",
+                  "--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed/check.lean"
+                ],
+                "log": "check.log",
+                "log_sha256": "b09dc13f44b27ce4faa54bde62b53137f7b1d97cc40779d2c381631a2177b82e",
+                "returncode": 0,
+                "seconds": 119.651772,
+                "source": "check.lean",
+                "source_sha256": "3682367b361ddb557ab06e6e846bf9bc46ec9854f20f7fbe5fe9fe344c9260b0",
+                "stderr": "",
+                "timed_out": false
+              },
+              {
+                "command": [
+                  "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache",
+                  "-j1",
+                  "--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed",
+                  "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed/measure-1.lean"
+                ],
+                "log": "measure-1.log",
+                "log_sha256": "6fedef92ec0d1c56e9f23b17d1187b68ad764ec45c556aa1abf3a9f1b709fd5d",
+                "returncode": 0,
+                "seconds": 128.073046,
+                "source": "measure-1.lean",
+                "source_sha256": "2e7ded264d86c883aefc55f01983ea0c1640cc1ad629f65efb8a844f71d5537c",
+                "stderr": "",
+                "timed_out": false
+              }
+            ],
+            "valid": false
+          }
+        },
+        "error": {
+          "kind": "lean",
+          "message": "One or more required environments failed"
+        },
+        "tokens": 662,
+        "valid": false
+      }
+    }
+  ]
+}

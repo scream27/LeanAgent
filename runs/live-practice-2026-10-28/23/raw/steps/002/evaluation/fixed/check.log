@@ -1,0 +1,31 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/002/evaluation/fixed/check.lean:173:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/002/evaluation/fixed/check.lean:2082:122: error: unsolved goals
+case h_1
+h : (Expression.Ident × Expression.Ty) × Expression.Ident
+t : List ((Expression.Ident × Expression.Ty) × Expression.Ident)
+m✝¹ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+c✝ t✝ e✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }
+m✝ :
+  Map CoreIdent
+    (Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy })
+Hnd : Imperative.substNodup (createOldStoreSubst [h])
+c_ih✝ :
+  OldExpressions.substsOldExpr [createOldVarsSubst.go h] c✝ =
+    OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (createFvar h.fst.fst) c✝)
+t_ih✝ :
+  OldExpressions.substsOldExpr [createOldVarsSubst.go h] t✝ =
+    OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (createFvar h.fst.fst) t✝)
+e_ih✝ :
+  OldExpressions.substsOldExpr [createOldVarsSubst.go h] e✝ =
+    OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (createFvar h.fst.fst) e✝)
+heq✝ : t = []
+⊢ OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (Lambda.LExpr.fvar () h.fst.fst none) e✝) =
+    OldExpressions.substOld h.snd (Lambda.LExpr.fvar () h.fst.fst none) e✝
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/002/evaluation/fixed/check.lean:2138:20: warning: This simp argument is unused:
+  OldExpressions.substOldExpr_nil
+
+Hint: Omit it from the simp argument list.
+  simp [createFvar,̵ ̵O̵l̵d̵E̵x̵p̵r̵e̵s̵s̵i̵o̵n̵s̵.̵s̵u̵b̵s̵t̵O̵l̵d̵E̵x̵p̵r̵_̵n̵i̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/002/evaluation/fixed/check.lean:3286:8: warning: declaration uses 'sorry'

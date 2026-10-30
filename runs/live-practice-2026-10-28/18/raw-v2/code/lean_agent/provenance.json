@@ -1,0 +1,9 @@
+{
+  "source_revision": "a4b46622aaea36a9d4470a01ec048613b45fb08a",
+  "source_directory": "experiments/first-harness-jwkweon",
+  "changes": [
+    "Package the original harness under lean_agent with relative imports and an explicit configuration path",
+    "Archive the package and a standalone replay launcher in each run",
+    "Allow package execution without a Git checkout; exact code and input bytes remain archived"
+  ]
+}

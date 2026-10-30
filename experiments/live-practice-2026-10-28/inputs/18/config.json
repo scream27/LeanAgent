@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "problem": "problem.json",
+  "template": "context.lean.in",
+  "project": "project",
+  "prompt": "prompt.txt",
+  "lean": {
+    "toolchain": "leanprover/lean4:v4.24.0",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py",
+      "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan",
+      "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache",
+      "-j1"
+    ],
+    "timeout_seconds": 180,
+    "repetitions": 3
+  },
+  "limits": {
+    "max_calls": 3,
+    "max_proof_characters": 50000,
+    "max_feedback_characters": 14000,
+    "max_request_characters": 160000
+  },
+  "model": {
+    "backend": "external",
+    "id": "current-conversation-model",
+    "exchange_directory": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/exchange",
+    "timeout_seconds": 43200,
+    "max_tokens": 20000
+  }
+}

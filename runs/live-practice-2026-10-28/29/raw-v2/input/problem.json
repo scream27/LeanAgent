@@ -1,0 +1,6 @@
+{
+  "id": "29",
+  "name": "Core.InitStatesApp'",
+  "statement": "theorem InitStatesApp' :\n  InitStates σ (k1 ++ k2) (v1 ++ v2) σ' →\n  k1.length = v1.length →\n  k2.length = v2.length →\n  ∃ σ₁,\n  σ₁ = updatedStates σ k1 v1 ∧\n  InitStates σ k1 v1 σ₁ ∧\n  InitStates σ₁ k2 v2 σ'",
+  "reference": "theorem InitStatesApp' :\n  InitStates σ (k1 ++ k2) (v1 ++ v2) σ' →\n  k1.length = v1.length →\n  k2.length = v2.length →\n  ∃ σ₁,\n  σ₁ = updatedStates σ k1 v1 ∧\n  InitStates σ k1 v1 σ₁ ∧\n  InitStates σ₁ k2 v2 σ' := by\n  intros Hinit Hlen1 Hlen2\n  exists (updatedStates σ k1 v1)\n  refine ⟨rfl, ?_⟩\n  have H1 : InitStates σ k1 v1 (updatedStates σ k1 v1) := by\n    apply updatedStatesInit Hlen1\n    . have Hndef := InitStatesNotDefined Hinit\n      simp [isNotDefined] at *\n      simp_all\n    . have Hndup := InitStatesNodup Hinit\n      refine List.Sublist.nodup ?_ Hndup\n      exact List.sublist_append_left k1 k2\n  refine ⟨H1, ?_⟩\n  generalize Hup : updatedStates σ k1 v1 = σ₁ at *\n  induction H1 <;> simp_all\n  case init_some σ₂ Hinit' Hinits ih =>\n  apply ih\n  . cases Hinit with\n    | init_some Hinit Hinits =>\n      simp [InitStateInjective Hinit Hinit'] at *\n      assumption\n  . simp [InitStateUpdated Hinit']\n    exact Hup"
+}

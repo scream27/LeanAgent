@@ -1,0 +1,6 @@
+{
+  "id": "3",
+  "name": "Core.updatedStatesDefMonotone",
+  "statement": "theorem updatedStatesDefMonotone\n  {P : PureExpr} {σ : SemanticStore P}\n  {vs : List P.Ident} {ves : List (P.Ident × P.Expr)} :\n  isDefined σ vs →\n  isDefined (updatedStates' σ ves) vs",
+  "reference": "theorem updatedStatesDefMonotone\n  {P : PureExpr} {σ : SemanticStore P}\n  {vs : List P.Ident} {ves : List (P.Ident × P.Expr)} :\n  isDefined σ vs →\n  isDefined (updatedStates' σ ves) vs := by\n  intros Hdef\n  induction ves generalizing σ <;>\n  unfold updatedStates' <;> try simp_all\n  case cons h t ih =>\n    simp [isDefined]\n    intros v Hin\n    apply ih\n    exact updatedStateDefMonotone Hdef\n    assumption\n\n  theorem updatedStatesDefined :\n  ks.length = vs.length →\n  isDefined (updatedStates σ ks vs) ks := by\n  intros Hlen k Hin\n  induction ks generalizing σ vs <;> simp_all\n  case cons h t ih =>\n  simp [updatedStates] at *\n  cases vs <;> simp at Hlen\n  case cons h' t' =>\n  cases Hin with\n  | inl Hin =>\n    simp [updatedStates']\n    have Hdef : isDefined (updatedStates' (updatedState σ h h') (t.zip t')) [h] := by\n      apply updatedStatesDefMonotone\n      simp [isDefined, updatedState]\n    simp_all [isDefined]\n  | inr Hin =>\n    apply ih <;> assumption"
+}

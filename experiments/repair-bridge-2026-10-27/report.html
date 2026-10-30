@@ -1,0 +1,355 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공용 하네스 × 검증·수리</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f7;color:#192d3d;font:17px/1.75 system-ui,-apple-system,sans-serif}main{max-width:1180px;margin:auto;padding:48px 26px 80px}header{padding:36px 0}h1{font-size:52px;line-height:1.18;letter-spacing:-2px;margin:20px 0}h2{font-size:26px}.tag{color:#146e65;font-weight:750}.metrics{display:grid;grid-template-columns:1fr 2fr 1fr;gap:16px}.metrics article,section{background:white;border:1px solid #dce4e8;border-radius:16px;padding:26px;margin-bottom:22px}.metrics strong{font-size:30px;display:block;color:#156e63}.metrics span{font-size:14px}p{margin:14px 0}pre{background:#142735;color:#e4edf4;padding:20px;border-radius:9px;white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.6 ui-monospace,monospace}details{border-top:1px solid #dce4e8;padding:14px 0}summary{cursor:pointer;font-weight:650}.flow{padding:22px;background:#e9f4f0;border-radius:10px}.note{font-size:15px;color:#596a76}.table{overflow-x:auto}table{border-collapse:collapse;min-width:850px;width:100%;font-size:15px}th,td{padding:12px;text-align:left;border-bottom:1px solid #dce4e8}a{color:#066d9a}li{padding:8px 0}code{font-size:.9em} @media(max-width:700px){h1{font-size:36px}.metrics{grid-template-columns:1fr}main{padding:20px 14px}}@media print{body{background:white}section{break-inside:avoid}main{padding:0}}</style><main><header><span class="tag">검증·수리 실험 · 2026.10.27</span><h1>공용 하네스에<br>로컬 수리를 연결하면?</h1><p>Warm-up 1·2번 · 실제 Lean 실행 · 실패를 강제로 만들지 않은 고정 후보 6개</p></header>
+ <div class="metrics"><article><strong>4/6</strong><span>최초 후보 검증 통과</span></article><article><strong>63.873 → 63.873</strong><span>평균 로컬 선택 점수 · 높을수록 좋음</span></article><article><strong>0회</strong><span>별도 모델 API 호출</span></article></div>
+ <section><h2>1. 무엇을 연결했나</h2><p>공용 하네스의 입력·선택·기록 로직은 그대로 사용했다. <code>run(evaluator=...)</code>에 Strata 준비 환경 어댑터를 연결하고, 최초 후보 평가 뒤 제한된 자동 수리·정리를 적용했다.</p><div class="flow">JSON 후보 → 전체 Lean 검증 → 남은 목표 수리 / 한 줄 정리 → 전체 재검증·3회 계측 → 최선 보존 → 최종 재검증</div><p class="note">모델 응답은 proof 본문 하나이다. 명제·imports·주변 원문은 고정했다. 이전에 본 문제이며 역사적 증명에서 얻은 전략을 포함한다. 독립 모델 성능평가는 아니다.</p></section>
+ <section><h2>2. 실제 점수</h2><div class="table"><table><thead><tr><th>문제</th><th>토큰: 원본 → 후보 선택 → 로컬 후</th><th>HB / 1000: 같은 순서</th><th>선택 점수: 전 → 후</th><th>최종 재검증 점수</th></tr></thead><tbody><tr><td>P1</td><td>313 → 46 → 46</td><td>5173.270 → 4659.128 → 4659.128</td><td>65.081 → 65.081</td><td>65.081</td></tr><tr><td>P2</td><td>222 → 43 → 43</td><td>2694.959 → 2496.446 → 2496.446</td><td>62.666 → 62.666</td><td>62.666</td></tr></tbody></table></div><p>선택 점수는 탐색 중 측정한 값, 최종 재검증 점수는 선택 뒤 새 프로세스에서 다시 측정한 값이다. 작은 HB 차이를 별도의 개선으로 주장하지 않는다.</p><p>공용 cost = ½ × (토큰 비율 + HB 비율), 작을수록 좋음. 두 문제의 robustness가 1이므로 로컬 final score = 100 − ⅔ × 100 × cost. 공식 서버 점수는 아니다.</p></section>
+ <section><h2>3. 후보와 원문 오류를 직접 보기</h2><p>각 문제에서 ① 귀납+넓은 단순화 ② 구조적인 subset 결합 ③ 보수적인 수정 순으로 고정했다. 실패가 나오더라도 LLM으로 다시 고치지 않았다.</p><details><summary>P1 · 후보 1 · 실패 · 14 tokens</summary><pre>by
+  induction post &lt;;&gt; simp_all [substOld, Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars, List.Subset]</pre><p>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/001/evaluation/fixed/check.lean:3095:69: error: unsolved goals</p><details><summary>원문 진단 앞부분</summary><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/001/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/001/evaluation/fixed/check.lean:3095:69: error: unsolved goals
+case quant
+h2 : Expression.Ident
+m : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+h1 :
+  Lambda.Identifier
+    { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.IDMeta
+ty : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+k✝ : Lambda.QuantifierKind
+ty✝ : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+trigger✝ e✝ :
+  Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }
+trigger_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) trigger✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars trigger✝ ∨ a = h1
+e_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars e✝ ∨ a = h1
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) trigger✝) ∨
+        a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars trigger✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e✝ ∨ a = h1
+
+case app
+h2 : Expression.Ident
+m : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+h1 :
+  Lambda.Identifier
+    { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.IDMeta
+ty : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+fn✝ e✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }
+fn_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) fn✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars fn✝ ∨ a = h1
+e_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars e✝ ∨ a = h1
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈
+        Lambda.LExpr.LExpr.getVars
+          (match fn✝, e✝ with
+          | Lambda.LExpr.op m_1 { name := &quot;old&quot;, metadata := Visibility.unres } ty_1, Lambda.LExpr.fvar m_2 x ty_2 =&gt;
+            if x = h2 then Lambda.LExpr.fvar m h1 ty else Lambda.LExpr.app m✝ fn✝ e✝
+          | x, x_1 =&gt;
+            Lambda.LExpr.app m✝ (substOld h2 (Lambda.LExpr.fvar m h1 ty) fn✝)
+              (substOld h2 (Lambda.LExpr.fvar m h1 ty) e✝)) →
+      a ∈ Lambda.LExpr.LExpr.getVars fn✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e✝ ∨ a = h1
+
+case ite
+h2 : Expression.Ident
+m : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+h1 :
+  Lambda.Identifier
+    { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.IDMeta
+ty : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+c✝ t✝ e✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }
+c_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) c✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars c✝ ∨ a = h1
+t_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) t✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars t✝ ∨ a = h1
+e_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars e✝ ∨ a = h1
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) c✝) ∨
+        a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) t✝) ∨
+          a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars c✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars t✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e✝ ∨ a = h1
+
+case eq
+h2 : Expression.Ident
+m : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+h1 :
+  Lambda.Identifier
+    { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.IDMeta
+ty : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+e1✝ e2✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }
+e1_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e1✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars e1✝ ∨ a = h1
+e2_ih✝ :
+  ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e2✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars e2✝ ∨ a = h1
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e1✝) ∨
+        a ∈ Lambda.LExpr.LExpr.getVars (substOld h2 (Lambda.LExpr.fvar m h1 ty) e2✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars e1✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e2✝ ∨ a = h1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/001/evaluation/fixed/check.lean:3195:8: warning: declaration uses &#x27;sorry&#x27;
+</pre></details></details><details><summary>P1 · 후보 2 · 통과 · 46 tokens</summary><pre>by
+  induction post &lt;;&gt; unfold substOld &lt;;&gt; (try split &lt;;&gt; try split) &lt;;&gt;
+    simp_all [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] &lt;;&gt;
+    (repeat&#x27; apply List.Subset.app) &lt;;&gt; (try (apply List.Subset.trans; assumption)) &lt;;&gt;
+    simp +contextual [List.Subset, or_imp]</pre><p></p><details><summary>원문 진단 앞부분</summary><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/002/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/002/evaluation/fixed/check.lean:3198:8: warning: declaration uses &#x27;sorry&#x27;
+</pre></details></details><details><summary>P1 · 후보 3 · 통과 · 298 tokens</summary><pre>by
+  induction post &lt;;&gt; simp [substOld]
+  case fvar =&gt;
+    intros x Hin
+    rename_i m name ty2
+    simp at m
+    simp at name
+    simp at ty2
+
+    simp_all
+  case op =&gt;
+    intros x Hin
+    rename_i m name ty2
+    simp at m
+    simp at name
+    simp at ty2
+    simp_all
+  case const =&gt;
+    intros x Hin
+    rename_i m name
+    simp at m
+    simp_all
+  case bvar =&gt;
+    intros x Hin
+    rename_i m d
+    simp at m
+    simp_all
+  case abs ih =&gt;
+    exact ih
+  case ite cih tih eih =&gt;
+    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply cih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+      cases Hin &lt;;&gt; simp_all
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply tih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+      cases Hin &lt;;&gt; simp_all
+    . apply List.Subset.trans
+      apply eih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+  case app ih1 ih2 =&gt;
+    split
+    . split
+      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *
+        intros x Hin
+        simp_all
+      . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *
+        intros x Hin
+        simp_all
+    . simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *
+      apply List.Subset.app
+      . apply List.Subset.trans
+        apply ih1 &lt;;&gt; assumption
+        intros x Hin
+        simp_all
+        cases Hin &lt;;&gt; simp_all
+      . apply List.Subset.trans
+        apply ih2 &lt;;&gt; assumption
+        intros x Hin
+        simp_all
+  case quant trih eih =&gt;
+    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply trih &lt;;&gt; assumption
+      intros x Hin
+      rename_i m1 k1 ty1 trigger1 e1
+      simp_all
+      cases Hin &lt;;&gt; simp_all
+    . apply List.Subset.trans
+      apply eih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+  case eq ih1 ih2 =&gt;
+    simp [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] at *
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply ih1 &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+      cases Hin &lt;;&gt; simp_all
+    . apply List.Subset.trans
+      apply ih2 &lt;;&gt; assumption
+      intros x Hin
+      simp_all</pre><p></p><details><summary>원문 진단 앞부분</summary><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/003/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/steps/003/evaluation/fixed/check.lean:3285:8: warning: declaration uses &#x27;sorry&#x27;
+</pre></details></details><details><summary>P2 · 후보 1 · 실패 · 16 tokens</summary><pre>by
+  intro h
+  induction h &lt;;&gt; simp_all [extractOldExprVars, Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars, List.Subset]</pre><p>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/001/evaluation/fixed/check.lean:2864:43: error: unsolved goals</p><details><summary>원문 진단 앞부분</summary><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/001/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/001/evaluation/fixed/check.lean:2864:43: error: unsolved goals
+case quant
+post tr✝ e✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+k✝ : Lambda.QuantifierKind
+ty✝ : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType
+a✝¹ : NormalizedOldExpr tr✝
+a✝ : NormalizedOldExpr e✝
+a_ih✝¹ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars tr✝ → a ∈ Lambda.LExpr.LExpr.getVars tr✝
+a_ih✝ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars e✝ → a ∈ Lambda.LExpr.LExpr.getVars e✝
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ extractOldExprVars tr✝ ∨ a ∈ extractOldExprVars e✝ →
+      a ∈ Lambda.LExpr.LExpr.getVars tr✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e✝
+
+case app
+post fn✝ e✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+a✝² : NormalizedOldExpr fn✝
+a✝¹ : NormalizedOldExpr e✝
+a✝ : IsOldPred fn✝ → IsFvar e✝
+a_ih✝¹ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars fn✝ → a ∈ Lambda.LExpr.LExpr.getVars fn✝
+a_ih✝ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars e✝ → a ∈ Lambda.LExpr.LExpr.getVars e✝
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ extractOldExprVars (Lambda.LExpr.app m✝ fn✝ e✝) →
+      a ∈ Lambda.LExpr.LExpr.getVars fn✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e✝
+
+case ite
+post c✝ t✝ e✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+a✝² : NormalizedOldExpr c✝
+a✝¹ : NormalizedOldExpr t✝
+a✝ : NormalizedOldExpr e✝
+a_ih✝² : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars c✝ → a ∈ Lambda.LExpr.LExpr.getVars c✝
+a_ih✝¹ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars t✝ → a ∈ Lambda.LExpr.LExpr.getVars t✝
+a_ih✝ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars e✝ → a ∈ Lambda.LExpr.LExpr.getVars e✝
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ extractOldExprVars c✝ ∨ a ∈ extractOldExprVars t✝ ∨ a ∈ extractOldExprVars e✝ →
+      a ∈ Lambda.LExpr.LExpr.getVars c✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars t✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e✝
+
+case eq
+post e1✝ e2✝ : Expression.Expr
+m✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+a✝¹ : NormalizedOldExpr e1✝
+a✝ : NormalizedOldExpr e2✝
+a_ih✝¹ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars e1✝ → a ∈ Lambda.LExpr.LExpr.getVars e1✝
+a_ih✝ : ∀ ⦃a : CoreIdent⦄, a ∈ extractOldExprVars e2✝ → a ∈ Lambda.LExpr.LExpr.getVars e2✝
+⊢ ∀ ⦃a : CoreIdent⦄,
+    a ∈ extractOldExprVars e1✝ ∨ a ∈ extractOldExprVars e2✝ →
+      a ∈ Lambda.LExpr.LExpr.getVars e1✝ ∨ a ∈ Lambda.LExpr.LExpr.getVars e2✝
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/001/evaluation/fixed/check.lean:3211:8: warning: declaration uses &#x27;sorry&#x27;
+</pre></details></details><details><summary>P2 · 후보 2 · 통과 · 43 tokens</summary><pre>by
+  intro h
+  induction h &lt;;&gt; unfold extractOldExprVars &lt;;&gt; (try split) &lt;;&gt;
+    simp_all [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] &lt;;&gt;
+    (repeat&#x27; apply List.Subset.app) &lt;;&gt; (try (apply List.Subset.trans; assumption)) &lt;;&gt;
+    simp +contextual [List.Subset]</pre><p></p><details><summary>원문 진단 앞부분</summary><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/002/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/002/evaluation/fixed/check.lean:3214:8: warning: declaration uses &#x27;sorry&#x27;
+</pre></details></details><details><summary>P2 · 후보 3 · 통과 · 221 tokens</summary><pre>by
+  intros Hnorm
+  induction post &lt;;&gt;
+    simp [Imperative.HasVarsPure.getVars, extractOldExprVars,
+          Lambda.LExpr.LExpr.getVars] at * &lt;;&gt;
+    try simp_all
+  case app fn e fn_ih e_ih =&gt;
+    unfold extractOldExprVars
+    split
+    . simp [Lambda.LExpr.LExpr.getVars]
+      intros x Hin
+      exact Hin
+    . next Hfalse =&gt;
+      cases Hnorm with
+      | app H1 H2 Hn =&gt;
+      exfalso
+      specialize Hn ?_
+      constructor
+      cases Hn
+      apply Hfalse
+      rfl
+    . cases Hnorm with
+      | app H1 H2 Hn =&gt;
+      apply List.Subset.app
+      . apply List.Subset.trans
+        apply fn_ih
+        exact H1
+        intros x Hin
+        simp_all
+      . apply List.Subset.trans
+        apply e_ih
+        exact H2
+        intros x Hin
+        simp_all
+  case abs ih =&gt;
+    cases Hnorm
+    apply ih &lt;;&gt; assumption
+  case quant trih eih =&gt;
+    cases Hnorm
+    rename_i e_normalized
+    rename_i tr_normalized
+    rename_i tr e ty k
+    apply List.Subset.app
+    . apply List.Subset.trans
+      exact trih tr_normalized
+      intros x Hin
+      simp_all
+    . apply List.Subset.trans
+      apply eih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+  case ite cih tih eih =&gt;
+    cases Hnorm
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply cih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply tih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+    . apply List.Subset.trans
+      apply eih &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+  case eq ih1 ih2 =&gt;
+    cases Hnorm
+    apply List.Subset.app
+    . apply List.Subset.trans
+      apply ih1 &lt;;&gt; assumption
+      intros x Hin
+      simp_all
+    . apply List.Subset.trans
+      apply ih2 &lt;;&gt; assumption
+      intros x Hin
+      simp_all</pre><p></p><details><summary>원문 진단 앞부분</summary><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/003/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/2/raw/steps/003/evaluation/fixed/check.lean:3286:8: warning: declaration uses &#x27;sorry&#x27;
+</pre></details></details></section>
+ <section><h2>4. 로컬 처리 결과</h2><p>{&#x27;invalid&#x27;: 10, &#x27;no_supported_suggestion&#x27;: 6, &#x27;valid&#x27;: 2}</p><p>실패 후보에는 남은 목표에 assumption/rfl/exact?/simp? 및 고정된 subset 조합을 시도했다. P1에서는 quant/app/ite/eq 같은 분기에 목표가 남았고, P2에서도 같은 종류의 목록 포함 추론이 남았다. 유효 후보에는 지원되는 독립 한 줄의 삭제·simp 명시화를 시도했다. query 실행 자체는 최종 후보에서 제외하고, 한 줄 제안을 추출했을 때만 다시 전체 검증했다.</p><div id="observations"><p><b>선택 효과와 로컬 성공은 다르다.</b> 보수적인 긴 증명에서 한 줄을 줄여 검증에 성공해도 이미 더 좋은 후보가 있으면 최종 선택은 바뀌지 않는다. 따라서 valid 시도 수와 최종 점수 증가를 별도로 기록했다.</p><p>첫 번째 짧은 후보들은 귀납 뒤 넓은 단순화만으로 목표를 닫지 못했다. 뒤에 solver를 붙이는 방식은 앞선 구조적 선택을 복구하는 데 한계가 있다. 상세 원문 진단은 위에서 확인할 수 있다.</p><p><code>diagnostics.py</code>는 첫 오류·위치·goal 텍스트를 보존하는 결정적 피드백을 만든다. 이것은 실제 tactic-state 인증과 다르며, 기존 공용 루프의 피드백을 이번 실험 중 교체하지는 않았다.</p></div></section>
+ <section><h2>남은 목표를 사람 말로 풀면</h2><p>P2의 quant 분기에 남은 목표는 아래와 같은 구조다. 실제 진단의 긴 타입·변수 이름만 줄여 썼다.</p><pre>가설 1: x가 A에 있으면 x는 A′에도 있다.
+가설 2: x가 B에 있으면 x는 B′에도 있다.
+목표: x가 A 또는 B에 있으면, x는 A′ 또는 B′에 있다.</pre><p>사람은 “A인 경우 / B인 경우”를 나눠 해당 가설을 적용한다. 하지만 넓은 simp만으로 이 추론이 끝나지는 않았다. subset을 너무 일찍 펼치면 기존 subset 결합 연산도 바로 적용하기 어렵다. 연산을 더 많이 반복하는 것보다 현재 목표 형태에 맞게 선택하는 것이 다음 실험 과제다.</p></section>
+ <section><h2>후속 실험: JSON 진단으로 제안 복구</h2><p>일반 텍스트에는 위치가 없었던 제안 2건을 Lean의 JSON 진단으로 다시 받았다. <b>2/2 명시적 증명이 전체 검증에 통과</b>했다. solver가 새로 해결한 문제가 아니라, 이미 나온 제안을 안전하게 회수한 것이다.</p><pre>simp? at m    → simp only at m
+simp? at name → simp only at name</pre><p>두 후보 모두 기존 최선보다 점수가 낮아 최종 선택은 유지했다. 고정된 18회 로컬 처리와 구분한 탐색적 후속 실험이다.</p></section><section><h2>5. 다음에 바꿀 부분</h2><ol><li><b>오류 앞부분과 goal을 보존:</b> 공용 평가기는 긴 로그의 마지막 4,000자만 오류에 담는다. 실제 P1의 6,186자 로그에서 최초 quant 분기가 공용 피드백에서 사라졌다. 추가한 diagnostics.py는 그 첫 목표를 보존한다. P2에서는 같은 누락이 관측되지 않았다.</li><li><b>명세·정의 문맥 연결:</b> 모델 요청에는 문제와 이전 피드백은 있지만 전체 template·import된 정의 본문이 자동으로 들어가지 않는다. 로컬 검색 결과를 명시적으로 공급해야 한다.</li><li><b>진단에 맞는 수리 선택:</b> 이미 실패한 tactic 뒤에 solver를 붙이는 방법은 구조적인 잘못을 복구하지 못할 수 있다. 블록 재작성과 분기·귀납 선택은 별도 문제다.</li><li><b>제안 위치와 다중 goal 구분:</b> 한 줄 query 제안을 보수적으로 추출한다. 여러 goal의 제안들을 하나의 script라고 합쳐 제출하지 않는다.</li><li><b>프로토콜 어댑터:</b> 기존 escalation은 status/proof_body를 반환하도록 요청하지만 공용 하네스는 proof 하나만 받는다. candidate만 변환하고 need_context/no_candidate는 별도 제어 신호로 처리해야 한다.</li><li><b>최종 실패 fallback:</b> 공용 코드가 마지막 검증 실패를 표시하기는 하지만 자동으로 차선 후보를 다시 검증해 반환하지는 않는다. 이번에 관측된 실패가 아닌 코드상 개선 지점이다.</li></ol></section>
+ <section><h2>6. 결과 파일</h2><p><a href="refactoring_results.json">전체 결과 JSON</a> · <a href="p1.response.json">P1 모델 응답 JSON</a> · <a href="p2.response.json">P2 모델 응답 JSON</a> · <a href="arena_submission.json">Arena 형식 JSON</a> · <a href="README.md">재현 README</a> · <a href="escalation/p1.prompt.txt">P1 수리 요청 프롬프트</a> · <a href="escalation/p2.prompt.txt">P2 수리 요청 프롬프트</a></p><p>LLM escalation은 프롬프트 출력까지만 수행한다. 외부 모델에 전송하거나 대회에 제출하지 않았다.</p></section></main></html>

@@ -1,0 +1,14 @@
+{
+  "project": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/repair-bridge/strata",
+  "command": [
+    "/Users/sungwoo/.elan/bin/lake",
+    "env",
+    "lean",
+    "-j1"
+  ],
+  "version_info": [
+    {
+      "v4.26.0": "451e5f047bafa010d178856db76c00029bfa4d7f"
+    }
+  ]
+}

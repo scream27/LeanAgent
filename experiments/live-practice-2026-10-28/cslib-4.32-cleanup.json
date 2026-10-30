@@ -1,0 +1,8 @@
+{
+  "deleted_generated_directories": [
+    "artifacts/live-practice/cslib-v4.32.0/elan",
+    "artifacts/live-practice/cslib-v4.32.0/project/.lake",
+    "artifacts/live-practice/cslib-v4.32.0/cache"
+  ],
+  "evidence": "Both original and primary-selected proofs pass on v4.32.0; raw compatibility records retained."
+}

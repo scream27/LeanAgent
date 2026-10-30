@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-28T22:47:53.127788+00:00",
+  "deleted_generated_directories": [
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/project/.lake"
+  ],
+  "note": "All four primary attempts recorded; no model outputs were generated because original gate failed. Independent axiom diagnostic preserved."
+}

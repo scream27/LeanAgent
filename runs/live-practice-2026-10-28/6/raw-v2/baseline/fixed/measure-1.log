@@ -1,0 +1,1 @@
+REFACTOR_EVAL 92ecd24c4a864199be14cf8ccec723fa {"axioms":["propext","Classical.choice","Quot.sound"],"raw":79723334,"scaled":79723,"target":"Electromagnetism.ElectromagneticPotential.isExtrema_lorentzGroup_apply_iff"}

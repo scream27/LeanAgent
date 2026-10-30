@@ -1,0 +1,1 @@
+REFACTOR_EVAL 82b8951ebf3241fb844e5ec46a428b69 {"axioms":["propext","Classical.choice","Quot.sound"],"raw":24347082,"scaled":24347,"target":"FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_superCommuteF_eq_time_ofCrAnListF"}

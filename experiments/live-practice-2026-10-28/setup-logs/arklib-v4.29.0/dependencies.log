@@ -1,0 +1,36 @@
+info: CompPoly: cloning https://github.com/Verified-zkEVM/CompPoly
+info: CompPoly: checking out revision '56d10c947e3427c852b708a424f585c5673b039c'
+info: checkdecls: cloning https://github.com/PatrickMassot/checkdecls.git
+info: checkdecls: checking out revision '3d425859e73fcfbef85b9638c2a91708ef4a22d4'
+info: doc-gen4: cloning https://github.com/leanprover/doc-gen4
+info: doc-gen4: checking out revision 'aa4c3e4e14f5b31495b7c7238762ecceddd9f52c'
+info: VCVio: cloning https://github.com/Verified-zkEVM/VCV-io
+info: VCVio: checking out revision '88b4fe7b9c66dc40f083d67d50aa67338fd578f8'
+info: ExtTreeMapLemmas: cloning https://github.com/Verified-zkEVM/ExtTreeMapLemmas
+info: ExtTreeMapLemmas: checking out revision '8b8717467008d13b46c70040eda5b1c12d409b57'
+info: mathlib: cloning https://github.com/leanprover-community/mathlib4
+info: mathlib: checking out revision '8a178386ffc0f5fef0b77738bb5449d50efeea95'
+info: plausible: cloning https://github.com/leanprover-community/plausible
+info: plausible: checking out revision '83e90935a17ca19ebe4b7893c7f7066e266f50d3'
+info: LeanSearchClient: cloning https://github.com/leanprover-community/LeanSearchClient
+info: LeanSearchClient: checking out revision 'c5d5b8fe6e5158def25cd28eb94e4141ad97c843'
+info: importGraph: cloning https://github.com/leanprover-community/import-graph
+info: importGraph: checking out revision '48d5698bc464786347c1b0d859b18f938420f060'
+info: proofwidgets: cloning https://github.com/leanprover-community/ProofWidgets4
+info: proofwidgets: checking out revision '3c52dee17f0cd89c1ec14de78920d1bdaa3d26b3'
+info: aesop: cloning https://github.com/leanprover-community/aesop
+info: aesop: checking out revision '7152850e7b216a0d409701617721b6e469d34bf6'
+info: Qq: cloning https://github.com/leanprover-community/quote4
+info: Qq: checking out revision '707efb56d0696634e9e965523a1bbe9ac6ce141d'
+info: batteries: cloning https://github.com/leanprover-community/batteries
+info: batteries: checking out revision '756e3321fd3b02a85ffda19fef789916223e578c'
+info: Cli: cloning https://github.com/leanprover/lean4-cli
+info: Cli: checking out revision '7802da01beb530bf051ab657443f9cd9bc3e1a29'
+info: leansqlite: cloning https://github.com/kim-em/leansqlite
+info: leansqlite: checking out revision 'd14544c72b593af6a66131bc34cdab16bf7c0940'
+info: UnicodeBasic: cloning https://github.com/fgdorais/lean4-unicode-basic
+info: UnicodeBasic: checking out revision '9539e34e5cb2d52a6454d9b6218f6b6835cad071'
+info: BibtexQuery: cloning https://github.com/dupuisf/BibtexQuery
+info: BibtexQuery: checking out revision '5d31b64fb703c5d77f6ef4d1fb958f9bdf1ea539'
+info: MD4Lean: cloning https://github.com/acmepjz/md4lean
+info: MD4Lean: checking out revision '6a3fb240133bcb7e1a066fdc784b3fdc304e3fc5'

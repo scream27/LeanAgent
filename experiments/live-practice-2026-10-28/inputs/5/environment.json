@@ -1,0 +1,13 @@
+{
+  "project": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/harness-expansion/physlib-v4.32.0/project",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/harness-expansion-2026-10-27/lean_command.py",
+    "-j1"
+  ],
+  "version_info": [
+    {
+      "v4.32.0": "c48433678e8fb6306ebcd48453300c8e16058a62"
+    }
+  ]
+}

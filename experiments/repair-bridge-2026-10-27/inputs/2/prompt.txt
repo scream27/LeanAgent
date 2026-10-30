@@ -1,0 +1,1 @@
+Refactor only the proof body. Preserve the exact theorem and context. Return JSON with exactly one key, proof. Do not introduce sorry, axioms or target self-reference. Minimize source tokens and elaboration heartbeats.

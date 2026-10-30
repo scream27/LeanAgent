@@ -1,0 +1,21 @@
+{
+  "project": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/project",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache",
+    "-j1"
+  ],
+  "version_info": [
+    {
+      "v4.29.1": "384e22374e0872095ad9c6f74c5998c09cfd93a9"
+    },
+    {
+      "v4.27.0": "4348c65a93a3b57b1a4541991ed2d2fcdd9fa35d"
+    },
+    {
+      "v4.26.0": "451e5f047bafa010d178856db76c00029bfa4d7f"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "protocol": "One unchanged-code retry of three fresh measurements; sealed primary outcomes are not overwritten.",
+  "rows": [
+    {
+      "id": 15,
+      "stage": "steps-002",
+      "status": "pass",
+      "model_calls": 0,
+      "proof_edits": 0,
+      "result_path": "runs/live-practice-2026-10-28/15/posthoc-timeout-retry/steps-002/result.json",
+      "error": null,
+      "metrics": {
+        "raw_heartbeats": 25145557,
+        "raw_samples": [
+          25145992,
+          25145557,
+          25145300
+        ],
+        "tokens": 617
+      },
+      "local_final_score": 44.54582832838216,
+      "harness_selection_score": 43.228958770359036,
+      "score_gain_over_harness_selection": 1.3168695580231216,
+      "proof_sha256": "0b06b49c95d33c04ce23af8a90de609e5d8626a0ea9d059c1e356a882062272f"
+    },
+    {
+      "id": 19,
+      "stage": "steps-002",
+      "status": "pass",
+      "model_calls": 0,
+      "proof_edits": 0,
+      "result_path": "runs/live-practice-2026-10-28/19/posthoc-timeout-retry/steps-002/result.json",
+      "error": null,
+      "metrics": {
+        "raw_heartbeats": 3858450,
+        "raw_samples": [
+          3858450,
+          3858392,
+          3858477
+        ],
+        "tokens": 538
+      },
+      "local_final_score": 53.60428766885644,
+      "harness_selection_score": 33.58113841199984,
+      "score_gain_over_harness_selection": 20.023149256856605,
+      "proof_sha256": "857ed23e217ca9733f91d31a5b8b51c1a3d4874ea4aa9d474190217a24248d34"
+    },
+    {
+      "id": 19,
+      "stage": "final",
+      "status": "pass",
+      "model_calls": 0,
+      "proof_edits": 0,
+      "result_path": "runs/live-practice-2026-10-28/19/posthoc-timeout-retry/final/result.json",
+      "error": null,
+      "metrics": {
+        "raw_heartbeats": 7560420,
+        "raw_samples": [
+          7560424,
+          7560373,
+          7560420
+        ],
+        "tokens": 570
+      },
+      "local_final_score": 33.5808699442927,
+      "harness_selection_score": 33.58113841199984,
+      "score_gain_over_harness_selection": -0.0002684677071371766,
+      "proof_sha256": "42d1aa3a1f467556b3649d716b704b2f874ed047987065045411f36e138cf142"
+    }
+  ]
+}

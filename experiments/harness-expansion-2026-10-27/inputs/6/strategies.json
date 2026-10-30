@@ -1,0 +1,5 @@
+[
+  "replace repeated rewrite traversal",
+  "remove unused dependent predicate arguments",
+  "narrow linearity simplification"
+]

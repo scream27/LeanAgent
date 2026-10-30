@@ -1,0 +1,42 @@
+{
+  "scope": "29 unique problems / 35 dataset rows; no official leaderboard evaluation",
+  "primary_status_counts": {
+    "complete": 16,
+    "baseline_rejected": 12,
+    "final_verification_failed": 1
+  },
+  "primary_outcome_counts": {
+    "improved_primary": 13,
+    "not_scored": 13,
+    "original_fallback": 3
+  },
+  "model_responses": 51,
+  "rejected_responses": 13,
+  "primary_verified_subset": {
+    "n": 16,
+    "mean_primary_proxy": 40.55823713358978,
+    "original_reference_score": 33.333333333333336
+  },
+  "fully_measured_subset": {
+    "n": 16,
+    "mean_local_final_score": 40.55823713358978
+  },
+  "unmeasured_scores_are_not_zero": true,
+  "posthoc_recovered_selection_ids": [
+    15,
+    19
+  ],
+  "posthoc_additional_model_calls": 0,
+  "note": "Subset means exclude baseline rejection and failed final verification. They are not whole-dataset performance. Original fallback micro-differences are measurement noise.",
+  "posthoc_comparison": {
+    "fixed_cohort_n": 16,
+    "before_mean": 40.55823713358978,
+    "after_mean": 40.64054148096622,
+    "newly_verified_ids": [
+      19
+    ],
+    "expanded_cohort_n": 17,
+    "expanded_mean": 41.403114786136236,
+    "warning": "Expanded mean has a different denominator; do not attribute its change solely to score improvement."
+  }
+}

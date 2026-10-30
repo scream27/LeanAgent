@@ -1,0 +1,13 @@
+{
+  "upstream_harness_commit": "ba593fc4357ee5c429b8f28f1aac512d05bb4355",
+  "strata_commit": "451e5f047bafa010d178856db76c00029bfa4d7f",
+  "prepared_project": "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/repair-bridge/strata",
+  "generation": "This conversation model authored three fixed proposals per problem before verification; historical problem exposure; no independent-model-performance claim",
+  "strategies": [
+    "induction + broad simplification",
+    "structural induction + subset composition (historically informed)",
+    "conservative local cleanup"
+  ],
+  "api_calls": 0,
+  "original_source_sha256": "1c5e76014548db4a380b5c225f561c726a0db1184dcddfefb7191052e67dd79a"
+}

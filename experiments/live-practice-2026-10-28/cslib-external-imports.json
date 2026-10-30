@@ -1,0 +1,23 @@
+[
+  "Batteries.Tactic.Lint.Basic",
+  "Lean.Elab.Command",
+  "Lean.Elab.ConfigEval",
+  "Lean.Message",
+  "Mathlib.Algebra.Order.Monoid.Unbundled.Defs",
+  "Mathlib.Analysis.Normed.Field.Lemmas",
+  "Mathlib.Data.Finset.Dedup",
+  "Mathlib.Data.List.Sigma",
+  "Mathlib.Data.Set.Basic",
+  "Mathlib.Data.Set.CoeSort",
+  "Mathlib.Data.Set.Finite.Basic",
+  "Mathlib.Init",
+  "Mathlib.Logic.Relation",
+  "Mathlib.Order.Basic",
+  "Mathlib.Order.SetNotation",
+  "Mathlib.Tactic.Common",
+  "Mathlib.Tactic.TFAE",
+  "Mathlib.Tactic.ToAdditive",
+  "Mathlib.Tactic.ToDual",
+  "Mathlib.Util.Notation3",
+  "Qq"
+]

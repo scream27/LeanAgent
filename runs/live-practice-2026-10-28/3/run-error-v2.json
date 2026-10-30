@@ -1,0 +1,1 @@
+{"type": "DatasetDeclarationBoundaryFailure", "message": "Reference src includes updatedStatesDefMonotone followed by a second theorem updatedStatesDefined. Common single-declaration validator rejects before Lean or model generation. Original dataset retained.", "evidence": "raw-v2/baseline/result.json"}

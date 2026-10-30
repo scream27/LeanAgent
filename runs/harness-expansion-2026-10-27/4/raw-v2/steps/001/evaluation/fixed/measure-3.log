@@ -1,0 +1,1 @@
+REFACTOR_EVAL 6352d76fd1854e4fae7c74059a4a9a85 {"axioms":["propext","Classical.choice","Quot.sound"],"raw":11497433,"scaled":11497,"target":"fundamental_theorem_of_variational_calculus'"}

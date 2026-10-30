@@ -1,0 +1,4 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean:193:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean:1139:30: error: unexpected token '#refactor_eval'; expected '{' or tactic
+REFACTOR_EVAL 2980643dfaf946a7a70cadc2458a1805 {"axioms":["propext","Quot.sound","Classical.choice"],"raw":152446,"scaled":152,"target":"CallElimCorrect.Lambda.LExpr.substFvarCorrect"}
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean:3307:8: warning: declaration uses 'sorry'

@@ -1,0 +1,1 @@
+Refactor only the existing proof body. Preserve all statements and surrounding definitions. Return JSON with exactly one proof field. Prefer verified simplification and lower elaboration cost; no sorry, new axioms or target self-reference.

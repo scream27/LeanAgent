@@ -1,0 +1,10 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/003/evaluation/fixed/measure-2.lean:193:8: warning: declaration uses 'sorry'
+REFACTOR_EVAL 28e2e6c86cc14302ae42d293c4bcfd61 {"axioms":["propext","Quot.sound","Classical.choice"],"raw":34014829,"scaled":34014,"target":"CallElimCorrect.substOldExpr_cons"}
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/003/evaluation/fixed/measure-2.lean:2160:20: warning: This simp argument is unused:
+  OldExpressions.substOldExpr_nil
+
+Hint: Omit it from the simp argument list.
+  simp [createFvar,̵ ̵O̵l̵d̵E̵x̵p̵r̵e̵s̵s̵i̵o̵n̵s̵.̵s̵u̵b̵s̵t̵O̵l̵d̵E̵x̵p̵r̵_̵n̵i̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/23/raw/steps/003/evaluation/fixed/measure-2.lean:3309:8: warning: declaration uses 'sorry'

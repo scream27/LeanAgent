@@ -1,0 +1,17 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:42:0: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:46:0: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:49:0: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:56:6: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:60:0: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:63:0: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:66:0: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:78:6: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:100:14: warning: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵← ̲Section_4_3.pow_eq_zpow, ← ̲zpow_add₀ (show 10 ≠ (0 ̲: ̲ℚ) by norm_num)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:116:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean:120:8: warning: declaration uses 'sorry'

@@ -1,0 +1,134 @@
+✔ [7351/7379] Built Analysis.Misc.Combinatorics (66s)
+⚠ [7352/7379] Built Analysis.Misc.«Real-EReal-ENNReal» (66s)
+warning: Analysis/Misc/Real-EReal-ENNReal.lean:281:51: unused variable `hg_sum`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [7353/7379] Built Analysis.Section_4_3 (67s)
+ℹ [7354/7379] Built Analysis.Section_10_1 (62s)
+info: Analysis/Section_10_1.lean:54:0: DifferentiableWithinAt.hasDerivWithinAt.{u, v} {𝕜 : Type u} [NontriviallyNormedField 𝕜] {F : Type v}
+  [NormedAddCommGroup F] [NormedSpace 𝕜 F] {f : 𝕜 → F} {x : 𝕜} {s : Set 𝕜} (h : DifferentiableWithinAt 𝕜 f s x) :
+  HasDerivWithinAt f (derivWithin f s x) s x
+info: Analysis/Section_10_1.lean:127:0: DifferentiableOn.eq_1.{u_1, u_2, u_3} (𝕜 : Type u_1) [NontriviallyNormedField 𝕜] {E : Type u_2} [AddCommGroup E]
+  [Module 𝕜 E] [TopologicalSpace E] {F : Type u_3} [AddCommGroup F] [Module 𝕜 F] [TopologicalSpace F] (f : E → F)
+  (s : Set E) : DifferentiableOn 𝕜 f s = ∀ x ∈ s, DifferentiableWithinAt 𝕜 f s x
+ℹ [7355/7379] Built Analysis.MeasureTheory.Notation (72s)
+info: Analysis/MeasureTheory/Notation.lean:60:0: top_add.{u_1} {α : Type u_1} [LinearOrderedAddCommMonoidWithTop α] (a : α) : ⊤ + a = ⊤
+info: Analysis/MeasureTheory/Notation.lean:61:0: add_top.{u_1} {α : Type u_1} [LinearOrderedAddCommMonoidWithTop α] (a : α) : a + ⊤ = ⊤
+info: Analysis/MeasureTheory/Notation.lean:62:0: ENNReal.top_mul {a : ENNReal} (h : a ≠ 0) : ⊤ * a = ⊤
+info: Analysis/MeasureTheory/Notation.lean:63:0: ENNReal.mul_top {a : ENNReal} (h : a ≠ 0) : a * ⊤ = ⊤
+info: Analysis/MeasureTheory/Notation.lean:64:0: lt_top_iff_ne_top.{u} {α : Type u} [PartialOrder α] [OrderTop α] {a : α} : a < ⊤ ↔ a ≠ ⊤
+info: Analysis/MeasureTheory/Notation.lean:178:0: ENNReal.tendsto_nat_tsum (f : ℕ → ENNReal) : Tendsto (fun n ↦ ∑ i ∈ Finset.range n, f i) atTop (nhds (∑' (n : ℕ), f n))
+info: Analysis/MeasureTheory/Notation.lean:180:0: ENNReal.tsum_eq_iSup_sum.{u_1} {α : Type u_1} {f : α → ENNReal} : ∑' (a : α), f a = ⨆ s, ∑ a ∈ s, f a
+info: Analysis/MeasureTheory/Notation.lean:182:0: Equiv.tsum_eq.{u_1, u_2, u_3} {α : Type u_1} {β : Type u_2} {γ : Type u_3} [AddCommMonoid α] [TopologicalSpace α]
+  (e : γ ≃ β) (f : β → α) : ∑' (c : γ), f (e c) = ∑' (b : β), f b
+info: Analysis/MeasureTheory/Notation.lean:229:0: ENNReal.tsum_comm.{u_1, u_2} {α : Type u_1} {β : Type u_2} {f : α → β → ENNReal} :
+  ∑' (a : α) (b : β), f a b = ∑' (b : β) (a : α), f a b
+ℹ [7356/7379] Built Analysis.Appendix_B_1 (81s)
+info: Analysis/Appendix_B_1.lean:63:0: 0 : Digit
+info: Analysis/Appendix_B_1.lean:64:0: 1 : Digit
+info: Analysis/Appendix_B_1.lean:65:0: 2 : Digit
+info: Analysis/Appendix_B_1.lean:66:0: 3 : Digit
+info: Analysis/Appendix_B_1.lean:67:0: 4 : Digit
+info: Analysis/Appendix_B_1.lean:68:0: 5 : Digit
+info: Analysis/Appendix_B_1.lean:69:0: 6 : Digit
+info: Analysis/Appendix_B_1.lean:70:0: 7 : Digit
+info: Analysis/Appendix_B_1.lean:71:0: 8 : Digit
+info: Analysis/Appendix_B_1.lean:72:0: 9 : Digit
+info: Analysis/Appendix_B_1.lean:113:0: PosintDecimal.mk' 3 [1, 4] ⋯ : PosintDecimal
+info: Analysis/Appendix_B_1.lean:116:0: PosintDecimal.mk' 3 [] ⋯ : PosintDecimal
+info: Analysis/Appendix_B_1.lean:119:0: PosintDecimal.mk' 1 [0] ⋯ : PosintDecimal
+ℹ [7357/7379] Built Analysis.Section_5_1 (63s)
+info: Analysis/Section_5_1.lean:54:0: ↑fun x ↦ ↑x ^ 2 : Sequence
+✔ [7358/7379] Built Analysis.Misc.erdos_613 (132s)
+⚠ [7359/7379] Built Analysis.Section_5_2 (24s)
+warning: Analysis/Section_5_2.lean:98:14: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵← ̲Section_4_3.pow_eq_zpow, ← ̲zpow_add₀ (show 10 ≠ (0 ̲: ̲ℚ) by norm_num)]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [7360/7379] Built Analysis.Section_5_3 (14s)
+✔ [7361/7379] Built Analysis.Section_5_4 (15s)
+✔ [7362/7379] Built Analysis.Section_5_5 (34s)
+✔ [7363/7379] Built Analysis.Section_5_6 (31s)
+✔ [7364/7379] Built Analysis.Section_5_epilogue (16s)
+ℹ [7365/7379] Built Analysis.Section_6_2 (6.1s)
+info: Analysis/Section_6_2.lean:44:0: EReal.neg_top : -⊤ = ⊥
+info: Analysis/Section_6_2.lean:45:0: EReal.neg_bot : -⊥ = ⊤
+info: Analysis/Section_6_2.lean:55:0: EReal.coe_lt_coe_iff {x y : ℝ} : ↑x < ↑y ↔ x < y
+info: Analysis/Section_6_2.lean:75:0: instCompleteLinearOrderEReal : CompleteLinearOrder EReal
+info: Analysis/Section_6_2.lean:179:0: isLUB_iff_sSup_eq.{u_1} {α : Type u_1} [CompleteSemilatticeSup α] {s : Set α} {a : α} : IsLUB s a ↔ sSup s = a
+info: Analysis/Section_6_2.lean:180:0: isGLB_iff_sInf_eq.{u_1} {α : Type u_1} [CompleteSemilatticeInf α] {s : Set α} {a : α} : IsGLB s a ↔ sInf s = a
+ℹ [7366/7379] Built Analysis.Section_6_1 (6.5s)
+info: Analysis/Section_6_1.lean:24:0: Real.dist_eq (x y : ℝ) : dist x y = |x - y|
+✔ [7367/7379] Built Analysis.Section_6_3 (3.7s)
+✔ [7368/7379] Built Analysis.Section_6_4 (25s)
+ℹ [7369/7379] Built Analysis.Section_9_1 (9.8s)
+info: Analysis/Section_9_1.lean:26:0: Set.Icc_def.{u_1} {α : Type u_1} [Preorder α] (a b : α) : {x | a ≤ x ∧ x ≤ b} = Set.Icc a b
+info: Analysis/Section_9_1.lean:27:0: Set.Ico_def.{u_1} {α : Type u_1} [Preorder α] (a b : α) : {x | a ≤ x ∧ x < b} = Set.Ico a b
+info: Analysis/Section_9_1.lean:28:0: Set.Ioc_def.{u_1} {α : Type u_1} [Preorder α] (a b : α) : {x | a < x ∧ x ≤ b} = Set.Ioc a b
+info: Analysis/Section_9_1.lean:29:0: Set.Ioo_def.{u_1} {α : Type u_1} [Preorder α] (a b : α) : {x | a < x ∧ x < b} = Set.Ioo a b
+info: Analysis/Section_9_1.lean:30:0: Set.Ici_def.{u_1} {α : Type u_1} [Preorder α] (a : α) : {x | a ≤ x} = Set.Ici a
+info: Analysis/Section_9_1.lean:31:0: Set.Ioi_def.{u_1} {α : Type u_1} [Preorder α] (a : α) : {x | a < x} = Set.Ioi a
+info: Analysis/Section_9_1.lean:32:0: Set.Iic_def.{u_1} {α : Type u_1} [Preorder α] (b : α) : {x | x ≤ b} = Set.Iic b
+info: Analysis/Section_9_1.lean:33:0: Set.Iio_def.{u_1} {α : Type u_1} [Preorder α] (a : α) : {x | x < a} = Set.Iio a
+info: Analysis/Section_9_1.lean:35:0: EReal.image_coe_Icc (x y : ℝ) : Real.toEReal '' Set.Icc x y = Set.Icc ↑x ↑y
+info: Analysis/Section_9_1.lean:36:0: EReal.image_coe_Ico (x y : ℝ) : Real.toEReal '' Set.Ico x y = Set.Ico ↑x ↑y
+info: Analysis/Section_9_1.lean:37:0: EReal.image_coe_Ioc (x y : ℝ) : Real.toEReal '' Set.Ioc x y = Set.Ioc ↑x ↑y
+info: Analysis/Section_9_1.lean:38:0: EReal.image_coe_Ioo (x y : ℝ) : Real.toEReal '' Set.Ioo x y = Set.Ioo ↑x ↑y
+info: Analysis/Section_9_1.lean:39:0: EReal.image_coe_Ici (x : ℝ) : Real.toEReal '' Set.Ici x = Set.Ico ↑x ⊤
+info: Analysis/Section_9_1.lean:40:0: EReal.image_coe_Ioi (x : ℝ) : Real.toEReal '' Set.Ioi x = Set.Ioo ↑x ⊤
+info: Analysis/Section_9_1.lean:41:0: EReal.image_coe_Iic (x : ℝ) : Real.toEReal '' Set.Iic x = Set.Ioc ⊥ ↑x
+info: Analysis/Section_9_1.lean:42:0: EReal.image_coe_Iio (x : ℝ) : Real.toEReal '' Set.Iio x = Set.Ioo ⊥ ↑x
+✔ [7370/7379] Built Analysis.Section_9_3 (11s)
+ℹ [7371/7379] Built Analysis.Section_9_4 (5.2s)
+info: Analysis/Section_9_4.lean:27:0: ContinuousOn.eq_1.{u_1, u_2} {X : Type u_1} {Y : Type u_2} [TopologicalSpace X] [TopologicalSpace Y] (f : X → Y)
+  (s : Set X) : ContinuousOn f s = ∀ x ∈ s, ContinuousWithinAt f s x
+info: Analysis/Section_9_4.lean:28:0: continuous_iff_continuousOn_univ.{u_1, u_2} {α : Type u_1} {β : Type u_2} [TopologicalSpace α] [TopologicalSpace β]
+  {f : α → β} : ContinuousOn f Set.univ ↔ Continuous f
+info: Analysis/Section_9_4.lean:29:0: continuousWithinAt_univ.{u_1, u_2} {α : Type u_1} {β : Type u_2} [TopologicalSpace α] [TopologicalSpace β] (f : α → β)
+  (x : α) : ContinuousWithinAt f Set.univ x ↔ ContinuousAt f x
+✔ [7372/7379] Built Analysis.MeasureTheory.Section_1_1_1 (25s)
+⚠ [7373/7379] Built Analysis.Section_9_6 (11s)
+warning: Analysis/Section_9_6.lean:51:48: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Analysis/Section_9_6.lean:54:29: This simp argument is unused:
+  BddOn
+
+Hint: Omit it from the simp argument list.
+  simp [̵B̵d̵d̵O̵n̵]̵ ̵at hunbound
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: Analysis/Section_9_6.lean:76:0: isMaxOn_iff.{u, v} {α : Type u} {β : Type v} [Preorder β] {f : α → β} {s : Set α} {a : α} :
+  IsMaxOn f s a ↔ ∀ x ∈ s, f x ≤ f a
+info: Analysis/Section_9_6.lean:77:0: isMinOn_iff.{u, v} {α : Type u} {β : Type v} [Preorder β] {f : α → β} {s : Set α} {a : α} :
+  IsMinOn f s a ↔ ∀ x ∈ s, f a ≤ f x
+✔ [7374/7379] Built Analysis.Section_10_2 (4.3s)
+⚠ [7375/7379] Built Analysis.MeasureTheory.Section_1_1_2 (8.1s)
+warning: Analysis/MeasureTheory/Section_1_1_2.lean:147:24: unused variable `hAE`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: Analysis/MeasureTheory/Section_1_1_2.lean:169:24: unused variable `hAE`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [7376/7379] Built Analysis.MeasureTheory.Section_1_1_3 (11s)
+✔ [7377/7379] Built Analysis.Section_10_5 (14s)
+✔ [7378/7379] Built Analysis.MeasureTheory.Section_1_2_0 (12s)
+⚠ [7379/7379] Built Analysis.MeasureTheory.Section_1_2_1 (24s)
+warning: Analysis/MeasureTheory/Section_1_2_1.lean:4040:12: `Set.eq_empty_iff_forall_not_mem` has been deprecated: Use `Set.eq_empty_iff_forall_notMem` instead
+warning: Analysis/MeasureTheory/Section_1_2_1.lean:4048:28: `Set.eq_empty_iff_forall_not_mem` has been deprecated: Use `Set.eq_empty_iff_forall_notMem` instead
+info: Analysis/MeasureTheory/Section_1_2_1.lean:4372:4: Try this:
+  ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Analysis/MeasureTheory/Section_1_2_1.lean:4398:4: Try this:
+  ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Build completed successfully (7379 jobs).

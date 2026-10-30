@@ -1,0 +1,6 @@
+{
+  "id": "28",
+  "name": "Core.InitStatesSubstStores",
+  "statement": "theorem InitStatesSubstStores :\nReadValues σ ks' vs' →\nInitStates σ ks vs' σ' →\nsubstStores σ σ' (ks'.zip ks)",
+  "reference": "theorem InitStatesSubstStores :\nReadValues σ ks' vs' →\nInitStates σ ks vs' σ' →\nsubstStores σ σ' (ks'.zip ks) := by\nintros Hrd Hinit\ninduction Hinit generalizing ks' with\n| init_none =>\n  simp [substStores]\n| init_some Hinit Hinits ih =>\n  next σ x v σ₁ xs vs σ'' =>\n  cases Hrd with\n  | read_some Hsome'' Hrds =>\n  next ys y =>\n  have Hinit' := Hinit\n  cases Hinit with\n  | init Hnone Hsome' Heq =>\n  simp [substStores]\n  intros k1 k2 Hin\n  cases Hin with\n  | inl Hin =>\n    simp_all\n    apply Eq.symm\n    apply InitStatesSomeMonotone Hsome' Hinits\n  | inr Hin =>\n    specialize @ih ys ?_\n    exact InitStateReadValuesMonotone Hrds Hinit'\n    rw [← Heq]\n    exact ih k1 k2 Hin\n    apply Not.intro\n    intro Heq\n    simp_all\n    have Hin' := List.of_mem_zip Hin\n    have Hdef := ReadValuesIsDefined Hrds\n    specialize Hdef k1 Hin'.1\n    simp_all"
+}

@@ -1,0 +1,126 @@
+{
+  "classification": "structured evaluator error kind; no LLM classification",
+  "counts": {
+    "compile": 10,
+    "timeout": 3
+  },
+  "cases": [
+    {
+      "case_id": "practice-1-step-002",
+      "problem_id": 1,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-2-step-001",
+      "problem_id": 2,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-4-step-001",
+      "problem_id": 4,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-5-step-003",
+      "problem_id": 5,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-8-step-001",
+      "problem_id": 8,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-9-step-001",
+      "problem_id": 9,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-12-step-003",
+      "problem_id": 12,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-15-step-002",
+      "problem_id": 15,
+      "observed_error_kinds": [
+        "timeout"
+      ],
+      "routing": "unchanged_bounded_retry",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-19-step-002",
+      "problem_id": 19,
+      "observed_error_kinds": [
+        "timeout"
+      ],
+      "routing": "unchanged_bounded_retry",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-19-step-003",
+      "problem_id": 19,
+      "observed_error_kinds": [
+        "timeout"
+      ],
+      "routing": "unchanged_bounded_retry",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-23-step-001",
+      "problem_id": 23,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-23-step-002",
+      "problem_id": 23,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    },
+    {
+      "case_id": "practice-25-step-002",
+      "problem_id": 25,
+      "observed_error_kinds": [
+        "compile"
+      ],
+      "routing": "proof_diagnostic_and_changed_region_review",
+      "automatic_repair_success_claimed": false
+    }
+  ]
+}

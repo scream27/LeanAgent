@@ -1,0 +1,21 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/1/raw/steps/002/evaluation/fixed/check.lean:173:8: warning: declaration uses 'sorry'
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/1/raw/steps/002/evaluation/fixed/check.lean:1828:27: error: Tactic `assumption` failed
+
+case eq.a
+δ : Imperative.SemanticEval Expression
+σ₀ σ : CoreStore
+fro to : Expression.Ident
+Hwfvr : Imperative.WellFormedSemanticEvalVar δ
+Hwfvl : Imperative.WellFormedSemanticEvalVal δ
+Hwfc : WellFormedCoreEvalCong δ
+Hwf2 : WellFormedCoreEvalTwoState δ σ₀ σ
+Hdef : Imperative.substDefined σ₀ σ [(fro, to)]
+Hsubst : Imperative.substStores σ₀ σ [(fro, to)]
+m : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata
+e1 e2 : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }
+e1ih : OldExpressions.NormalizedOldExpr e1 → δ σ e1 = δ σ (OldExpressions.substOld fro (createFvar to) e1)
+He1 : OldExpressions.NormalizedOldExpr e1
+He2 : OldExpressions.NormalizedOldExpr e2
+e2ih : δ σ e2 = δ σ (OldExpressions.substOld fro (createFvar to) e2)
+⊢ δ σ e1 = δ σ (OldExpressions.substOld fro (createFvar to) e1)
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/1/raw/steps/002/evaluation/fixed/check.lean:3277:8: warning: declaration uses 'sorry'

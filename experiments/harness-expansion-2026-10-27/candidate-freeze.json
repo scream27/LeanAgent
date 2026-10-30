@@ -1,0 +1,50 @@
+{
+  "harness_commit": "ba593fc4357ee5c429b8f28f1aac512d05bb4355",
+  "problem_ids": [
+    4,
+    5,
+    6
+  ],
+  "generation": "conversation-authored fixed candidates; no live-model performance claim, no deliberately broken mutation",
+  "api_calls": 0,
+  "strategies": {
+    "4": [
+      "direct positivity and contradiction",
+      "remove repeated nlinarith hypotheses",
+      "restrict nlinarith to explicit premises"
+    ],
+    "5": [
+      "canonical le_top proof",
+      "narrow derivative simplification",
+      "batch adjacent rewrites"
+    ],
+    "6": [
+      "replace repeated rewrite traversal",
+      "remove unused dependent predicate arguments",
+      "narrow linearity simplification"
+    ]
+  },
+  "sha256": {
+    "inputs/6/config.json": "9bd7584a27549459091d26914c4ba241cd11bb4ee472ed89e06839e0af12e6dc",
+    "inputs/6/prompt.txt": "c7af365ff6bcaaaaf3d8b05fc9769f70b55ee90d501f0cb5951f107ab6f2a264",
+    "inputs/6/strategies.json": "fb6f774b205d7dab66c62f1501d7c52012aa54efd6511fea67a7d223a262b020",
+    "inputs/6/context.lean.in": "136127e2bc56ea17d14c325046a833f48f12772d78271048a12c67c4d7c5ff51",
+    "inputs/6/responses.json": "a15438b1f4ac20eaf2ab550787b8502b477ca75ef7a8b19ed8690e12267ac3a7",
+    "inputs/6/problem.json": "7f8d77f6eb534dea1862067e71d33a7e7f7959193441a88d340240670518a643",
+    "inputs/4/config.json": "9bd7584a27549459091d26914c4ba241cd11bb4ee472ed89e06839e0af12e6dc",
+    "inputs/4/prompt.txt": "c7af365ff6bcaaaaf3d8b05fc9769f70b55ee90d501f0cb5951f107ab6f2a264",
+    "inputs/4/strategies.json": "20b8e646337f8c3ca5983b7e7df2aadd447d4c46fb6d0e325a193391c4c051f4",
+    "inputs/4/context.lean.in": "c1835e36d12e374d7d89cede3fe5ba4e553392536bd8ed27bcc3a3a7a7726771",
+    "inputs/4/responses.json": "fe245d2db0addf067192addca1a320571a1f69e10aa1e3c3e60028fe607f3f26",
+    "inputs/4/problem.json": "e68af82489e3362bfd4d1ecd871d821f96227de466d3deb7f3f3084011a260f7",
+    "inputs/5/config.json": "9bd7584a27549459091d26914c4ba241cd11bb4ee472ed89e06839e0af12e6dc",
+    "inputs/5/prompt.txt": "c7af365ff6bcaaaaf3d8b05fc9769f70b55ee90d501f0cb5951f107ab6f2a264",
+    "inputs/5/strategies.json": "164e9d5a8b24951465ad44a492c72503595fee266fc05740b9415fec7c3839f0",
+    "inputs/5/context.lean.in": "967b7b5c4da2a33407343608ddedfdbc8666f41e761c323a527720baa4bd0170",
+    "inputs/5/responses.json": "f6cfb810aadda6b8fdf4eb42af12286e70901fce11731154852e6056e2440a92",
+    "inputs/5/problem.json": "8fef5498552efc3855280caecb4b9adee06c47d7c3dbb8d5cb7ae5193cb362eb",
+    "inputs/6/project/lean-toolchain": "2773c517aa90b66ea8a2c52bddddf84393157797f8341be0df45294fff7fd32e",
+    "inputs/4/project/lean-toolchain": "2773c517aa90b66ea8a2c52bddddf84393157797f8341be0df45294fff7fd32e",
+    "inputs/5/project/lean-toolchain": "2773c517aa90b66ea8a2c52bddddf84393157797f8341be0df45294fff7fd32e"
+  }
+}

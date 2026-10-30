@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-28T10:16:03.056020+00:00",
+  "deleted_generated_directories": [
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/harness-expansion/physlib-v4.32.0/project/.lake",
+    "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/harness-expansion/physlib-v4.32.0/elan"
+  ],
+  "preserved": "source checkout, manifests, inputs, all raw runs, model exchanges and reports"
+}

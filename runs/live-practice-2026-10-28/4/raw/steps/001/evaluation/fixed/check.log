@@ -1,0 +1,30 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/4/raw/steps/001/evaluation/fixed/check.lean:120:2: error: ring failed, ring expressions not equal
+𝓕 : FieldSpecification
+φ1 φ2 φ3 : 𝓕.CrAnFieldOp
+φs1 φs2 : List 𝓕.CrAnFieldOp
+h :
+  crAnTimeOrderRel φ1 φ2 ∧
+    crAnTimeOrderRel φ1 φ3 ∧
+      crAnTimeOrderRel φ2 φ1 ∧ crAnTimeOrderRel φ2 φ3 ∧ crAnTimeOrderRel φ3 φ1 ∧ crAnTimeOrderRel φ3 φ2
+l1 : List 𝓕.CrAnFieldOp := ⋯
+l2 : List 𝓕.CrAnFieldOp := ⋯
+h123 :
+  ι (timeOrderF (ofCrAnListF (φs1 ++ φ1 :: φ2 :: φ3 :: φs2))) =
+    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •
+      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ1, φ2, φ3]) * ι (ofCrAnListF l2))
+h132 :
+  ι (timeOrderF (ofCrAnListF (φs1 ++ φ1 :: φ3 :: φ2 :: φs2))) =
+    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •
+      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ1, φ3, φ2]) * ι (ofCrAnListF l2))
+hp231 : [φ2, φ3, φ1].Perm [φ1, φ2, φ3]
+h231 :
+  ι (timeOrderF (ofCrAnListF (φs1 ++ φ2 :: φ3 :: φ1 :: φs2))) =
+    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •
+      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ2, φ3, φ1]) * ι (ofCrAnListF l2))
+h321 :
+  ι (timeOrderF (ofCrAnListF (φs1 ++ φ3 :: φ2 :: φ1 :: φs2))) =
+    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •
+      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ3, φ2, φ1]) * ι (ofCrAnListF l2))
+⊢ -((exchangeSign (𝓕.crAnStatistics φ1)) (ofList 𝓕.crAnStatistics [φ2, φ3]) *
+        crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2)) =
+    0

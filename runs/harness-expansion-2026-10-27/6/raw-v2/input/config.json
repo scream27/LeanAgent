@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "problem": "problem.json",
+  "template": "context.lean.in",
+  "project": "project",
+  "prompt": "prompt.txt",
+  "lean": {
+    "toolchain": "leanprover/lean4:v4.32.0",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/harness-expansion-2026-10-27/lean_command.py",
+      "-j1"
+    ],
+    "timeout_seconds": 180,
+    "repetitions": 3
+  },
+  "limits": {
+    "max_calls": 3,
+    "max_proof_characters": 40000,
+    "max_feedback_characters": 12000,
+    "max_request_characters": 150000
+  },
+  "model": {
+    "backend": "fixture",
+    "responses": "responses.json"
+  }
+}

@@ -1,0 +1,1202 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/9/raw-v2/steps/001/evaluation/fixed/check.lean:399:8: error: `grind` failed
+case grind.2.1.1
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p_1 q_1 r_1 : Process Name Constant
+h : p_1 ~[{ Tr := Tr }] q_1
+μ : Act Name
+p q r : Process Name Constant
+rel : Process Name Constant → Process Name Constant → Prop
+hr : rel p q
+hb : { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+p' : Process Name Constant
+htr : Tr p μ p'
+q' : Process Name Constant
+h_1 : { Tr := Tr }.Tr q μ q' ∧ rel p' q'
+h_2 : ¬Tr (q.par r) μ (q'.par r) ∨ ¬ParBisim (p'.par r) (q'.par r)
+p_2 : Process Name Constant
+μ_1 : Act Name
+p'_1 q_2 : Process Name Constant
+h_3 : Tr p_2 μ_1 p'_1
+p_eq : q = p_2
+q_eq : r = q_2
+h_5 : μ = μ_1
+p_eq_1 : q' = p'_1
+q_eq_1 : r = q_2
+h_7 : ⋯ ≍ ⋯
+μ_2 : Act Name
+p_3 : Process Name Constant
+h_8 : q = Process.pre μ_2 p_3
+h_9 : μ = μ_2
+h_10 : q' = p_3
+h_11 : ⋯ ≍ ⋯
+μ_3 : Act Name
+p_4 : Process Name Constant
+h_12 : p = Process.pre μ_3 p_4
+h_13 : μ = μ_3
+h_14 : p' = p_4
+h_15 : ⋯ ≍ ⋯
+w : Process Name Constant → Process Name Constant → Prop
+left : w p_1 q_1
+right : { Tr := Tr }.IsBisimulation { Tr := Tr } w
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1
+    [prop] rel p q
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+    [prop] Tr p μ p'
+    [prop] Tr q μ q' ∧ rel p' q'
+    [prop] ¬Tr (q.par r) μ (q'.par r) ∨ ¬ParBisim (p'.par r) (q'.par r)
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1 = ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr q μ q' → Tr (q.par r) μ (q'.par r)
+    [prop] p' ~[lts,lts] q' → ParBisim (p'.par r) (q'.par r)
+    [prop] p' ~[lts,lts] q' = ∃ r, r p' q' ∧ lts.IsBisimulation lts r
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p' q' → ¬lts.IsBisimulation lts x
+    [prop] Tr p_2 μ_1 p'_1
+    [prop] q = p_2
+    [prop] r = q_2
+    [prop] μ = μ_1
+    [prop] q' = p'_1
+    [prop] r = q_2
+    [prop] ⋯ ≍ ⋯
+    [prop] q = Process.pre μ_2 p_3
+    [prop] μ = μ_2
+    [prop] q' = p_3
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ_1 p'_1) μ_1 p'_1
+    [prop] p = Process.pre μ_3 p_4
+    [prop] μ = μ_3
+    [prop] p' = p_4
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ p') μ p'
+    [prop] w p_1 q_1
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+  [eqc] True propositions
+    [prop] ¬ParBisim (p'.par r) (q'.par r)
+    [prop] rel p q
+    [prop] rel p' q'
+    [prop] Tr q μ q' ∧ rel p' q'
+    [prop] ¬Tr (q.par r) μ (q'.par r) ∨ ¬ParBisim (p'.par r) (q'.par r)
+    [prop] Tr p μ p'
+    [prop] Tr q μ q'
+    [prop] Tr (q.par r) μ (q'.par r)
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1
+    [prop] w p_1 q_1
+    [prop] ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1 = ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr p_2 μ_1 p'_1
+    [prop] Tr (p_2.par q_2) μ_1 (p'_1.par q_2)
+    [prop] Tr (Process.pre μ_2 p_3) μ_2 p_3
+    [prop] Tr (Process.pre μ_3 p_4) μ_3 p_4
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] Tr q μ q' → Tr (q.par r) μ (q'.par r)
+    [prop] p' ~[lts,lts] q' → ParBisim (p'.par r) (q'.par r)
+    [prop] p' ~[lts,lts] q' = ∃ r, r p' q' ∧ lts.IsBisimulation lts r
+    [prop] Tr (Process.pre μ p') μ p'
+    [prop] Tr (Process.pre μ_1 p'_1) μ_1 p'_1
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p' q' → ¬lts.IsBisimulation lts x
+  [eqc] False propositions
+    [prop] ¬Tr (q.par r) μ (q'.par r)
+    [prop] ParBisim (p'.par r) (q'.par r)
+    [prop] p' ~[lts,lts] q'
+    [prop] ∃ r, r p' q' ∧ lts.IsBisimulation lts r
+  [eqc] Equivalence classes
+    [eqc] {μ, μ_1, μ_2, μ_3}
+    [eqc] {p, Process.pre μ_3 p_4, Process.pre μ p'}
+    [eqc] {q, p_2, Process.pre μ_2 p_3, Process.pre μ_1 p'_1}
+    [eqc] {r, q_2}
+    [eqc] {p', p_4}
+    [eqc] {q', p'_1, p_3}
+    [eqc] {q.par r, p_2.par q_2}
+    [eqc] {q'.par r, p'_1.par q_2}
+  [cases] Case analyses
+    [cases] [2/8]: Tr (q.par r) μ (q'.par r)
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr q μ q'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr p μ p'
+      [cases] source: Initial goal
+    [cases] [1/1]: ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+      [cases] source: E-matching `Bisimilarity.eq_1`
+  [ematch] E-matching patterns
+    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]
+    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]
+    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]
+    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]
+    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]
+    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]
+    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] Tr.pre ↦ 2
+    [thm] Bisimilarity.eq_1 ↦ 2
+    [thm] Tr.parL ↦ 1
+    [thm] ParBisim.par ↦ 1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/9/raw-v2/steps/001/evaluation/fixed/check.lean:402:8: error: `grind` failed
+case grind.2.1.1
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p_1 q_1 r_1 : Process Name Constant
+h : p_1 ~[{ Tr := Tr }] q_1
+μ : Act Name
+p q r : Process Name Constant
+rel : Process Name Constant → Process Name Constant → Prop
+hr : rel p q
+hb : { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+r' : Process Name Constant
+htr : Tr r μ r'
+h_1 : ¬Tr (q.par r) μ (q.par r') ∨ ¬ParBisim (p.par r') (q.par r')
+p_2 : Process Name Constant
+μ_1 : Act Name
+p' q_2 : Process Name Constant
+h_2 : Tr p_2 μ_1 p'
+p_eq : q = p_2
+q_eq : r = q_2
+h_4 : μ = μ_1
+p_eq_1 : q = p'
+q_eq_1 : r' = q_2
+h_6 : ⋯ ≍ ⋯
+μ_2 : Act Name
+p_3 : Process Name Constant
+h_7 : r = Process.pre μ_2 p_3
+h_8 : μ = μ_2
+h_9 : r' = p_3
+h_10 : ⋯ ≍ ⋯
+w : Process Name Constant → Process Name Constant → Prop
+left : w p_1 q_1
+right : { Tr := Tr }.IsBisimulation { Tr := Tr } w
+μ_3 : Act Name
+p_4 : Process Name Constant
+h_12 : p_2 = Process.pre μ_3 p_4
+h_13 : μ_1 = μ_3
+h_14 : p' = p_4
+h_15 : ⋯ ≍ ⋯
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1
+    [prop] rel p q
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+    [prop] Tr r μ r'
+    [prop] ¬Tr (q.par r) μ (q.par r') ∨ ¬ParBisim (p.par r') (q.par r')
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1 = ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr r μ r' → Tr (q.par r) μ (q.par r')
+    [prop] p ~[lts,lts] q → ParBisim (p.par r') (q.par r')
+    [prop] p ~[lts,lts] q = ∃ r, r p q ∧ lts.IsBisimulation lts r
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p q → ¬lts.IsBisimulation lts x
+    [prop] Tr p_2 μ_1 p'
+    [prop] q = p_2
+    [prop] r = q_2
+    [prop] μ = μ_1
+    [prop] q = p'
+    [prop] r' = q_2
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr q μ q → Tr (q.par r) μ (q.par r)
+    [prop] Tr r μ r → Tr (q.par r) μ (q.par r)
+    [prop] r = Process.pre μ_2 p_3
+    [prop] μ = μ_2
+    [prop] r' = p_3
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ r') μ r'
+    [prop] w p_1 q_1
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] p_2 = Process.pre μ_3 p_4
+    [prop] μ_1 = μ_3
+    [prop] p' = p_4
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ_1 p') μ_1 p'
+  [eqc] True propositions
+    [prop] ¬ParBisim (p.par r') (q.par r')
+    [prop] rel p q
+    [prop] ¬Tr (q.par r) μ (q.par r') ∨ ¬ParBisim (p.par r') (q.par r')
+    [prop] Tr r μ r'
+    [prop] Tr (q.par r) μ (q.par r')
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1
+    [prop] w p_1 q_1
+    [prop] ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1 = ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr q μ q
+    [prop] Tr r μ r
+    [prop] Tr p_2 μ_1 p'
+    [prop] Tr (q.par r) μ (q.par r)
+    [prop] Tr (p_2.par q_2) μ_1 (p'.par q_2)
+    [prop] Tr (Process.pre μ_2 p_3) μ_2 p_3
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] Tr q μ q → Tr (q.par r) μ (q.par r)
+    [prop] Tr r μ r → Tr (q.par r) μ (q.par r)
+    [prop] Tr r μ r' → Tr (q.par r) μ (q.par r')
+    [prop] p ~[lts,lts] q → ParBisim (p.par r') (q.par r')
+    [prop] p ~[lts,lts] q = ∃ r, r p q ∧ lts.IsBisimulation lts r
+    [prop] Tr (Process.pre μ r') μ r'
+    [prop] Tr (Process.pre μ_3 p_4) μ_3 p_4
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p q → ¬lts.IsBisimulation lts x
+    [prop] Tr (Process.pre μ_1 p') μ_1 p'
+  [eqc] False propositions
+    [prop] ¬Tr (q.par r) μ (q.par r')
+    [prop] ParBisim (p.par r') (q.par r')
+    [prop] p ~[lts,lts] q
+    [prop] ∃ r, r p q ∧ lts.IsBisimulation lts r
+  [eqc] Equivalence classes
+    [eqc] {μ, μ_1, μ_2, μ_3}
+    [eqc] {q, p_2, p', p_4, Process.pre μ_3 p_4, Process.pre μ_1 p'}
+    [eqc] {r, r', q_2, p_3, Process.pre μ_2 p_3, Process.pre μ r'}
+    [eqc] {q.par r, q.par r', p_2.par q_2, p'.par q_2}
+  [cases] Case analyses
+    [cases] [2/8]: Tr (q.par r) μ (q.par r')
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr r μ r'
+      [cases] source: Initial goal
+    [cases] [1/1]: ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+      [cases] source: E-matching `Bisimilarity.eq_1`
+    [cases] [1/8]: Tr p_2 μ_1 p'
+      [cases] source: Exists propagation at
+            ∃ r, r p q ∧ lts.IsBisimulation lts r
+  [ematch] E-matching patterns
+    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]
+    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]
+    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]
+    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]
+    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]
+    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]
+    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] Tr.parR ↦ 2
+    [thm] Tr.pre ↦ 2
+    [thm] Bisimilarity.eq_1 ↦ 2
+    [thm] Tr.parL ↦ 1
+    [thm] ParBisim.par ↦ 1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/9/raw-v2/steps/001/evaluation/fixed/check.lean:406:8: error: `grind` failed
+case grind.1.1.1.1.4.2.2.1.1.1
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p_1 q_1 r_1 : Process Name Constant
+h : p_1 ~[{ Tr := Tr }] q_1
+p q r : Process Name Constant
+rel : Process Name Constant → Process Name Constant → Prop
+hr : rel p q
+hb : { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+μ : Act Name
+p' : Process Name Constant
+μ' : Act Name
+r' : Process Name Constant
+h_1 : μ.Co μ'
+htrp : Tr p μ p'
+h_2 : Tr r μ' r'
+q' : Process Name Constant
+h_3 : { Tr := Tr }.Tr q μ q' ∧ rel p' q'
+h_4 : ¬Tr (q.par r) τ (q'.par r') ∨ ¬ParBisim (p'.par r') (q'.par r')
+a : Name
+h_5 : μ = name a
+h_6 : μ' = coname a
+h_7 : ⋯ ≍ ⋯
+μ_1 : Act Name
+p_2 : Process Name Constant
+h_8 : q = Process.pre μ_1 p_2
+h_9 : μ = μ_1
+h_10 : q' = p_2
+h_11 : ⋯ ≍ ⋯
+μ_2 : Act Name
+p_3 : Process Name Constant
+h_12 : r = Process.pre μ_2 p_3
+h_13 : μ' = μ_2
+h_14 : r' = p_3
+h_15 : ⋯ ≍ ⋯
+μ_3 : Act Name
+p_4 : Process Name Constant
+h_16 : p = Process.pre μ_3 p_4
+h_17 : μ = μ_3
+h_18 : p' = p_4
+h_19 : ⋯ ≍ ⋯
+p_5 : Process Name Constant
+μ_4 : Act Name
+p'_1 q_2 : Process Name Constant
+μ'_1 : Act Name
+q'_1 : Process Name Constant
+h_20 : μ_4.Co μ'_1
+h_21 : Tr p_5 μ_4 p'_1
+h_22 : Tr q_2 μ'_1 q'_1
+p_eq : q = p_5
+q_eq : r = q_2
+p_eq_1 : q' = p'_1
+q_eq_1 : r' = q'_1
+h_26 : ⋯ ≍ ⋯
+w : Process Name Constant → Process Name Constant → Prop
+left : w p_1 q_1
+right : { Tr := Tr }.IsBisimulation { Tr := Tr } w
+a_1 : Name
+h_28 : μ' = coname a_1
+h_29 : μ = name a_1
+h_30 : ⋯ ≍ ⋯
+a_2 : Name
+h_31 : μ' = coname a_2
+h_32 : ⋯ ≍ ⋯
+a_3 : Name
+h_33 : μ = name a_3
+h_34 : ⋯ ≍ ⋯
+a_4 : Name
+h_35 : μ_4 = name a_4
+h_36 : μ'_1 = coname a_4
+h_37 : ⋯ ≍ ⋯
+μ_5 : Act Name
+p_6 : Process Name Constant
+h_38 : p_5 = Process.pre μ_5 p_6
+h_39 : μ_4 = μ_5
+h_40 : p'_1 = p_6
+h_41 : ⋯ ≍ ⋯
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1
+    [prop] rel p q
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+    [prop] μ.Co μ'
+    [prop] Tr p μ p'
+    [prop] Tr r μ' r'
+    [prop] Tr q μ q' ∧ rel p' q'
+    [prop] ¬Tr (q.par r) τ (q'.par r') ∨ ¬ParBisim (p'.par r') (q'.par r')
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1 = ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] μ.Co μ' → μ'.Co μ
+    [prop] (μ.Co μ' → μ.IsVisible) ∧ (μ.Co μ' → μ'.IsVisible)
+    [prop] μ.Co μ' → Tr q μ q' → Tr r μ' r' → Tr (q.par r) τ (q'.par r')
+    [prop] p' ~[lts,lts] q' → ParBisim (p'.par r') (q'.par r')
+    [prop] p' ~[lts,lts] q' = ∃ r, r p' q' ∧ lts.IsBisimulation lts r
+    [prop] μ'.Co μ → μ.Co μ'
+    [prop] (μ'.Co μ → μ'.IsVisible) ∧ (μ'.Co μ → μ.IsVisible)
+    [prop] μ'.Co μ → Tr q μ' q' → Tr r μ r' → Tr (q.par r) τ (q'.par r')
+    [prop] μ'.IsVisible → ¬μ' = τ
+    [prop] μ.IsVisible → ¬μ = τ
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p' q' → ¬lts.IsBisimulation lts x
+    [prop] μ = name a
+    [prop] μ' = coname a
+    [prop] ⋯ ≍ ⋯
+    [prop] (name a).IsVisible
+    [prop] (name a).Co (coname a)
+    [prop] (coname a).IsVisible
+    [prop] (coname a).Co (name a)
+    [prop] q = Process.pre μ_1 p_2
+    [prop] μ = μ_1
+    [prop] q' = p_2
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ q') μ q'
+    [prop] r = Process.pre μ_2 p_3
+    [prop] μ' = μ_2
+    [prop] r' = p_3
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ' r') μ' r'
+    [prop] p = Process.pre μ_3 p_4
+    [prop] μ = μ_3
+    [prop] p' = p_4
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ p') μ p'
+    [prop] μ_4.Co μ'_1
+    [prop] Tr p_5 μ_4 p'_1
+    [prop] Tr q_2 μ'_1 q'_1
+    [prop] q = p_5
+    [prop] r = q_2
+    [prop] q' = p'_1
+    [prop] r' = q'_1
+    [prop] ⋯ ≍ ⋯
+    [prop] μ_4.Co μ'_1 → μ'_1.Co μ_4
+    [prop] (μ_4.Co μ'_1 → μ_4.IsVisible) ∧ (μ_4.Co μ'_1 → μ'_1.IsVisible)
+    [prop] μ_4.Co μ'_1 → Tr q μ_4 q' → Tr r μ'_1 r' → Tr (q.par r) τ (q'.par r')
+    [prop] μ'_1.Co μ_4 → μ_4.Co μ'_1
+    [prop] (μ'_1.Co μ_4 → μ'_1.IsVisible) ∧ (μ'_1.Co μ_4 → μ_4.IsVisible)
+    [prop] μ'_1.Co μ_4 → Tr q μ'_1 q' → Tr r μ_4 r' → Tr (q.par r) τ (q'.par r')
+    [prop] μ'_1.IsVisible → ¬μ'_1 = τ
+    [prop] μ_4.IsVisible → ¬μ_4 = τ
+    [prop] w p_1 q_1
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] μ' = coname a_1
+    [prop] μ = name a_1
+    [prop] ⋯ ≍ ⋯
+    [prop] (coname a_1).IsVisible
+    [prop] (coname a_1).Co (name a_1)
+    [prop] μ' = coname a_2
+    [prop] ⋯ ≍ ⋯
+    [prop] μ = name a_3
+    [prop] ⋯ ≍ ⋯
+    [prop] μ_4 = name a_4
+    [prop] μ'_1 = coname a_4
+    [prop] ⋯ ≍ ⋯
+    [prop] (name a_4).IsVisible
+    [prop] (name a_4).Co (coname a_4)
+    [prop] (coname a_4).IsVisible
+    [prop] (coname a_4).Co (name a_4)
+    [prop] p_5 = Process.pre μ_5 p_6
+    [prop] μ_4 = μ_5
+    [prop] p'_1 = p_6
+    [prop] ⋯ ≍ ⋯
+  [eqc] True propositions
+    [prop] ¬ParBisim (p'.par r') (q'.par r')
+    [prop] rel p q
+    [prop] rel p' q'
+    [prop] Tr q μ q' ∧ rel p' q'
+    [prop] ¬Tr (q.par r) τ (q'.par r') ∨ ¬ParBisim (p'.par r') (q'.par r')
+    [prop] μ.Co μ'
+    [prop] Tr p μ p'
+    [prop] Tr q μ q'
+    [prop] Tr r μ' r'
+    [prop] Tr (q.par r) τ (q'.par r')
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } rel
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1
+    [prop] w p_1 q_1
+    [prop] (μ.Co μ' → μ.IsVisible) ∧ (μ.Co μ' → μ'.IsVisible)
+    [prop] μ.IsVisible
+    [prop] μ'.IsVisible
+    [prop] ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] μ'.Co μ
+    [prop] μ_4.Co μ'_1
+    [prop] (name a).Co (coname a)
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q_1 = ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr p_5 μ_4 p'_1
+    [prop] Tr q_2 μ'_1 q'_1
+    [prop] Tr (p_5.par q_2) τ (p'_1.par q'_1)
+    [prop] Tr (Process.pre μ_1 p_2) μ_1 p_2
+    [prop] Tr (Process.pre μ_2 p_3) μ_2 p_3
+    [prop] Tr (Process.pre μ_3 p_4) μ_3 p_4
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] μ.Co μ' → μ.IsVisible
+    [prop] μ.Co μ' → μ'.IsVisible
+    [prop] μ.Co μ' → μ'.Co μ
+    [prop] μ.Co μ' → Tr q μ q' → Tr r μ' r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr q μ q' → Tr r μ' r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr r μ' r' → Tr (q.par r) τ (q'.par r')
+    [prop] p' ~[lts,lts] q' → ParBisim (p'.par r') (q'.par r')
+    [prop] ¬μ = τ
+    [prop] ¬μ' = τ
+    [prop] (μ'.Co μ → μ'.IsVisible) ∧ (μ'.Co μ → μ.IsVisible)
+    [prop] (μ_4.Co μ'_1 → μ_4.IsVisible) ∧ (μ_4.Co μ'_1 → μ'_1.IsVisible)
+    [prop] μ_4.IsVisible
+    [prop] μ'_1.IsVisible
+    [prop] (coname a).IsVisible
+    [prop] (coname a_2).IsVisible
+    [prop] (name a).IsVisible
+    [prop] (name a_3).IsVisible
+    [prop] μ'_1.Co μ_4
+    [prop] (coname a).Co (name a)
+    [prop] (coname a_1).Co (name a_1)
+    [prop] (name a_4).Co (coname a_4)
+    [prop] p' ~[lts,lts] q' = ∃ r, r p' q' ∧ lts.IsBisimulation lts r
+    [prop] Tr q μ_4 q'
+    [prop] Tr r μ'_1 r'
+    [prop] Tr (Process.pre μ p') μ p'
+    [prop] Tr (Process.pre μ q') μ q'
+    [prop] Tr (Process.pre μ' r') μ' r'
+    [prop] Tr (Process.pre μ_5 p_6) μ_5 p_6
+    [prop] μ.IsVisible → ¬μ = τ
+    [prop] μ'.IsVisible → ¬μ' = τ
+    [prop] μ'.Co μ → μ.IsVisible
+    [prop] μ'.Co μ → μ'.IsVisible
+    [prop] μ'.Co μ → μ.Co μ'
+    [prop] μ'.Co μ → Tr q μ' q' → Tr r μ r' → Tr (q.par r) τ (q'.par r')
+    [prop] μ_4.Co μ'_1 → μ_4.IsVisible
+    [prop] μ_4.Co μ'_1 → μ'_1.IsVisible
+    [prop] μ_4.Co μ'_1 → μ'_1.Co μ_4
+    [prop] μ_4.Co μ'_1 → Tr q μ_4 q' → Tr r μ'_1 r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr q μ' q' → Tr r μ r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr q μ_4 q' → Tr r μ'_1 r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr r μ r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr r μ'_1 r' → Tr (q.par r) τ (q'.par r')
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p' q' → ¬lts.IsBisimulation lts x
+    [prop] ¬μ_4 = τ
+    [prop] ¬μ'_1 = τ
+    [prop] (μ'_1.Co μ_4 → μ'_1.IsVisible) ∧ (μ'_1.Co μ_4 → μ_4.IsVisible)
+    [prop] (coname a_1).IsVisible
+    [prop] (coname a_4).IsVisible
+    [prop] (name a_4).IsVisible
+    [prop] (coname a_4).Co (name a_4)
+    [prop] μ_4.IsVisible → ¬μ_4 = τ
+    [prop] μ'_1.IsVisible → ¬μ'_1 = τ
+    [prop] μ'_1.Co μ_4 → μ_4.IsVisible
+    [prop] μ'_1.Co μ_4 → μ'_1.IsVisible
+    [prop] μ'_1.Co μ_4 → μ_4.Co μ'_1
+    [prop] μ'_1.Co μ_4 → Tr q μ'_1 q' → Tr r μ_4 r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr q μ'_1 q' → Tr r μ_4 r' → Tr (q.par r) τ (q'.par r')
+    [prop] Tr r μ_4 r' → Tr (q.par r) τ (q'.par r')
+  [eqc] False propositions
+    [prop] ¬Tr (q.par r) τ (q'.par r')
+    [prop] ParBisim (p'.par r') (q'.par r')
+    [prop] p' ~[lts,lts] q'
+    [prop] ∃ r, r p' q' ∧ lts.IsBisimulation lts r
+    [prop] μ = τ
+    [prop] μ' = τ
+    [prop] μ_4 = τ
+    [prop] μ'_1 = τ
+  [eqc] Equivalence classes
+    [eqc] {p, Process.pre μ_3 p_4, Process.pre μ p'}
+    [eqc] {q, p_5, Process.pre μ_1 p_2, Process.pre μ q', Process.pre μ_5 p_6}
+    [eqc] {r, q_2, Process.pre μ_2 p_3, Process.pre μ' r'}
+    [eqc] {μ, μ_1, μ_3, μ_4, name a, μ_5, name a_1, name a_3, name a_4}
+    [eqc] {p', p_4}
+    [eqc] {μ', μ_2, μ'_1, coname a, coname a_1, coname a_2, coname a_4}
+    [eqc] {r', p_3, q'_1}
+    [eqc] {q', p_2, p'_1, p_6}
+    [eqc] {q.par r, p_5.par q_2}
+    [eqc] {q'.par r', p'_1.par q'_1}
+    [eqc] {a, a_1, a_2, a_3, a_4}
+    [eqc] {Tr q μ' q', Tr q μ'_1 q'}
+    [eqc] {Tr r μ r', Tr r μ_4 r'}
+  [cases] Case analyses
+    [cases] [1/2]: μ.Co μ'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr q μ q'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr r μ' r'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr p μ p'
+      [cases] source: Initial goal
+    [cases] [4/8]: Tr (q.par r) τ (q'.par r')
+      [cases] source: Initial goal
+    [cases] [1/1]: ∃ r, r p_1 q_1 ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+      [cases] source: E-matching `Bisimilarity.eq_1`
+    [cases] [2/2]: μ'.Co μ
+      [cases] source: E-matching `Co.symm`
+    [cases] [2/2]: μ'.IsVisible
+      [cases] source: E-matching `co_isVisible`
+    [cases] [1/2]: μ.IsVisible
+      [cases] source: E-matching `co_isVisible`
+    [cases] [1/2]: μ_4.Co μ'_1
+      [cases] source: E-matching `Tr.pre`
+    [cases] [1/8]: Tr p_5 μ_4 p'_1
+      [cases] source: E-matching `Tr.pre`
+  [ematch] E-matching patterns
+    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]
+    [thm] Co.symm: [@Co #3 #2 #1]
+    [thm] co_isVisible: [@Co #3 #2 #1]
+    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]
+    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]
+    [thm] Tr.com: [@Tr #11 #10 #9 (@par _ _ #8 #5) (@τ _) (@par _ _ #6 #3), @Co _ #7 #4]
+    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]
+    [thm] isVisible_neq_τ: [@IsVisible #2 #1]
+    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]
+    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]
+    [thm] IsVisible.name: [@IsVisible #1 (@name _ #0)]
+    [thm] nc: [@Co #1 (@name _ #0) (@coname _ #0)]
+    [thm] IsVisible.coname: [@IsVisible #1 (@coname _ #0)]
+    [thm] cn: [@Co #1 (@coname _ #0) (@name _ #0)]
+    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] cn ↦ 5
+    [thm] IsVisible.coname ↦ 5
+    [thm] co_isVisible ↦ 4
+    [thm] isVisible_neq_τ ↦ 4
+    [thm] Tr.com ↦ 4
+    [thm] Co.symm ↦ 4
+    [thm] Tr.pre ↦ 3
+    [thm] Bisimilarity.eq_1 ↦ 2
+    [thm] nc ↦ 2
+    [thm] IsVisible.name ↦ 2
+    [thm] Tr.parL ↦ 1
+    [thm] Tr.parR ↦ 1
+    [thm] ParBisim.par ↦ 1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/9/raw-v2/steps/001/evaluation/fixed/check.lean:417:8: error: `grind` failed
+case grind.2.1.1
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p_1 q r_1 : Process Name Constant
+h : p_1 ~[{ Tr := Tr }] q
+μ : Act Name
+p q_1 r : Process Name Constant
+w : Process Name Constant → Process Name Constant → Prop
+hr : w p q_1
+hb : { Tr := Tr }.IsBisimulation { Tr := Tr } w
+p'_1 : Process Name Constant
+htr : Tr q_1 μ p'_1
+p' : Process Name Constant
+h_1 : { Tr := Tr }.Tr p μ p' ∧ w p' p'_1
+h_2 : ¬Tr (p.par r) μ (p'.par r) ∨ ¬ParBisim (p'.par r) (p'_1.par r)
+p_2 : Process Name Constant
+μ_1 : Act Name
+p'_2 q_2 : Process Name Constant
+h_3 : Tr p_2 μ_1 p'_2
+p_eq : p = p_2
+q_eq : r = q_2
+h_5 : μ = μ_1
+p_eq_1 : p' = p'_2
+q_eq_1 : r = q_2
+h_7 : ⋯ ≍ ⋯
+μ_2 : Act Name
+p_3 : Process Name Constant
+h_8 : p = Process.pre μ_2 p_3
+h_9 : μ = μ_2
+h_10 : p' = p_3
+h_11 : ⋯ ≍ ⋯
+μ_3 : Act Name
+p_4 : Process Name Constant
+h_12 : q_1 = Process.pre μ_3 p_4
+h_13 : μ = μ_3
+h_14 : p'_1 = p_4
+h_15 : ⋯ ≍ ⋯
+w_1 : Process Name Constant → Process Name Constant → Prop
+left : w_1 p_1 q
+right : { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q
+    [prop] w p q_1
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] Tr q_1 μ p'_1
+    [prop] Tr p μ p' ∧ w p' p'_1
+    [prop] ¬Tr (p.par r) μ (p'.par r) ∨ ¬ParBisim (p'.par r) (p'_1.par r)
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q = ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr p μ p' → Tr (p.par r) μ (p'.par r)
+    [prop] p' ~[lts,lts] p'_1 → ParBisim (p'.par r) (p'_1.par r)
+    [prop] p' ~[lts,lts] p'_1 = ∃ r, r p' p'_1 ∧ lts.IsBisimulation lts r
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p' p'_1 → ¬lts.IsBisimulation lts x
+    [prop] Tr p_2 μ_1 p'_2
+    [prop] p = p_2
+    [prop] r = q_2
+    [prop] μ = μ_1
+    [prop] p' = p'_2
+    [prop] r = q_2
+    [prop] ⋯ ≍ ⋯
+    [prop] p = Process.pre μ_2 p_3
+    [prop] μ = μ_2
+    [prop] p' = p_3
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ_1 p'_2) μ_1 p'_2
+    [prop] q_1 = Process.pre μ_3 p_4
+    [prop] μ = μ_3
+    [prop] p'_1 = p_4
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ p'_1) μ p'_1
+    [prop] w_1 p_1 q
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+  [eqc] True propositions
+    [prop] ¬ParBisim (p'.par r) (p'_1.par r)
+    [prop] w p q_1
+    [prop] w p' p'_1
+    [prop] Tr p μ p' ∧ w p' p'_1
+    [prop] ¬Tr (p.par r) μ (p'.par r) ∨ ¬ParBisim (p'.par r) (p'_1.par r)
+    [prop] Tr p μ p'
+    [prop] Tr q_1 μ p'_1
+    [prop] Tr (p.par r) μ (p'.par r)
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q
+    [prop] w_1 p_1 q
+    [prop] ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q = ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr p_2 μ_1 p'_2
+    [prop] Tr (p_2.par q_2) μ_1 (p'_2.par q_2)
+    [prop] Tr (Process.pre μ_2 p_3) μ_2 p_3
+    [prop] Tr (Process.pre μ_3 p_4) μ_3 p_4
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+    [prop] Tr p μ p' → Tr (p.par r) μ (p'.par r)
+    [prop] p' ~[lts,lts] p'_1 → ParBisim (p'.par r) (p'_1.par r)
+    [prop] p' ~[lts,lts] p'_1 = ∃ r, r p' p'_1 ∧ lts.IsBisimulation lts r
+    [prop] Tr (Process.pre μ p'_1) μ p'_1
+    [prop] Tr (Process.pre μ_1 p'_2) μ_1 p'_2
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p' p'_1 → ¬lts.IsBisimulation lts x
+  [eqc] False propositions
+    [prop] ¬Tr (p.par r) μ (p'.par r)
+    [prop] ParBisim (p'.par r) (p'_1.par r)
+    [prop] p' ~[lts,lts] p'_1
+    [prop] ∃ r, r p' p'_1 ∧ lts.IsBisimulation lts r
+  [eqc] Equivalence classes
+    [eqc] {μ, μ_1, μ_2, μ_3}
+    [eqc] {p, p_2, Process.pre μ_2 p_3, Process.pre μ_1 p'_2}
+    [eqc] {q_1, Process.pre μ_3 p_4, Process.pre μ p'_1}
+    [eqc] {r, q_2}
+    [eqc] {p'_1, p_4}
+    [eqc] {p', p'_2, p_3}
+    [eqc] {p.par r, p_2.par q_2}
+    [eqc] {p'.par r, p'_2.par q_2}
+  [cases] Case analyses
+    [cases] [2/8]: Tr (p.par r) μ (p'.par r)
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr p μ p'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr q_1 μ p'_1
+      [cases] source: Initial goal
+    [cases] [1/1]: ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+      [cases] source: E-matching `Bisimilarity.eq_1`
+  [ematch] E-matching patterns
+    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]
+    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]
+    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]
+    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]
+    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]
+    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]
+    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] Tr.pre ↦ 2
+    [thm] Bisimilarity.eq_1 ↦ 2
+    [thm] Tr.parL ↦ 1
+    [thm] ParBisim.par ↦ 1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/9/raw-v2/steps/001/evaluation/fixed/check.lean:420:8: error: `grind` failed
+case grind.2.1.1
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p_1 q r_1 : Process Name Constant
+h : p_1 ~[{ Tr := Tr }] q
+μ : Act Name
+p q_1 r : Process Name Constant
+w : Process Name Constant → Process Name Constant → Prop
+hr : w p q_1
+hb : { Tr := Tr }.IsBisimulation { Tr := Tr } w
+r' : Process Name Constant
+htr : Tr r μ r'
+h_1 : ¬Tr (p.par r) μ (p.par r') ∨ ¬ParBisim (p.par r') (q_1.par r')
+p_2 : Process Name Constant
+μ_1 : Act Name
+p' q_2 : Process Name Constant
+h_2 : Tr p_2 μ_1 p'
+p_eq : p = p_2
+q_eq : r = q_2
+h_4 : μ = μ_1
+p_eq_1 : p = p'
+q_eq_1 : r' = q_2
+h_6 : ⋯ ≍ ⋯
+μ_2 : Act Name
+p_3 : Process Name Constant
+h_7 : r = Process.pre μ_2 p_3
+h_8 : μ = μ_2
+h_9 : r' = p_3
+h_10 : ⋯ ≍ ⋯
+w_1 : Process Name Constant → Process Name Constant → Prop
+left : w_1 p_1 q
+right : { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+μ_3 : Act Name
+p_4 : Process Name Constant
+h_12 : p_2 = Process.pre μ_3 p_4
+h_13 : μ_1 = μ_3
+h_14 : p' = p_4
+h_15 : ⋯ ≍ ⋯
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q
+    [prop] w p q_1
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] Tr r μ r'
+    [prop] ¬Tr (p.par r) μ (p.par r') ∨ ¬ParBisim (p.par r') (q_1.par r')
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q = ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr r μ r' → Tr (p.par r) μ (p.par r')
+    [prop] p ~[lts,lts] q_1 → ParBisim (p.par r') (q_1.par r')
+    [prop] p ~[lts,lts] q_1 = ∃ r, r p q_1 ∧ lts.IsBisimulation lts r
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p q_1 → ¬lts.IsBisimulation lts x
+    [prop] Tr p_2 μ_1 p'
+    [prop] p = p_2
+    [prop] r = q_2
+    [prop] μ = μ_1
+    [prop] p = p'
+    [prop] r' = q_2
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr p μ p → Tr (p.par r) μ (p.par r)
+    [prop] Tr r μ r → Tr (p.par r) μ (p.par r)
+    [prop] p ~[lts,lts] q_1 → ParBisim (p.par r) (q_1.par r)
+    [prop] r = Process.pre μ_2 p_3
+    [prop] μ = μ_2
+    [prop] r' = p_3
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ r') μ r'
+    [prop] w_1 p_1 q
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+    [prop] p_2 = Process.pre μ_3 p_4
+    [prop] μ_1 = μ_3
+    [prop] p' = p_4
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ_1 p') μ_1 p'
+  [eqc] True propositions
+    [prop] ¬ParBisim (p.par r') (q_1.par r')
+    [prop] w p q_1
+    [prop] ¬Tr (p.par r) μ (p.par r') ∨ ¬ParBisim (p.par r') (q_1.par r')
+    [prop] Tr r μ r'
+    [prop] Tr (p.par r) μ (p.par r')
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q
+    [prop] w_1 p_1 q
+    [prop] ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q = ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr p μ p
+    [prop] Tr r μ r
+    [prop] Tr p_2 μ_1 p'
+    [prop] Tr (p.par r) μ (p.par r)
+    [prop] Tr (p_2.par q_2) μ_1 (p'.par q_2)
+    [prop] Tr (Process.pre μ_2 p_3) μ_2 p_3
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+    [prop] Tr p μ p → Tr (p.par r) μ (p.par r)
+    [prop] Tr r μ r → Tr (p.par r) μ (p.par r)
+    [prop] Tr r μ r' → Tr (p.par r) μ (p.par r')
+    [prop] p ~[lts,lts] q_1 → ParBisim (p.par r) (q_1.par r)
+    [prop] p ~[lts,lts] q_1 → ParBisim (p.par r') (q_1.par r')
+    [prop] p ~[lts,lts] q_1 = ∃ r, r p q_1 ∧ lts.IsBisimulation lts r
+    [prop] Tr (Process.pre μ r') μ r'
+    [prop] Tr (Process.pre μ_3 p_4) μ_3 p_4
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x p q_1 → ¬lts.IsBisimulation lts x
+    [prop] Tr (Process.pre μ_1 p') μ_1 p'
+  [eqc] False propositions
+    [prop] ¬Tr (p.par r) μ (p.par r')
+    [prop] ParBisim (p.par r') (q_1.par r')
+    [prop] ParBisim (p.par r) (q_1.par r)
+    [prop] p ~[lts,lts] q_1
+    [prop] ∃ r, r p q_1 ∧ lts.IsBisimulation lts r
+  [eqc] Equivalence classes
+    [eqc] {μ, μ_1, μ_2, μ_3}
+    [eqc] {p, p_2, p', p_4, Process.pre μ_3 p_4, Process.pre μ_1 p'}
+    [eqc] {r, r', q_2, p_3, Process.pre μ_2 p_3, Process.pre μ r'}
+    [eqc] {p.par r, p.par r', p_2.par q_2, p'.par q_2}
+    [eqc] {q_1.par r', q_1.par r}
+  [cases] Case analyses
+    [cases] [2/8]: Tr (p.par r) μ (p.par r')
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr r μ r'
+      [cases] source: Initial goal
+    [cases] [1/1]: ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+      [cases] source: E-matching `Bisimilarity.eq_1`
+    [cases] [1/8]: Tr p_2 μ_1 p'
+      [cases] source: Exists propagation at
+            ∃ r, r p q_1 ∧ lts.IsBisimulation lts r
+  [ematch] E-matching patterns
+    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]
+    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]
+    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]
+    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]
+    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]
+    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]
+    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] Tr.parR ↦ 2
+    [thm] Tr.pre ↦ 2
+    [thm] Bisimilarity.eq_1 ↦ 2
+    [thm] ParBisim.par ↦ 2
+    [thm] Tr.parL ↦ 1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/9/raw-v2/steps/001/evaluation/fixed/check.lean:424:8: error: `grind` failed
+case grind.1.1.1.1.4.2.2.1.1.1
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p_1 q r_1 : Process Name Constant
+h : p_1 ~[{ Tr := Tr }] q
+p q_1 r : Process Name Constant
+w : Process Name Constant → Process Name Constant → Prop
+hr : w p q_1
+hb : { Tr := Tr }.IsBisimulation { Tr := Tr } w
+μ : Act Name
+p' : Process Name Constant
+μ' : Act Name
+r' : Process Name Constant
+hco : μ.Co μ'
+htrq : Tr q_1 μ p'
+htrr : Tr r μ' r'
+q' : Process Name Constant
+h_1 : { Tr := Tr }.Tr p μ q' ∧ w q' p'
+h_2 : ¬Tr (p.par r) τ (q'.par r') ∨ ¬ParBisim (q'.par r') (p'.par r')
+a : Name
+h_3 : μ = name a
+h_4 : μ' = coname a
+h_5 : ⋯ ≍ ⋯
+μ_1 : Act Name
+p_2 : Process Name Constant
+h_6 : p = Process.pre μ_1 p_2
+h_7 : μ = μ_1
+h_8 : q' = p_2
+h_9 : ⋯ ≍ ⋯
+μ_2 : Act Name
+p_3 : Process Name Constant
+h_10 : r = Process.pre μ_2 p_3
+h_11 : μ' = μ_2
+h_12 : r' = p_3
+h_13 : ⋯ ≍ ⋯
+μ_3 : Act Name
+p_4 : Process Name Constant
+h_14 : q_1 = Process.pre μ_3 p_4
+h_15 : μ = μ_3
+h_16 : p' = p_4
+h_17 : ⋯ ≍ ⋯
+p_5 : Process Name Constant
+μ_4 : Act Name
+p'_1 q_2 : Process Name Constant
+μ'_1 : Act Name
+q'_1 : Process Name Constant
+h_18 : μ_4.Co μ'_1
+h_19 : Tr p_5 μ_4 p'_1
+h_20 : Tr q_2 μ'_1 q'_1
+p_eq : p = p_5
+q_eq : r = q_2
+p_eq_1 : q' = p'_1
+q_eq_1 : r' = q'_1
+h_24 : ⋯ ≍ ⋯
+w_1 : Process Name Constant → Process Name Constant → Prop
+left : w_1 p_1 q
+right : { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+a_1 : Name
+h_26 : μ' = coname a_1
+h_27 : μ = name a_1
+h_28 : ⋯ ≍ ⋯
+a_2 : Name
+h_29 : μ' = coname a_2
+h_30 : ⋯ ≍ ⋯
+a_3 : Name
+h_31 : μ = name a_3
+h_32 : ⋯ ≍ ⋯
+a_4 : Name
+h_33 : μ_4 = name a_4
+h_34 : μ'_1 = coname a_4
+h_35 : ⋯ ≍ ⋯
+μ_5 : Act Name
+p_6 : Process Name Constant
+h_36 : p_5 = Process.pre μ_5 p_6
+h_37 : μ_4 = μ_5
+h_38 : p'_1 = p_6
+h_39 : ⋯ ≍ ⋯
+⊢ False
+[grind] Goal diagnostics
+  [facts] Asserted facts
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q
+    [prop] w p q_1
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] μ.Co μ'
+    [prop] Tr q_1 μ p'
+    [prop] Tr r μ' r'
+    [prop] Tr p μ q' ∧ w q' p'
+    [prop] ¬Tr (p.par r) τ (q'.par r') ∨ ¬ParBisim (q'.par r') (p'.par r')
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q = ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] μ.Co μ' → μ'.Co μ
+    [prop] (μ.Co μ' → μ.IsVisible) ∧ (μ.Co μ' → μ'.IsVisible)
+    [prop] μ.Co μ' → Tr p μ q' → Tr r μ' r' → Tr (p.par r) τ (q'.par r')
+    [prop] q' ~[lts,lts] p' → ParBisim (q'.par r') (p'.par r')
+    [prop] q' ~[lts,lts] p' = ∃ r, r q' p' ∧ lts.IsBisimulation lts r
+    [prop] μ'.Co μ → μ.Co μ'
+    [prop] (μ'.Co μ → μ'.IsVisible) ∧ (μ'.Co μ → μ.IsVisible)
+    [prop] μ'.Co μ → Tr p μ' q' → Tr r μ r' → Tr (p.par r) τ (q'.par r')
+    [prop] μ'.IsVisible → ¬μ' = τ
+    [prop] μ.IsVisible → ¬μ = τ
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x q' p' → ¬lts.IsBisimulation lts x
+    [prop] μ = name a
+    [prop] μ' = coname a
+    [prop] ⋯ ≍ ⋯
+    [prop] (name a).IsVisible
+    [prop] (name a).Co (coname a)
+    [prop] (coname a).IsVisible
+    [prop] (coname a).Co (name a)
+    [prop] p = Process.pre μ_1 p_2
+    [prop] μ = μ_1
+    [prop] q' = p_2
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ q') μ q'
+    [prop] r = Process.pre μ_2 p_3
+    [prop] μ' = μ_2
+    [prop] r' = p_3
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ' r') μ' r'
+    [prop] q_1 = Process.pre μ_3 p_4
+    [prop] μ = μ_3
+    [prop] p' = p_4
+    [prop] ⋯ ≍ ⋯
+    [prop] Tr (Process.pre μ p') μ p'
+    [prop] μ_4.Co μ'_1
+    [prop] Tr p_5 μ_4 p'_1
+    [prop] Tr q_2 μ'_1 q'_1
+    [prop] p = p_5
+    [prop] r = q_2
+    [prop] q' = p'_1
+    [prop] r' = q'_1
+    [prop] ⋯ ≍ ⋯
+    [prop] μ_4.Co μ'_1 → μ'_1.Co μ_4
+    [prop] (μ_4.Co μ'_1 → μ_4.IsVisible) ∧ (μ_4.Co μ'_1 → μ'_1.IsVisible)
+    [prop] μ_4.Co μ'_1 → Tr p μ_4 q' → Tr r μ'_1 r' → Tr (p.par r) τ (q'.par r')
+    [prop] μ'_1.Co μ_4 → μ_4.Co μ'_1
+    [prop] (μ'_1.Co μ_4 → μ'_1.IsVisible) ∧ (μ'_1.Co μ_4 → μ_4.IsVisible)
+    [prop] μ'_1.Co μ_4 → Tr p μ'_1 q' → Tr r μ_4 r' → Tr (p.par r) τ (q'.par r')
+    [prop] μ'_1.IsVisible → ¬μ'_1 = τ
+    [prop] μ_4.IsVisible → ¬μ_4 = τ
+    [prop] w_1 p_1 q
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+    [prop] μ' = coname a_1
+    [prop] μ = name a_1
+    [prop] ⋯ ≍ ⋯
+    [prop] (coname a_1).IsVisible
+    [prop] (coname a_1).Co (name a_1)
+    [prop] μ' = coname a_2
+    [prop] ⋯ ≍ ⋯
+    [prop] μ = name a_3
+    [prop] ⋯ ≍ ⋯
+    [prop] μ_4 = name a_4
+    [prop] μ'_1 = coname a_4
+    [prop] ⋯ ≍ ⋯
+    [prop] (name a_4).IsVisible
+    [prop] (name a_4).Co (coname a_4)
+    [prop] (coname a_4).IsVisible
+    [prop] (coname a_4).Co (name a_4)
+    [prop] p_5 = Process.pre μ_5 p_6
+    [prop] μ_4 = μ_5
+    [prop] p'_1 = p_6
+    [prop] ⋯ ≍ ⋯
+  [eqc] True propositions
+    [prop] ¬ParBisim (q'.par r') (p'.par r')
+    [prop] w p q_1
+    [prop] w q' p'
+    [prop] Tr p μ q' ∧ w q' p'
+    [prop] ¬Tr (p.par r) τ (q'.par r') ∨ ¬ParBisim (q'.par r') (p'.par r')
+    [prop] μ.Co μ'
+    [prop] Tr p μ q'
+    [prop] Tr q_1 μ p'
+    [prop] Tr r μ' r'
+    [prop] Tr (p.par r) τ (q'.par r')
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q
+    [prop] w_1 p_1 q
+    [prop] (μ.Co μ' → μ.IsVisible) ∧ (μ.Co μ' → μ'.IsVisible)
+    [prop] μ.IsVisible
+    [prop] μ'.IsVisible
+    [prop] ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] μ'.Co μ
+    [prop] μ_4.Co μ'_1
+    [prop] (name a).Co (coname a)
+    [prop] p_1 ~[{ Tr := Tr },{ Tr := Tr }] q = ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+    [prop] Tr p_5 μ_4 p'_1
+    [prop] Tr q_2 μ'_1 q'_1
+    [prop] Tr (p_5.par q_2) τ (p'_1.par q'_1)
+    [prop] Tr (Process.pre μ_1 p_2) μ_1 p_2
+    [prop] Tr (Process.pre μ_2 p_3) μ_2 p_3
+    [prop] Tr (Process.pre μ_3 p_4) μ_3 p_4
+    [prop] { Tr := Tr }.IsBisimulation { Tr := Tr } w_1
+    [prop] μ.Co μ' → μ.IsVisible
+    [prop] μ.Co μ' → μ'.IsVisible
+    [prop] μ.Co μ' → μ'.Co μ
+    [prop] μ.Co μ' → Tr p μ q' → Tr r μ' r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr p μ q' → Tr r μ' r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr r μ' r' → Tr (p.par r) τ (q'.par r')
+    [prop] q' ~[lts,lts] p' → ParBisim (q'.par r') (p'.par r')
+    [prop] ¬μ = τ
+    [prop] ¬μ' = τ
+    [prop] (μ'.Co μ → μ'.IsVisible) ∧ (μ'.Co μ → μ.IsVisible)
+    [prop] (μ_4.Co μ'_1 → μ_4.IsVisible) ∧ (μ_4.Co μ'_1 → μ'_1.IsVisible)
+    [prop] μ_4.IsVisible
+    [prop] μ'_1.IsVisible
+    [prop] (coname a).IsVisible
+    [prop] (coname a_2).IsVisible
+    [prop] (name a).IsVisible
+    [prop] (name a_3).IsVisible
+    [prop] μ'_1.Co μ_4
+    [prop] (coname a).Co (name a)
+    [prop] (coname a_1).Co (name a_1)
+    [prop] (name a_4).Co (coname a_4)
+    [prop] q' ~[lts,lts] p' = ∃ r, r q' p' ∧ lts.IsBisimulation lts r
+    [prop] Tr p μ_4 q'
+    [prop] Tr r μ'_1 r'
+    [prop] Tr (Process.pre μ p') μ p'
+    [prop] Tr (Process.pre μ q') μ q'
+    [prop] Tr (Process.pre μ' r') μ' r'
+    [prop] Tr (Process.pre μ_5 p_6) μ_5 p_6
+    [prop] μ.IsVisible → ¬μ = τ
+    [prop] μ'.IsVisible → ¬μ' = τ
+    [prop] μ'.Co μ → μ.IsVisible
+    [prop] μ'.Co μ → μ'.IsVisible
+    [prop] μ'.Co μ → μ.Co μ'
+    [prop] μ'.Co μ → Tr p μ' q' → Tr r μ r' → Tr (p.par r) τ (q'.par r')
+    [prop] μ_4.Co μ'_1 → μ_4.IsVisible
+    [prop] μ_4.Co μ'_1 → μ'_1.IsVisible
+    [prop] μ_4.Co μ'_1 → μ'_1.Co μ_4
+    [prop] μ_4.Co μ'_1 → Tr p μ_4 q' → Tr r μ'_1 r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr p μ' q' → Tr r μ r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr p μ_4 q' → Tr r μ'_1 r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr r μ r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr r μ'_1 r' → Tr (p.par r) τ (q'.par r')
+    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x q' p' → ¬lts.IsBisimulation lts x
+    [prop] ¬μ_4 = τ
+    [prop] ¬μ'_1 = τ
+    [prop] (μ'_1.Co μ_4 → μ'_1.IsVisible) ∧ (μ'_1.Co μ_4 → μ_4.IsVisible)
+    [prop] (coname a_1).IsVisible
+    [prop] (coname a_4).IsVisible
+    [prop] (name a_4).IsVisible
+    [prop] (coname a_4).Co (name a_4)
+    [prop] μ_4.IsVisible → ¬μ_4 = τ
+    [prop] μ'_1.IsVisible → ¬μ'_1 = τ
+    [prop] μ'_1.Co μ_4 → μ_4.IsVisible
+    [prop] μ'_1.Co μ_4 → μ'_1.IsVisible
+    [prop] μ'_1.Co μ_4 → μ_4.Co μ'_1
+    [prop] μ'_1.Co μ_4 → Tr p μ'_1 q' → Tr r μ_4 r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr p μ'_1 q' → Tr r μ_4 r' → Tr (p.par r) τ (q'.par r')
+    [prop] Tr r μ_4 r' → Tr (p.par r) τ (q'.par r')
+  [eqc] False propositions
+    [prop] ¬Tr (p.par r) τ (q'.par r')
+    [prop] ParBisim (q'.par r') (p'.par r')
+    [prop] q' ~[lts,lts] p'
+    [prop] ∃ r, r q' p' ∧ lts.IsBisimulation lts r
+    [prop] μ = τ
+    [prop] μ' = τ
+    [prop] μ_4 = τ
+    [prop] μ'_1 = τ
+  [eqc] Equivalence classes
+    [eqc] {p, p_5, Process.pre μ_1 p_2, Process.pre μ q', Process.pre μ_5 p_6}
+    [eqc] {q_1, Process.pre μ_3 p_4, Process.pre μ p'}
+    [eqc] {r, q_2, Process.pre μ_2 p_3, Process.pre μ' r'}
+    [eqc] {μ, μ_1, μ_3, μ_4, name a, μ_5, name a_1, name a_3, name a_4}
+    [eqc] {p', p_4}
+    [eqc] {μ', μ_2, μ'_1, coname a, coname a_1, coname a_2, coname a_4}
+    [eqc] {r', p_3, q'_1}
+    [eqc] {q', p_2, p'_1, p_6}
+    [eqc] {p.par r, p_5.par q_2}
+    [eqc] {q'.par r', p'_1.par q'_1}
+    [eqc] {a, a_1, a_2, a_3, a_4}
+    [eqc] {Tr p μ' q', Tr p μ'_1 q'}
+    [eqc] {Tr r μ r', Tr r μ_4 r'}
+  [cases] Case analyses
+    [cases] [1/2]: μ.Co μ'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr p μ q'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr r μ' r'
+      [cases] source: Initial goal
+    [cases] [1/8]: Tr q_1 μ p'
+      [cases] source: Initial goal
+    [cases] [4/8]: Tr (p.par r) τ (q'.par r')
+      [cases] source: Initial goal
+    [cases] [1/1]: ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r
+      [cases] source: E-matching `Bisimilarity.eq_1`
+    [cases] [2/2]: μ'.Co μ
+      [cases] source: E-matching `Co.symm`
+    [cases] [2/2]: μ'.IsVisible
+      [cases] source: E-matching `co_isVisible`
+    [cases] [1/2]: μ.IsVisible
+      [cases] source: E-matching `co_isVisible`
+    [cases] [1/2]: μ_4.Co μ'_1
+      [cases] source: E-matching `Tr.pre`
+    [cases] [1/8]: Tr p_5 μ_4 p'_1
+      [cases] source: E-matching `Tr.pre`
+  [ematch] E-matching patterns
+    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]
+    [thm] Co.symm: [@Co #3 #2 #1]
+    [thm] co_isVisible: [@Co #3 #2 #1]
+    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]
+    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]
+    [thm] Tr.com: [@Tr #11 #10 #9 (@par _ _ #8 #5) (@τ _) (@par _ _ #6 #3), @Co _ #7 #4]
+    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]
+    [thm] isVisible_neq_τ: [@IsVisible #2 #1]
+    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]
+    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]
+    [thm] IsVisible.name: [@IsVisible #1 (@name _ #0)]
+    [thm] nc: [@Co #1 (@name _ #0) (@coname _ #0)]
+    [thm] IsVisible.coname: [@IsVisible #1 (@coname _ #0)]
+    [thm] cn: [@Co #1 (@coname _ #0) (@name _ #0)]
+    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]
+[grind] Diagnostics
+  [thm] E-Matching instances
+    [thm] cn ↦ 5
+    [thm] IsVisible.coname ↦ 5
+    [thm] co_isVisible ↦ 4
+    [thm] isVisible_neq_τ ↦ 4
+    [thm] Tr.com ↦ 4
+    [thm] Co.symm ↦ 4
+    [thm] Tr.pre ↦ 3
+    [thm] Bisimilarity.eq_1 ↦ 2
+    [thm] nc ↦ 2
+    [thm] IsVisible.name ↦ 2
+    [thm] Tr.parL ↦ 1
+    [thm] Tr.parR ↦ 1
+    [thm] ParBisim.par ↦ 1

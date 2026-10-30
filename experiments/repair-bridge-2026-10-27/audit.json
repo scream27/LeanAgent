@@ -1,0 +1,207 @@
+{
+  "checks": 50,
+  "passed": true,
+  "issues": [],
+  "records": [
+    {
+      "check": "1: raw replay",
+      "passed": true
+    },
+    {
+      "check": "1: local artifact hashes",
+      "passed": true
+    },
+    {
+      "check": "1: raw fixed statement",
+      "passed": true
+    },
+    {
+      "check": "1: raw fixed surrounding source",
+      "passed": true
+    },
+    {
+      "check": "1: raw final valid",
+      "passed": true
+    },
+    {
+      "check": "1: raw three samples",
+      "passed": true
+    },
+    {
+      "check": "1: raw axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "1: raw axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "1: raw axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "1: local fixed statement",
+      "passed": true
+    },
+    {
+      "check": "1: local fixed surrounding source",
+      "passed": true
+    },
+    {
+      "check": "1: local final valid",
+      "passed": true
+    },
+    {
+      "check": "1: local three samples",
+      "passed": true
+    },
+    {
+      "check": "1: local axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "1: local axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "1: local axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "1: retained best by common ranking",
+      "passed": true
+    },
+    {
+      "check": "1: response schema",
+      "passed": true
+    },
+    {
+      "check": "1: exported proof matches selection",
+      "passed": true
+    },
+    {
+      "check": "1: measured candidates contain no query tactic",
+      "passed": true
+    },
+    {
+      "check": "1: adapter was archived",
+      "passed": true
+    },
+    {
+      "check": "2: raw replay",
+      "passed": true
+    },
+    {
+      "check": "2: local artifact hashes",
+      "passed": true
+    },
+    {
+      "check": "2: raw fixed statement",
+      "passed": true
+    },
+    {
+      "check": "2: raw fixed surrounding source",
+      "passed": true
+    },
+    {
+      "check": "2: raw final valid",
+      "passed": true
+    },
+    {
+      "check": "2: raw three samples",
+      "passed": true
+    },
+    {
+      "check": "2: raw axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "2: raw axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "2: raw axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "2: local fixed statement",
+      "passed": true
+    },
+    {
+      "check": "2: local fixed surrounding source",
+      "passed": true
+    },
+    {
+      "check": "2: local final valid",
+      "passed": true
+    },
+    {
+      "check": "2: local three samples",
+      "passed": true
+    },
+    {
+      "check": "2: local axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "2: local axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "2: local axiom allowance",
+      "passed": true
+    },
+    {
+      "check": "2: retained best by common ranking",
+      "passed": true
+    },
+    {
+      "check": "2: response schema",
+      "passed": true
+    },
+    {
+      "check": "2: exported proof matches selection",
+      "passed": true
+    },
+    {
+      "check": "2: measured candidates contain no query tactic",
+      "passed": true
+    },
+    {
+      "check": "2: adapter was archived",
+      "passed": true
+    },
+    {
+      "check": "JSON followup environment stable",
+      "passed": true
+    },
+    {
+      "check": "JSON followup artifact hashes",
+      "passed": true
+    },
+    {
+      "check": "JSON 0: matched source location",
+      "passed": true
+    },
+    {
+      "check": "JSON 0: explicit replay valid",
+      "passed": true
+    },
+    {
+      "check": "JSON 0: no missed better candidate",
+      "passed": true
+    },
+    {
+      "check": "JSON 1: matched source location",
+      "passed": true
+    },
+    {
+      "check": "JSON 1: explicit replay valid",
+      "passed": true
+    },
+    {
+      "check": "JSON 1: no missed better candidate",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,614 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공용 하네스 실시간 모델 연결 실험</title><style>body{margin:0;background:#f3f6f9;color:#163044;font:17px/1.75 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}main{max-width:1100px;margin:auto;padding:40px 24px}h1{font-size:36px;line-height:1.3}h2{font-size:25px}section{background:white;border:1px solid #dae3eb;border-radius:16px;padding:24px;margin:24px 0}.muted{color:#5b7180;font-size:14px}table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:10px;border-bottom:1px solid #dde5e9;vertical-align:top}th{background:#edf4f8}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#142c3c;color:#edf5fa;padding:16px;border-radius:8px;font:13px/1.6 monospace}details{border-top:1px solid #dde5e9;padding:12px 0}summary{cursor:pointer;font-weight:650}a{color:#006e88}.scroll{overflow:auto}.banner{background:#e5f3f0;padding:20px;border-left:5px solid #168576}</style><main><p class="muted">LIVE MODEL RELAY · 시작 2026-10-28 · 갱신 2026-10-30</p><h1>LLM 응답은 이 대화가,<br>검증과 선택은 공용 하네스가</h1><p class="banner">주 버전 처리 29/29개 · 최종 검증 통과 16개 · 원본 단계 차단 12개 · 최종 재검증 실패 1개.<br>데이터셋 35개 행 · 모델 응답 51회 중 거절 13회. 원본 검사 차단은 모델 실패와 분리한다.</p><section><h2>결과를 읽는 기준</h2><p>최종 검증 통과 16개 중 후보 선택 13개, 원본 fallback 3개다. 전체 지정 버전까지 측정된 16개만의 평균 로컬 final score는 <b>40.558</b>점이다. 같은 집합의 원본 기준은 33.333점이다. 검증에 진입하지 못한 문제와 최종 실패는 이 평균에서 제외했으므로 전체 29문제 평균이나 대회 점수로 해석하면 안 된다.</p><p>최종 통과 16개는 지정 버전 검증까지 모두 끝났다. Cslib P8·9는 각 3개 버전, ArkLib P12는 4개 버전에서 동일 증명이 통과했다. 원본 fallback의 소수점 차이는 반복 계측 변동이다.</p></section><section><h2>확인된 개선 사례</h2><p>아래 수치는 최종 재검증과 지정 버전 검증까지 통과한 문제의 로컬 final score다. 원본은 약 33.333점이며, 전체 데이터셋이나 공식 리더보드 평균을 뜻하지 않는다.</p><ul><li>P12 Binius.BinaryBasefold.qMap_total_fiber_disjoint: <b>73.471점</b> · 원본 대비 +40.138점</li><li>P13 DyadicCube.nesting: <b>51.643점</b> · 원본 대비 +18.310점</li><li>P15 Box.BoundedInterval.exists_points_with_diff: <b>43.229점</b> · 원본 대비 +9.896점</li><li>P2 CallElimCorrect.Lambda.LExpr.substFvarCorrect: <b>41.429점</b> · 원본 대비 +8.096점</li></ul></section><section><h2>이전 실험과 달라진 점</h2><p>미리 만들어 둔 후보를 재생하지 않는다. 하네스가 원본·현재 최선 후보·직전 오류를 담아 요청하면, 현재 대화 모델이 그 내용을 읽고 새 응답을 전달한다. 응답은 해당 요청 해시에 연결된다. Lean 실행, 후보 선택, 호출 한도와 최종 재검증은 공용 하네스가 수행한다.</p><p>실행에는 준비된 프로젝트를 연결하는 환경 어댑터, 중단 후 이어가기, 문서 주석·계측 명령 경계 보정을 사용했다. 점수 함수와 후보 선택 규칙은 공용 하네스 그대로다. 입력 검사기의 오탐은 이번 기본 실행에서 완화하지 않고 실패로 기록했다.</p><p>문제당 최대 3응답. 프롬프트는 공용 하네스 예제의 원문을 유지했다. 모델 역할에서 프로젝트를 추가 검색하거나 별도 Lean 시험을 하지 않고 요청과 피드백으로 후보를 작성한다. 하네스 환경 준비는 별도의 실행 작업이다.</p><p class="muted">별도 API 호출 비용 0. 이 대화의 모델 사용량은 미측정이며 무료·0토큰으로 간주하지 않는다. 과거 문제 노출이 있는 같은 대화이므로 블라인드 모델 성능 평가가 아니다.</p></section><section><h2>LLM 없이 재시도한 별도 진단</h2><p>기본 실행에서 timeout이 난 세 건만, 코드를 한 글자도 바꾸지 않고 동일한 제한으로 한 번씩 다시 검사한다. 이는 사후 진단이며 기본 하네스의 실패 기록과 점수를 덮어쓰지 않는다. 추가 모델 호출은 0회다.</p><table><tr><th>대상</th><th>재검증</th><th>로컬 점수</th><th>기본 선택 점수 대비</th></tr><tr><td>P15 / steps-002</td><td>pass</td><td>44.546</td><td>+1.317</td></tr><tr><td>P19 / steps-002</td><td>pass</td><td>53.604</td><td>+20.023</td></tr><tr><td>P19 / final</td><td>pass</td><td>33.581</td><td>-0.000</td></tr></table><p><a href="posthoc-retries.json">재시도 결과 JSON</a> · <a href="retry-selected-proofs.json">재시도 후 결정적으로 재선택한 증명 JSON</a> · 점수 차이에는 반복 계측 변동도 포함된다.</p></section><section><h2>재시도는 점수와 검증 가능 범위에 각각 기여했다</h2><table><tr><th>비교 대상</th><th>기본 실행</th><th>LLM 없는 재시도 후</th></tr><tr><td>같은 16문제의 평균 local final score</td><td>40.558</td><td>40.641</td></tr><tr><td>최종 검증된 고유 문제 수</td><td>16</td><td>17</td></tr><tr><td>회수된 P19를 포함한 17문제 평균</td><td>비교 불가: 기본 실행에서 P19 최종 timeout</td><td>41.403</td></tr></table><p>P15의 더 좋은 후보를 회수한 효과는 같은 16문제 평균에서 확인한다. P19는 검증 가능 문제를 하나 늘린 효과와 후보 선택 개선을 별도로 본다. 전체 29문제 중 12개는 여전히 원본 단계에서 차단됐으며, 이 17문제 평균에 포함되지 않는다.</p></section><section><h2>29문제 최종 결과</h2><p>원본과 최종 선택은 각각 새 Lean 프로세스 3회로 계측한다. 토큰은 공용 하네스의 proof-body source token이며 이전 o200k_base 모의 실험이나 모델 API 토큰과 다르다. 이 표의 감소율은 주 버전 기준이다. 주 버전 점수 = 100 × (토큰 감소 비율 + HB 감소 비율 + 1) / 3. 원본 기준은 33.333점이다. 최종 통과한 16개는 지정 버전 모두에서 통과했으므로 robustness=1이며 아래 값은 로컬 final score와 같다. 원본 검사 차단·최종 실패에는 점수를 임의로 부여하지 않았다.</p><div class="scroll"><table><tr><th>ID / 문제</th><th>상태 / 선택</th><th>후보 통과/응답</th><th>토큰 감소</th><th>HB 감소</th><th>로컬 final score</th><th>버전 통과</th></tr><tr><td>1. CallElimCorrect.substOldCorrect</td><td>complete · 후보 선택</td><td>2/3</td><td>3.85%</td><td>11.24%</td><td>38.363</td><td>1/1</td></tr><tr><td>2. CallElimCorrect.Lambda.LExpr.substFvarCorrect</td><td>complete · 후보 선택</td><td>2/3</td><td>7.39%</td><td>16.90%</td><td>41.429</td><td>1/1</td></tr><tr><td>3. Core.updatedStatesDefMonotone</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/3 · 미측정</td></tr><tr><td>4. FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_superCommuteF_eq_time_ofCrAnListF</td><td>complete · 후보 선택</td><td>2/3</td><td>-0.91%</td><td>6.08%</td><td>35.057</td><td>1/1</td></tr><tr><td>5. Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_magneticFieldMatrix_of_isExtrema</td><td>complete · 후보 선택</td><td>2/3</td><td>8.92%</td><td>2.11%</td><td>37.013</td><td>1/1</td></tr><tr><td>6. Electromagnetism.ElectromagneticPotential.isExtrema_lorentzGroup_apply_iff</td><td>complete · 후보 선택</td><td>3/3</td><td>4.30%</td><td>0.70%</td><td>35.000</td><td>1/1</td></tr><tr><td>7. Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.preservation</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/2 · 미측정</td></tr><tr><td>8. Cslib.CCS.bisimilarity_par_assoc</td><td>complete · 후보 선택</td><td>2/3</td><td>0.36%</td><td>0.01%</td><td>33.457</td><td>3/3</td></tr><tr><td>9. Cslib.CCS.bisimilarity_congr_par</td><td>complete · 원본 유지</td><td>2/3</td><td>0.00%</td><td>0.00%</td><td>33.334</td><td>3/3</td></tr><tr><td>10. affine_gaps_lifted_to_interleaved_codes</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/3 · 미측정</td></tr><tr><td>11. R_star_star_lower_bound</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/3 · 미측정</td></tr><tr><td>12. Binius.BinaryBasefold.qMap_total_fiber_disjoint</td><td>complete · 후보 선택</td><td>2/3</td><td>69.75%</td><td>50.66%</td><td>73.471</td><td>4/4</td></tr><tr><td>13. DyadicCube.nesting</td><td>complete · 후보 선택</td><td>3/3</td><td>2.70%</td><td>52.23%</td><td>51.643</td><td>1/1</td></tr><tr><td>14. IsElementary.measure_of_translate</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/1 · 미측정</td></tr><tr><td>15. Box.BoundedInterval.exists_points_with_diff</td><td>complete · 후보 선택</td><td>2/3</td><td>21.37%</td><td>8.32%</td><td>43.229</td><td>1/1</td></tr><tr><td>16. Lebesgue_outer_measure_eq_nat_indexed</td><td>complete · 후보 선택</td><td>3/3</td><td>15.97%</td><td>4.99%</td><td>40.321</td><td>1/1</td></tr><tr><td>17. Filter.Tendsto.of_div&#x27;</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/1 · 미측정</td></tr><tr><td>18. IsElementary.measure_le_finset_boxes_volume&#x27;</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/1 · 미측정</td></tr><tr><td>19. PikhurkoN5.triangle_or_blueStar_from_block2</td><td>final_verification_failed</td><td>1/3</td><td>—</td><td>—</td><td>—</td><td>0/1</td></tr><tr><td>20. Box.sum_volume_eq</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/1 · 미측정</td></tr><tr><td>21. AppendixB.PosintDecimal.exists_unique</td><td>complete · 후보 선택</td><td>3/3</td><td>-1.26%</td><td>23.59%</td><td>40.777</td><td>1/1</td></tr><tr><td>22. Chapter5.Sequence.equiv_example</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/1 · 미측정</td></tr><tr><td>23. CallElimCorrect.substOldExpr_cons</td><td>complete · 원본 유지</td><td>1/3</td><td>0.00%</td><td>-0.00%</td><td>33.333</td><td>1/1</td></tr><tr><td>24. CallElimCorrect.Lambda.LExpr.substFvarsCorrectZero</td><td>complete · 후보 선택</td><td>3/3</td><td>2.75%</td><td>15.13%</td><td>39.291</td><td>1/1</td></tr><tr><td>25. CallElimCorrect.substOldExprPostSubset</td><td>complete · 원본 유지</td><td>2/3</td><td>0.00%</td><td>-0.00%</td><td>33.333</td><td>1/1</td></tr><tr><td>26. CallElimCorrect.substOld_create_replace</td><td>complete · 후보 선택</td><td>3/3</td><td>17.63%</td><td>2.01%</td><td>39.880</td><td>1/1</td></tr><tr><td>27. Core.InitUpdateComm</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/3 · 미측정</td></tr><tr><td>28. Core.InitStatesSubstStores</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/3 · 미측정</td></tr><tr><td>29. Core.InitStatesApp&#x27;</td><td>baseline_rejected</td><td>0/0</td><td>—</td><td>—</td><td>—</td><td>0/3 · 미측정</td></tr></table></div></section><section><h2>모델이 실제로 받은 오류</h2><p>후보 거절 13건의 구조화된 진단은 compile 10건, timeout 3건이다. timeout은 증명이 틀렸다는 판정이 아니다. <a href="failure-routing.json">LLM 없는 오류 분류·처리 경로</a></p><p>아래는 후보 검증 실패다. 하네스가 오류를 탐지해 다음 요청으로 전달한 것이므로, 그 자체가 하네스 구현 결함을 뜻하지 않는다.</p><details><summary>P1 · 응답 2 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:1828:27: error: Tactic `assumption` failed\n\ncase eq.a\nδ : Imperative.SemanticEval Expression\nσ₀ σ : CoreStore\nfro to : Expression.Ident\nHwfvr : Imperative.WellFormedSemanticEvalVar δ\nHwfvl : Imperative.WellFormedSemanticEvalVal δ\nHwfc : WellFormedCoreEvalCong δ\nHwf2 : WellFormedCoreEvalTwoState δ σ₀ σ\nHdef : Imperative.substDefined σ₀ σ [(fro, to)]\nHsubst : Imperative.substStores σ₀ σ [(fro, to)]\nm : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata\ne1 e2 : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }\ne1ih : OldExpressions.NormalizedOldExpr e1 → δ σ e1 = δ σ (OldExpressions.substOld fro (createFvar to) e1)\nHe1 : OldExpressions.NormalizedOldExpr e1\nHe2 : OldExpressions.NormalizedOldExpr e2\ne2ih : δ σ e2 = δ σ (OldExpressions.substOld fro (createFvar to) e2)\n⊢ δ σ e1 = δ σ (OldExpressions.substOld fro (createFvar to) e1)\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3277:8: warning: declaration uses &#x27;sorry&#x27;\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P2 · 응답 1 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;\n&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:1159:4: error: Type mismatch\n  Hwfc.abscongr σ σ&#x27; e (e.substFvar fro (Lambda.LExpr.fvar () to none)) (ih Hinv)\nhas type\n  ∀\n    (ty :\n      { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata)\n    (m :\n      Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType),\n    δ σ (Lambda.LExpr.abs ty m e) = δ σ&#x27; (Lambda.LExpr.abs ty m (e.substFvar fro (Lambda.LExpr.fvar () to none)))\nbut is expected to have type\n  δ σ (Lambda.LExpr.abs m ty e) = δ σ&#x27; (Lambda.LExpr.abs m ty (e.substFvar fro (Lambda.LExpr.fvar () to none)))\n&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:3283:8: warning: declaration uses &#x27;sorry&#x27;\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P4 · 응답 1 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:120:2: error: ring failed, ring expressions not equal\n𝓕 : FieldSpecification\nφ1 φ2 φ3 : 𝓕.CrAnFieldOp\nφs1 φs2 : List 𝓕.CrAnFieldOp\nh :\n  crAnTimeOrderRel φ1 φ2 ∧\n    crAnTimeOrderRel φ1 φ3 ∧\n      crAnTimeOrderRel φ2 φ1 ∧ crAnTimeOrderRel φ2 φ3 ∧ crAnTimeOrderRel φ3 φ1 ∧ crAnTimeOrderRel φ3 φ2\nl1 : List 𝓕.CrAnFieldOp := ⋯\nl2 : List 𝓕.CrAnFieldOp := ⋯\nh123 :\n  ι (timeOrderF (ofCrAnListF (φs1 ++ φ1 :: φ2 :: φ3 :: φs2))) =\n    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •\n      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ1, φ2, φ3]) * ι (ofCrAnListF l2))\nh132 :\n  ι (timeOrderF (ofCrAnListF (φs1 ++ φ1 :: φ3 :: φ2 :: φs2))) =\n    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •\n      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ1, φ3, φ2]) * ι (ofCrAnListF l2))\nhp231 : [φ2, φ3, φ1].Perm [φ1, φ2, φ3]\nh231 :\n  ι (timeOrderF (ofCrAnListF (φs1 ++ φ2 :: φ3 :: φ1 :: φs2))) =\n    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •\n      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ2, φ3, φ1]) * ι (ofCrAnListF l2))\nh321 :\n  ι (timeOrderF (ofCrAnListF (φs1 ++ φ3 :: φ2 :: φ1 :: φs2))) =\n    crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2) •\n      (ι (ofCrAnListF l1) * ι (ofCrAnListF [φ3, φ2, φ1]) * ι (ofCrAnListF l2))\n⊢ -((exchangeSign (𝓕.crAnStatistics φ1)) (ofList 𝓕.crAnStatistics [φ2, φ3]) *\n        crAnTimeOrderSign (φs1 ++ φ1 :: φ2 :: φ3 :: φs2)) =\n    0\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P5 · 응답 3 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:343:17: error: invalid &#x27;ext&#x27; conv tactic, function or arrow expected\n  ∑ k, Space.deriv k (Space.deriv k fun x =&gt; magneticFieldMatrix 𝓕.c A t x (i, j)) x : ℝ\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P8 · 응답 1 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:89:65: error: unsolved goals\ncase right.left.id\nName : Type u\nConstant : Type v\ndefs : Constant → Process Name Constant → Prop\np q r s1 : Process Name Constant\nμ : Act Name\n⊢ ∀ (s₁&#x27; : Process Name Constant), lts.Tr s1 μ s₁&#x27; → ∃ s₂&#x27;, lts.Tr s1 μ s₂&#x27; ∧ ParAssoc s₁&#x27; s₂&#x27;\n\ncase right.right.id\nName : Type u\nConstant : Type v\ndefs : Constant → Process Name Constant → Prop\np q r s1 : Process Name Constant\nμ : Act Name\n⊢ ∀ (s₂&#x27; : Process Name Constant), lts.Tr s1 μ s₂&#x27; → ∃ s₁&#x27;, lts.Tr s1 μ s₁&#x27; ∧ ParAssoc s₁&#x27; s₂&#x27;\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P9 · 응답 1 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot; r&#x27;)\n    [prop] Tr r μ&#x27;_1 r&#x27; → Tr (p.par r) τ (q&#x27;.par r&#x27;)\n    [prop] ∀ (x : Process Name Constant → Process Name Constant → Prop), x q&#x27; p&#x27; → ¬lts.IsBisimulation lts x\n    [prop] ¬μ_4 = τ\n    [prop] ¬μ&#x27;_1 = τ\n    [prop] (μ&#x27;_1.Co μ_4 → μ&#x27;_1.IsVisible) ∧ (μ&#x27;_1.Co μ_4 → μ_4.IsVisible)\n    [prop] (coname a_1).IsVisible\n    [prop] (coname a_4).IsVisible\n    [prop] (name a_4).IsVisible\n    [prop] (coname a_4).Co (name a_4)\n    [prop] μ_4.IsVisible → ¬μ_4 = τ\n    [prop] μ&#x27;_1.IsVisible → ¬μ&#x27;_1 = τ\n    [prop] μ&#x27;_1.Co μ_4 → μ_4.IsVisible\n    [prop] μ&#x27;_1.Co μ_4 → μ&#x27;_1.IsVisible\n    [prop] μ&#x27;_1.Co μ_4 → μ_4.Co μ&#x27;_1\n    [prop] μ&#x27;_1.Co μ_4 → Tr p μ&#x27;_1 q&#x27; → Tr r μ_4 r&#x27; → Tr (p.par r) τ (q&#x27;.par r&#x27;)\n    [prop] Tr p μ&#x27;_1 q&#x27; → Tr r μ_4 r&#x27; → Tr (p.par r) τ (q&#x27;.par r&#x27;)\n    [prop] Tr r μ_4 r&#x27; → Tr (p.par r) τ (q&#x27;.par r&#x27;)\n  [eqc] False propositions\n    [prop] ¬Tr (p.par r) τ (q&#x27;.par r&#x27;)\n    [prop] ParBisim (q&#x27;.par r&#x27;) (p&#x27;.par r&#x27;)\n    [prop] q&#x27; ~[lts,lts] p&#x27;\n    [prop] ∃ r, r q&#x27; p&#x27; ∧ lts.IsBisimulation lts r\n    [prop] μ = τ\n    [prop] μ&#x27; = τ\n    [prop] μ_4 = τ\n    [prop] μ&#x27;_1 = τ\n  [eqc] Equivalence classes\n    [eqc] {p, p_5, Process.pre μ_1 p_2, Process.pre μ q&#x27;, Process.pre μ_5 p_6}\n    [eqc] {q_1, Process.pre μ_3 p_4, Process.pre μ p&#x27;}\n    [eqc] {r, q_2, Process.pre μ_2 p_3, Process.pre μ&#x27; r&#x27;}\n    [eqc] {μ, μ_1, μ_3, μ_4, name a, μ_5, name a_1, name a_3, name a_4}\n    [eqc] {p&#x27;, p_4}\n    [eqc] {μ&#x27;, μ_2, μ&#x27;_1, coname a, coname a_1, coname a_2, coname a_4}\n    [eqc] {r&#x27;, p_3, q&#x27;_1}\n    [eqc] {q&#x27;, p_2, p&#x27;_1, p_6}\n    [eqc] {p.par r, p_5.par q_2}\n    [eqc] {q&#x27;.par r&#x27;, p&#x27;_1.par q&#x27;_1}\n    [eqc] {a, a_1, a_2, a_3, a_4}\n    [eqc] {Tr p μ&#x27; q&#x27;, Tr p μ&#x27;_1 q&#x27;}\n    [eqc] {Tr r μ r&#x27;, Tr r μ_4 r&#x27;}\n  [cases] Case analyses\n    [cases] [1/2]: μ.Co μ&#x27;\n      [cases] source: Initial goal\n    [cases] [1/8]: Tr p μ q&#x27;\n      [cases] source: Initial goal\n    [cases] [1/8]: Tr r μ&#x27; r&#x27;\n      [cases] source: Initial goal\n    [cases] [1/8]: Tr q_1 μ p&#x27;\n      [cases] source: Initial goal\n    [cases] [4/8]: Tr (p.par r) τ (q&#x27;.par r&#x27;)\n      [cases] source: Initial goal\n    [cases] [1/1]: ∃ r, r p_1 q ∧ { Tr := Tr }.IsBisimulation { Tr := Tr } r\n      [cases] source: E-matching `Bisimilarity.eq_1`\n    [cases] [2/2]: μ&#x27;.Co μ\n      [cases] source: E-matching `Co.symm`\n    [cases] [2/2]: μ&#x27;.IsVisible\n      [cases] source: E-matching `co_isVisible`\n    [cases] [1/2]: μ.IsVisible\n      [cases] source: E-matching `co_isVisible`\n    [cases] [1/2]: μ_4.Co μ&#x27;_1\n      [cases] source: E-matching `Tr.pre`\n    [cases] [1/8]: Tr p_5 μ_4 p&#x27;_1\n      [cases] source: E-matching `Tr.pre`\n  [ematch] E-matching patterns\n    [thm] Bisimilarity.eq_1: [@Bisimilarity #6 #5 #4 #3 #2 #1 #0]\n    [thm] Co.symm: [@Co #3 #2 #1]\n    [thm] co_isVisible: [@Co #3 #2 #1]\n    [thm] Tr.parL: [@Tr #7 #6 #5 (@par _ _ #4 #1) #3 (@par _ _ #2 #1)]\n    [thm] Tr.parR: [@Tr #7 #6 #5 (@par _ _ #1 #4) #3 (@par _ _ #1 #2)]\n    [thm] Tr.com: [@Tr #11 #10 #9 (@par _ _ #8 #5) (@τ _) (@par _ _ #6 #3), @Co _ #7 #4]\n    [thm] ParBisim.par: [@ParBisim #6 #5 #4 (@par _ _ #3 #1) (@par _ _ #2 #1)]\n    [thm] isVisible_neq_τ: [@IsVisible #2 #1]\n    [thm] bisimilarity_par_comm: [@Bisimilarity (Process #4 #3) (Process _ _) (Act _) (@lts _ _ #2) (@lts _ _ #2) (@par _ _ #1 #0) (@par _ _ #0 #1)]\n    [thm] local_0: [@IsBisimulation `[Process Name Constant] `[Process Name Constant] `[Act Name] `[lts] `[lts] #1]\n    [thm] IsVisible.name: [@IsVisible #1 (@name _ #0)]\n    [thm] nc: [@Co #1 (@name _ #0) (@coname _ #0)]\n    [thm] IsVisible.coname: [@IsVisible #1 (@coname _ #0)]\n    [thm] cn: [@Co #1 (@coname _ #0) (@name _ #0)]\n    [thm] Tr.pre: [@Tr #4 #3 #2 (@Process.pre _ _ #1 #0) #1 #0]\n[grind] Diagnostics\n  [thm] E-Matching instances\n    [thm] cn ↦ 5\n    [thm] IsVisible.coname ↦ 5\n    [thm] co_isVisible ↦ 4\n    [thm] isVisible_neq_τ ↦ 4\n    [thm] Tr.com ↦ 4\n    [thm] Co.symm ↦ 4\n    [thm] Tr.pre ↦ 3\n    [thm] Bisimilarity.eq_1 ↦ 2\n    [thm] nc ↦ 2\n    [thm] IsVisible.name ↦ 2\n    [thm] Tr.parL ↦ 1\n    [thm] Tr.parR ↦ 1\n    [thm] ParBisim.par ↦ 1\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P12 · 응답 3 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;ean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/12/raw-v2/steps/003/evaluation/fixed/check.lean:547:25: error(lean.unknownIdentifier): Unknown constant `Set.mem_image.mp`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:547:9: error: Tactic `rcases` failed: `x✝ : ?m.179` is not an inductive datatype\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:589:4: warning: declaration uses `sorry`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:625:6: warning: declaration uses `sorry`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:739:8: warning: declaration uses `sorry`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:805:15: warning: `Subtype.eq_iff` has been deprecated: Use `Subtype.ext_iff` instead\n\nNote: The updated constant has a different type:\n  ∀ {α : Sort u} {p : α → Prop} {a1 a2 : { x // p x }}, a1 = a2 ↔ ↑a1 = ↑a2\ninstead of\n  ∀ {α : Sort u_1} {p : α → Prop} {a1 a2 : { x // p x }}, a1 = a2 ↔ ↑a1 = ↑a2\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:813:15: warning: `Subtype.eq_iff` has been deprecated: Use `Subtype.ext_iff` instead\n\nNote: The updated constant has a different type:\n  ∀ {α : Sort u} {p : α → Prop} {a1 a2 : { x // p x }}, a1 = a2 ↔ ↑a1 = ↑a2\ninstead of\n  ∀ {α : Sort u_1} {p : α → Prop} {a1 a2 : { x // p x }}, a1 = a2 ↔ ↑a1 = ↑a2\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:827:28: warning: `AddSubmonoidClass.coe_finset_sum` has been deprecated: Use `AddSubmonoidClass.coe_finsetSum` instead\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:865:52: warning: `Nat.add_eq_zero` has been deprecated: Use `Nat.add_eq_zero_iff` instead\nhammingClose 𝔽q β : (i : Fin (ℓ + 1)) → OracleFunction 𝔽q β i → Prop\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:1342:60: warning: This simp argument is unused:\n  ofNat_pos\n\nHint: Omit it from the simp argument list.\n  simp only [sum_const, Set.toFinset_card, smul_eq_mul, o̵f̵N̵a̵t̵_̵p̵o̵s̵,̵ ̵pow_pos, _root_.mul_le_mul_right,\n  ̲  ̲ ̲ ̲ ̲ ̲ ̲ ̲ge_iff_le]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:1342:71: warning: This simp argument is unused:\n  pow_pos\n\nHint: Omit it from the simp argument list.\n  simp only [sum_const, Set.toFinset_card, smul_eq_mul, ofNat_pos, p̵o̵w̵_̵p̵o̵s̵,̵_root_.mul_le_mul_right,\n          ge_iff_le]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:1343:8: warning: This simp argument is unused:\n  _root_.mul_le_mul_right\n\nHint: Omit it from the simp argument list.\n  simp only [sum_const, Set.toFinset_card, smul_eq_mul, ofNat_pos, pow_pos, _̵r̵o̵o̵t̵_̵.̵m̵u̵l̵_̵l̵e̵_̵m̵u̵l̵_̵r̵i̵g̵h̵t̵,̵ ̵ge_iff_le]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n&lt;RUN&gt;/steps/003/evaluation/fixed/check.lean:1248:4: warning: &#x27;unfold d_fw at h_sInf_mem&#x27; tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P15 · 응답 2 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;timeout&quot;,&quot;message&quot;:&quot;&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P19 · 응답 2 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;timeout&quot;,&quot;message&quot;:&quot;&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P19 · 응답 3 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;timeout&quot;,&quot;message&quot;:&quot;&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P23 · 응답 1 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;\n&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:2104:4: error: `simp` made no progress\n&lt;RUN&gt;/steps/001/evaluation/fixed/check.lean:3286:8: warning: declaration uses &#x27;sorry&#x27;\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P23 · 응답 2 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:173:8: warning: declaration uses &#x27;sorry&#x27;\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:2082:122: error: unsolved goals\ncase h_1\nh : (Expression.Ident × Expression.Ty) × Expression.Ident\nt : List ((Expression.Ident × Expression.Ty) × Expression.Ident)\nm✝¹ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata\nc✝ t✝ e✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }\nm✝ :\n  Map CoreIdent\n    (Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy })\nHnd : Imperative.substNodup (createOldStoreSubst [h])\nc_ih✝ :\n  OldExpressions.substsOldExpr [createOldVarsSubst.go h] c✝ =\n    OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (createFvar h.fst.fst) c✝)\nt_ih✝ :\n  OldExpressions.substsOldExpr [createOldVarsSubst.go h] t✝ =\n    OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (createFvar h.fst.fst) t✝)\ne_ih✝ :\n  OldExpressions.substsOldExpr [createOldVarsSubst.go h] e✝ =\n    OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (createFvar h.fst.fst) e✝)\nheq✝ : t = []\n⊢ OldExpressions.substsOldExpr [] (OldExpressions.substOld h.snd (Lambda.LExpr.fvar () h.fst.fst none) e✝) =\n    OldExpressions.substOld h.snd (Lambda.LExpr.fvar () h.fst.fst none) e✝\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:2138:20: warning: This simp argument is unused:\n  OldExpressions.substOldExpr_nil\n\nHint: Omit it from the simp argument list.\n  simp [createFvar,̵ ̵O̵l̵d̵E̵x̵p̵r̵e̵s̵s̵i̵o̵n̵s̵.̵s̵u̵b̵s̵t̵O̵l̵d̵E̵x̵p̵r̵_̵n̵i̵l̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3286:8: warning: declaration uses &#x27;sorry&#x27;\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details><details><summary>P25 · 응답 2 · proof_rejected</summary><pre>{&quot;environments&quot;:{&quot;fixed&quot;:{&quot;kind&quot;:&quot;compile&quot;,&quot;message&quot;:&quot;, TypeType := Lambda.LMonoTy }\nHnil : True\nx✝ :\n  ∀ (m : ExpressionMetadata) (ty : Option Lambda.LMonoTy) (m_1 : ExpressionMetadata) (x : Lambda.Identifier Visibility)\n    (ty_1 : Option Lambda.LMonoTy),\n    fn✝ = Lambda.LExpr.op m { name := \&quot;old\&quot;, metadata := Visibility.unres } ty → ¬e✝ = Lambda.LExpr.fvar m_1 x ty_1\n⊢ (Lambda.LExpr.LExpr.getVars (substsOldExpr ((h2, Lambda.LExpr.fvar m h1 ty) :: t) fn✝) ++\n        Lambda.LExpr.LExpr.getVars (substsOldExpr ((h2, Lambda.LExpr.fvar m h1 ty) :: t) e✝)).Subset\n    ?m.1227\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3224:40: error: Tactic `assumption` failed\n\nh2 : Expression.Ident\nm : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata\nh1 :\n  Lambda.Identifier\n    { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.IDMeta\nty : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType\nt : List (Expression.Ident × Expression.Expr)\nm✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata\nc✝ t✝ e✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }\nc_ih✝ :\n  (Lambda.LExpr.LExpr.getVars (substsOldExpr [(h2, Lambda.LExpr.fvar m h1 ty)] c✝)).Subset\n    (Lambda.LExpr.LExpr.getVars c✝ ++ [h1])\nt_ih✝ :\n  (Lambda.LExpr.LExpr.getVars (substsOldExpr [(h2, Lambda.LExpr.fvar m h1 ty)] t✝)).Subset\n    (Lambda.LExpr.LExpr.getVars t✝ ++ [h1])\ne_ih✝ :\n  (Lambda.LExpr.LExpr.getVars (substsOldExpr [(h2, Lambda.LExpr.fvar m h1 ty)] e✝)).Subset\n    (Lambda.LExpr.LExpr.getVars e✝ ++ [h1])\nHnil : True\n⊢ (Imperative.HasVarsPure.getVars t✝ ++ [h1]).Subset ?m.1233\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3224:40: error: Tactic `assumption` failed\n\nh2 : Expression.Ident\nm : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata\nh1 :\n  Lambda.Identifier\n    { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.IDMeta\nty : Option { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.TypeType\nt : List (Expression.Ident × Expression.Expr)\nm✝ : { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }.base.Metadata\nc✝ t✝ e✝ : Lambda.LExpr { base := { Metadata := ExpressionMetadata, IDMeta := Visibility }, TypeType := Lambda.LMonoTy }\nc_ih✝ :\n  (Lambda.LExpr.LExpr.getVars (substsOldExpr [(h2, Lambda.LExpr.fvar m h1 ty)] c✝)).Subset\n    (Lambda.LExpr.LExpr.getVars c✝ ++ [h1])\nt_ih✝ :\n  (Lambda.LExpr.LExpr.getVars (substsOldExpr [(h2, Lambda.LExpr.fvar m h1 ty)] t✝)).Subset\n    (Lambda.LExpr.LExpr.getVars t✝ ++ [h1])\ne_ih✝ :\n  (Lambda.LExpr.LExpr.getVars (substsOldExpr [(h2, Lambda.LExpr.fvar m h1 ty)] e✝)).Subset\n    (Lambda.LExpr.LExpr.getVars e✝ ++ [h1])\nHnil : True\n⊢ (Imperative.HasVarsPure.getVars e✝ ++ [h1]).Subset ?m.1239\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3229:14: error: `simp` made no progress\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3228:18: warning: This simp argument is unused:\n  Imperative.HasVarsPure.getVars\n\nHint: Omit it from the simp argument list.\n  simp ̵[̵I̵m̵p̵e̵r̵a̵t̵i̵v̵e̵.̵H̵a̵s̵V̵a̵r̵s̵P̵u̵r̵e̵.̵g̵e̵t̵V̵a̵r̵s̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n&lt;RUN&gt;/steps/002/evaluation/fixed/check.lean:3286:8: warning: declaration uses &#x27;sorry&#x27;\n&quot;}},&quot;error&quot;:{&quot;kind&quot;:&quot;lean&quot;,&quot;message&quot;:&quot;One or more required environments failed&quot;}}
+</pre></details></section><section><h2>하네스·환경 실패 원문</h2><p>보정 후 성공하더라도 최초 실패 기록을 지우지 않는다. 모델 응답 전 원본 검증에서 멈춘 사례는 모델 실패율에 넣지 않는다.</p><details><summary>P2 · raw / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;compile&quot;,
+        &quot;message&quot;: &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean:193:8: warning: declaration uses &#x27;sorry&#x27;\n/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean:1139:30: error: unexpected token &#x27;#refactor_eval&#x27;; expected &#x27;{&#x27; or tactic\nREFACTOR_EVAL 2980643dfaf946a7a70cadc2458a1805 {\&quot;axioms\&quot;:[\&quot;propext\&quot;,\&quot;Quot.sound\&quot;,\&quot;Classical.choice\&quot;],\&quot;raw\&quot;:152446,\&quot;scaled\&quot;:152,\&quot;target\&quot;:\&quot;CallElimCorrect.Lambda.LExpr.substFvarCorrect\&quot;}\n/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean:3307:8: warning: declaration uses &#x27;sorry&#x27;\n&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Users/sungwoo/.elan/bin/lake&quot;,
+            &quot;env&quot;,
+            &quot;lean&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;0c4d0fb5a81dd8fa90d20383b92d7e955a93cca94d0d24006a46f0cb8e7be215&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 56.823565,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;7998610d5a306e331543ed6b6a0462b88c163f362b40f31105153505c8f95175&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Users/sungwoo/.elan/bin/lake&quot;,
+            &quot;env&quot;,
+            &quot;lean&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;e04d28e08b9f7887e5bae90f961c48b213a24538e79ccd909c4e7370cc6c0d77&quot;,
+          &quot;returncode&quot;: 1,
+          &quot;seconds&quot;: 55.760005,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;46c0b2842b883d86b65eca83a567a96f9de02e8243a4c07d96fa519c50a13c7d&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 433,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P3 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {},
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;validation&quot;,
+    &quot;message&quot;: &quot;Forbidden command, axiom, option or executable construct in proof&quot;
+  },
+  &quot;tokens&quot;: 136,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P7 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {},
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;validation&quot;,
+    &quot;message&quot;: &quot;Forbidden command, axiom, option or executable construct in proof&quot;
+  },
+  &quot;tokens&quot;: 395,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P10 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {},
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;validation&quot;,
+    &quot;message&quot;: &quot;Forbidden command, axiom, option or executable construct in proof&quot;
+  },
+  &quot;tokens&quot;: 1642,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P11 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {},
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;validation&quot;,
+    &quot;message&quot;: &quot;Forbidden command, axiom, option or executable construct in proof&quot;
+  },
+  &quot;tokens&quot;: 681,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P14 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;propext&#x27;, &#x27;Classical.choice&#x27;, &#x27;Quot.sound&#x27;, &#x27;sorryAx&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/14/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/14/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;81a987ce24657342e5ea09e5546033a45660ccddaa201ae83a5bf09862c67186&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 63.570365,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;6fd39f79cfc722d97c524e6f23d2ec83d35d9b57da73227422a866b2999e8e98&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/14/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/14/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;2702045cfe56bf1e8ddd5a431022514b69b2362d4230839a898966b4b4948951&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 68.145515,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;2a7659225e211ceb6c729f7c18797d9f6e772965729be5649b87372d836b1c26&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 888,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P17 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;propext&#x27;, &#x27;Classical.choice&#x27;, &#x27;Quot.sound&#x27;, &#x27;sorryAx&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/17/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/17/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;c88d082e91bf67386b7f7f76ff0fe8675819136b42e20a6ae924f33cbf9cddd4&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 40.954472,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;bec27667aaa9f01ba6ec9d8e5a71bf7c68859956f7921cbfc90cf000c8fe03a9&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/17/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/17/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;7e8df2ae386996474777094889e8419b2619aa5dc53a397bf93a29d30ee2327e&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 68.956473,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;5bed1ae1a4939947ec13c4654fa36df992c6aea4ace815709d98e3abe9578985&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 735,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P18 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;propext&#x27;, &#x27;Quot.sound&#x27;, &#x27;Classical.choice&#x27;, &#x27;sorryAx&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;b09dc13f44b27ce4faa54bde62b53137f7b1d97cc40779d2c381631a2177b82e&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 119.651772,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;3682367b361ddb557ab06e6e846bf9bc46ec9854f20f7fbe5fe9fe344c9260b0&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;6fedef92ec0d1c56e9f23b17d1187b68ad764ec45c556aa1abf3a9f1b709fd5d&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 128.073046,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;2e7ded264d86c883aefc55f01983ea0c1640cc1ad629f65efb8a844f71d5537c&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 662,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P18 · raw-v2 / baseline-timeout-under-load · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;timeout&quot;,
+        &quot;message&quot;: &quot;&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;b09dc13f44b27ce4faa54bde62b53137f7b1d97cc40779d2c381631a2177b82e&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 110.184428,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;3682367b361ddb557ab06e6e846bf9bc46ec9854f20f7fbe5fe9fe344c9260b0&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/18/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
+          &quot;returncode&quot;: -9,
+          &quot;seconds&quot;: 180.104942,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;19fa91198d02afccf233b7af329d3e74a3617e2f0c64fc9a355473b3346703bb&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: true
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 662,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P20 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;propext&#x27;, &#x27;Classical.choice&#x27;, &#x27;Quot.sound&#x27;, &#x27;sorryAx&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/20/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/20/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;1a04f5d98aa7867a89ddc328f7efce344de06b4a6758e6c47973eed9b81597de&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 92.961658,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;3682367b361ddb557ab06e6e846bf9bc46ec9854f20f7fbe5fe9fe344c9260b0&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/20/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/20/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;7f984d21bc7263b7f9a987dbe3b0e33cfd765bbc63800cebe29d319704589089&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 45.800392,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;d40a70667df87f85b014df6b999f71bbbfb73490cda49c4132c4ca7b524d4ce2&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 486,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P22 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;propext&#x27;, &#x27;Classical.choice&#x27;, &#x27;Quot.sound&#x27;, &#x27;sorryAx&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;3458d9bcf589f4f1794b5692f7f6b8cae8cbba42b8d72920964f061fca1ce736&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 11.947755,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;a4436a225c967931d09469ae65510cfe77f0e99eae58a7d5441f6a013841743e&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/analysis-v4.24.0/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/22/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;070662c41b1145b5edca0dafb058cf6c41763ef06faaefd3d5c38fc65eef5c61&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 31.052737,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;05dba57b814065c66f93a1479ff330c173467c9b4cf8e6247bee3476b9cadc60&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 450,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P27 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;of_eq_true&#x27;, &#x27;Eq.trans&#x27;, &#x27;forall_congr&#x27;, &#x27;implies_congr&#x27;, &#x27;propext&#x27;, &#x27;List.mem_cons&#x27;, &#x27;congrArg&#x27;, &#x27;eq_false&#x27;, &#x27;List.not_mem_nil&#x27;, &#x27;or_false&#x27;, &#x27;forall_eq&#x27;, \&quot;congrFun&#x27;\&quot;, &#x27;eq_self&#x27;, &#x27;false_implies&#x27;, &#x27;implies_true&#x27;, &#x27;noConfusion_of_Nat&#x27;, &#x27;eq_of_heq&#x27;, &#x27;heq_of_eq&#x27;, &#x27;Eq.symm&#x27;, &#x27;forall_eq_or_imp&#x27;, &#x27;congr&#x27;, &#x27;implies_congr_ctx&#x27;, &#x27;and_self&#x27;, &#x27;Bool.false_eq_true&#x27;, &#x27;Classical.choice&#x27;, &#x27;Classical.propDecidable._proof_1&#x27;, \&quot;eq_false&#x27;\&quot;, &#x27;Nat.add_left_cancel_iff&#x27;, &#x27;true_and&#x27;, &#x27;Iff.mp&#x27;, &#x27;List.length_eq_zero_iff&#x27;, &#x27;List.zip_nil_right&#x27;, &#x27;Nat.add_eq_zero_iff&#x27;, &#x27;Nat.succ_ne_self&#x27;, &#x27;and_false&#x27;, &#x27;And.left&#x27;, &#x27;ite_cond_eq_true&#x27;, &#x27;trivial&#x27;, &#x27;Subsingleton.elim&#x27;, &#x27;instSubsingletonDecidable&#x27;, &#x27;decide_true&#x27;, &#x27;ite_eq_right_iff&#x27;, &#x27;decide_eq_true_eq&#x27;, &#x27;not_true_eq_false&#x27;, &#x27;Nat.add_right_cancel_iff&#x27;, &#x27;eq_true&#x27;, &#x27;List.nodup_cons&#x27;, &#x27;forall_const&#x27;, &#x27;instNonemptyOfInhabited&#x27;, &#x27;imp_false&#x27;, &#x27;ne_of_mem_of_not_mem&#x27;, &#x27;List.nodup_nil&#x27;, &#x27;and_true&#x27;, &#x27;Not.intro&#x27;, &#x27;funext&#x27;, &#x27;ite_cond_eq_false&#x27;, &#x27;not_false&#x27;, &#x27;decide_false&#x27;, &#x27;List.unzip_fst&#x27;, &#x27;List.mem_map&#x27;, &#x27;Prod.exists&#x27;, &#x27;exists_and_right&#x27;, &#x27;exists_eq_right&#x27;, &#x27;List.unzip_snd&#x27;, &#x27;not_or&#x27;, &#x27;not_exists&#x27;, &#x27;exists_false&#x27;, &#x27;not_false_eq_true&#x27;, &#x27;right_eq_ite_iff&#x27;, &#x27;Option.some.injEq&#x27;, &#x27;List.unzip_zip&#x27;, &#x27;false_and&#x27;, &#x27;And.right&#x27;, &#x27;exists_eq_left&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/27/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/27/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 14.340141,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;9985714e3b25412b01ee8502572d4e7e854da7e37866d7031fbf9c0cd11383e7&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/27/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/27/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;6d000405de9ebfc7521cc5d024c18aa4a25c128be96563ddeb0a361e45c221bb&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 13.979783,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;62bb252515f643d1585bb3c8ba979d8f26e7f86a1348d6bfc08f5fe2e3d08c35&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 127,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P28 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;of_eq_true&#x27;, &#x27;Eq.trans&#x27;, &#x27;forall_congr&#x27;, &#x27;implies_congr&#x27;, \&quot;congrFun&#x27;\&quot;, &#x27;congrArg&#x27;, &#x27;List.zip_nil_right&#x27;, &#x27;eq_false&#x27;, &#x27;List.not_mem_nil&#x27;, &#x27;false_implies&#x27;, &#x27;implies_true&#x27;, &#x27;noConfusion_of_Nat&#x27;, &#x27;Eq.symm&#x27;, &#x27;eq_of_heq&#x27;, &#x27;heq_of_eq&#x27;, &#x27;propext&#x27;, &#x27;List.mem_cons&#x27;, &#x27;Prod.mk.injEq&#x27;, &#x27;congr&#x27;, &#x27;eq_self&#x27;, &#x27;Not.intro&#x27;, \&quot;eq_false&#x27;\&quot;, &#x27;List.of_mem_zip&#x27;, &#x27;forall_eq_or_imp&#x27;, &#x27;Bool.false_eq_true&#x27;, &#x27;And.left&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/28/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/28/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 10.671541,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;9985714e3b25412b01ee8502572d4e7e854da7e37866d7031fbf9c0cd11383e7&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/28/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/28/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;90f6d08ffd1c16f64a544afd8b0f2f3d521a84dfaa0a73917de497029baf3458&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 8.683763,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;408ff8a56ce2542d93c1ae05cdd773dab4b8c8e91eac4c3d70c104cd590c93a0&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 121,
+  &quot;valid&quot;: false
+}</pre></details><details><summary>P29 · raw-v2 / baseline · 원본/계측 실패</summary><pre>{
+  &quot;environments&quot;: {
+    &quot;fixed&quot;: {
+      &quot;error&quot;: {
+        &quot;kind&quot;: &quot;axioms&quot;,
+        &quot;message&quot;: &quot;[&#x27;Iff.mp&#x27;, &#x27;List.length_eq_zero_iff&#x27;, &#x27;Eq.symm&#x27;, &#x27;congr&#x27;, &#x27;congrArg&#x27;, &#x27;Eq.trans&#x27;, &#x27;List.zip_nil_right&#x27;, &#x27;propext&#x27;, &#x27;Nat.add_eq_zero_iff&#x27;, &#x27;eq_false&#x27;, &#x27;Nat.succ_ne_self&#x27;, &#x27;and_false&#x27;, &#x27;And.left&#x27;, &#x27;forall_congr&#x27;, &#x27;implies_congr&#x27;, &#x27;List.mem_cons&#x27;, &#x27;forall_eq_or_imp&#x27;, &#x27;of_eq_true&#x27;, \&quot;congrFun&#x27;\&quot;, &#x27;ite_cond_eq_true&#x27;, &#x27;trivial&#x27;, &#x27;Subsingleton.elim&#x27;, &#x27;instSubsingletonDecidable&#x27;, &#x27;eq_self&#x27;, &#x27;decide_true&#x27;, &#x27;ite_eq_right_iff&#x27;, &#x27;decide_eq_true_eq&#x27;, &#x27;not_true_eq_false&#x27;, &#x27;implies_congr_ctx&#x27;, &#x27;Nat.add_right_cancel_iff&#x27;, &#x27;eq_true&#x27;, &#x27;List.nodup_cons&#x27;, &#x27;forall_const&#x27;, &#x27;instNonemptyOfInhabited&#x27;, &#x27;true_and&#x27;, \&quot;eq_false&#x27;\&quot;, &#x27;noConfusion_of_Nat&#x27;, &#x27;imp_false&#x27;, &#x27;ne_of_mem_of_not_mem&#x27;, &#x27;List.not_mem_nil&#x27;, &#x27;false_implies&#x27;, &#x27;implies_true&#x27;, &#x27;Classical.choice&#x27;, &#x27;Classical.propDecidable._proof_1&#x27;, &#x27;List.mem_append&#x27;, &#x27;true_or&#x27;, &#x27;List.nodup_nil&#x27;, &#x27;and_true&#x27;, &#x27;Not.intro&#x27;, &#x27;List.Sublist.nodup&#x27;, &#x27;List.sublist_append_left&#x27;, &#x27;eq_of_heq&#x27;, &#x27;heq_of_eq&#x27;, &#x27;funext&#x27;, &#x27;not_false_eq_true&#x27;, &#x27;ite_cond_eq_false&#x27;, &#x27;not_false&#x27;, &#x27;decide_false&#x27;, &#x27;Bool.false_eq_true&#x27;]&quot;
+      },
+      &quot;median_heartbeats&quot;: null,
+      &quot;runs&quot;: [
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/29/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/29/raw-v2/baseline/fixed/check.lean&quot;
+          ],
+          &quot;log&quot;: &quot;check.log&quot;,
+          &quot;log_sha256&quot;: &quot;e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 10.669693,
+          &quot;source&quot;: &quot;check.lean&quot;,
+          &quot;source_sha256&quot;: &quot;9985714e3b25412b01ee8502572d4e7e854da7e37866d7031fbf9c0cd11383e7&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        },
+        {
+          &quot;command&quot;: [
+            &quot;/Library/Frameworks/Python.framework/Versions/3.12/bin/python3&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/experiments/live-practice-2026-10-28/lean_env.py&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/elan&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/artifacts/live-practice/strata-v4.29.1/cache&quot;,
+            &quot;-j1&quot;,
+            &quot;--root=/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/29/raw-v2/baseline/fixed&quot;,
+            &quot;/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/29/raw-v2/baseline/fixed/measure-1.lean&quot;
+          ],
+          &quot;log&quot;: &quot;measure-1.log&quot;,
+          &quot;log_sha256&quot;: &quot;8642d4bb65dc1e83663347142f6c2397236b8f26affe5b12037ff88aa9a853c9&quot;,
+          &quot;returncode&quot;: 0,
+          &quot;seconds&quot;: 8.749054,
+          &quot;source&quot;: &quot;measure-1.lean&quot;,
+          &quot;source_sha256&quot;: &quot;0ac9c85073c19349e461162eaa9f0d702f5c056de2cb179dd1591a19eeaa7c97&quot;,
+          &quot;stderr&quot;: &quot;&quot;,
+          &quot;timed_out&quot;: false
+        }
+      ],
+      &quot;valid&quot;: false
+    }
+  },
+  &quot;error&quot;: {
+    &quot;kind&quot;: &quot;lean&quot;,
+    &quot;message&quot;: &quot;One or more required environments failed&quot;
+  },
+  &quot;tokens&quot;: 119,
+  &quot;valid&quot;: false
+}</pre></details></section><section><h2>검증 전에 걸러진 원인들</h2><table><tr><th>종류</th><th>관측</th><th>처리 방향</th></tr><tr><td>데이터 경계</td><td>P3에 다음 theorem 포함, P7에 다음 set_option 래퍼 포함</td><td>원시 데이터 경계를 수정하고 별도 실행으로 비교</td></tr><tr><td>검사기 오탐</td><td>P10·11의 정상적인 #D 집합 크기 표기를 금지</td><td>문자 검색을 Lean 구문 단위 검사로 교체</td></tr><tr><td>모듈 공리 검사</td><td>P27·28·29에서 일반 정리를 공리처럼 보고. 별도 #print axioms는 표준 공리만 출력</td><td>증명 본문이 보이는 환경에서 독립 공리 검사</td></tr><tr><td>원본 미완성 의존성</td><td>P14·17·18·20·22 대상 정리에 sorryAx 의존성</td><td>원본 문제로 격리; 모델 실패율에서 제외</td></tr><tr><td>설치 경로 해석</td><td>ArkLib 4.30의 Lake 경고를 --print-prefix 경로에 합쳐 FileNotFoundError</td><td>호환성 어댑터에서 stderr 분리 후 원본·후보 통과; 경고 로그 보존</td></tr><tr><td>실행 timeout</td><td>P15 후보, P19 후보·최종 검사, P18 원본 계측(재시도에서 sorryAx 확인)</td><td>구문·논리 오류로 단정하지 않고 제한된 재시도</td></tr></table><p><a href="input-preflight.json">전체 입력 사전 검사</a> · <a href="diagnostics/strata-axioms.log">Strata 독립 공리 검사 로그</a></p></section><section><h2>관측 결과와 수리 정책 제안</h2><p><b>긴 논리 단계를 기존 등식으로 대체한 사례.</b> P12는 두 몫 등식을 연결해 긴 후반 재구성을 제거했다. 토큰 638→193, heartbeat 약 51% 감소, final score 73.471이다. 추가 압축 시도는 존재하지 않는 상수 참조로 거절됐고 이전 검증 후보를 유지했다. 지정 4개 버전 모두 같은 코드로 통과했다.</p><p><b>원본도 먼저 검사해야 한다.</b> P14는 컴파일 성공 뒤 대상 정리의 sorryAx 의존성이 발견되어 모델 생성 전에 중단됐다. 단순 컴파일 성공을 완전한 증명으로 취급하면 놓치는 사례다.</p><p><b>오류 위치와 수정 위치는 다를 수 있다.</b> P23의 simp 병합은 goal 처리 순서를 바꾸었고, P5의 field_simp 제거는 뒤의 conv 경로를 깨뜨렸다. 오류 줄만 교체하기보다 변경 구간을 되돌려 검증하는 최소화가 유용하다.</p><p><b>탐색을 직접 증명으로 바꾸면 큰 개선이 가능하다.</b> P13에서는 부등식에 양수를 곱하는 단계를 nlinarith 대신 직접 정리로 증명해 heartbeat를 크게 줄였다. 향후 exact? 등의 제안을 명시적 proof로 고정하고 계측하는 실험이 적합하다.</p><p><b>원본 fallback은 유지한다.</b> P9·23·25는 후보를 시도했지만 원본이 최종 선택됐다. 기본 실행에는 별도의 로컬 수리를 덧붙이지 않았으므로, 이후 수리 에이전트의 효과를 비교할 원시 기준 자료로 사용할 수 있다.</p><p><a href="observations.md">근거별 관찰과 후속 실험 메모</a></p></section><section><h2>자료와 재현</h2><p><a href="repair-handoff.md">수리 에이전트 연결 계약과 파일 안내</a></p><p><a href="aggregate.json">집계 JSON 및 분모 설명</a></p><p><a href="per-dataset-results.json">35개 행별 결과 JSON</a> · <a href="repair-cases.jsonl">실제 실패 수리 입력 JSONL</a> · <a href="selections.json">최종 선택 증명 JSON</a> · <a href="progress.json">상태·측정 JSON</a> · <a href="manifest.json">데이터셋 해시와 중복 매핑</a> · <a href="README.md">실행 프로토콜</a></p><p class="muted">29문제 처리 및 최종 선택 증명의 추가 버전 감사 완료. 원본 단계에서 차단된 12개에는 후보 호환성을 주장하지 않는다. 공식 tokenizer·worker의 점수가 아니므로 리더보드와 직접 비교하지 않는다.</p></section></main></html>

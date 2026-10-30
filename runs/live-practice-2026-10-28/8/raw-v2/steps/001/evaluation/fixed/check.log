@@ -1,0 +1,16 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/8/raw-v2/steps/001/evaluation/fixed/check.lean:89:65: error: unsolved goals
+case right.left.id
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p q r s1 : Process Name Constant
+μ : Act Name
+⊢ ∀ (s₁' : Process Name Constant), lts.Tr s1 μ s₁' → ∃ s₂', lts.Tr s1 μ s₂' ∧ ParAssoc s₁' s₂'
+
+case right.right.id
+Name : Type u
+Constant : Type v
+defs : Constant → Process Name Constant → Prop
+p q r s1 : Process Name Constant
+μ : Act Name
+⊢ ∀ (s₂' : Process Name Constant), lts.Tr s1 μ s₂' → ∃ s₁', lts.Tr s1 μ s₁' ∧ ParAssoc s₁' s₂'

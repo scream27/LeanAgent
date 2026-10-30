@@ -2,6 +2,9 @@
 from decimal import Decimal, InvalidOperation
 import json
 import os
+import hashlib
+from pathlib import Path
+import time
 from urllib import error, request
 
 ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
@@ -20,6 +23,29 @@ def payload(messages, model):
 
 
 def query(body, model, step, fixtures=None):
+    if model["backend"] == "external":
+        # A live rendezvous, not precomputed fixture playback. Each reply must
+        # bind to the exact request, which includes the preceding Lean feedback.
+        folder = Path(model["exchange_directory"]) / f"{step:03}"
+        folder.mkdir(parents=True, exist_ok=False)
+        serialized = json.dumps(body, ensure_ascii=False, sort_keys=True).encode()
+        digest = hashlib.sha256(serialized).hexdigest()
+        packet = {"request_sha256": digest, "request": body}
+        temporary = folder / "request.tmp"
+        temporary.write_text(json.dumps(packet, ensure_ascii=False, indent=2))
+        temporary.rename(folder / "request.json")
+        deadline = time.monotonic() + model["timeout_seconds"]
+        while not (folder / "reply.json").exists():
+            if time.monotonic() >= deadline:
+                return {"transport_error": "ExternalReplyTimeout", "usage": {"cost": 0}}
+            time.sleep(0.25)
+        reply = json.loads((folder / "reply.json").read_text())
+        if reply.get("request_sha256") != digest:
+            return {"transport_error": "ExternalReplyRequestMismatch", "usage": {"cost": 0}}
+        return {"id": f"external-{digest}", "model": model["id"], "provider": "conversation-relay",
+                "choices": [{"message": {"role": "assistant", "content": reply.get("content")}}],
+                "usage": {"cost": 0}, "external_request_sha256": digest,
+                "cost_note": "No API charged by this harness; conversation token usage is unmeasured."}
     if model["backend"] == "fixture":
         return {"id": f"fixture-{step}", "model": "fixture-v1", "provider": "fixture",
                 "choices": [{"message": {"role": "assistant", "content": fixtures[step - 1]}}],

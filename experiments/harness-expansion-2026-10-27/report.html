@@ -1,0 +1,294 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>공용 하네스 확장 검증 — P4·P5·P6</title><style>
+:root{color-scheme:light;--ink:#172a3a;--muted:#526675;--teal:#006d77;--line:#d7e2e8}*{box-sizing:border-box}body{margin:0;background:#f3f6f8;color:var(--ink);font:17px/1.75 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}main{max-width:1120px;margin:auto;padding:54px 28px 90px}h1{font-size:42px;line-height:1.25;margin:14px 0 24px}h2{font-size:27px;margin-top:0}h3{font-size:21px}p{max-width:880px}.eyebrow{color:var(--teal);font-weight:750;letter-spacing:.06em}.lead{font-size:21px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card,section{background:white;border:1px solid var(--line);border-radius:18px;padding:28px;margin:24px 0}.grid .card{margin:0}.big{display:block;font-size:35px;font-weight:750;color:var(--teal)}.muted{color:var(--muted);font-size:15px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf4f6;white-space:nowrap}td.num{text-align:right;font-variant-numeric:tabular-nums}pre{background:#132630;color:#e6f1f4;padding:18px;border-radius:10px;overflow:auto;white-space:pre-wrap;word-break:break-word;font:13px/1.6 ui-monospace,monospace}summary{cursor:pointer;font-weight:650;padding:12px 0}details{border-top:1px solid var(--line)}.callout{border-left:4px solid var(--teal);padding:10px 20px;background:#edf7f7}.bad{color:#a53730}.good{color:#006d57}a{color:var(--teal)}code{font-size:.9em;overflow-wrap:anywhere}.tag{padding:3px 8px;border-radius:6px;background:#edf4f6;white-space:nowrap}@media(max-width:700px){main{padding:24px 14px}h1{font-size:31px}.grid{grid-template-columns:1fr}section{padding:19px}th,td{padding:10px}}@media print{body{background:white}main{padding:0}section{break-inside:avoid}details{display:block}}</style><main>
+<div class="eyebrow">LEAN REFACTOR ARENA · 2026.10.27</div><h1>짧게 고쳤다고,<br>좋은 증명이 되는 것은 아니다</h1><p class="lead">공용 하네스의 검증 범위를 1·2번에서 4·5·6번으로 확장했다. 실제 후보의 실패 원인, 통과 후 점수, 상위권과의 차이를 함께 살펴본다.</p><div class="grid"><div class="card"><span class="big">6 / 9</span>새 후보 검증 통과</div><div class="card"><span class="big">3 / 3</span>최종 선택 재검증 통과</div><div class="card"><span class="big">0</span>유료 API 호출</div></div><section><h2>무엇을 실행했나</h2><p>이 대화에서 미리 작성한 후보를 문제당 3개씩 고정하고, 공용 하네스의 fixture 입력으로 실행했다. 실시간 모델의 생성 성능 실험은 아니다. 검증 결과를 보고 후보를 몰래 바꾸지 않았고, 의도적으로 실패시키는 변형도 넣지 않았다.</p><p>원본 파일의 문맥과 정리 statement를 보존했다. 먼저 계측 코드를 넣지 않은 전체 파일을 컴파일한 뒤, 목표 정리만 3회 새 프로세스에서 계측했다. 기존 공리보다 새 공리가 추가되면 거절하며, 점수 기준으로 원본보다 좋은 후보만 선택한다.</p><p class="muted">공용 하네스 ba593fc · Physlib c484336 · Lean 4.32.0. 세 문제는 데이터에 지정된 버전이 각각 하나여서 이 실행으로 세 문제의 버전 조건을 모두 검사했다. source token = lean-source-anchored-v1, heartbeat = raw counter 중앙값 ÷ 1,000.</p></section><section><h2>실제 최종 점수</h2><p class="callout">로컬 final score = (토큰 감소율 + heartbeat 감소율 + 버전 통과율) ÷ 3. 원본이 모두 통과하면 33.333점이다. 여기의 점수는 공식 서버 제출 점수가 아니다.</p><div class="scroll"><table><tr><th>문제</th><th>선택</th><th>토큰 원본 → 최종</th><th>HB 원본 → 최종</th><th>final score</th><th>원본 대비</th></tr><tr><td>P4</td><td>후보 3</td><td>851 → 852</td><td>11,943.455 → 10,113.189</td><td><b>38.402</b></td><td>+5.069</td></tr><tr><td>P5</td><td>후보 3</td><td>1372 → 1366</td><td>26,982.388 → 26,943.666</td><td><b>33.527</b></td><td>+0.194</td></tr><tr><td>P6</td><td>후보 3</td><td>1217 → 1233</td><td>42,028.619 → 33,037.506</td><td><b>40.026</b></td><td>+6.693</td></tr></table></div><p class="muted">최종 점수는 선택 단계의 수치를 재사용하지 않고 최종 재검증 수치로 계산했다. 미세한 heartbeat 차이는 반복 계측 변동과 함께 읽어야 한다.</p></section><section><h2>P4 · 자동화의 가정 범위를 줄이면 계산량이 줄어든다</h2><p class="muted"><code>fundamental_theorem_of_variational_calculus&#x27;</code></p><p>C1은 양수성 및 마지막 모순을 직접 증명하고, C2는 nlinarith에 중복으로 전달하던 가정을 제거했다. C3는 nlinarith only로 명시한 가정만 사용하게 했다. 세 후보가 모두 통과했으며, 가장 짧은 C2 대신 토큰이 원본보다 1개 많은 C3가 선택됐다. 이는 heartbeat 감소가 길이 증가보다 큰 종합 점수 이득을 줬기 때문이다. 전술 이름이 같아도 가정 입력을 제한하면 계산 비용이 달라진다.</p><div class="scroll"><table><tr><th>후보 / 전략</th><th>검증</th><th>토큰</th><th>HB 감소</th><th>후보 점수</th></tr><tr><td>C1 · 양수성과 마지막 모순 직접 증명</td><td class="good">통과</td><td>851</td><td>+3.73%</td><td>34.578</td></tr><tr><td>C2 · nlinarith 중복 가정 제거</td><td class="good">통과</td><td>841</td><td>+13.74%</td><td>38.306</td></tr><tr><td>C3 · nlinarith only로 가정 제한</td><td class="good">통과</td><td>852</td><td>+15.32%</td><td>38.402</td></tr></table></div><details><summary>C1 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -23,7 +23,7 @@
+   -- pick δ₂ so that on B(x₀, δ₂), ‖f₂ x - x₂‖ &lt; ‖x₂‖/2
+     obtain ⟨δ₂, hδ₂_pos, hδ₂⟩ :=
+     Metric.continuousAt_iff.mp hcont₂ (‖x₂‖ / 2)
+-      (by simpa [half_pos] using (norm_pos_iff.mpr hx2))
++      (half_pos (norm_pos_iff.mpr hx2))
+   -- now the usual “add &amp; subtract” proof inside WithLp 2 V
+     have inner_pos₂ : ∀ x (hx : x ∈ Metric.ball x₀ δ₂), 0 &lt; (⟪f₂ x, x₂⟫_ℝ : ℝ) := by
+       intros x hx
+@@ -123,4 +123,4 @@
+     have integral_pos : 0 &lt; ∫ x, φ x * ⟪f x, f x₀⟫_ℝ ∂μ :=
+       (integral_pos_iff_support_of_nonneg h_nonneg integrable_prod).mpr
+         (lt_of_lt_of_le hμ (measure_mono closedBall_subset_support))
+-    linarith+    exact (ne_of_gt integral_pos) key_integral
+</pre></details><details><summary>C2 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -39,8 +39,7 @@
+       have hxp : 0 &lt; ‖x₂‖ := norm_pos_iff.mpr hx2
+       have inner_eq_self_add_diff : ⟪f₂ x, x₂⟫_ℝ = ⟪x₂, x₂⟫_ℝ + ⟪f₂ x - x₂, x₂⟫_ℝ := by
+         rw [← inner_add_left]; simp
+-      nlinarith [inner_eq_self_add_diff, hcs, hself, hclose, hxp,
+-        mul_lt_mul_of_pos_right hclose hxp]
++      nlinarith [mul_lt_mul_of_pos_right hclose hxp]
+   -- pull `inner_pos₂` back to V via `fromL2`:
+     have inner_pos_V : ∀ x ∈ Metric.ball x₀ δ₂, 0 &lt; ⟪f x, f x₀⟫_ℝ := fun x hx =&gt; inner_pos₂ x hx
+     -- now we have a genuine positive integrand on a set of positive measure.
+@@ -123,4 +122,4 @@
+     have integral_pos : 0 &lt; ∫ x, φ x * ⟪f x, f x₀⟫_ℝ ∂μ :=
+       (integral_pos_iff_support_of_nonneg h_nonneg integrable_prod).mpr
+         (lt_of_lt_of_le hμ (measure_mono closedBall_subset_support))
+-    linarith+    linarith
+</pre></details><details><summary>C3 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -39,7 +39,7 @@
+       have hxp : 0 &lt; ‖x₂‖ := norm_pos_iff.mpr hx2
+       have inner_eq_self_add_diff : ⟪f₂ x, x₂⟫_ℝ = ⟪x₂, x₂⟫_ℝ + ⟪f₂ x - x₂, x₂⟫_ℝ := by
+         rw [← inner_add_left]; simp
+-      nlinarith [inner_eq_self_add_diff, hcs, hself, hclose, hxp,
++      nlinarith only [inner_eq_self_add_diff, hcs, hself, hclose, hxp,
+         mul_lt_mul_of_pos_right hclose hxp]
+   -- pull `inner_pos₂` back to V via `fromL2`:
+     have inner_pos_V : ∀ x ∈ Metric.ball x₀ δ₂, 0 &lt; ⟪f x, f x₀⟫_ℝ := fun x hx =&gt; inner_pos₂ x hx
+@@ -123,4 +123,4 @@
+     have integral_pos : 0 &lt; ∫ x, φ x * ⟪f x, f x₀⟫_ℝ ∂μ :=
+       (integral_pos_iff_support_of_nonneg h_nonneg integrable_prod).mpr
+         (lt_of_lt_of_le hμ (measure_mono closedBall_subset_support))
+-    linarith+    linarith
+</pre></details></section><section><h2>P5 · 형태가 비슷해도 타입과 목표 순서는 다를 수 있다</h2><p class="muted"><code>Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_electricField_of_isExtrema</code></p><p>C1은 긴 부등식 증명을 le_top으로 대체했지만 2 + 1 ≤ ∞를 증명하지 못했다. 이 Lean 버전의 ContDiff 차수는 ℕ∞ω = WithTop ℕ∞이며, ∞는 무한 미분 가능 차수이고 최댓값 ⊤는 해석적 차수 ω다(Mathlib/Analysis/Calculus/ContDiff/Defs.lean:90). 따라서 겉보기의 무한대와 top을 같은 것으로 취급한 치환이 틀렸다. C2는 simp only가 원래 simp의 추가 정규화를 수행하지 못해 주된 등식 목표가 남았다. 뒤이어 미분 가능성을 증명하던 bullet들이 이 목표와 맞지 않아 연쇄 타입 오류가 발생했다. 로그상 마지막 오류만 고치려 하면 원인을 놓치게 된다. C3의 인접 rw 묶기는 통과해 토큰을 6개 줄였다. 계산량 개선은 작아 구조적인 증명 단축과는 구분해야 한다.</p><div class="scroll"><table><tr><th>후보 / 전략</th><th>검증</th><th>토큰</th><th>HB 감소</th><th>후보 점수</th></tr><tr><td>C1 · 부등식 증명을 le_top으로 치환</td><td class="bad">실패</td><td>—</td><td>—</td><td>선택 제외</td></tr><tr><td>C2 · 미분식 simp를 simp only로 제한</td><td class="bad">실패</td><td>—</td><td>—</td><td>선택 제외</td></tr><tr><td>C3 · 연속된 rw 묶기</td><td class="good">통과</td><td>1366</td><td>+0.14%</td><td>33.527</td></tr></table></div><details><summary>C1 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -8,13 +8,13 @@
+       𝓕.c ^ 2 / 𝓕.ε₀ * ∂[i] (J.chargeDensity 𝓕.c t ·) x -
+       𝓕.c ^ 2 * 𝓕.μ₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+   have hEs : ∀ j, ContDiff ℝ 2 (fun y =&gt; A.electricField 𝓕.c t y j) :=
+-    fun j =&gt; electricField_apply_contDiff_space (i := j) (hA.of_le (right_eq_inf.mp rfl)) t
++    fun j =&gt; electricField_apply_contDiff_space (i := j) (hA.of_le le_top) t
+   have hEd : ∀ j k, Differentiable ℝ (∂[k] (fun y =&gt; A.electricField 𝓕.c t y j)) :=
+     fun j k =&gt; Space.deriv_differentiable (hEs j) k
+   have hBt : ∀ j, Differentiable ℝ
+       (fun s =&gt; ∂[j] (fun y =&gt; A.magneticFieldMatrix 𝓕.c s y (j, i)) x) :=
+     fun j =&gt; Space.space_deriv_differentiable_time (i := j)
+-      (magneticFieldMatrix_contDiff _ (hA.of_le (right_eq_inf.mp rfl)) (j, i)) x
++      (magneticFieldMatrix_contDiff _ (hA.of_le le_top) (j, i)) x
+   have hJt : Differentiable ℝ (fun s =&gt; J.currentDensity 𝓕.c s x i) :=
+     LorentzCurrentDensity.currentDensity_apply_differentiable_time (hJ.differentiable (by simp)) x i
+   calc _
+@@ -26,7 +26,7 @@
+           change fun t =&gt; ∂ₜ (A.electricField 𝓕.c · x i) t
+           enter [t]
+           rw [Time.deriv_euclid (electricField_differentiable_time
+-            (hA.of_le (right_eq_inf.mp rfl)) _),
++            (hA.of_le le_top) _),
+             time_deriv_electricField_of_isExtrema hA J hJ h]
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) * ∂ₜ (fun t =&gt; ∑ j, ∂[j] (A.magneticFieldMatrix 𝓕.c t · (j, i)) x) t -
+       1 / 𝓕.ε₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+@@ -53,7 +53,7 @@
+       funext k
+       rw [Space.time_deriv_comm_space_deriv]
+       apply magneticFieldMatrix_contDiff
+-      apply hA.of_le (right_eq_inf.mp rfl)
++      apply hA.of_le le_top
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) *(∑ j, ∂[j] (fun x =&gt; ∂[j] (A.electricField 𝓕.c t · i) x -
+         ∂[i] (A.electricField 𝓕.c t · j) x)) x -
+         1 / 𝓕.ε₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+@@ -63,7 +63,7 @@
+         funext k
+         congr
+         funext x
+-        rw [time_deriv_magneticFieldMatrix _ (hA.of_le (ENat.LEInfty.out))]
++        rw [time_deriv_magneticFieldMatrix _ (hA.of_le le_top)]
+     _ = (1 / (𝓕.μ₀ * 𝓕.ε₀) * ∑ j, (∂[j] (fun x =&gt; ∂[j] (A.electricField 𝓕.c t · i) x) x -
+           ∂[j] (fun x =&gt; ∂[i] (A.electricField 𝓕.c t · j) x) x)) -
+           1 / 𝓕.ε₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+@@ -123,4 +123,4 @@
+             𝓕.c ^ 2 / 𝓕.ε₀ * ∂[i] (J.chargeDensity 𝓕.c t ·) x -
+             𝓕.c ^ 2 * 𝓕.μ₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+           simp [FreeSpace.c_sq]
+-          field_simp+          field_simp
+</pre><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/harness-expansion-2026-10-27/5/raw-v2/steps/001/evaluation/fixed/check.lean:388:67: error: Application type mismatch: The argument
+  le_top
+has type
+  ?m.170 ≤ ⊤
+but is expected to have type
+  2 + 1 ≤ ∞
+in the application
+  of_le hA le_top
+</pre></details><details><summary>C2 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -35,7 +35,7 @@
+       simp only [one_div, mul_inv_rev, FunLike.coe_sub, Pi.sub_apply]
+       rw [fderiv_const_mul (Differentiable.fun_sum fun j _ =&gt; hBt j).differentiableAt]
+       rw [fderiv_const_mul hJt.differentiableAt]
+-      simp [Time.deriv_eq]
++      simp only [Time.deriv_eq]
+       · exact ((Differentiable.fun_sum fun j _ =&gt; hBt j).const_mul _).differentiableAt
+       · exact hJt.differentiableAt.const_mul _
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) * ((∑ j, ∂ₜ (fun t =&gt; ∂[j] (A.magneticFieldMatrix 𝓕.c t · (j, i)) x)) t) -
+@@ -123,4 +123,4 @@
+             𝓕.c ^ 2 / 𝓕.ε₀ * ∂[i] (J.chargeDensity 𝓕.c t ·) x -
+             𝓕.c ^ 2 * 𝓕.μ₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+           simp [FreeSpace.c_sq]
+-          field_simp+          field_simp
+</pre><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/harness-expansion-2026-10-27/5/raw-v2/steps/002/evaluation/fixed/check.lean:416:8: error: Type mismatch
+  Differentiable.differentiableAt (Differentiable.const_mul (Differentiable.fun_sum fun j x =&gt; hBt j) ?m.1584)
+has type
+  DifferentiableAt ℝ
+    (fun y =&gt; ?m.1584 * ∑ i_1 ∈ ?m.1571, Space.deriv i_1 (fun y_1 =&gt; magneticFieldMatrix 𝓕.c A y y_1 (i_1, i)) x)
+    ?m.1596
+but is expected to have type
+  ((𝓕.ε₀⁻¹ * 𝓕.μ₀⁻¹) •
+          fderiv ℝ (fun y =&gt; ∑ i_1, Space.deriv i_1 (fun y_1 =&gt; magneticFieldMatrix 𝓕.c A y y_1 (i_1, i)) x) t)
+        1 -
+      (𝓕.ε₀⁻¹ • fderiv ℝ (fun s =&gt; (LorentzCurrentDensity.currentDensity 𝓕.c J s x).ofLp i) t) 1 =
+    𝓕.ε₀⁻¹ * 𝓕.μ₀⁻¹ * (fderiv ℝ (fun t =&gt; ∑ j, Space.deriv j (fun x =&gt; magneticFieldMatrix 𝓕.c A t x (j, i)) x) t) 1 -
+      𝓕.ε₀⁻¹ * (fderiv ℝ (fun s =&gt; (LorentzCurrentDensity.currentDensity 𝓕.c J s x).ofLp i) t) 1
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/harness-expansion-2026-10-27/5/raw-v2/steps/002/evaluation/fixed/check.lean:417:8: error: Type mismatch
+  DifferentiableAt.const_mul (Differentiable.differentiableAt hJt) ?m.1619
+has type
+  DifferentiableAt ℝ (fun y =&gt; ?m.1619 * (LorentzCurrentDensity.currentDensity 𝓕.c J y x).ofLp i) ?m.1614
+but is expected to have type
+  DifferentiableAt ℝ (fun t =&gt; 1 / (𝓕.μ₀ * 𝓕.ε₀) * ∑ j, Space.deriv j (fun x =&gt; magneticFieldMatrix 𝓕.c A t x (j, i)) x)
+    t
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/harness-expansion-2026-10-27/5/raw-v2/steps/002/evaluation/fixed/check.lean:409:54: error: unsolved goals
+case hg
+d : ℕ
+A : ElectromagneticPotential d
+𝓕 : FreeSpace
+hA : ContDiff ℝ ∞ A.val
+J : LorentzCurrentDensity d
+hJ : ContDiff ℝ ∞ J
+h : IsExtrema 𝓕 A J
+t : Time
+x : Space d
+i : Fin d
+hEs : ∀ (j : Fin d), ContDiff ℝ 2 fun y =&gt; (electricField 𝓕.c A t y).ofLp j
+hEd : ∀ (j k : Fin d), Differentiable ℝ (Space.deriv k fun y =&gt; (electricField 𝓕.c A t y).ofLp j)
+hBt : ∀ (j : Fin d), Differentiable ℝ fun s =&gt; Space.deriv j (fun y =&gt; magneticFieldMatrix 𝓕.c A s y (j, i)) x
+hJt : Differentiable ℝ fun s =&gt; (LorentzCurrentDensity.currentDensity 𝓕.c J s x).ofLp i
+⊢ DifferentiableAt ℝ (fun t =&gt; 1 / 𝓕.ε₀ * (LorentzCurrentDensity.currentDensity 𝓕.c J t x).ofLp i) t
+</pre></details><details><summary>C3 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -30,8 +30,7 @@
+             time_deriv_electricField_of_isExtrema hA J hJ h]
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) * ∂ₜ (fun t =&gt; ∑ j, ∂[j] (A.magneticFieldMatrix 𝓕.c t · (j, i)) x) t -
+       1 / 𝓕.ε₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+-      rw [Time.deriv_eq]
+-      rw [fderiv_fun_sub]
++      rw [Time.deriv_eq, fderiv_fun_sub]
+       simp only [one_div, mul_inv_rev, FunLike.coe_sub, Pi.sub_apply]
+       rw [fderiv_const_mul (Differentiable.fun_sum fun j _ =&gt; hBt j).differentiableAt]
+       rw [fderiv_const_mul hJt.differentiableAt]
+@@ -41,8 +40,7 @@
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) * ((∑ j, ∂ₜ (fun t =&gt; ∂[j] (A.magneticFieldMatrix 𝓕.c t · (j, i)) x)) t) -
+       1 / 𝓕.ε₀ * (∂ₜ (J.currentDensity 𝓕.c · x i) t) := by
+       congr
+-      rw [Time.deriv_eq]
+-      rw [fderiv_fun_sum fun i _ =&gt; (hBt i).differentiableAt]
++      rw [Time.deriv_eq, fderiv_fun_sum fun i _ =&gt; (hBt i).differentiableAt]
+       simp only [FunLike.coe_sum, Finset.sum_apply]
+       rfl
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) * (∑ j, ∂[j] (fun x =&gt; ∂ₜ (A.magneticFieldMatrix 𝓕.c · x (j, i)) t)) x -
+@@ -71,8 +69,7 @@
+         simp only [Finset.sum_apply]
+         congr
+         funext j
+-        rw [Space.deriv_eq_fderiv_basis]
+-        rw [fderiv_fun_sub (hEd _ _).differentiableAt (hEd _ _).differentiableAt]
++        rw [Space.deriv_eq_fderiv_basis, fderiv_fun_sub (hEd _ _).differentiableAt (hEd _ _).differentiableAt]
+         simp [← Space.deriv_eq_fderiv_basis]
+     _ = 1 / (𝓕.μ₀ * 𝓕.ε₀) * ∑ j, (∂[j] (fun x =&gt; ∂[j] (A.electricField 𝓕.c t · i) x) x) -
+           1 / (𝓕.μ₀ * 𝓕.ε₀) * ∑ j, (∂[j] (fun x =&gt; ∂[i] (A.electricField 𝓕.c t · j) x) x) -
+@@ -123,4 +120,4 @@
+             𝓕.c ^ 2 / 𝓕.ε₀ * ∂[i] (J.chargeDensity 𝓕.c t ·) x -
+             𝓕.c ^ 2 * 𝓕.μ₀ * ∂ₜ (J.currentDensity 𝓕.c · x i) t := by
+           simp [FreeSpace.c_sq]
+-          field_simp+          field_simp
+</pre></details></section><section><h2>P6 · 사용하지 않는 인자도 귀납법의 형태를 결정한다</h2><p class="muted"><code>FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_eq_time</code></p><p>C1은 repeat rw를 simp only로 바꾸는 동일 법칙 기반 치환으로 통과했다. C2는 pa/pb의 span-membership 증명 인자를 삭제했다. 명제 본문이 그 인자 이름을 쓰지 않더라도, Submodule.span_induction의 motive는 (x : M) → x ∈ span R s → Prop 형태를 요구한다. 인자를 제거하자 첫 apply에서 결론과 pb b를 통합하지 못했다. 이는 정리가 거짓이 됐다는 뜻이 아니라 현재 증명 스크립트가 기대한 귀납법 인터페이스를 잃었다는 뜻이다. 텍스트상 미사용 인자를 무조건 지우는 최적화는 안전하지 않다. C3는 덧셈 분기 두 곳의 simp_all을 명시적인 선형성 규칙과 귀납 가정을 사용하는 simp only로 바꿔 통과했다. 최종 선택은 C3였고, 토큰 16개 증가에도 전체 정리 heartbeat가 약 21.39% 줄어 종합 점수가 개선됐다. P5의 실패와 대조하면 only 자체가 좋은 것이 아니라 필요한 규칙과 가정이 충분히 남아 있어야 한다.</p><div class="scroll"><table><tr><th>후보 / 전략</th><th>검증</th><th>토큰</th><th>HB 감소</th><th>후보 점수</th></tr><tr><td>C1 · repeat rw를 simp only로 치환</td><td class="good">통과</td><td>1217</td><td>+1.60%</td><td>33.867</td></tr><tr><td>C2 · 지역 명제의 의존 인자 삭제</td><td class="bad">실패</td><td>—</td><td>—</td><td>선택 제외</td></tr><tr><td>C3 · 선형성 분기 simp_all 범위 제한</td><td class="good">통과</td><td>1233</td><td>+21.39%</td><td>40.026</td></tr></table></div><details><summary>C1 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -65,7 +65,7 @@
+           have h2 := insertionSort_of_eq_list 𝓕.crAnTimeOrderRel φ φs&#x27; [ψ, φ] φs
+             (by simp_all)
+           rw [crAnTimeOrderList, show φs&#x27; ++ ψ :: φ :: φs = φs&#x27; ++ [ψ, φ] ++ φs by simp, h2]
+-          repeat rw [ofCrAnListF_append]
++          simp only [ofCrAnListF_append]
+           simp
+         _ = crAnTimeOrderSign (φs&#x27; ++ [φ, ψ] ++ φs) •
+             (ι (ofCrAnListF (List.takeWhile (fun c =&gt; ¬crAnTimeOrderRel φ c)
+@@ -94,7 +94,7 @@
+               ← ofCrAnListF_singleton]
+             simp [← ofCrAnListF_append]
+       rw [Subalgebra.mem_center_iff.mp (ι_superCommuteF_ofCrAnOpF_ofCrAnOpF_mem_center φ ψ)]
+-      repeat rw [mul_assoc]
++      simp only [mul_assoc]
+       rw [← map_mul, ← map_mul, ← map_mul, ← ofCrAnListF_append, ← ofCrAnListF_append,
+         ← ofCrAnListF_append]
+       have h1 := insertionSort_of_takeWhile_filter 𝓕.crAnTimeOrderRel φ φs&#x27; φs
+@@ -114,4 +114,4 @@
+   · intro x y hx hy hpx hpy
+     simp_all [pb,mul_add]
+   · intro x hx hpx
+-    simp_all [pb]+    simp_all [pb]
+</pre></details><details><summary>C2 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -2,17 +2,17 @@
+     (hφψ : crAnTimeOrderRel φ ψ) (hψφ : crAnTimeOrderRel ψ φ) (a b : 𝓕.FieldOpFreeAlgebra) :
+     ι 𝓣ᶠ(a * [ofCrAnOpF φ, ofCrAnOpF ψ]ₛF * b) =
+     ι ([ofCrAnOpF φ, ofCrAnOpF ψ]ₛF * 𝓣ᶠ(a * b)) := by
+-  let pb (b : 𝓕.FieldOpFreeAlgebra) (hc : b ∈ Submodule.span ℂ (Set.range ofCrAnListFBasis)) :
++  let pb (b : 𝓕.FieldOpFreeAlgebra) :
+     Prop := ι 𝓣ᶠ(a * [ofCrAnOpF φ, ofCrAnOpF ψ]ₛF * b) =
+     ι ([ofCrAnOpF φ, ofCrAnOpF ψ]ₛF * 𝓣ᶠ(a * b))
+-  change pb b (Basis.mem_span _ b)
++  change pb b
+   apply Submodule.span_induction
+   · rintro x ⟨φs, rfl⟩
+     simp only [ofListBasis_eq_ofList, map_mul, pb]
+-    let pa (a : 𝓕.FieldOpFreeAlgebra) (hc : a ∈ Submodule.span ℂ (Set.range ofCrAnListFBasis)) :
++    let pa (a : 𝓕.FieldOpFreeAlgebra) :
+       Prop := ι 𝓣ᶠ(a * [ofCrAnOpF φ, ofCrAnOpF ψ]ₛF * ofCrAnListF φs) =
+       ι ([ofCrAnOpF φ, ofCrAnOpF ψ]ₛF * 𝓣ᶠ(a* ofCrAnListF φs))
+-    change pa a (Basis.mem_span _ a)
++    change pa a
+     apply Submodule.span_induction
+     · rintro x ⟨φs&#x27;, rfl⟩
+       simp only [ofListBasis_eq_ofList, map_mul, pa]
+@@ -114,4 +114,4 @@
+   · intro x y hx hy hpx hpy
+     simp_all [pb,mul_add]
+   · intro x hx hpx
+-    simp_all [pb]+    simp_all [pb]
+</pre><pre>/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/harness-expansion-2026-10-27/6/raw-v2/steps/002/evaluation/fixed/check.lean:172:2: error: Tactic `apply` failed: could not unify the conclusion of `@Submodule.span_induction`
+  ?p ?x ?hx
+with the goal
+  pb b
+
+Note: The full type of `@Submodule.span_induction` is
+  ∀ {R : Type ?u.54} {M : Type ?u.53} [inst : Semiring R] [inst_1 : AddCommMonoid M] [inst_2 : Module R M] {s : Set M}
+    {p : (x : M) → x ∈ Submodule.span R s → Prop},
+    (∀ (x : M) (h : x ∈ s), p x ⋯) →
+      p 0 ⋯ →
+        (∀ (x y : M) (hx : x ∈ Submodule.span R s) (hy : y ∈ Submodule.span R s), p x hx → p y hy → p (x + y) ⋯) →
+          (∀ (a : R) (x : M) (hx : x ∈ Submodule.span R s), p x hx → p (a • x) ⋯) →
+            ∀ {x : M} (hx : x ∈ Submodule.span R s), p x hx
+
+𝓕 : FieldSpecification
+φ ψ : 𝓕.CrAnFieldOp
+hφψ : crAnTimeOrderRel φ ψ
+hψφ : crAnTimeOrderRel ψ φ
+a b : 𝓕.FieldOpFreeAlgebra
+pb : 𝓕.FieldOpFreeAlgebra → Prop :=
+  fun b =&gt;
+    ι (timeOrderF (a * (superCommuteF (ofCrAnOpF φ)) (ofCrAnOpF ψ) * b)) =
+      ι ((superCommuteF (ofCrAnOpF φ)) (ofCrAnOpF ψ) * timeOrderF (a * b))
+⊢ pb b
+</pre></details><details><summary>C3 변경 diff / 실제 오류</summary><pre>--- original
++++ candidate
+@@ -107,11 +107,11 @@
+         simp only [map_smul, Algebra.mul_smul_comm]
+     · simp only [map_mul, zero_mul, map_zero, mul_zero, pa]
+     · intro x y hx hy hpx hpy
+-      simp_all [pa,mul_add, add_mul]
++      simp only [pa, mul_add, add_mul, map_add, map_mul, hpx, hpy]
+     · intro x hx hpx
+       simp_all [pa]
+   · simp only [map_mul, mul_zero, map_zero, pb]
+   · intro x y hx hy hpx hpy
+-    simp_all [pb,mul_add]
++    simp only [pb, mul_add, map_add, hpx, hpy]
+   · intro x hx hpx
+-    simp_all [pb]+    simp_all [pb]
+</pre></details></section><section><h2>검증기 자체에서 드러난 문제</h2><p>P4 원본은 일반 컴파일을 통과했지만, 계측용 set_option 앞에 붙은 문서 주석 때문에 계측 컴파일만 실패했다. 실제 로그에는 heartbeat 출력까지 있지만 프로세스 반환값이 실패이므로 유효 점수로 인정하면 안 된다.</p><p>계측용 복사본에서만 목표 선언 직전 문서 주석을 일반 주석으로 바꾸는 adapter를 적용했다. 후보 본문과 일반 검증 파일은 보존했다. 최초 실패와 보정 후 raw-v2 실행을 분리해 보관했다.</p><p>따라서 오류 분류는 최소한 입력/statement 위반, 일반 Lean 컴파일 실패, 계측 실패, timeout·환경 실패를 나눠야 한다. 기존 하네스의 원본 실패 중단은 정상 동작했지만, 원인 분류와 문서 주석 호환성은 보완할 부분이다.</p></section><section><h2>상위권과는 얼마나 다른가</h2><p>공식 closed-model 공개 리더보드를 2026-10-27에 조회했다. 표는 전체 warm-up 15문제 평균이며, 모델명은 참가자의 자기 보고다.</p><div class="scroll"><table><tr><th>참가자</th><th>점수</th><th>토큰 감소</th><th>HB 감소</th><th>버전 통과</th></tr><tr><td>Bob2</td><td>94.13%</td><td>92.17%</td><td>90.22%</td><td>100.0%</td></tr><tr><td>Vexorium-Agent</td><td>93.06%</td><td>88.75%</td><td>90.44%</td><td>100.0%</td></tr><tr><td>addarshh-refactor-agent</td><td>91.85%</td><td>86.14%</td><td>89.42%</td><td>100.0%</td></tr></table></div><p>우리의 이전 15문제 Local Minimizer 실험은 <b>35.785점</b>이었다. 이번 공용 하네스에서 확인한 1·2·4·5·6번만의 평균은 <b>47.940점</b>이다. 이 둘은 서로 다른 실험이며, 5문제 평균을 전체 리더보드 점수로 읽으면 안 된다.</p><p>참고로 기존 15문제 결과의 해당 5개 행만 교체한 혼합 추정은 <b>40.267점</b>이다. 재실행하지 않은 10문제의 과거 수치가 섞였으므로 공식 점수나 새 전체 실험 결과가 아니다.</p><p class="callout">현재의 5개 점수를 고정하면 나머지 10문제를 모두 100점으로 만든다는 극단적인 가정에서도 전체 평균은 82.647점이다. 상위권에 접근하려면 이미 검증된 5문제도 더 크게 개선해야 한다.</p><p>상위권은 토큰과 heartbeat를 함께 약 90% 줄였다. 우리의 1·2번은 토큰을 약 81–85% 줄였지만 heartbeat 감소는 약 7–10%였다. 짧은 자동화 전술로 긴 코드를 대체하는 것만으로는 이 차이를 메우기 어렵다. 상대 참가자의 문제별 증명은 확보하지 못했으므로 어떤 기법을 썼는지는 추정하지 않는다.</p></section><section><h2>LLM 없이 우선 개선할 부분</h2><h3>1. 증명 오류와 계측 오류를 분리</h3><p>일반 컴파일 성공·계측 실패라면 후보 수리를 시작하지 말고 계측 adapter를 검사한다. 출력에 heartbeat가 있어도 실패 반환값이면 점수로 사용하지 않는다. 이번 P4가 실제 근거다.</p><h3>2. 가정 목록을 제한하는 작은 후보를 생성</h3><p>nlinarith의 명시 인자 중 이미 문맥에 있는 중복을 줄이거나 only를 붙이는 후보를 자동 생성할 수 있다. P4에서는 두 방식 모두 통과했다. 다만 모든 문제에서 안전한 변환은 아니므로 각 후보를 검증하고 토큰·heartbeat를 함께 비교해야 한다.</p><h3>3. simp only는 증명된 사용 규칙에서 출발</h3><p>simp? 또는 simp_all?의 실제 suggestion을 얻은 뒤 제안된 규칙 목록을 파싱하고 재검증한다. simp [X]를 단순히 simp only [X]로 바꾸면 기본 simp 규칙이 빠질 수 있으며 P5에서 실제 실패했다. 이 보고서는 새 suggestion 탐색을 실행한 결과가 아니라 관측에 따른 다음 실험 제안이다.</p><h3>4. 오류 줄이 아니라 수정한 블록부터 되돌리기</h3><p>P5처럼 앞선 단순화가 목표를 닫지 못하면 뒤 bullet의 타입 오류가 연쇄 발생한다. 오류 위치만 한 줄씩 고치는 대신 diff와 해당 tactic 블록을 함께 묶어 rollback 후보를 만든다. 구문 블록 복원 후 전체 정리 재검증으로 판정하며, 일반적인 의미적 원인 추론을 결정적으로 해결했다고 주장하지 않는다.</p><h3>5. 타입과 의존 인자를 존중하는 치환</h3><p>le_top 같은 짧은 항은 기대 타입에 맞는지 Lean으로 먼저 검사한다. 특히 ∞ 표기만 보고 top과 같다고 가정하지 않는다. 지역 명제의 인자 삭제도 텍스트에서 안 쓴다는 사실만으로 정당화할 수 없다.</p><h3>6. 최종 검증 실패 시 다음 후보로 내려가기</h3><p>공용 하네스는 최종 선택을 재검증하지만, 그 단계에서 실패하면 다음 최선 후보를 자동으로 재검증·제출하는 경로가 없다. 검증된 후보 목록을 유지하고 차례로 내려가 마지막에 원본까지 확인하는 정책을 추가할 만하다. 이번 실행에서 최종 검증 실패는 관측되지 않았으며 이 항목은 코드 리뷰로 발견한 보완점이다.</p></section><section><h2>직접 확인할 자료</h2><p><a href="results.json">전체 결과 JSON</a> · <a href="arena-submission.json">선택한 증명 JSON</a> · <a href="candidate-freeze.json">후보 고정 기록</a> · <a href="leaderboard/closed.html">조회 당시 리더보드</a> · <a href="README.md">재현 절차</a></p><p><a href="https://huggingface.co/spaces/delta-lab-ai/lean-refactor-arena">공식 Arena</a> · <a href="https://github.com/Pseudo-Lab/LeanAgent-LeanRefactorArena/tree/ba593fc4357ee5c429b8f28f1aac512d05bb4355/src/lean_agent">사용한 공용 하네스</a></p><p class="muted">공식 채점 워커와 실행 환경·계측 경계가 완전히 같다고 보장하지 않는다. 후보는 기존 문제를 알고 작성했으므로 블라인드 테스트나 모델 간 비교 결과가 아니다. 검증 실패 후보는 제출 JSON에 포함하지 않는다.</p></section></main></html>

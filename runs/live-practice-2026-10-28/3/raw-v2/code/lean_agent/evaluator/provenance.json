@@ -1,0 +1,13 @@
+{
+  "source_revision": "c18ec56682462847e2f4d8b6d60aa79ec071a10b",
+  "source_directory": "refactor_eval",
+  "source_sha256": {
+    "__init__.py": "0eab47670182910a6f889d4f5bf1712d73b159bfffe499d63c6a1a94e8abacd7",
+    "lean.py": "79cfa9ed2d4f7b9e1b0defc74d2ea0c6f91bbfed8fded82a7512dc893195e154",
+    "tokens.py": "733f6ebb4274de88fe448d04879ba3ee58e07e725c62a7e5e4ef122cabf2394d"
+  },
+  "changes": [
+    "lean.py: pass an allowlisted environment to child processes; never forward model credentials or inherited Lean search-path overrides",
+    "lean.py: fingerprint the actual Lean compiler executable via --print-prefix"
+  ]
+}

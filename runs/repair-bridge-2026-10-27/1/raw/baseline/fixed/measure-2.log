@@ -1,0 +1,3 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/baseline/fixed/measure-2.lean:193:8: warning: declaration uses 'sorry'
+REFACTOR_EVAL 0af284fcb5b94b97a5413b3ebdad873e {"axioms":["propext","Quot.sound"],"raw":5173526,"scaled":5173,"target":"CallElimCorrect.substOldPostSubset"}
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/repair-bridge-2026-10-27/1/raw/baseline/fixed/measure-2.lean:3307:8: warning: declaration uses 'sorry'

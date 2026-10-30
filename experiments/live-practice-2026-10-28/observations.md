@@ -1,0 +1,57 @@
+# Live relay observations (provisional)
+
+These are observed cases, not population-wide success claims. Problem IDs refer to manifest.json.
+
+| Evidence | Observation | LLM-free action worth testing later |
+|---|---|---|
+| P2 raw baseline vs raw-v2 baseline | Ordinary compilation passed; measurement wrapper was parsed in the preceding tactic block. | Separate ordinary and instrumented compilation; if only instrumentation fails, repair the wrapper rather than the candidate. Record both renderers. |
+| P14 raw-v2/baseline/result.json | Original compiled but target dependencies include sorryAx. | Reject before generation; report baseline axiom failure, not model failure. Compilation alone is insufficient. |
+| P1 response 2 → 3 | assumption failed because the needed induction hypothesis was still an implication. | Extract expected type and local hypothesis types. A bounded application search may close the goal; do not blindly replace every grind with assumption. |
+| P23 responses 1–3 | Merging simp steps changed which goal was focused; a nil-substitution goal remained. | Preserve tactic goal boundaries; validate an AST edit and roll it back on failure. A failed later line does not prove the defect is at that line. |
+| P5 response 3 | Removing field_simp broke a later conv traversal path. | Treat conv enter paths as dependent on preceding normalization. Prefer replay-based localization over isolated line patches. |
+| P13 responses 1–2 | Direct multiplication monotonicity replaced eight nonlinear searches and roughly halved heartbeats. | In a future repair/minimization arm, try bounded typed applications or exact? and retain explicit proof terms only after measurement. This run did not automatically perform that search. |
+| P4 final selection | More tokens can still win when heartbeat reduction compensates. | Compare the combined objective after validation, not just proof length. |
+| P23 final selection | Original remained the selected proof. | Keep a verified original candidate in the ranking from the start. |
+| Host-session interruption | A new user turn ended waiting workers; pending replies were not proof failures. | Durable request/reply records with hash binding; resume completed evaluations only if environment fingerprint matches. |
+
+## Interpretation constraints
+
+- These runs use live conversation responses, not prewritten future candidates.
+- Three responses maximum per problem. A repair consumes the same response budget.
+- Selection is performed by the common harness; the model does not declare its own success.
+- Primary-version proxies are not official final scores or full-version robustness.
+- No deterministic repair arm has been added to this run: the suggestions above are proposed follow-up experiments. This preserves a useful raw harness baseline for later attaching the repair agent.
+
+## Additional observed failures
+
+- P8 response 1: removing the trailing `all_goals grind` leaves two identity-relation cases. Explicitly named transition branches were not the entire goal set. A minimizer should track all residual goals, not just the visible branch names.
+- P9 response 1: deleting unnamed `rfl` facts makes `grind` fail. A definitionally trivial equality can be a useful syntactic bridge for E-matching. Textual reference counting is not a reliable dependency analysis for automation-heavy proofs.
+- P3/P7: dataset extraction includes a following declaration or its `set_option` wrapper. Preserve raw data and fix extraction as a separate dataset revision.
+- P10/P11: the common lexical gate rejects Finset cardinality `#D`/`#(...)`. This is a harness false positive, not unsafe proof code.
+- P27/P28/P29: Lean 4.29.1 module-mode `collectAxioms` reports imported ordinary theorem names. A separate legacy-import `#print axioms` yields only standard axioms. The primary wrapper is not a reliable axiom audit in that environment.
+- P18 retry: after preserving the initial timeout, the unchanged original reaches the axiom check and reports `sorryAx`. A timeout alone did not reveal the underlying baseline rejection.
+
+## Verification overhead
+
+The prepared evaluator compiles the entire source file for ordinary checking and again for every heartbeat sample. Heartbeats bracket only the target declaration, but the wall-clock timeout covers the whole file. Thus a target with modest heartbeat cost can time out due to other declarations or concurrent builds. This is an observed execution-design concern, not proof invalidity. A follow-up optimization should freeze and compile the exact pre-target context plus target (with parser-correct scope handling), and audit downstream use separately when needed. This experiment retains full-file checking for comparability.
+
+The unchanged P15 candidate from step 2 passed its post-hoc retry: local single-version score 44.546 versus the original harness selection's 43.229 (about +1.317 points). This is a recovery through verification scheduling/retry, with zero new proof tokens generated by a model and zero proof edits. The primary sealed record remains unchanged.
+
+## 2026-10-30: 주 버전 전체 실행 및 timeout 회복
+
+- 29개 고유 문제 / 35행 처리 완료. 기본 실행은 최종 통과 16, 원본 검사 차단 12, 최종 timeout 1. 17문제 × 3회 = 실제 대화 응답 51회, 거절 13회.
+- 최종 통과 16개 중 후보 선택 13, 원본 fallback 3(P9, P23, P25). 변경 후보의 단순 유효성만으로 개선을 인정하지 않는다.
+- P12는 기존 두 몫 등식의 transitivity로 긴 후반 재구성을 대체했다. 638 → 193 source tokens, raw heartbeat 4,322,627 → 2,132,610. 주 버전 proxy 73.471. 세 번째 시도는 `Set.mem_image.mp`를 사용할 수 없어 실패했고, 검증된 두 번째 후보를 선택했다. 추가 지정 버전은 별도 감사 중.
+- P15 후보2, P19 후보2, P19 최종 증명은 동일 코드·제한의 재시도에서 모두 통과했다. P15 후보2는 44.546점(+1.317), P19 후보2는 53.604점(기본 선택 계측 대비 +20.023). P19 기본 실행의 최종 실패 기록은 변경하지 않았다.
+- 이는 timeout을 논리 오류로 분류하지 않고 제한된 재시도 큐에 보내는 정책의 실제 효용을 보여준다. 자원 경합이 유일한 원인이라고 인과적으로 확정한 실험은 아니다.
+- `retry-selected-proofs.json`은 새 LLM 응답이나 proof 수정 없이, 원본·유효한 기본 결과·재시도 성공 후보를 공용 ranking으로 다시 비교한 별도 결과다.
+
+### 추가 실행기 실패: --print-prefix의 stderr 혼합
+
+ArkLib v4.30.0의 pinned manifest는 Lake 경고를 출력한다. 공용 fingerprint 함수가 stderr와 stdout을 합친 `--print-prefix` 결과 전체를 경로로 사용해 FileNotFoundError가 났다. Lean 증명 검사에 진입하기 전 실패다. `setup-logs/arklib-v4.30.0/verify-prefix-failure.log`에 보존했다.
+
+`compat_evaluator.py`는 호환성 감사에 한해 해당 명령의 stderr를 분리하며, 경고 자체는 fingerprint의 `prefix_diagnostics`에 보존한다. 버전 문자열·컴파일러 hash·전체 dependency closure 검사는 그대로 수행한다. 기존 primary 기록과 core evaluator는 수정하지 않았다. 이 역시 LLM 없이 수정할 수 있는 하네스 입출력 문제다.
+
+## 지정 버전 감사 완료
+
+P12의 동일 선택 증명은 4.31/4.30/4.29/4.28 모두 통과했다. P8·P9는 앞서 지정 3개 버전에서 모두 통과했다. 기본 최종 통과 16개의 local final score 평균은 40.558이며 원본 기준은 33.333이다. 이 집합에만 재시도 결과를 적용하면 40.641, 회수된 P19까지 포함한 17개 평균은 41.403이다. 분모가 다른 평균의 차이를 개선 효과로 단정하지 않는다. 기본 실행의 12개 원본 차단과 P19 final timeout 기록은 그대로 유지했다.

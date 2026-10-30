@@ -1,0 +1,3 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw-v2/steps/003/evaluation/fixed/measure-1.lean:193:8: warning: declaration uses 'sorry'
+REFACTOR_EVAL 08140499dd8e4013b2ce5d3cf8ee8787 {"axioms":["propext","Quot.sound"],"raw":7136717,"scaled":7136,"target":"CallElimCorrect.Lambda.LExpr.substFvarCorrect"}
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/2/raw-v2/steps/003/evaluation/fixed/measure-1.lean:3302:8: warning: declaration uses 'sorry'

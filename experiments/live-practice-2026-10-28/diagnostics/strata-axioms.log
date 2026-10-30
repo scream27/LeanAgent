@@ -1,0 +1,3 @@
+'Core.InitUpdateComm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Core.InitStatesSubstStores' depends on axioms: [propext, Quot.sound]
+'Core.InitStatesApp'' depends on axioms: [propext, Classical.choice, Quot.sound]

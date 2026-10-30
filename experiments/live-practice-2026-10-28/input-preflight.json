@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "name": "CallElimCorrect.substOldCorrect",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 2,
+    "name": "CallElimCorrect.Lambda.LExpr.substFvarCorrect",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 3,
+    "name": "Core.updatedStatesDefMonotone",
+    "valid": false,
+    "error": "Forbidden command, axiom, option or executable construct in proof",
+    "classification": "dataset_boundary",
+    "explanation": "src contains a second theorem updatedStatesDefined"
+  },
+  {
+    "id": 4,
+    "name": "FieldSpecification.WickAlgebra.ι_timeOrderF_superCommuteF_superCommuteF_eq_time_ofCrAnListF",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 5,
+    "name": "Electromagnetism.ElectromagneticPotential.time_deriv_time_deriv_magneticFieldMatrix_of_isExtrema",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 6,
+    "name": "Electromagnetism.ElectromagneticPotential.isExtrema_lorentzGroup_apply_iff",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 7,
+    "name": "Cslib.LambdaCalculus.LocallyNameless.Fsub.Typing.preservation",
+    "valid": false,
+    "error": "Forbidden command, axiom, option or executable construct in proof",
+    "classification": "dataset_boundary",
+    "explanation": "src ends with the next declaration wrapper: set_option linter.tacticAnalysis.verifyGrindOnly false in"
+  },
+  {
+    "id": 8,
+    "name": "Cslib.CCS.bisimilarity_par_assoc",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 9,
+    "name": "Cslib.CCS.bisimilarity_congr_par",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 10,
+    "name": "affine_gaps_lifted_to_interleaved_codes",
+    "valid": false,
+    "error": "Forbidden command, axiom, option or executable construct in proof",
+    "classification": "harness_false_positive",
+    "explanation": "Gate bans every # character, including Finset cardinality notation #(…) and #D."
+  },
+  {
+    "id": 11,
+    "name": "R_star_star_lower_bound",
+    "valid": false,
+    "error": "Forbidden command, axiom, option or executable construct in proof",
+    "classification": "harness_false_positive",
+    "explanation": "Gate bans every # character, including Finset cardinality notation #(…)."
+  },
+  {
+    "id": 12,
+    "name": "Binius.BinaryBasefold.qMap_total_fiber_disjoint",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 13,
+    "name": "DyadicCube.nesting",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 14,
+    "name": "IsElementary.measure_of_translate",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 15,
+    "name": "Box.BoundedInterval.exists_points_with_diff",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 16,
+    "name": "Lebesgue_outer_measure_eq_nat_indexed",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 17,
+    "name": "Filter.Tendsto.of_div'",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 18,
+    "name": "IsElementary.measure_le_finset_boxes_volume'",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 19,
+    "name": "PikhurkoN5.triangle_or_blueStar_from_block2",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 20,
+    "name": "Box.sum_volume_eq",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 21,
+    "name": "AppendixB.PosintDecimal.exists_unique",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 22,
+    "name": "Chapter5.Sequence.equiv_example",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 23,
+    "name": "CallElimCorrect.substOldExpr_cons",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 24,
+    "name": "CallElimCorrect.Lambda.LExpr.substFvarsCorrectZero",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 25,
+    "name": "CallElimCorrect.substOldExprPostSubset",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 26,
+    "name": "CallElimCorrect.substOld_create_replace",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 27,
+    "name": "Core.InitUpdateComm",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 28,
+    "name": "Core.InitStatesSubstStores",
+    "valid": true,
+    "error": null
+  },
+  {
+    "id": 29,
+    "name": "Core.InitStatesApp'",
+    "valid": true,
+    "error": null
+  }
+]

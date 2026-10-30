@@ -1,0 +1,1 @@
+{"type": "BaselineAxiomFailure", "message": "Original compiles but target axiom check reports sorryAx. No model response generated; preserve original evidence.", "evidence": "raw-v2/baseline/result.json"}

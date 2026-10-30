@@ -1,0 +1,3 @@
+{
+  "proof": "by\n  induction post <;> unfold substOld <;> (try split <;> try split) <;>\n    simp_all [Imperative.HasVarsPure.getVars, Lambda.LExpr.LExpr.getVars] <;>\n    (repeat' apply List.Subset.app) <;> (try (apply List.Subset.trans; assumption)) <;>\n    simp +contextual [List.Subset, or_imp]"
+}

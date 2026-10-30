@@ -1,0 +1,8 @@
+{
+  "deleted_generated_directories": [
+    "artifacts/live-practice/cslib-v4.31.0/project/.lake",
+    "artifacts/live-practice/cslib-v4.31.0/elan",
+    "artifacts/live-practice/cslib-v4.31.0/cache"
+  ],
+  "shared_arklib_compiler_preserved": true
+}

@@ -1,0 +1,2 @@
+/Users/sungwoo/lean_project/LeanAgent-LeanRefactorArena/runs/live-practice-2026-10-28/17/raw-v2/baseline/fixed/measure-1.lean:46:8: warning: declaration uses 'sorry'
+REFACTOR_EVAL 7b19695da0e44d038dfeb6dac5a84e9c {"axioms":["propext","Classical.choice","Quot.sound","sorryAx"],"raw":78227879,"scaled":78227,"target":"Filter.Tendsto.of_div'"}
